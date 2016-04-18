@@ -28,7 +28,7 @@
     if (_title == nil) {
         
         _title = [[UILabel alloc] init];
-//        _title.frame = CGRectMake(20, 10, 40, 20);
+        _title.frame = CGRectMake(20, 10, 40, 20);
         _title.textColor = [UIColor blackColor];
         _title.text = @"羊毛";
         _title.font = [UIFont boldSystemFontOfSize:15];
@@ -43,7 +43,7 @@
     if (_notice == nil) {
         
         _notice = [[UILabel alloc] init];
-//        _notice.frame = CGRectMake(60, 10, 40, 20);
+        _notice.frame = CGRectMake(60, 10, 40, 20);
         _notice.backgroundColor = [UIColor redColor];
         _notice.textColor = [UIColor whiteColor];
         _notice.text = @"公告";
@@ -131,22 +131,30 @@
     [self addSubview:self.scrollLabel];
     
     
-    [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.mas_equalTo(15);
-        make.right.mas_equalTo(self.notice.mas_left).offset(-5);
-        make.top.mas_equalTo(10);
-        make.bottom.mas_equalTo(-10);
-    }];
-    
-    [self.notice mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-//        make.left.equalTo(self.title.mas_right).offset(-5);
-//        make.right.mas_equalTo(self.colon.mas_left).offset(-0);
+//    [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.left.mas_equalTo(15);
+//        make.right.mas_equalTo(self.notice.mas_left);
+//        make.top.mas_equalTo(10);
+//        make.bottom.mas_equalTo(-10);
+//    }];
+//    
+//    [self.notice mas_makeConstraints:^(MASConstraintMaker *make) {
+//        
+//        make.left.mas_equalTo(50);
+//        make.right.mas_equalTo(self.colon.mas_left).offset(-20);
 //        make.top.mas_equalTo(self.title.mas_top);
 //        make.bottom.mas_equalTo(self.title.mas_bottom);
-    }];
-    
+//    }];
+//    
+//    [self.colon mas_makeConstraints:^(MASConstraintMaker *make) {
+//       
+//        make.left.mas_equalTo(self.scrollLabel.mas_left).offset(-5);
+//        make.top.mas_equalTo(self.title.mas_top);
+//        make.bottom.mas_equalTo(self.title.mas_bottom);
+//        make.right.mas_equalTo(self.scrollLabel.mas_left);
+//        
+//    }];
 }
 
 #pragma mark 公告实现方法
