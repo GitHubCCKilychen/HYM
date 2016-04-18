@@ -1,0 +1,59 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BaseModel (0.0.1)
+  - Masonry (1.0.0)
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.0)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - UIView+AutoLayout (2.0.1)
+  - UIView+Frame (0.0.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.0)
+  - BaseModel (from `~/Desktop/work/Base`)
+  - Masonry
+  - MBProgressHUD
+  - MJRefresh
+  - SDWebImage
+  - UIView+AutoLayout
+  - UIView+Frame (from `~/Desktop/work/UIView+Frame`)
+
+EXTERNAL SOURCES:
+  BaseModel:
+    :local: ~/Desktop/work/Base
+  UIView+Frame:
+    :local: ~/Desktop/work/UIView+Frame
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BaseModel: 65b20cd19adb2cc36606079537675d343106c691
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  UIView+AutoLayout: 9eb76d5e72974e5b96c0350624d8f17ddb405ee0
+  UIView+Frame: 51885a955d7b2b0222845ac492a8018bfe5b30d8
+
+COCOAPODS: 0.39.0
