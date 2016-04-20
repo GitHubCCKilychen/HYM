@@ -30,7 +30,7 @@
     if (_taskView == nil) {
     
         _taskView = [[HYMTaskView alloc] init];
-        _taskView.frame = CGRectMake(0, 150, self.frame.size.width, 200);
+        _taskView.frame = CGRectMake(0, 150, self.frame.size.width, 160);
    
     }
     

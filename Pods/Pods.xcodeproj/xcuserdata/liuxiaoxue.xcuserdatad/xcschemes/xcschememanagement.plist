@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>BaseModel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -24,12 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Masonry.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>SDAutoLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,27 +47,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03749DA1DAF8322F654E2E4D10B376C0</key>
+		<key>11E6505563B107D2C03EB124E9A4531B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E776A38417E72FC53DDAEBCD84CEADF</key>
+		<key>6BA71B984FBB6D27364908817A46BA1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<key>6E64DBBAA66A1BAD104904C353A27ED5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6DFACAC48DFAFD3914BF5EEF0A9A32D6</key>
+		<key>84CFB1A23D3BD988BCDC9CD8166FF868</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5A5A88C94396906ABE69A89F331228B</key>
+		<key>928353533005A4198EBDA5B700D37B64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E26C78B6D1B13AAC862FDAE2A47E0A47</key>
+		<key>C3A13C482B1A979E6212D8BEF88D0A3E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

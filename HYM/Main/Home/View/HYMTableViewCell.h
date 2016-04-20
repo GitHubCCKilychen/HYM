@@ -27,6 +27,7 @@
 @property (nonatomic,strong)UIImageView *timeImage;
 @property (nonatomic,strong)UILabel *timeEnd;//截止时间
 @property (nonatomic,strong)UILabel *peopleCount;//参与人数
+@property (nonatomic,strong)UIImageView *peopleImage;//参与人数
 
 /**
  *  @param titleInforation 今日资讯标题
@@ -36,9 +37,8 @@
  *  @param comment 评论
  */
 @property (nonatomic,strong)UILabel *titleInforation;//今日资讯标题
-@property (nonatomic,strong)UILabel *topicLabel;
+@property (nonatomic,strong)UILabel *time;
 @property (nonatomic,strong)UIImageView *leftImageView;
-@property (nonatomic,strong)UILabel *subTitleLabel;//副标题
 @property (nonatomic,strong)UILabel *comment;//评论
 
 /**
@@ -49,4 +49,5 @@
 @property (nonatomic,strong)UIButton *topBtn;
 @property (nonatomic,strong)UIButton *rightBtn;
 @property (nonatomic,strong)UIButton *centerBtn;
+@property (nonatomic,strong)UIButton *ignoreBtn;//忽略
 @end

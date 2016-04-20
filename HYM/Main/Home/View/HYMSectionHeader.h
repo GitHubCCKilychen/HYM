@@ -16,4 +16,6 @@
 
 @property (nonatomic,strong)UILabel *title;//组头视图标题
 @property (nonatomic,strong)UIImageView *imageView;//返回按钮
+
+@property (nonatomic,assign)NSInteger index;
 @end

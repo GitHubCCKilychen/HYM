@@ -54,17 +54,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    static NSString *identifier = @"cell";
     
+    HYMTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    NSString *identifier = [NSString stringWithFormat:@"cell%d_%d",indexPath.section,indexPath.row];
-    //解决方式1
-    
-    
-    HYMTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
+    if (!cell) {
         
-        cell = [[HYMTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[HYMTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }else{
+        
+        while ([cell.contentView.subviews lastObject] != nil) {
+            
+            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
     }
+    
     cell.indexPath = indexPath;
     
     return cell;
@@ -107,16 +111,22 @@
         return 110;
     }
     
-    return 160.f;
+    return 150.f;
 }
 
 #pragma mark 组头视图
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HYMSectionHeader *header = [[HYMSectionHeader alloc] init];
+    header.index = section;
     header.backgroundColor = [UIColor whiteColor];
     header.section = section;
     return header;
     
+}
+
+#pragma mark 点击事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //
 }
 
 

@@ -27,4 +27,7 @@
 //tabbaritem选择字体颜色
 #define tabbarItemSelectedColor [UIColor brownColor]
 
+//-------------------网络--------------
+#define REQUEST_MAINLINK_INIT @"http://123.56.237.91/"
+
 #endif /* Common_h */

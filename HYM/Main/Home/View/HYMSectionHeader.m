@@ -7,7 +7,7 @@
 //
 
 #import "HYMSectionHeader.h"
-
+#import "HYMInformationVC.h"
 @interface HYMSectionHeader ()
 
 @property (nonatomic,strong)UILabel *morelabel;//更多
@@ -58,12 +58,7 @@
     if (self = [super initWithFrame:frame]) {
         
         
-        [self addSubview:self.title];
-        [self addSubview:self.imageView];
-        [self addSubview:self.morelabel];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
-        
-        [self addGestureRecognizer:tap];
+        [self initWithView];
     }
     
     return self;
@@ -81,8 +76,37 @@
    
 }
 
+- (void)initWithView{
+
+    [self addSubview:self.title];
+    [self addSubview:self.imageView];
+    [self addSubview:self.morelabel];
+  
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
+    [self addGestureRecognizer:tap];
+}
+
 #pragma mark 头视图手势事件
 - (void)tapAct{
+
+    if (_index == 0) {
+       
+        //今日资讯
+        HYMInformationVC *infoVC = [[HYMInformationVC alloc] init];
+        [self.viewController.navigationController pushViewController:infoVC animated:YES];
+        
+    }else if (_index == 1){
+    
+        NSLog(@"--1");
+    }else{
+    
+        NSLog(@"--2");
+    }
+}
+
+- (void)setIndex:(NSInteger)index{
+
+    _index = index;
 
 }
 @end

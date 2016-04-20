@@ -12,7 +12,7 @@
 
 @property (nonatomic,strong)ScrollLabel *scrollLabel;//公告
 @property (nonatomic,strong)UILabel *title;
-@property (nonatomic,strong)UILabel *notice;
+@property (nonatomic,strong)UIImageView *hornImage;
 @property (nonatomic,strong)UIButton *messageBtn;//消息按钮
 @property (nonatomic,strong)UILabel *colon;//冒号
 @property (nonatomic,strong)NSArray *titleArr;//公告消息
@@ -28,34 +28,28 @@
     if (_title == nil) {
         
         _title = [[UILabel alloc] init];
-        _title.frame = CGRectMake(20, 10, 40, 20);
+        _title.frame = CGRectMake(20, 10, 80, 20);
         _title.textColor = [UIColor blackColor];
-        _title.text = @"羊毛";
+        _title.text = @"官方公告";
         _title.font = [UIFont boldSystemFontOfSize:15];
         _title.textAlignment = NSTextAlignmentCenter;
+        _title.textColor = [UIColor whiteColor];
     }
     
     return _title;
 }
 
--(UILabel *)notice{
+//喇叭图标
+-(UIImageView *)hornImage{
 
-    if (_notice == nil) {
+    if (_hornImage == nil) {
         
-        _notice = [[UILabel alloc] init];
-        _notice.frame = CGRectMake(60, 10, 40, 20);
-        _notice.backgroundColor = [UIColor redColor];
-        _notice.textColor = [UIColor whiteColor];
-        _notice.text = @"公告";
-        _notice.font =[UIFont boldSystemFontOfSize:15];
-        _notice.textAlignment = NSTextAlignmentCenter;
-        _notice.layer.masksToBounds = YES;
-        _notice.layer.cornerRadius = 5;
-        
+        _hornImage = [[UIImageView  alloc] init];
+        _hornImage.frame = CGRectMake(5, 10, 20, 20);
+        _hornImage.backgroundColor = [UIColor brownColor];
     }
     
-    return _notice;
-    
+    return _hornImage;
 }
 
 -(UIButton *)messageBtn{
@@ -74,10 +68,10 @@
     if (_colon == nil) {
         
         _colon = [[UILabel alloc] init];
-        _colon.frame = CGRectMake(100, 10, 10, 20);
+        _colon.frame = CGRectMake(90, 10, 10, 20);
         _colon.textAlignment = NSTextAlignmentCenter;
         _colon.text = @":";
-        _colon.textColor = [UIColor blackColor];
+        _colon.textColor = [UIColor whiteColor];
     }
     
     return _colon;
@@ -98,7 +92,7 @@
 
     if (_scrollLabel == nil) {
         
-        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(110, 10, 170, 20) withTitleArr:self.titleArr];
+        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(100, 10, 170, 20) withTitleArr:self.titleArr];
         _scrollLabel.scrollLabelDelegate = self;
         
     }
@@ -126,7 +120,7 @@
 - (void)initWithView{
 
     [self addSubview:self.title];
-    [self addSubview:self.notice];
+    [self addSubview:self.hornImage];
     [self addSubview:self.colon];
     [self addSubview:self.scrollLabel];
     

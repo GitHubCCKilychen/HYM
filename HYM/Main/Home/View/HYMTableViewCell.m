@@ -7,6 +7,7 @@
 //
 
 #import "HYMTableViewCell.h"
+#define kTopWidth kScreenWitdth-30-(kScreenWitdth/2-kScreenWitdth/6)
 
 @implementation HYMTableViewCell
 #pragma mark cell1
@@ -15,7 +16,6 @@
     if (_storeImage == nil) {
         _storeImage = [[UIImageView alloc] init];
         _storeImage.backgroundColor = [UIColor grayColor];
-        _storeImage.frame = CGRectMake(20, 15, 70, 80);
         
     }
     
@@ -26,7 +26,6 @@
     
     if (_title ==nil) {
         _title = [[UILabel alloc] init];
-        _title.frame = CGRectMake(100, 15, self.frame.size.width/2, 20);
         _title.text = @"本金x元，期限x天";
         _title.backgroundColor = [UIColor brownColor];
         
@@ -40,7 +39,6 @@
     if (_subTitle == nil) {
         
         _subTitle = [[UILabel alloc] init];
-        _subTitle.frame = CGRectMake(100, 35, self.frame.size.width/2+30, 20);
         _subTitle.backgroundColor = [UIColor grayColor];
         
     }
@@ -53,7 +51,6 @@
     if (_hotImage == nil) {
         
         _hotImage = [[UIImageView alloc] init];
-        _hotImage.frame = CGRectMake(self.frame.size.width-70, 15, 15, 15);
         _hotImage.backgroundColor = [UIColor orangeColor];
     }
     return _hotImage;
@@ -62,18 +59,58 @@
     
     if (_timeImage == nil) {
         _timeImage = [[UIImageView alloc] init];
-        _timeImage.frame = CGRectMake(100, 75, 20, 20);
         _timeImage.backgroundColor = [UIColor grayColor];
     }
     
     return _timeImage;
+}
+
+//参与人数
+- (UILabel *)peopleCount{
+
+    if (_peopleCount == nil) {
+        
+        _peopleCount = [[UILabel alloc] init];
+        _peopleCount.backgroundColor = [UIColor greenColor];
+    }
+    return _peopleCount;
+    
+}
+- (UILabel *)timeEnd{
+
+    if (_timeEnd == nil) {
+        
+        _timeEnd = [[UILabel alloc] init];
+        _timeEnd.backgroundColor = [UIColor grayColor];
+    }
+    return _timeEnd;
+}
+
+- (UIImageView *)peopleImage{
+
+    if (_peopleImage == nil) {
+        
+        _peopleImage = [[UIImageView alloc] init];
+        _peopleImage.backgroundColor = [UIColor redColor];
+    }
+    return _peopleImage;
+}
+
+//忽略
+- (UIButton *)ignoreBtn{
+
+    if (_ignoreBtn == nil) {
+        
+        _ignoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _ignoreBtn.backgroundColor = [UIColor greenColor];
+    }
+    return _ignoreBtn;
 }
 #pragma mark 懒加载cell2
 - (UIButton *)leftBtn{
 
     if (_leftBtn == nil) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _leftBtn.frame = CGRectMake(15, 15, self.frame.size.width/2-30, 130);
         _leftBtn.backgroundColor = [UIColor grayColor];
     }
     
@@ -85,7 +122,6 @@
     if (_topBtn == nil) {
         
         _topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _topBtn.frame = CGRectMake(self.frame.size.width/2-14, 15, self.frame.size.width/2, 64);
         _topBtn.backgroundColor =[UIColor brownColor];
     }
     
@@ -98,7 +134,6 @@
     if (_rightBtn == nil) {
         
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightBtn.frame = CGRectMake(self.frame.size.width/2-13+self.frame.size.width/4, 80, self.frame.size.width/4,65);
         _rightBtn.backgroundColor = [UIColor brownColor];
     }
     return _rightBtn;
@@ -108,7 +143,6 @@
     if (_centerBtn == nil) {
         
         _centerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _centerBtn.frame = CGRectMake(self.frame.size.width/2-14, 80, self.frame.size.width/4, 65);
         _centerBtn.backgroundColor = [UIColor greenColor];
     }
     
@@ -122,7 +156,6 @@
     if (_leftImageView == nil) {
         
         _leftImageView = [[UIImageView alloc] init];
-        _leftImageView.frame = CGRectMake(15, 15, 110, 80);
         _leftImageView.backgroundColor = [UIColor grayColor];
     }
     return _leftImageView;
@@ -132,48 +165,30 @@
 
     if (_titleInforation == nil) {
         _titleInforation = [[UILabel alloc] init];
-        _titleInforation.frame = CGRectMake(135, 15, self.frame.size.width/2+10, 20);
         _titleInforation.text = @"上海震荡收涨成交量大幅萎缩";
+        _titleInforation.backgroundColor = [UIColor grayColor];
         _titleInforation.font = [UIFont systemFontOfSize:13];
     
     }
     return _titleInforation;
 }
 
-- (UILabel *)subTitleLabel{
 
-    if (_subTitleLabel == nil) {
-        _subTitleLabel = [[UILabel alloc] init];
-        _subTitleLabel.frame = CGRectMake(135, 30, self.frame.size.width/2+10, 40);
-        _subTitleLabel.numberOfLines = 0;
-        _subTitleLabel.font = [UIFont systemFontOfSize:12];
-        _subTitleLabel.text = @"上海震荡收涨成交量大幅萎缩1234567890";
-        _subTitleLabel.lineBreakMode = UILineBreakModeWordWrap;
-        _subTitleLabel.textColor = [UIColor grayColor];
-      
-    }
-    return _subTitleLabel;
-}
+- (UILabel *)time{
 
-- (UILabel *)topicLabel{
-
-    if (_topicLabel == nil) {
+    if (_time == nil) {
         
-        _topicLabel = [[UILabel alloc] init];
-        _topicLabel.frame = CGRectMake(135, 75, 35, 18);
-        _topicLabel.layer.borderColor = [UIColor redColor].CGColor;
-        _topicLabel.textColor = [UIColor redColor];
-        _topicLabel.layer.borderWidth = 1;
-        _topicLabel.layer.cornerRadius = 3;
-        _topicLabel.layer.masksToBounds = YES;
-        _topicLabel.text = @"专题";
-        _topicLabel.font = [UIFont systemFontOfSize:13];
-        _topicLabel.textAlignment = NSTextAlignmentCenter;
+        _time = [[UILabel alloc] init];
+        _time.layer.borderColor = [UIColor redColor].CGColor;
+        _time.textColor = [UIColor grayColor];
+        _time.text = @"2016:10:12222";
+        _time.font = [UIFont systemFontOfSize:13];
+        _time.textAlignment = NSTextAlignmentLeft;
         
         
     }
     
-    return _topicLabel;
+    return _time;
 }
 
 -(UILabel *)comment{
@@ -181,8 +196,8 @@
     if (_comment == nil) {
         
         _comment = [[UILabel alloc] init];
-        _comment.frame = CGRectMake(175, 75, 150, 18);
-        _comment.text = @"羊毛要闻－阅读：1232";
+        _comment.text = @"11900评论";
+        _comment.backgroundColor = [UIColor greenColor];
         _comment.font = [UIFont systemFontOfSize:10];
         _comment.textColor = [UIColor grayColor];
     }
@@ -212,26 +227,113 @@
     [self.contentView addSubview:self.hotImage];
     [self.contentView addSubview:self.timeImage];
     [self.contentView addSubview:self.timeEnd];
+    [self.contentView addSubview:self.peopleCount];
+    [self.contentView addSubview:self.peopleImage];
+    [self.contentView addSubview:self.ignoreBtn];
+    
+    
+    self.storeImage.sd_layout
+    .leftSpaceToView(self.contentView,10).bottomSpaceToView(self.contentView,15)
+    .topSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.2);
+    
+    self.title.sd_layout
+    .leftSpaceToView(self.storeImage,5).topEqualToView(self.storeImage)
+    .widthRatioToView(self.contentView,0.5).heightIs(20);
+    
+    self.subTitle.sd_layout
+    .leftEqualToView(self.title).topSpaceToView(self.title,3)
+    .heightIs(20).widthRatioToView(self.contentView,0.6);
+    
+    self.timeImage.sd_layout
+    .leftEqualToView(self.title).bottomEqualToView(self.storeImage)
+    .heightIs(20).widthIs(20);
+    
+    self.timeEnd.sd_layout
+    .leftSpaceToView(self.timeImage,2).bottomEqualToView(self.timeImage)
+    .widthRatioToView(self.contentView,0.3).heightIs(20);
+    
+    self.peopleImage.sd_layout
+    .leftSpaceToView(self.timeEnd,2).rightSpaceToView(self.contentView,10)
+    .bottomEqualToView(self.timeEnd).widthEqualToHeight(20)
+    .topEqualToView(self.timeEnd);
+    
+    self.peopleCount.sd_layout
+    .leftSpaceToView(self.peopleImage,1).bottomEqualToView(self.timeEnd)
+    .rightSpaceToView(self.contentView,10).topEqualToView(self.timeEnd);
+    
+    self.hotImage.sd_layout
+    .leftSpaceToView(self.title,15).topEqualToView(self.title)
+    .bottomEqualToView(self.title).widthEqualToHeight(20);
+ 
+    self.ignoreBtn.sd_layout
+    .leftSpaceToView(self.hotImage,5).bottomEqualToView(self.hotImage)
+    .topEqualToView(self.hotImage).rightSpaceToView(self.contentView,10);
+
 }
 
 - (void)initCell2{
 
-    [self addSubview:self.leftBtn];
-    [self addSubview:self.topBtn];
-    [self addSubview:self.centerBtn];
-    [self addSubview:self.rightBtn];
+    [self.contentView addSubview:self.leftBtn];
+    [self.contentView addSubview:self.topBtn];
+    [self.contentView addSubview:self.centerBtn];
+    [self.contentView addSubview:self.rightBtn];
+
+    self.leftBtn.sd_layout
+    .leftSpaceToView(self.contentView,10)
+    .topSpaceToView(self.contentView,15)
+    .bottomSpaceToView(self.contentView,15)
+    .widthRatioToView(self.contentView,0.4)
+    .heightRatioToView(self.contentView,0.8);
+    
+    self.topBtn.sd_layout
+    .topEqualToView(self.leftBtn)
+    .rightSpaceToView(self.contentView,10)
+    .leftSpaceToView(self.leftBtn,1)
+    .heightIs(59);
+    
+    self.centerBtn.sd_layout
+    .leftEqualToView(self.topBtn)
+    .bottomEqualToView(self.leftBtn)
+    .topSpaceToView(self.topBtn,1)
+    .heightIs(59)
+    .widthRatioToView(self.topBtn,0.5);
+    
+    self.rightBtn.sd_layout
+    .topEqualToView(self.centerBtn)
+    .leftSpaceToView(self.centerBtn,1)
+    .bottomEqualToView(self.centerBtn)
+    .rightEqualToView(self.topBtn);
+    
 }
 
 
 - (void)initCell3{
 
-    [self addSubview:self.leftImageView];
-    [self addSubview:self.titleInforation];
-    [self addSubview:self.subTitleLabel];
-    [self addSubview:self.topicLabel];
-    [self addSubview:self.comment];
-
+    [self.contentView addSubview:self.leftImageView];
+    [self.contentView addSubview:self.titleInforation];
+    [self.contentView addSubview:self.time];
+    [self.contentView addSubview:self.comment];
+    
+    
+    self.leftImageView.sd_layout
+    .leftSpaceToView(self.contentView,10).topSpaceToView(self.contentView,15)
+    .bottomSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.3);
+    
+    self.titleInforation.sd_layout
+    .leftSpaceToView(self.leftImageView,10).topEqualToView(self.leftImageView)
+    .rightSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.6)
+    .heightRatioToView(self.leftImageView,0.6);
+    
+    self.comment.sd_layout
+    .leftEqualToView(self.titleInforation).topSpaceToView(self.titleInforation,10)
+    .bottomEqualToView(self.leftImageView).widthRatioToView(self.leftImageView,0.6);
+    
+    self.time.sd_layout
+    .leftSpaceToView(self.comment,15).topEqualToView(self.comment)
+    .bottomEqualToView(self.comment).rightEqualToView(self.titleInforation);
+    
 }
+
 
 
 @end

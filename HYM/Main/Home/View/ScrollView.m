@@ -32,6 +32,7 @@
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
         _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
         
     }
     
@@ -81,17 +82,40 @@
 #pragma mark 图片添加
 - (void)initWithImage{
 
-    //i<_scrollList.count
-    for (int i = 0; i < 3; i++) {
+//    //i<_scrollList.count
+    for (int i = 0 ; i< 3; i++) {
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height)];
-        imageView.backgroundColor = [UIColor grayColor];
-        NSString *imageName = [NSString stringWithFormat:@"a%d",i];
-        imageView.image = [UIImage imageNamed:imageName];
-        [self.scrollView addSubview:imageView];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(i * kScreenWitdth, 0, kScreenWitdth, self.scrollView.frame.size.height);
+        btn.backgroundColor = [UIColor redColor];
+        NSString *imageName = [NSString stringWithFormat:@"%d",i];
+        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        btn.tag = i;
+        [self.scrollList addObject:btn];
     }
 }
 
+#pragma mark 轮播图跳转事件
+- (void)imageViewAct:(UIButton *)btn{
+
+    switch (btn.tag) {
+        case 0:
+        {
+        }
+            break;
+        case 1:
+        {
+        }
+            break;
+        case 2:
+        {
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
 #pragma mark 时间
 - (void)initTimer{
     

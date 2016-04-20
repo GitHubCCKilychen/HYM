@@ -10,9 +10,10 @@
 #define PrefixHeader_pch
 
 #import "Common.h"
-#import "Masonry.h"
-#import <AFNetworking.h>
-
+//#import <AFNetworking.h>
+#import "UIView+UIViewController.h"
+#import "UIView+SDAutoLayout.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
 
 #endif /* PrefixHeader_pch */
 

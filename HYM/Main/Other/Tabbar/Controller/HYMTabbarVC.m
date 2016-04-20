@@ -15,6 +15,7 @@
 #import "HYMPersonalVC.h"
 #import "UIImage+Image.h"
 #import "HYMTabbarView.h"
+#import "HYMNavigationVC.h"
 @interface HYMTabbarVC ()<HYMTabbarViewDelegate>
 
 @property (nonatomic,strong)HYMTabbarView *tabbarView;
@@ -50,7 +51,7 @@
     //首页
     HYMHomeVC *homeVC = [[HYMHomeVC alloc] init];
     [self setViewControllers:homeVC image:[UIImage imageNamed:@"tab1_0"] selectedImage:[UIImage imageNamed:@"tab1_1"] title:@"首页"];
-    
+    HYMNavigationVC *vc1 = [[HYMNavigationVC alloc] initWithRootViewController:homeVC];
     //任务
     HYMTaskVC *taskVC = [[HYMTaskVC alloc] init];
     [self setViewControllers:taskVC image:nil selectedImage:nil title:@"任务"];
@@ -71,7 +72,7 @@
     UINavigationController *nc5 = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
     
     //暂时的解决方法
-    self.viewControllers = @[homeVC,taskVC,nc,contactsVC,nc5];
+    self.viewControllers = @[vc1,taskVC,nc,contactsVC,nc5];
  
     
 }
