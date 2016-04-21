@@ -43,8 +43,26 @@
     
     //创建tabbarView
     [self createTabbarView];
+    //状态栏设置
+    [self initSetStatus];
 }
 
+- (void)initSetStatus{
+
+    CGFloat statWidth = [[UIApplication sharedApplication] statusBarFrame].size.width;
+    
+    CGFloat statHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    
+    UIView *statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, statWidth, statHeight)];
+    statusBarView.backgroundColor = [UIColor orangeColor];
+    //状态栏添加view
+    
+    [self.view addSubview:statusBarView];
+    
+    NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15]};
+    [[UINavigationBar appearance] setTitleTextAttributes:dic];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
 #pragma mark 创建控制器
 - (void)createChildViewController{
 
@@ -55,7 +73,7 @@
     //任务
     HYMTaskVC *taskVC = [[HYMTaskVC alloc] init];
     [self setViewControllers:taskVC image:nil selectedImage:nil title:@"任务"];
-    
+    HYMNavigationVC *vc2 = [[HYMNavigationVC alloc] initWithRootViewController:taskVC];
     //社区
     HYMCommunityVC *communityVC = [[HYMCommunityVC alloc] init];
     [self setViewControllers:communityVC image:nil selectedImage:nil title:@"社区"];
@@ -72,7 +90,7 @@
     UINavigationController *nc5 = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
     
     //暂时的解决方法
-    self.viewControllers = @[vc1,taskVC,nc,contactsVC,nc5];
+    self.viewControllers = @[vc1,vc2,nc,contactsVC,nc5];
  
     
 }

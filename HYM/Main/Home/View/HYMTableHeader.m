@@ -19,7 +19,7 @@
 
     if (_scrollView == nil) {
         
-        _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
+        _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth,self.frame.size.height*0.4)];
     }
     
     return _scrollView;
@@ -30,7 +30,7 @@
     if (_taskView == nil) {
     
         _taskView = [[HYMTaskView alloc] init];
-        _taskView.frame = CGRectMake(0, 150, self.frame.size.width, 160);
+//        _taskView.frame = CGRectMake(0, 100, self.frame.size.width, self.frame.size.height*0.6);
    
     }
     
@@ -54,6 +54,11 @@
 
     [self addSubview:self.scrollView];
     [self addSubview:self.taskView];
+//
+    self.taskView.sd_layout
+    .leftSpaceToView(self,0).topSpaceToView(self.scrollView,0)
+    .bottomSpaceToView(self,10).rightSpaceToView(self,0);
+    //这里适配后4就有问题
 
 }
 

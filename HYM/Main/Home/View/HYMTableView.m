@@ -77,57 +77,52 @@
 
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    
 
     return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 
-    if (section == 0) {
-        
-        return 10;
-    }else if (section == 1)
-    {
-    
-        return 10;
-    }
-    
-    return 0.001;
+   
+    return 10;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-
-    return 30;
+    return 40;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
         
-        return 110;
+        
+            return 110;
+
     }else if (indexPath.section == 2){
     
-        //此处修改
-        return 110;
+     
+        return 110.f;
     }
-    
-    return 150.f;
+        return 150.f;
 }
 
-#pragma mark 组头视图
+//#pragma mark 组头视图
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    
     HYMSectionHeader *header = [[HYMSectionHeader alloc] init];
     header.index = section;
     header.backgroundColor = [UIColor whiteColor];
     header.section = section;
     return header;
-    
 }
 
 #pragma mark 点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //
-}
 
+}
 
 @end

@@ -14,20 +14,9 @@
 @property (nonatomic,strong)HYMTableView *tableView;
 @property (nonatomic,strong)HYMTableHeader *headerView;
 @property (nonatomic,strong)HYMNoticeView *noticeView;
-@property (nonatomic,strong)UIView *backgroudView;
 @end
 
 @implementation HYMHomeVC
-
--(UIView *)backgroudView{
-
-    if (_backgroudView == nil) {
-        
-        _backgroudView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 44)];
-        _backgroudView.backgroundColor = [UIColor orangeColor];
-    }
-    return _backgroudView;
-}
 
 #pragma mark 懒加载
 -(HYMNoticeView *)noticeView{
@@ -35,7 +24,9 @@
     if (_noticeView == nil) {
         
         _noticeView = [[HYMNoticeView alloc] init];
-        CGRectMake(0, 20, self.view.frame.size.width, 40);
+        _noticeView.frame = CGRectMake(0, 0, kScreenWitdth, 44);
+        _noticeView.backgroundColor = [UIColor orangeColor];
+        
     }
     
     return _noticeView;
@@ -70,7 +61,6 @@
     [self loadData];
     
     
-    
     //tableView
     [self initWithTableView];
     
@@ -84,26 +74,28 @@
 #pragma mark tableView
 - (void)initWithTableView{
     
-    self.navigationItem.title = @"";
 
     //公告
-    [self.navigationController.navigationBar addSubview:self.backgroudView];
-    [self.backgroudView addSubview:self.noticeView];
-   
+//    [self.view addSubview:self.noticeView];
     
     [self.view addSubview:self.tableView];
+    
+    
 
-//    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-////        
-//        make.left.mas_equalTo(0);
-//        make.right.mas_equalTo(-0);
-//        make.bottom.mas_equalTo(0);
-//        make.width.mas_equalTo(kScreenWitdth);
-//        make.height.mas_equalTo(kScreenHeight);
-//        make.top.mas_equalTo(0);
-//    }];
-//    
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated{
 
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar addSubview:self.noticeView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+
+    [super viewWillDisappear:animated];
+    
+    [self.noticeView removeFromSuperview];
+}
 @end

@@ -8,6 +8,8 @@
 
 #import "HYMSectionHeader.h"
 #import "HYMInformationVC.h"
+#import "HYMNavigationVC.h"
+#import "HYMMallVC.h"
 @interface HYMSectionHeader ()
 
 @property (nonatomic,strong)UILabel *morelabel;//更多
@@ -21,7 +23,6 @@
     if (_title == nil) {
         
         _title = [[UILabel alloc] init];
-        _title.frame = CGRectMake(20,self.frame.size.height/2+5, 60, 20);
         _title.font = [UIFont systemFontOfSize:15];
     }
     
@@ -33,7 +34,6 @@
     if (_morelabel == nil) {
         
         _morelabel = [[UILabel alloc] init];
-        _morelabel.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 65,self.frame.size.height/2+5, 40, 20);
         _morelabel.textAlignment = NSTextAlignmentCenter;
         _morelabel.font = [UIFont systemFontOfSize:12];
         _morelabel.text = @"更多";
@@ -45,7 +45,6 @@
     if (_imageView == nil) {
         
         _imageView = [[UIImageView alloc] init];
-        _imageView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 30,self.frame.size.height/2+5, 20, 20);
         _imageView.backgroundColor = [UIColor brownColor];
     }
     
@@ -84,6 +83,19 @@
   
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
     [self addGestureRecognizer:tap];
+    
+    
+    self.title.sd_layout
+    .leftSpaceToView(self,20).topSpaceToView(self,9)
+    .bottomSpaceToView(self,9).widthRatioToView(self,0.2);
+    
+    self.morelabel.sd_layout
+    .rightSpaceToView(self,30).topEqualToView(self.title)
+    .bottomEqualToView(self.title).widthRatioToView(self,0.1);
+
+    self.imageView.sd_layout
+    .leftSpaceToView(self.morelabel,0).bottomEqualToView(self.morelabel)
+    .topEqualToView(self.morelabel).rightSpaceToView(self,10);
 }
 
 #pragma mark 头视图手势事件
@@ -91,15 +103,19 @@
 
     if (_index == 0) {
        
-        //今日资讯
-        HYMInformationVC *infoVC = [[HYMInformationVC alloc] init];
-        [self.viewController.navigationController pushViewController:infoVC animated:YES];
+        
         
     }else if (_index == 1){
     
-        NSLog(@"--1");
+        HYMMallVC *mallVC = [[HYMMallVC alloc] init];
+        [self.viewController.navigationController pushViewController:mallVC animated:YES];
+        
     }else{
     
+        //今日资讯
+        HYMInformationVC *infoVC = [[HYMInformationVC alloc] init];
+        [self.viewController.navigationController pushViewController:infoVC animated:YES];
+        self.viewController.navigationController.navigationBarHidden = NO;
         NSLog(@"--2");
     }
 }
@@ -109,4 +125,6 @@
     _index = index;
 
 }
+
+
 @end

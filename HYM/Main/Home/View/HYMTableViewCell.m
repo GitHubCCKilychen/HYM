@@ -165,10 +165,9 @@
 
     if (_titleInforation == nil) {
         _titleInforation = [[UILabel alloc] init];
-        _titleInforation.text = @"上海震荡收涨成交量大幅萎缩";
-        _titleInforation.backgroundColor = [UIColor grayColor];
-        _titleInforation.font = [UIFont systemFontOfSize:13];
-    
+        _titleInforation.text = @"上海震荡收涨成交量大幅萎缩234565789009987685667564456";
+        [HYMTool initLabel:_titleInforation withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        _titleInforation.numberOfLines = 0;
     }
     return _titleInforation;
 }
@@ -211,6 +210,7 @@
     _indexPath = indexPath;
     
     if (_indexPath.section == 0) { [self initCell1];
+        
         
     }else if(_indexPath.section == 1){ [self initCell2];
     
@@ -267,7 +267,8 @@
  
     self.ignoreBtn.sd_layout
     .leftSpaceToView(self.hotImage,5).bottomEqualToView(self.hotImage)
-    .topEqualToView(self.hotImage).rightSpaceToView(self.contentView,10);
+    .topEqualToView(self.hotImage).rightSpaceToView(self.contentView,10)
+    .widthIs(40);
 
 }
 
@@ -319,13 +320,14 @@
     .leftSpaceToView(self.contentView,10).topSpaceToView(self.contentView,15)
     .bottomSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.3);
     
+//    self.titleInforation.backgroundColor =[UIColor grayColor];
     self.titleInforation.sd_layout
-    .leftSpaceToView(self.leftImageView,10).topEqualToView(self.leftImageView)
+    .leftSpaceToView(self.leftImageView,10).topSpaceToView(self.contentView,10)
     .rightSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.6)
-    .heightRatioToView(self.leftImageView,0.6);
+    .heightRatioToView(self.leftImageView,0.5);
     
     self.comment.sd_layout
-    .leftEqualToView(self.titleInforation).topSpaceToView(self.titleInforation,10)
+    .leftEqualToView(self.titleInforation).topSpaceToView(self.titleInforation,15)
     .bottomEqualToView(self.leftImageView).widthRatioToView(self.leftImageView,0.6);
     
     self.time.sd_layout
@@ -335,5 +337,21 @@
 }
 
 
+#pragma mark cell2点击事件
+- (void)leftBtnAct:(UIButton *)btn{
 
+}
+
+- (void)topBtnAct:(UIButton *)btn{
+
+}
+
+- (void)centerBtnAct:(UIButton *)btn{
+
+}
+
+- (void)rightBtnAct:(UIButton *)btn{
+
+    
+}
 @end

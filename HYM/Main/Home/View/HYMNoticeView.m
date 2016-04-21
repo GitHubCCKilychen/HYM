@@ -14,7 +14,6 @@
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UIImageView *hornImage;
 @property (nonatomic,strong)UIButton *messageBtn;//消息按钮
-@property (nonatomic,strong)UILabel *colon;//冒号
 @property (nonatomic,strong)NSArray *titleArr;//公告消息
 
 
@@ -26,14 +25,9 @@
 - (UILabel *)title{
 
     if (_title == nil) {
-        
         _title = [[UILabel alloc] init];
-        _title.frame = CGRectMake(20, 10, 80, 20);
-        _title.textColor = [UIColor blackColor];
-        _title.text = @"官方公告";
-        _title.font = [UIFont boldSystemFontOfSize:15];
-        _title.textAlignment = NSTextAlignmentCenter;
-        _title.textColor = [UIColor whiteColor];
+        _title.text = @"官方公告:";
+        [HYMTool initLabel:_title withFont:[UIFont systemFontOfSize:16] withTextColor:[UIColor whiteColor] withTextAlignment:nil];
     }
     
     return _title;
@@ -45,7 +39,6 @@
     if (_hornImage == nil) {
         
         _hornImage = [[UIImageView  alloc] init];
-        _hornImage.frame = CGRectMake(5, 10, 20, 20);
         _hornImage.backgroundColor = [UIColor brownColor];
     }
     
@@ -62,27 +55,12 @@
     
     return _messageBtn;
 }
-
-- (UILabel *)colon{
-
-    if (_colon == nil) {
-        
-        _colon = [[UILabel alloc] init];
-        _colon.frame = CGRectMake(90, 10, 10, 20);
-        _colon.textAlignment = NSTextAlignmentCenter;
-        _colon.text = @":";
-        _colon.textColor = [UIColor whiteColor];
-    }
-    
-    return _colon;
-}
-
 - (NSArray *)titleArr{
 
     if (_titleArr == nil) {
         
         _titleArr = [NSArray array];
-        _titleArr = @[@"数据1",@"数据2",@"数据3"];
+        _titleArr = @[@"薅羊毛app2.0更新",@"1.0易经不再用",@"12433546579"];
     }
     
     return _titleArr;
@@ -92,7 +70,7 @@
 
     if (_scrollLabel == nil) {
         
-        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(100, 10, 170, 20) withTitleArr:self.titleArr];
+        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth*0.5, 20) withTitleArr:self.titleArr];
         _scrollLabel.scrollLabelDelegate = self;
         
     }
@@ -121,34 +99,27 @@
 
     [self addSubview:self.title];
     [self addSubview:self.hornImage];
-    [self addSubview:self.colon];
+//    [self addSubview:self.colon];
     [self addSubview:self.scrollLabel];
+    [self addSubview:self.messageBtn];
     
+    self.hornImage.sd_layout
+    .leftSpaceToView(self,5).topSpaceToView(self,10)
+    .bottomSpaceToView(self,10).widthEqualToHeight(20);
     
-//    [self.title mas_makeConstraints:^(MASConstraintMaker *make) {
-//        
-//        make.left.mas_equalTo(15);
-//        make.right.mas_equalTo(self.notice.mas_left);
-//        make.top.mas_equalTo(10);
-//        make.bottom.mas_equalTo(-10);
-//    }];
-//    
-//    [self.notice mas_makeConstraints:^(MASConstraintMaker *make) {
-//        
-//        make.left.mas_equalTo(50);
-//        make.right.mas_equalTo(self.colon.mas_left).offset(-20);
-//        make.top.mas_equalTo(self.title.mas_top);
-//        make.bottom.mas_equalTo(self.title.mas_bottom);
-//    }];
-//    
-//    [self.colon mas_makeConstraints:^(MASConstraintMaker *make) {
-//       
-//        make.left.mas_equalTo(self.scrollLabel.mas_left).offset(-5);
-//        make.top.mas_equalTo(self.title.mas_top);
-//        make.bottom.mas_equalTo(self.title.mas_bottom);
-//        make.right.mas_equalTo(self.scrollLabel.mas_left);
-//        
-//    }];
+//    self.title.backgroundColor = [UIColor redColor];
+    self.title.sd_layout
+    .leftSpaceToView(self.hornImage,3).topEqualToView(self.hornImage)
+    .bottomEqualToView(self.hornImage).widthRatioToView(self,0.22);
+    
+    self.scrollLabel.sd_layout
+    .leftSpaceToView(self.title,0).topEqualToView(self.title)
+    .bottomEqualToView(self.title).widthRatioToView(self,0.5);
+    
+    self.messageBtn.backgroundColor = [UIColor redColor];
+    self.messageBtn.sd_layout
+    .leftSpaceToView(self.scrollLabel,10).topSpaceToView(self,5)
+    .rightSpaceToView(self,15).bottomSpaceToView(self,5);
 }
 
 #pragma mark 公告实现方法

@@ -24,15 +24,21 @@
     if (_infoTable == nil) {
         
         _infoTable = [[HYMInfoTableView alloc] init];
-        _infoTable.frame = CGRectMake(0, 104, kScreenWitdth, kScreenHeight);
+        _infoTable.frame = CGRectMake(0, 44, kScreenWitdth, kScreenHeight);
     }
     return _infoTable;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self loadData];
     [self initWithBtn];
@@ -50,12 +56,14 @@
 #pragma mark 按钮
 - (void)initWithBtn{
     
+    self.title = @"今日资讯";
+    
     NSArray *titleArr = @[@"网贷资讯",@"银行资讯"];
     
     for (int i = 0; i < 2; i++) {
         
         UIButton *btm = [UIButton buttonWithType:UIButtonTypeCustom];
-        btm.frame = CGRectMake(self.view.frame.size.width/2*i, 64, self.view.frame.size.width/2, 40);
+        btm.frame = CGRectMake(self.view.frame.size.width/2*i, 0, self.view.frame.size.width/2, 40);
         //        btm.frame = CGRectMake(0, 80, 100, 40);
         [btm setTitle:titleArr[i] forState:UIControlStateNormal];
         [btm setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -71,7 +79,7 @@
     
     UIView *lineView = [[UIView alloc] init];
     _lineView = lineView;
-    lineView.frame = CGRectMake(0, 103, self.view.frame.size.width/2, 1);
+    lineView.frame = CGRectMake(0, 43, self.view.frame.size.width/2, 1);
     lineView.backgroundColor =[UIColor redColor];
     [self.view addSubview:lineView];
     
@@ -97,13 +105,13 @@
     [UIView animateWithDuration:0.35 animations:^{
         if (btn.tag == 0) {
             
-            _lineView.frame = CGRectMake(0, 103, self.view.frame.size.width/2, 1);
+            _lineView.frame = CGRectMake(0, 43, self.view.frame.size.width/2, 1);
             
             self.infoTable.count = self.counts;
         }else if (btn.tag == 1){
             
             
-            _lineView.frame = CGRectMake(self.view.frame.size.width/2, 103, self.view.frame.size.width/2, 1);
+            _lineView.frame = CGRectMake(self.view.frame.size.width/2, 43, self.view.frame.size.width/2, 1);
             self.infoTable.count2 = self.count2;
         }
         

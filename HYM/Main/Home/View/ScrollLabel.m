@@ -10,8 +10,8 @@
 #import "UIView+FrameExtension.h"
 #define MMColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define MMRandomColor MMColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
-#define BTNWidth self.bounds.size.width
-#define BTNHeight self.bounds.size.height
+#define BTNWidth self.frame.size.width
+#define BTNHeight self.frame.size.height
 @interface ScrollLabel ()
 
 @property (nonatomic,strong)NSMutableArray *titleM;
@@ -45,18 +45,22 @@
     [self.titleM addObject:str];
     self.index = 1;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, BTNWidth,BTNHeight);
+    btn.frame = CGRectMake(0, 0, BTNWidth,BTNHeight+2);
     btn.tag = self.index;
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:self.titleM[0] forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor whiteColor]];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor clearColor]];
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    btn.titleLabel.textAlignment = NSTextAlignmentLeft;
+
+    
     [self addSubview:btn];
     self.clipsToBounds = YES;
     
     
     //计时器
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAct) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(timerAct) userInfo:nil repeats:YES];
     
     
 }
@@ -77,8 +81,10 @@
     UIButton *firstBtn = [self viewWithTag:self.index];
     UIButton *modelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     modelBtn.frame = CGRectMake(0, BTNHeight, BTNWidth, BTNHeight);
-    [modelBtn setBackgroundColor:[UIColor whiteColor]];
-    [modelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [modelBtn setBackgroundColor:[UIColor clearColor]];
+    [modelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    modelBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    modelBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
     modelBtn.tag = self.index + 1;
     if ([self.titleM[self.titleIndex+1] isEqualToString:@""]) {
         
