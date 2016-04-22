@@ -66,6 +66,7 @@
     return self;
 }
 
+#pragma mark 控件
 - (void)initWithView{
 
     self.messageImage.backgroundColor = [UIColor grayColor];

@@ -8,6 +8,7 @@
 
 #import "HYMInfoTableView.h"
 #import "HYMInfoCell.h"
+#import "HYMBlogVC.h"
 @interface HYMInfoTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -87,4 +88,30 @@
 
     return 88.0f;
 }
+
+#pragma mark 事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    //1.判断当前的按钮
+    //2.根据按钮跳转不同界面
+    
+    HYMBlogVC *blogVC = [[HYMBlogVC alloc] init];
+
+    if (_index == 0) {
+    
+        blogVC.title = @"网贷资讯";
+        blogVC.view.backgroundColor = [UIColor whiteColor];
+        [self.viewController.navigationController pushViewController:blogVC animated:YES];
+    
+    }else if (_index == 1){
+    
+        blogVC.title = @"银行资讯";
+        blogVC.view.backgroundColor = [UIColor whiteColor];
+        [self.viewController.navigationController pushViewController:blogVC animated:YES];
+    }
+    
+    
+}
+
+
 @end

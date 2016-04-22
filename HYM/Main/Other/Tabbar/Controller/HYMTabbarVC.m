@@ -36,7 +36,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
     
     //创建控制器
     [self createChildViewController];
@@ -69,15 +69,14 @@
     //首页
     HYMHomeVC *homeVC = [[HYMHomeVC alloc] init];
     [self setViewControllers:homeVC image:[UIImage imageNamed:@"tab1_0"] selectedImage:[UIImage imageNamed:@"tab1_1"] title:@"首页"];
-    HYMNavigationVC *vc1 = [[HYMNavigationVC alloc] initWithRootViewController:homeVC];
     //任务
     HYMTaskVC *taskVC = [[HYMTaskVC alloc] init];
     [self setViewControllers:taskVC image:nil selectedImage:nil title:@"任务"];
-    HYMNavigationVC *vc2 = [[HYMNavigationVC alloc] initWithRootViewController:taskVC];
+
     //社区
     HYMCommunityVC *communityVC = [[HYMCommunityVC alloc] init];
     [self setViewControllers:communityVC image:nil selectedImage:nil title:@"社区"];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:communityVC];
+
     
     //人脉
     HYMContactsVC *contactsVC = [[HYMContactsVC alloc] init];
@@ -87,13 +86,8 @@
     HYMPersonalVC *personalCenterVC = [[HYMPersonalVC alloc] init];
     [self setViewControllers:personalCenterVC image:nil selectedImage:nil title:@"个人中心"];
     
-    UINavigationController *nc5 = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
-    
-    //暂时的解决方法
-    self.viewControllers = @[vc1,vc2,nc,contactsVC,nc5];
- 
-    
 }
+
 
 #pragma mark tabbarView
 - (void)createTabbarView{
@@ -101,6 +95,7 @@
     [self.tabBar removeFromSuperview];
     _tabbarView = [[HYMTabbarView alloc] initWithFrame:self.tabBar.frame];
     _tabbarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottombg"]];
+    
     _tabbarView.tabbarDelegate = self;
     _tabbarView.itemsCount = self.items;
     [self.view addSubview:_tabbarView];
@@ -117,6 +112,8 @@
     vc.title = title;
     [self.items addObject:vc.tabBarItem];
     
+    HYMNavigationVC *nc = [[HYMNavigationVC alloc] initWithRootViewController:vc];
+ 
 }
 
 #pragma mark 切换顺序
