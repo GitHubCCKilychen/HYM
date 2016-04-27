@@ -8,8 +8,28 @@
 
 #import "HYMTableViewCell.h"
 #define kTopWidth kScreenWitdth-30-(kScreenWitdth/2-kScreenWitdth/6)
-
+//#import "RealityDetailVC.h"
+#import "CategoryVC.h"
 @implementation HYMTableViewCell
+
+#pragma mark 数据
+- (void)setModel:(HYMInfoCellModel *)model{
+
+    _model = model;
+    
+    //cell3
+    self.titleInforation.text = _model.name;
+    self.time.text = _model.regdate;
+   
+    //给一张默认图片，先使用默认图片，当图片加载完成后再替换
+    //[self.image1 sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@"default"]];
+    //图片加载
+    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl0]];
+    
+    //评论参数未添加
+    self.comment.text = _model.msg;
+}
+
 #pragma mark cell1
 -(UIImageView *)storeImage{
     
@@ -112,6 +132,8 @@
     if (_leftBtn == nil) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftBtn.backgroundColor = [UIColor grayColor];
+        
+        [_leftBtn addTarget:self action:@selector(leftBtnAct:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _leftBtn;
@@ -156,7 +178,7 @@
     if (_leftImageView == nil) {
         
         _leftImageView = [[UIImageView alloc] init];
-        _leftImageView.backgroundColor = [UIColor grayColor];
+//        _leftImageView.backgroundColor = [UIColor grayColor];
     }
     return _leftImageView;
 }
@@ -204,20 +226,6 @@
     return _comment;
 }
 
-#pragma mark cell自定义
-- (void)setIndexPath:(NSIndexPath *)indexPath{
-
-    _indexPath = indexPath;
-    
-    if (_indexPath.section == 0) { [self initCell1];
-        
-        
-    }else if(_indexPath.section == 1){ [self initCell2];
-    
-    }else if (_indexPath.section == 2){ [self initCell3];
-    
-    };
-}
 
 #pragma mark cell
 - (void)initCell1{
@@ -331,15 +339,27 @@
     .bottomEqualToView(self.leftImageView).widthRatioToView(self.leftImageView,0.6);
     
     self.time.sd_layout
-    .leftSpaceToView(self.comment,15).topEqualToView(self.comment)
-    .bottomEqualToView(self.comment).rightEqualToView(self.titleInforation);
+    .leftSpaceToView(self.comment,5).topEqualToView(self.comment)
+    .bottomEqualToView(self.comment).rightSpaceToView(self.contentView,1);
     
 }
 
 
 #pragma mark cell2点击事件
 - (void)leftBtnAct:(UIButton *)btn{
-
+    
+    
+    CategoryVC *cateVC = [[CategoryVC alloc] init];
+    [self.viewController.navigationController pushViewController:cateVC animated:YES];
+    
+    
+//        CategoryVC * category = [[CategoryVC alloc] init];
+////        category.keytype = @"1";
+////        category.keyid = @"无";
+////        category.typeName = @"全部";
+//    
+//        [self.viewController.navigationController presentViewController:category animated:YES completion:nil];
+    
 }
 
 - (void)topBtnAct:(UIButton *)btn{
@@ -354,4 +374,6 @@
 
     
 }
+
+
 @end

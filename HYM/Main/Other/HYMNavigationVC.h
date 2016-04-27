@@ -10,4 +10,6 @@
 
 @interface HYMNavigationVC : UINavigationController
 
++ (NSDictionary *)setLeftBackItem:(UIColor *)fontColor withFontSize:(CGFloat)fontSize withNavi:(UINavigationBar *)navi;
 @end
+

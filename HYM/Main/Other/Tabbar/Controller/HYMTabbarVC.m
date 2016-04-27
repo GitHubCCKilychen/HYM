@@ -16,6 +16,7 @@
 #import "UIImage+Image.h"
 #import "HYMTabbarView.h"
 #import "HYMNavigationVC.h"
+#import "HYMTabBarItem.h"
 @interface HYMTabbarVC ()<HYMTabbarViewDelegate>
 
 @property (nonatomic,strong)HYMTabbarView *tabbarView;
@@ -42,7 +43,7 @@
     [self createChildViewController];
     
     //创建tabbarView
-    [self createTabbarView];
+//    [self createTabbarView];
     //状态栏设置
     [self initSetStatus];
 }
@@ -65,26 +66,56 @@
 }
 #pragma mark 创建控制器
 - (void)createChildViewController{
+    
 
     //首页
     HYMHomeVC *homeVC = [[HYMHomeVC alloc] init];
-    [self setViewControllers:homeVC image:[UIImage imageNamed:@"tab1_0"] selectedImage:[UIImage imageNamed:@"tab1_1"] title:@"首页"];
-    //任务
+    
+    UITabBarItem *homeTabItem = [[HYMTabBarItem alloc] init];
+    homeTabItem.image = [[UIImage imageNamed:@"tab1_1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    homeTabItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    homeTabItem.title = @"首页";
+    
+    HYMNavigationVC *homeNv = [[HYMNavigationVC alloc] initWithRootViewController:homeVC];
+    homeNv.tabBarItem = homeTabItem;
+    
+    
+    UITabBarItem *task = [[HYMTabBarItem alloc] init];
+    task.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    task.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    task.title = @"任务";
     HYMTaskVC *taskVC = [[HYMTaskVC alloc] init];
-    [self setViewControllers:taskVC image:nil selectedImage:nil title:@"任务"];
-
-    //社区
-    HYMCommunityVC *communityVC = [[HYMCommunityVC alloc] init];
-    [self setViewControllers:communityVC image:nil selectedImage:nil title:@"社区"];
-
+    UINavigationController *taskNC = [[UINavigationController alloc] initWithRootViewController:taskVC];
+    taskNC.tabBarItem = task;
     
-    //人脉
+    
+    
+    UITabBarItem *contactsItem = [[HYMTabBarItem alloc] init];
+    contactsItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    contactsItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    contactsItem.title = @"人脉";
     HYMContactsVC *contactsVC = [[HYMContactsVC alloc] init];
-    [self setViewControllers:contactsVC image:nil selectedImage:nil title:@"人脉"];
+    UINavigationController *contactsNC = [[UINavigationController alloc] initWithRootViewController:contactsVC];
+    contactsNC.tabBarItem = contactsItem;
     
-    //个人中心
-    HYMPersonalVC *personalCenterVC = [[HYMPersonalVC alloc] init];
-    [self setViewControllers:personalCenterVC image:nil selectedImage:nil title:@"个人中心"];
+    
+    UITabBarItem *communityItem = [[HYMTabBarItem alloc] init];
+    communityItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    communityItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    communityItem.title = @"社区";
+    HYMCommunityVC *communityVC = [[HYMCommunityVC alloc] init];
+    HYMNavigationVC *communityNC = [[HYMNavigationVC alloc] initWithRootViewController:communityVC];
+    communityNC.tabBarItem = communityItem;
+    
+    
+    UITabBarItem *personItem = [[HYMTabBarItem alloc] init];
+    personItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    personItem.title = @"个人中心";
+    HYMPersonalVC *personVC = [[HYMPersonalVC alloc] init];
+    HYMNavigationVC *personNC = [[HYMNavigationVC alloc] initWithRootViewController:personVC];
+    personNC.tabBarItem = personItem;
+    
+    self.viewControllers = @[homeNv,taskNC,communityNC,contactsNC,personNC];
     
 }
 

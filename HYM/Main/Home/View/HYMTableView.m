@@ -9,6 +9,7 @@
 #import "HYMTableView.h"
 #import "HYMTableViewCell.h"
 #import "HYMSectionHeader.h"
+#import "HYMInfoCellModel.h"
 @interface HYMTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -17,9 +18,12 @@
 
 
 #pragma mark 分组个数
-- (void)setSectionArr:(NSArray *)sectionArr{
-
-    _sectionArr = sectionArr;
+- (void)setInfoArr:(NSMutableArray *)infoArr{
+    _infoArr = infoArr;
+    
+    NSLog(@"%ld",(unsigned long)_infoArr.count);
+    
+    
 }
 
 #pragma mark 初始化
@@ -45,23 +49,27 @@
         
     }else if(section == 1){ return 1;
     
-    }else if(section == 2) { return 5;
-    
     }
+    
+    return self.infoArr.count;
 
-    return 5;
+
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *identifier = @"cell";
     
     HYMTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
     
     if (!cell) {
         
         cell = [[HYMTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-    }else{
+    }
+    else{
         
         while ([cell.contentView.subviews lastObject] != nil) {
             
@@ -69,7 +77,23 @@
         }
     }
     
-    cell.indexPath = indexPath;
+    if (indexPath.section == 0) {
+        
+        [cell initCell1];
+    }else if (indexPath.section == 1){
+    
+        [cell initCell2];
+    }else{
+    
+        [cell initCell3];
+        
+        HYMInfoCellModel *model = self.infoArr[indexPath.row];
+        
+        cell.model = model;
+        
+    }
+
+    
     
     return cell;
     

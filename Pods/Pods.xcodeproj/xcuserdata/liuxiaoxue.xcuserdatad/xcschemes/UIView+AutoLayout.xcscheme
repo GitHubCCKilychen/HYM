@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A880242FF8BB104DC3CEB7D7'
+               BlueprintIdentifier = '18AE25222A73AC76B34E7E90'
                BlueprintName = 'UIView+AutoLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libUIView+AutoLayout.a'>

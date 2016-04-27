@@ -10,6 +10,7 @@
 #import "HYMInformationVC.h"
 #import "HYMNavigationVC.h"
 #import "HYMMallVC.h"
+#import "HYMHomeTaskVC.h"
 @interface HYMSectionHeader ()
 
 @property (nonatomic,strong)UILabel *morelabel;//更多
@@ -103,6 +104,8 @@
 
     if (_index == 0) {
        
+        HYMHomeTaskVC *task = [[HYMHomeTaskVC alloc] init];
+        [self.viewController.navigationController pushViewController:task animated:YES];
         
         
     }else if (_index == 1){
@@ -115,8 +118,6 @@
         //今日资讯
         HYMInformationVC *infoVC = [[HYMInformationVC alloc] init];
         [self.viewController.navigationController pushViewController:infoVC animated:YES];
-        self.viewController.navigationController.navigationBarHidden = NO;
-        NSLog(@"--2");
     }
 }
 

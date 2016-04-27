@@ -10,15 +10,29 @@
 #import "HYMTableView.h"
 #import "HYMTableHeader.h"
 #import "HYMNoticeView.h"
+#import "HYMInfoCellModel.h"
+#import "HYMTableViewCell.h"
 @interface HYMHomeVC ()
 @property (nonatomic,strong)HYMTableView *tableView;
 @property (nonatomic,strong)HYMTableHeader *headerView;
 @property (nonatomic,strong)HYMNoticeView *noticeView;
+
+@property (nonatomic,strong)NSMutableArray *infoArr;//资讯数组
 @end
 
 @implementation HYMHomeVC
 
 #pragma mark 懒加载
+
+-(NSMutableArray *)infoArr{
+
+    if (_infoArr == nil) {
+        
+        _infoArr = [NSMutableArray array];
+    }
+    
+    return _infoArr;
+}
 -(HYMNoticeView *)noticeView{
     
     if (_noticeView == nil) {
@@ -69,21 +83,47 @@
 #pragma mark 数据
 - (void)loadData{
 
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=base&a=blog_list_index" target:self selector:@selector(infoData:) parameter:infoDic];
+}
+
+- (void)infoData:(NSDictionary *)infoDic{
+
+    
+    if (1 == [[infoDic objectForKey:@"success"] intValue]) {
+
+        NSDictionary *infor = [infoDic objectForKey:@"infor"];
+        
+        NSArray *listItems = [infor objectForKey:@"listItems"];
+        
+        for (NSDictionary *dic in listItems) {
+            
+            
+            HYMInfoCellModel *model = [[HYMInfoCellModel alloc] initWithDictionary:dic];
+            [self.infoArr addObject:model];
+            
+            
+            self.tableView.infoArr = self.infoArr;
+            [self.tableView reloadData];
+            
+            
+        }
+ 
+    }else{
+    
+        NSLog(@"错误");
+    }
 }
 
 #pragma mark tableView
 - (void)initWithTableView{
     
-
-    //公告
-//    [self.view addSubview:self.noticeView];
-    
     [self.view addSubview:self.tableView];
-    
-    
 
     
 }
+
 
 - (void)viewWillAppear:(BOOL)animated{
 

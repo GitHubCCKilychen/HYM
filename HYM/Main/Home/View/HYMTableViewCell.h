@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMInfoCellModel.h"
 @interface HYMTableViewCell : UITableViewCell
 
 @property (nonatomic,assign)NSIndexPath *indexPath;
@@ -36,6 +36,7 @@
  *  @param source 来源
  *  @param comment 评论
  */
+@property (nonatomic,strong)HYMInfoCellModel *model;
 @property (nonatomic,strong)UILabel *titleInforation;//今日资讯标题
 @property (nonatomic,strong)UILabel *time;
 @property (nonatomic,strong)UIImageView *leftImageView;
@@ -50,4 +51,8 @@
 @property (nonatomic,strong)UIButton *rightBtn;
 @property (nonatomic,strong)UIButton *centerBtn;
 @property (nonatomic,strong)UIButton *ignoreBtn;//忽略
+
+- (void)initCell1;
+- (void)initCell2;
+- (void)initCell3;
 @end

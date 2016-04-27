@@ -18,7 +18,7 @@
     if (_bottomView == nil) {
         
         _bottomView = [[HYMBottomView alloc] init];
-        _bottomView.frame = CGRectMake(0, self.view.frame.size.height-400, self.view.frame.size.width, 49);
+        _bottomView.frame = CGRectMake(0, kScreenHeight-49, kScreenWitdth, 49);
     }
     return _bottomView;
 }

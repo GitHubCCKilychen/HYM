@@ -10,6 +10,6 @@
 
 @interface HYMTableView : UITableView
 
-//接收分组个数
-@property (nonatomic,strong)NSArray *sectionArr;
+@property (nonatomic,strong)NSMutableArray *infoArr;//资讯
+
 @end

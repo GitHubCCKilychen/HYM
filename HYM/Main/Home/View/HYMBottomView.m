@@ -24,22 +24,14 @@
 
 #pragma mark 懒加载
 
--(UILabel *)title{
-
-    if (_title == nil) {
-        
-        _title = [[UILabel alloc] init];
-        _title.frame = self.comment.frame;
-        _title.text = @"23435";
-        _title.textColor = [UIColor greenColor];
-    }
-    return _title;
-}
 - (UIImageView *)comment{
 
     if (_comment == nil) {
         
         _comment = [[UIImageView alloc] init];
+        _comment.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commontTap:)];
+        [_comment addGestureRecognizer:tap];
 
     }
     return _comment;
@@ -112,12 +104,6 @@
     .bottomSpaceToView(self,5).heightIs(39).widthRatioToView(self,0.5);
     
     
-//    self.title.backgroundColor = [UIColor blueColor];
-//    self.title.sd_layout
-//    .leftEqualToView(self.comment).topEqualToView(self.comment)
-//    .bottomEqualToView(self.comment).heightEqualToWidth(self.comment);
-    
-    
     self.messageBtn.backgroundColor = [UIColor brownColor];
     self.messageBtn.sd_layout
     .leftSpaceToView(self.comment,10).topSpaceToView(self,10)
@@ -141,13 +127,6 @@
 #pragma mark 分享事件
 - (void)shareBtnAct:(UIButton *)btn{
 
-    
-    //分享
-    
-//    
-//    ShareView *shareV = [ShareView shareViewWithPresentedViewController:self items:@[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToWechatSession,UMShareToWechatFavorite,UMShareToWechatTimeline] title:@"分享练习自定义UI" image:[UIImage imageNamed:@"icon.png"] urlResource:@"http://www.baidu.com"];
-    
-//    [[UIApplication sharedApplication].keyWindow addSubview:shareV];
 }
 
 #pragma makr 收藏成功
@@ -163,5 +142,13 @@
         btn.selected = NO;
     }
 
+}
+
+#pragma mark 手势事件
+- (void)commontTap:(UITapGestureRecognizer *)tap{
+    
+    HYMCommentVC *comment = [[HYMCommentVC alloc] init];
+    [self.viewController.navigationController pushViewController:comment animated:YES];
+ 
 }
 @end

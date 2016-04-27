@@ -23,10 +23,11 @@
 - (void)initWithNavigationBar{
     
     //颜色字体大小
-    NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:15]};
+    NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:15]};
     [[UINavigationBar appearance] setTitleTextAttributes:dic];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationbar"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
+    //navigationbar
     CGFloat statWidth = [[UIApplication sharedApplication] statusBarFrame].size.width;
     
     CGFloat statHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
@@ -39,12 +40,14 @@
     
 }
 
+#pragma mark 状态栏
 - (UIStatusBarStyle)preferredStatusBarStyle{
     
     return UIStatusBarStyleLightContent;
 }
 
 
+#pragma mark push时tabbar移除
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
 
     if (self.viewControllers.count > 0) {
@@ -58,4 +61,12 @@
     return [super popViewControllerAnimated:animated];
 }
 
+
+#pragma mark 导航栏设置字体大小颜色值
++ (NSDictionary *)setLeftBackItem:(UIColor *)fontColor withFontSize:(CGFloat)fontSize withNavi:(UINavigationBar *)navi{
+
+    NSDictionary *dic = @{NSForegroundColorAttributeName:fontColor,NSFontAttributeName:[UIFont systemFontOfSize:fontSize],};
+    [navi setTitleTextAttributes:dic];
+    return dic;
+}
 @end

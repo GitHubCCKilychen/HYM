@@ -54,11 +54,11 @@
 
     [self addSubview:self.scrollView];
     [self addSubview:self.taskView];
-//
+    //
     self.taskView.sd_layout
     .leftSpaceToView(self,0).topSpaceToView(self.scrollView,0)
     .bottomSpaceToView(self,10).rightSpaceToView(self,0);
-    //这里适配后4就有问题
+//    //这里适配后4就有问题
 
 }
 

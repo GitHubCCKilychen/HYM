@@ -8,7 +8,7 @@
 
 #import "HYMCommentVC.h"
 
-@interface HYMCommentVC ()
+@interface HYMCommentVC ()<UITextViewDelegate>
 
 @property (nonatomic,strong)UITextView *textView;
 
@@ -24,6 +24,7 @@
         _textView.frame = CGRectMake(0, 64, self.view.frame.size.width, 200);
         _textView.backgroundColor = [UIColor lightGrayColor];
         _textView.font = [UIFont systemFontOfSize:16];
+        _textView.delegate = self;
     }
     
     return _textView;
@@ -47,10 +48,22 @@
 
     self.commont = self.textView.text;
     
-    NSLog(@"%@",self.commont
-          );
+    NSLog(@"%@",self.commont);
+    
+//    [self];
 }
 
-
+#pragma  mark textViewDelegate
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+//
+//    [textView becomeFirstResponder];
+//    return YES;
+//}
+//
+//- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+//
+//    [textView resignFirstResponder];
+//    return YES;
+//}
 
 @end
