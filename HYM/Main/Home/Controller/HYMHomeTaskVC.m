@@ -25,7 +25,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"任务";
-    [HYMNavigationVC setLeftBackItem:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
 }
 
 

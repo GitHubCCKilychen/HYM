@@ -53,7 +53,7 @@
     
     //颜色字体大小
     self.title = @"今日资讯";
-    [HYMNavigationVC setLeftBackItem:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     NSArray *titleArr = @[@"网贷资讯",@"银行资讯"];
     

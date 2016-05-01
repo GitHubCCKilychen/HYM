@@ -490,8 +490,8 @@
         str=[str stringByReplacingOccurrencesOfString:@"{" withString:@"{\n"];
         str=[str stringByReplacingOccurrencesOfString:@"}" withString:@"\n}"];
         //NSLog(@"%@",str);
-        NSLog(@"response info:%@",resultDictionary);
-        NSLog(@"请求的数据原始版:%@",str);
+//        NSLog(@"response info:%@",resultDictionary);
+//        NSLog(@"请求的数据原始版:%@",str);
         NSString *status = [resultDictionary objectForKey:@"success"];
         //如果token有误请重新连接 否则把数据发到请求方
         if(0 == [status intValue]&&200 ==[[resultDictionary objectForKey:@"error_code"] intValue])

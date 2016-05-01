@@ -63,7 +63,7 @@
 
 
 #pragma mark 导航栏设置字体大小颜色值
-+ (NSDictionary *)setLeftBackItem:(UIColor *)fontColor withFontSize:(CGFloat)fontSize withNavi:(UINavigationBar *)navi{
++ (NSDictionary *)setTitle:(UIColor *)fontColor withFontSize:(CGFloat)fontSize withNavi:(UINavigationBar *)navi{
 
     NSDictionary *dic = @{NSForegroundColorAttributeName:fontColor,NSFontAttributeName:[UIFont systemFontOfSize:fontSize],};
     [navi setTitleTextAttributes:dic];

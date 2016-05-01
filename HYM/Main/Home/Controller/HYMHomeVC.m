@@ -12,12 +12,14 @@
 #import "HYMNoticeView.h"
 #import "HYMInfoCellModel.h"
 #import "HYMTableViewCell.h"
+#import "HYMTaskModel.h"
 @interface HYMHomeVC ()
 @property (nonatomic,strong)HYMTableView *tableView;
 @property (nonatomic,strong)HYMTableHeader *headerView;
 @property (nonatomic,strong)HYMNoticeView *noticeView;
 
 @property (nonatomic,strong)NSMutableArray *infoArr;//资讯数组
+@property (nonatomic,strong)NSMutableArray *taskArr;
 @end
 
 @implementation HYMHomeVC
@@ -32,6 +34,15 @@
     }
     
     return _infoArr;
+}
+
+-(NSMutableArray *)taskArr{
+
+    if (_taskArr == nil) {
+        
+        _taskArr = [NSMutableArray array];
+    }
+    return _taskArr;
 }
 -(HYMNoticeView *)noticeView{
     
@@ -73,6 +84,8 @@
 
     //数据
     [self loadData];
+    //任务精选
+    [self loadDataTask];
     
     
     //tableView
@@ -80,19 +93,18 @@
     
 }
 
-#pragma mark 数据
+#pragma mark 数据 －今日资讯数据
 - (void)loadData{
 
     NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
     //网络请求
     [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=base&a=blog_list_index" target:self selector:@selector(infoData:) parameter:infoDic];
 }
-
 - (void)infoData:(NSDictionary *)infoDic{
-
+    
     
     if (1 == [[infoDic objectForKey:@"success"] intValue]) {
-
+        
         NSDictionary *infor = [infoDic objectForKey:@"infor"];
         
         NSArray *listItems = [infor objectForKey:@"listItems"];
@@ -109,13 +121,40 @@
             
             
         }
- 
+        
     }else{
-    
+        
         NSLog(@"错误");
     }
 }
+#pragma mark  数据－任务精选
+- (void)loadDataTask{
 
+    NSMutableDictionary *dics = [NSMutableDictionary dictionary];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=Base&a=task_select" target:self selector:@selector(taskData:) parameter:dics];
+    
+    
+    
+}
+
+
+- (void)taskData:(NSDictionary *)taskDic{
+
+    NSArray *infor = [taskDic objectForKey:@"infor"];
+    
+    for (NSDictionary *dic in infor) {
+    
+        HYMTaskModel *taskModel = [[HYMTaskModel alloc] initWithDictionary:dic];
+        
+        [self.taskArr addObject:taskModel];
+        self.tableView.taskArr = self.taskArr;
+        
+        [self.tableView reloadData];
+        
+    }
+//    NSLog(@"%@",taskDic);
+    
+}
 #pragma mark tableView
 - (void)initWithTableView{
     

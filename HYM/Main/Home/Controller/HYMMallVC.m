@@ -42,7 +42,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"薅羊毛工具商城";
-    [HYMNavigationVC setLeftBackItem:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     //轮播图
     [self.view addSubview:self.scrollView];

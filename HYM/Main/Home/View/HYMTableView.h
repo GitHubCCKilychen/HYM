@@ -11,5 +11,6 @@
 @interface HYMTableView : UITableView
 
 @property (nonatomic,strong)NSMutableArray *infoArr;//资讯
+@property (nonatomic,strong)NSMutableArray *taskArr;//任务
 
 @end

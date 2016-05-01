@@ -18,7 +18,7 @@
 
     if (self = [super initWithFrame:frame]) {
      
-        self.backgroundColor = [UIColor grayColor];
+//        self.backgroundColor = [UIColor grayColor];
         self.dataSource = self;
         self.delegate = self;
         self.showsVerticalScrollIndicator = NO;
@@ -86,7 +86,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 88.0f;
+    return 110.f;
 }
 
 #pragma mark 事件
@@ -112,6 +112,7 @@
     
     
 }
+
 
 
 @end

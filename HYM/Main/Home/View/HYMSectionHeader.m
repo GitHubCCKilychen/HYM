@@ -10,7 +10,7 @@
 #import "HYMInformationVC.h"
 #import "HYMNavigationVC.h"
 #import "HYMMallVC.h"
-#import "HYMHomeTaskVC.h"
+#import "HYMTaskVC.h"
 @interface HYMSectionHeader ()
 
 @property (nonatomic,strong)UILabel *morelabel;//更多
@@ -69,7 +69,7 @@
 
     _section = section;
     
-        if (_section == 0) {_title.text = @"任务";}
+        if (_section == 0) {_title.text = @"任务精选";}
         else if (_section == 1) {_title.text = @"羊毛商城";}
         else {_title.text = @"今日资讯";}
     
@@ -104,9 +104,9 @@
 
     if (_index == 0) {
        
-        HYMHomeTaskVC *task = [[HYMHomeTaskVC alloc] init];
-        [self.viewController.navigationController pushViewController:task animated:YES];
         
+        //不同模块见的跳转问题－－
+        [self.viewController.tabBarController setSelectedIndex:1];
         
     }else if (_index == 1){
     

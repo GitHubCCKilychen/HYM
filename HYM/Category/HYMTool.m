@@ -13,7 +13,7 @@
 
 //label常用方法
 //label常用方法
-+ (UILabel *)initLabel:(UILabel *)label withFont:(UIFont *)textFont withTextColor:(UIColor *)textColor withTextAlignment:(UITextAlignment *)textAlignment{
++ (UILabel *)initLabel:(UILabel *)label withFont:(UIFont *)textFont withTextColor:(UIColor *)textColor withTextAlignment:(NSTextAlignment *)textAlignment{
 
     label.font = textFont;
     label.textColor = textColor;

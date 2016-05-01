@@ -30,6 +30,23 @@
     self.comment.text = _model.msg;
 }
 
+#pragma mark 任务数据
+- (void)setTaskModel:(HYMTaskModel *)taskModel{
+
+    _taskModel = taskModel;
+    
+    NSString *title = [NSString stringWithFormat:@"%@",_taskModel.title];
+    self.title.text = title;
+    
+    
+    [self.storeImage sd_setImageWithURL:[NSURL URLWithString:_taskModel.logo]];
+    
+    NSString *endTime = [NSString stringWithFormat:@"截止时间:%@",_taskModel.end_time];
+    self.timeEnd.text = endTime;
+    NSString *peopleCount = [NSString stringWithFormat:@"参与人数:%@",_taskModel.join_number];
+    self.peopleCount.text = peopleCount;
+    
+}
 #pragma mark cell1
 -(UIImageView *)storeImage{
     
@@ -46,34 +63,30 @@
     
     if (_title ==nil) {
         _title = [[UILabel alloc] init];
-        _title.text = @"本金x元，期限x天";
-        _title.backgroundColor = [UIColor brownColor];
+        [HYMTool initLabel:_title withFont:[UIFont systemFontOfSize:12] withTextColor:nil withTextAlignment:NSTextAlignmentLeft];
+        _title.numberOfLines = 0;
+//        
+//        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_title.text];
         
     }
     
     return _title;
 }
-
-- (UILabel *)subTitle{
+- (UIButton *)hotBtn{
     
-    if (_subTitle == nil) {
+    if (_hotBtn == nil) {
         
-        _subTitle = [[UILabel alloc] init];
-        _subTitle.backgroundColor = [UIColor grayColor];
-        
+        _hotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _hotBtn.backgroundColor = [UIColor redColor];
+        [_hotBtn setTitle:@"热" forState:UIControlStateNormal];
+        [_hotBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _hotBtn.titleLabel.font = [UIFont systemFontOfSize:11];
+        _hotBtn.layer.cornerRadius = 2;
+        _hotBtn.layer.masksToBounds = YES;
+        _hotBtn.backgroundColor = [UIColor redColor];
+       
     }
-    
-    return _subTitle;
-}
-
-- (UIImageView *)hotImage{
-    
-    if (_hotImage == nil) {
-        
-        _hotImage = [[UIImageView alloc] init];
-        _hotImage.backgroundColor = [UIColor orangeColor];
-    }
-    return _hotImage;
+    return _hotBtn;
 }
 -(UIImageView *)timeImage{
     
@@ -91,7 +104,7 @@
     if (_peopleCount == nil) {
         
         _peopleCount = [[UILabel alloc] init];
-        _peopleCount.backgroundColor = [UIColor greenColor];
+        [HYMTool initLabel:_peopleCount withFont:[UIFont systemFontOfSize:10] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _peopleCount;
     
@@ -101,7 +114,7 @@
     if (_timeEnd == nil) {
         
         _timeEnd = [[UILabel alloc] init];
-        _timeEnd.backgroundColor = [UIColor grayColor];
+        [HYMTool initLabel:_timeEnd withFont:[UIFont systemFontOfSize:11] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _timeEnd;
 }
@@ -122,7 +135,13 @@
     if (_ignoreBtn == nil) {
         
         _ignoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _ignoreBtn.backgroundColor = [UIColor greenColor];
+        _ignoreBtn.backgroundColor = [UIColor lightGrayColor];
+        [_ignoreBtn setTitle:@"忽略" forState:UIControlStateNormal];
+        _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        [_ignoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _ignoreBtn.layer.cornerRadius = 2;
+        _ignoreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+        
     }
     return _ignoreBtn;
 }
@@ -178,7 +197,6 @@
     if (_leftImageView == nil) {
         
         _leftImageView = [[UIImageView alloc] init];
-//        _leftImageView.backgroundColor = [UIColor grayColor];
     }
     return _leftImageView;
 }
@@ -187,7 +205,6 @@
 
     if (_titleInforation == nil) {
         _titleInforation = [[UILabel alloc] init];
-        _titleInforation.text = @"上海震荡收涨成交量大幅萎缩234565789009987685667564456";
         [HYMTool initLabel:_titleInforation withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
         _titleInforation.numberOfLines = 0;
     }
@@ -231,8 +248,7 @@
 - (void)initCell1{
     [self.contentView addSubview:self.storeImage];
     [self.contentView addSubview:self.title];
-    [self.contentView addSubview:self.subTitle];
-    [self.contentView addSubview:self.hotImage];
+    [self.contentView addSubview:self.hotBtn];
     [self.contentView addSubview:self.timeImage];
     [self.contentView addSubview:self.timeEnd];
     [self.contentView addSubview:self.peopleCount];
@@ -244,39 +260,40 @@
     .leftSpaceToView(self.contentView,10).bottomSpaceToView(self.contentView,15)
     .topSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.2);
     
+//    self.title.backgroundColor = [UIColor grayColor];
     self.title.sd_layout
     .leftSpaceToView(self.storeImage,5).topEqualToView(self.storeImage)
-    .widthRatioToView(self.contentView,0.5).heightIs(20);
-    
-    self.subTitle.sd_layout
-    .leftEqualToView(self.title).topSpaceToView(self.title,3)
-    .heightIs(20).widthRatioToView(self.contentView,0.6);
+    .widthRatioToView(self.contentView,0.53).heightIs(50);
+
     
     self.timeImage.sd_layout
     .leftEqualToView(self.title).bottomEqualToView(self.storeImage)
     .heightIs(20).widthIs(20);
     
+//    self.timeEnd.backgroundColor = [UIColor blueColor];
     self.timeEnd.sd_layout
     .leftSpaceToView(self.timeImage,2).bottomEqualToView(self.timeImage)
-    .widthRatioToView(self.contentView,0.3).heightIs(20);
+    .widthRatioToView(self.contentView,0.38).heightIs(20);
     
     self.peopleImage.sd_layout
-    .leftSpaceToView(self.timeEnd,2).rightSpaceToView(self.contentView,10)
-    .bottomEqualToView(self.timeEnd).widthEqualToHeight(20)
+    .leftSpaceToView(self.timeEnd,5)
+    .bottomEqualToView(self.timeEnd).widthIs(20)
     .topEqualToView(self.timeEnd);
     
     self.peopleCount.sd_layout
-    .leftSpaceToView(self.peopleImage,1).bottomEqualToView(self.timeEnd)
-    .rightSpaceToView(self.contentView,10).topEqualToView(self.timeEnd);
+    .leftSpaceToView(self.peopleImage,0).bottomEqualToView(self.timeEnd)
+    .rightSpaceToView(self.contentView,5).topEqualToView(self.timeEnd);
     
-    self.hotImage.sd_layout
-    .leftSpaceToView(self.title,15).topEqualToView(self.title)
-    .bottomEqualToView(self.title).widthEqualToHeight(20);
- 
+    
+    self.hotBtn.sd_layout
+    .leftSpaceToView(self.title,3).topEqualToView(self.title)
+    .heightIs(20).widthIs(20);
+    
+
     self.ignoreBtn.sd_layout
-    .leftSpaceToView(self.hotImage,5).bottomEqualToView(self.hotImage)
-    .topEqualToView(self.hotImage).rightSpaceToView(self.contentView,10)
-    .widthIs(40);
+    .leftSpaceToView(self.hotBtn,3).bottomEqualToView(self.hotBtn)
+    .topEqualToView(self.hotBtn).rightSpaceToView(self.contentView,10)
+    .widthIs(30);
 
 }
 

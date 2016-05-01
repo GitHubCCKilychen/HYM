@@ -10,6 +10,7 @@
 #import "HYMTableViewCell.h"
 #import "HYMSectionHeader.h"
 #import "HYMInfoCellModel.h"
+#import "HYMTaskModel.h"
 @interface HYMTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -21,11 +22,16 @@
 - (void)setInfoArr:(NSMutableArray *)infoArr{
     _infoArr = infoArr;
     
-    NSLog(@"%ld",(unsigned long)_infoArr.count);
-    
-    
 }
 
+
+- (void)setTaskArr:(NSMutableArray *)taskArr{
+
+    _taskArr = taskArr;
+    
+    NSLog(@"%lu--",(unsigned long)self.taskArr.count);
+    
+}
 #pragma mark 初始化
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
@@ -45,7 +51,7 @@
 #pragma mark tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 0) { return 3;
+    if (section == 0) { return self.taskArr.count;
         
     }else if(section == 1){ return 1;
     
@@ -80,9 +86,17 @@
     if (indexPath.section == 0) {
         
         [cell initCell1];
+        
+        HYMTaskModel *taskModel = self.taskArr[indexPath.row];
+        
+        cell.taskModel = taskModel;
+        
     }else if (indexPath.section == 1){
     
         [cell initCell2];
+        
+        
+        
     }else{
     
         [cell initCell3];

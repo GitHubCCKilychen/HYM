@@ -8,6 +8,7 @@
 
 #import "HYMNoticeView.h"
 #import "ScrollLabel.h"
+#import "HYMMessageVC.h"
 @interface HYMNoticeView ()<ScrollLabelDelegate>
 
 @property (nonatomic,strong)ScrollLabel *scrollLabel;//公告
@@ -125,6 +126,21 @@
 #pragma mark 公告实现方法
 - (void)btnClick:(UIButton *)btn{
 
-   NSLog(@"%ld",(long)btn.tag);
+    self.userInteractionEnabled = YES;
+    HYMMessageVC *messageVC = [[HYMMessageVC alloc] init];
+    messageVC.view.backgroundColor = [UIColor whiteColor];
+    //此时⚠️
+    [self.viewController presentViewController:messageVC animated:YES completion:nil];
+    if (btn.tag == 1) {
+        
+        NSLog(@"1");
+   
+    }else if (btn.tag == 2){
+    
+        NSLog(@"2");
+    }else{
+    
+        NSLog(@"3");
+    }
 }
 @end

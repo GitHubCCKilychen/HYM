@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HYMInfoCellModel.h"
+#import "HYMTaskModel.h"
 @interface HYMTableViewCell : UITableViewCell
 
 @property (nonatomic,assign)NSIndexPath *indexPath;
@@ -20,14 +21,17 @@
  *  @param timeEnd 截止时间
  *  @param peopleCount 参数人数
  */
-@property (nonatomic,strong)UIImageView *hotImage;
+
+@property (nonatomic,strong)HYMTaskModel *taskModel;
+@property (nonatomic,strong)UIButton *hotBtn;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *title;
-@property (nonatomic,strong)UILabel *subTitle;
+//@property (nonatomic,strong)UILabel *subTitle;
 @property (nonatomic,strong)UIImageView *timeImage;
 @property (nonatomic,strong)UILabel *timeEnd;//截止时间
 @property (nonatomic,strong)UILabel *peopleCount;//参与人数
 @property (nonatomic,strong)UIImageView *peopleImage;//参与人数
+@property (nonatomic,strong)UIButton *ignoreBtn;//忽略
 
 /**
  *  @param titleInforation 今日资讯标题
@@ -50,7 +54,7 @@
 @property (nonatomic,strong)UIButton *topBtn;
 @property (nonatomic,strong)UIButton *rightBtn;
 @property (nonatomic,strong)UIButton *centerBtn;
-@property (nonatomic,strong)UIButton *ignoreBtn;//忽略
+
 
 - (void)initCell1;
 - (void)initCell2;

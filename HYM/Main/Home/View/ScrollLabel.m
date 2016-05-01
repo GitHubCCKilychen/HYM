@@ -28,6 +28,7 @@
         
         //添加按钮
         [self initWithBtn:titleArr];
+        self.userInteractionEnabled = YES;
     
         
     }

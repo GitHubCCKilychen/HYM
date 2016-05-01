@@ -50,7 +50,8 @@
     
     NSLog(@"%@",self.commont);
     
-//    [self];
+//返回前这页面
+    [self.view.viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma  mark textViewDelegate

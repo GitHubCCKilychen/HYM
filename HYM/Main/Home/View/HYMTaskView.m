@@ -13,6 +13,8 @@
 #define kViewWidth kScreenWidth-10
 #define kViewHeight  self.brownView.frame.size.height
 
+#import "HYMMyBooksVC.h"
+
 @interface HYMTaskView ()
 
 @property (nonatomic,strong)UIView *brownView;
@@ -42,10 +44,8 @@
     if (_moneyLabel == nil) {
         
         _moneyLabel = [[UILabel alloc] init];
-        _moneyLabel.textColor = [UIColor redColor];
-        _moneyLabel.font = [UIFont systemFontOfSize:24];
-        _moneyLabel.text = @"+ 5263.25";
-        _moneyLabel.textAlignment = NSTextAlignmentLeft;
+        [HYMTool initLabel:_moneyLabel withFont:[UIFont systemFontOfSize:25] withTextColor:[UIColor redColor] withTextAlignment:NSTextAlignmentLeft];
+        
     }
     
     return _moneyLabel;
@@ -54,10 +54,8 @@
 
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.text = @"累计收益";
-        _titleLabel.font = [UIFont systemFontOfSize:13];
-        _titleLabel.textColor = [UIColor blackColor];
+        [HYMTool initLabel:_titleLabel withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     
     return _titleLabel;
@@ -68,6 +66,8 @@
     if (_lineView == nil) {
         
         _lineView = [[UIImageView alloc] init];
+        _lineView.alpha = 0.08;
+        _lineView.layer.borderWidth = 0.5;
     }
     return _lineView;
 }
@@ -79,14 +79,16 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
+          [self initWithView];
+         [self loadData];
+      
         
-        [self initWithView];
     }
     
     return self;
 }
 #pragma mark 中间按钮
-- (void)initWithButton{
+- (void)initWithButton:(NSArray*)taskArr{
     
     
     CGFloat  width = kScreenWidth-10;
@@ -96,7 +98,6 @@
     for (int i = 0; i < 3; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        btn.frame = CGRectMake(33+(width/3)*i, 10, 45, 45);
         CGFloat margin = kScreenWidth/4;
         btn.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, 10, 45, 45);
         btn.backgroundColor = [UIColor brownColor];
@@ -112,45 +113,72 @@
         [self addSubview:title];
    
     }
-    //任务返利跟邀请返利按钮
+  
+    for (int i = 0; i < 2; i++) {
+        
+        //此处frame有问题
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((kScreenWidth/2+10), 20+i*20
+                               , 50, 20);
+        [btn setTitle:taskArr[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.brownView addSubview:btn];
+        
+    }
+    for (int i = 0; i < 2; i++) {
+        
+        //此处frame有问题
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(kScreenWidth/2+50, 20+(i*20), 20, 20);
+//        [btn setTitle:titleA[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                               btn.backgroundColor = [UIColor redColor];
+//        [self.brownView addSubview:btn];
+        
+    }
+     NSArray *titleA = @[@"任务返利",@"邀请返利"];
+    for (int i = 0; i < 2; i++) {
+        
+        //此处frame有问题
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((kScreenWidth/2+80), 20+i*20
+                               , 50, 20);
+        [btn setTitle:titleA[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.brownView addSubview:btn];
+        
+    }
+}
+
+
+#pragma mark 数据
+- (void)loadData{
+
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=Base&a=user_income" target:self selector:@selector(loadData:) parameter:dic];
+}
+
+
+- (void)loadData:(NSDictionary *)infor{
+
+    NSDictionary *dic = [infor objectForKey:@"infor"];
     
-    NSArray *titleA = @[@"任务返利",@"邀请返利"];
-    for (int i = 0; i < 2; i++) {
-        
-        //此处frame有问题
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((kScreenWidth/2+20)+i*50, 10
-                               , 50, 20);
-        [btn setTitle:titleA[i] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [self.brownView addSubview:btn];
-        
-    }
-    for (int i = 0; i < 2; i++) {
-        
-        //此处frame有问题
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((kScreenWidth/2+20)+i*50, 30
-                               , 50, 20);
-        [btn setTitle:titleA[i] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [self.brownView addSubview:btn];
-        
-    }
-   
+    NSString *money = [NSString stringWithFormat:@"+%@",[dic objectForKey:@"total"]];
+    self.moneyLabel.text = money;
+    
+    NSArray *arr = @[[dic objectForKey:@"task"],[dic objectForKey:@"invite"]];
+
+    
+    [self initWithButton:arr];
 }
 
 #pragma mark 
 - (void)initWithView{
 
-    [self initWithButton];
     [self initWithLastView];
-   
-    
-    
-
 }
 
 #pragma mark 收益部分
@@ -167,18 +195,17 @@
     .bottomSpaceToView(self,10).heightRatioToView(self,0.5);
     
     self.moneyLabel.sd_layout
-    .leftSpaceToView(self.brownView,30).topSpaceToView(self.brownView,10)
+    .leftSpaceToView(self.brownView,30).topSpaceToView(self.brownView,20)
     .widthRatioToView(self.brownView,0.4).heightIs(28);
-//    self.moneyLabel.backgroundColor = [UIColor grayColor];
     
     self.titleLabel.sd_layout
     .leftSpaceToView(self.brownView,50).bottomSpaceToView(self.brownView,10)
-    .topSpaceToView(self.moneyLabel,5).widthIs(60);
+    .topSpaceToView(self.moneyLabel,-5).widthIs(60);
     
-    self.lineView.backgroundColor = [UIColor grayColor];
+//    self.lineView.backgroundColor = [UIColor grayColor];
     self.lineView.sd_layout
-    .leftSpaceToView(self.moneyLabel,0).topSpaceToView(self.brownView,5)
-    .bottomSpaceToView(self.brownView,5).widthIs(1);
+    .leftSpaceToView(self.moneyLabel,0).topSpaceToView(self.brownView,10)
+    .bottomSpaceToView(self.brownView,10).widthIs(0.8);
     
 }
 
@@ -199,7 +226,8 @@
         case 2:
         {
         
-            NSLog(@"2");
+            HYMMyBooksVC *myBooks = [[HYMMyBooksVC alloc] init];
+            [self.viewController.navigationController pushViewController:myBooks animated:YES];
         }
             break;
         default:

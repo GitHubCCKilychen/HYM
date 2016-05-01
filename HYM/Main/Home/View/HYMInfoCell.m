@@ -79,11 +79,8 @@
     
     //左10上15
     self.messageImage.sd_layout
-    .leftSpaceToView(self.contentView ,10)
-    .topSpaceToView(self.contentView,15)
-    .bottomSpaceToView(self.contentView,15)
-    .widthIs(90)
-    .heightIs(60);
+    .leftSpaceToView(self.contentView,10).topSpaceToView(self.contentView,15)
+    .bottomSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.3);
     
     self.title.sd_layout
     .leftSpaceToView(self.messageImage,10)
