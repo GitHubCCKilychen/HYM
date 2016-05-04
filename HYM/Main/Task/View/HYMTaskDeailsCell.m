@@ -25,6 +25,8 @@
     if (_name == nil) {
         
         _name = [[UILabel alloc] init];
+        _name.text = @"tom";
+        [HYMTool initLabel:_name withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _name;
 }
@@ -33,6 +35,8 @@
     
     if (_zanCount == nil) {
         _zanCount = [[UILabel alloc] init];
+        _zanCount.text = @"256";
+        [HYMTool initLabel:_zanCount withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _zanCount;
 }
@@ -52,6 +56,9 @@
     if (_comment == nil) {
         
         _comment = [[UILabel alloc] init];
+        _comment.text = @"数据1数据2 数据3数据3453入数据数据数据数据数据";
+        _comment.numberOfLines = 0;
+        [HYMTool initLabel:_comment withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _comment;
 }
@@ -63,6 +70,7 @@
         
         
         [self initWithView];
+        [self reloadInputViews];
     }
     return self;
 }
@@ -82,24 +90,21 @@
     .widthIs(40).heightIs(40);
     
     
-    self.name.backgroundColor = [UIColor purpleColor];
     self.name.sd_layout
     .leftSpaceToView(self.iconImageView,15).topSpaceToView(self.contentView,20).widthIs(80).heightIs(20);
     
-    self.zanCount.backgroundColor = [UIColor grayColor];
+    
     self.zanCount.sd_layout
     .rightSpaceToView(self.contentView,15).topSpaceToView(self.contentView,25).heightIs(20).widthIs(30);
     
-    self.zanImage.backgroundColor = [UIColor orangeColor];
     self.zanImage.sd_layout
     .rightSpaceToView(self.zanCount,2).heightIs(20).widthIs(30)
     .topEqualToView(self.zanCount);
     
     
-    self.comment.backgroundColor = [UIColor grayColor];
     self.comment.sd_layout
     .leftSpaceToView(self.contentView,15).rightSpaceToView(self.contentView,10).heightRatioToView(self.contentView,0.4)
     .topSpaceToView(self.iconImageView,8);
-
+    
 }
 @end

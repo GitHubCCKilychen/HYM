@@ -10,5 +10,6 @@
 
 @interface HYMTaskDeailsTableView : UITableView
 
+@property (nonatomic,assign)NSInteger index;
 
 @end

@@ -18,4 +18,6 @@
 @property (nonatomic,strong)UILabel *activityCourse;//活动教程
 @property (nonatomic,strong)UILabel *courseContent;//教程内容
 @property (nonatomic,strong)UIView *gray2Line;//
+@property (nonatomic,strong)UIButton *openActivity;//展开活动内容
+@property (nonatomic,strong)UIButton *openContent;//展开教程内容
 @end

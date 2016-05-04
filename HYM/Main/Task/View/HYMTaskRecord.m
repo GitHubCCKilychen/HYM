@@ -7,7 +7,8 @@
 //
 
 #import "HYMTaskRecord.h"
-
+#import "HYMTaskDeailsCell.h"
+#import "HYMTaskDeailsTableView.h"
 @interface HYMTaskRecord ()
 
 
@@ -259,16 +260,25 @@
 #pragma mark 滑动
 - (void)sliderAct:(UIButton *)btn{
 
-
+    HYMTaskDeailsTableView *tableView = [[HYMTaskDeailsTableView alloc] init];
+    
+    tableView.index = btn.tag;
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"index" object:self];
+    
     [UIView animateWithDuration:0.35 animations:^{
         
-        
+        //此处位置是写死的，后期需要改动
         switch (btn.tag) {
             case 0:
                 self.sliderView.frame = CGRectMake(15, 370-12,80, 1);
+                
+//                NSLog(@"1");
                 break;
             case 1:
                 self.sliderView.frame = CGRectMake(95, 370-12,80, 1);
+//                NSLog(@"2");
                 break;
             default:
                 break;

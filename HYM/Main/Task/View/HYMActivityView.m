@@ -100,6 +100,22 @@
     }
     return _gray2Line;
 }
+
+-(UIButton *)openActivity{
+
+    if (_openActivity == nil) {
+        
+        _openActivity = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _openActivity;
+}
+- (UIButton *)openContent{
+
+    if (_openContent == nil) {
+        _openContent = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _openContent;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -125,6 +141,8 @@
     [self addSubview:self.activityCourse];
     [self addSubview:self.courseContent];
     [self addSubview:self.gray2Line];
+    [self addSubview:self.openActivity];
+    [self addSubview:self.openContent];
     
     
     //左侧15上册10
@@ -137,10 +155,16 @@
     .topEqualToView(self.lineView).leftSpaceToView(self.lineView,10)
     .widthIs(80).heightIs(20);
     
-//    self.activityContent.backgroundColor = [UIColor brownColor];
     self.activityContent.sd_layout
     .leftSpaceToView(self,15).rightSpaceToView(self,10)
     .topSpaceToView(self.activity,15).heightIs(40);
+    
+    self.openActivity.backgroundColor = [UIColor grayColor];
+    self.openActivity.sd_layout
+    .rightSpaceToView(self,20).bottomSpaceToView(self.grayLine,2)
+    .topSpaceToView(self.activityContent,0)
+    .leftSpaceToView(self,kScreenWitdth-50).widthEqualToHeight(20);
+    
     
     self.grayLine.backgroundColor = [UIColor grayColor];
     self.grayLine.sd_layout
@@ -161,6 +185,11 @@
     self.courseContent.sd_layout
     .leftSpaceToView(self,15).topSpaceToView(self.activityCourse,15)
     .rightSpaceToView(self,15).heightIs(40);
+    
+    self.openContent.backgroundColor = [UIColor orangeColor];
+    self.openContent.sd_layout
+    .leftSpaceToView(self,kScreenWitdth-50).rightSpaceToView(self,20)
+    .bottomSpaceToView(self.gray2Line,2).topSpaceToView(self.courseContent,0).widthEqualToHeight(20);
     
     self.gray2Line.backgroundColor = [UIColor grayColor];
     self.gray2Line.sd_layout

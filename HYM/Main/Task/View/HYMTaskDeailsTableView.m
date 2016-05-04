@@ -15,7 +15,18 @@
 @end
 @implementation HYMTaskDeailsTableView
 
-
+- (void)setIndex:(NSInteger)index{
+    _index = index;
+    
+    if (_index == 1) {
+        
+        NSLog(@"1");
+        [self reloadData];
+    }else{
+    
+        NSLog(@"0");
+    }
+}
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
     if (self == [super initWithFrame:frame style:style]) {
@@ -23,6 +34,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.dataSource = self;
         self.delegate = self;
+
     }
     
     return self;
@@ -39,6 +51,16 @@
     if (cell == nil) {
         
         cell = [[HYMTaskDeailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    if (self.index == 0) {
+        
+//        cell.model = 
+        //根据索引值传递数据
+    }else if (self.index ==1){
+    
+//        cell.model = 
+        
     }
     
     return cell;
