@@ -37,7 +37,7 @@
     if (_taskView == nil) {
         
         _taskView = [[HYMTaskRecordView alloc] init];
-        _taskView.frame = CGRectMake(0, 0, kScreenWitdth, 100);
+        _taskView.frame = CGRectMake(0, 0, kScreenWitdth, 110);
     }
     
     return _taskView;
@@ -48,6 +48,7 @@
         
         _activityView = [[HYMActivityView alloc] init];
         _activityView.frame = CGRectMake(0, 120, kScreenWitdth, 300);
+//        _activityView.backgroundColor = [UIColor redColor];
     }
     
     return _activityView;

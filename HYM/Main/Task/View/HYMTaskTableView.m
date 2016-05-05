@@ -67,7 +67,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 
-    return 00.01;
+    return 0.01;
 }
 
 #pragma mark 跳转任务详情

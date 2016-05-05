@@ -26,7 +26,7 @@
     if (_sortView == nil) {
         
         NSArray *title = @[@"默认",@"期限",@"收益",@"筛选"];
-        _sortView = [HYMSortView setFrame:CGRectMake(0, 114, kScreenWitdth, 60) titleDataSource:title backgroudColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor brownColor] buttonDownColor:[UIColor orangeColor] delegate:self];
+        _sortView = [HYMSortView setFrame:CGRectMake(0, 64, kScreenWitdth, 45) titleDataSource:title backgroudColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor blueColor] buttonDownColor:[UIColor orangeColor] delegate:self];
         
     }
     
@@ -37,8 +37,7 @@
     if (_segmentView == nil) {
         
         NSArray *title = @[@"精选",@"返利单",@"新手单",@"银行单"];
-        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 64, kScreenWitdth, 50) titleDataSource:title backgroundColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor redColor] delegate:self];
-//        _segmentView.backgroundColor = [UIColor grayColor];
+        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth-100, 44) titleDataSource:title backgroundColor:[UIColor clearColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor redColor] delegate:self];
     }
     
     return _segmentView;
@@ -48,7 +47,7 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMTaskTableView alloc] initWithFrame:CGRectMake(0, 174, kScreenWitdth, kScreenHeight)style:UITableViewStyleGrouped];
+        _tableView = [[HYMTaskTableView alloc] initWithFrame:CGRectMake(0, 110, kScreenWitdth, kScreenHeight)style:UITableViewStyleGrouped];
     }
     return _tableView;
 }
@@ -65,15 +64,14 @@
 
 #pragma mark initview
 - (void)initDefault{
-
-    self.title = @"任务";
-    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    
+  
 }
 
 #pragma mark initview
 - (void)initWithView{
 
-    [self.view addSubview:self.segmentView];
+//    [self.view addSubview:self.segmentView];
     [self.view addSubview:self.sortView];
     [self.view addSubview:self.tableView];
     
@@ -107,7 +105,7 @@
 #pragma mark 右上角按钮
 - (void)initWithBarItem{
     
-    UIButton *record = [UIButton buttonWithType:UIButtonTypeCustom];\
+    UIButton *record = [UIButton buttonWithType:UIButtonTypeCustom];
     record.frame = CGRectMake(0, 0, 30, 30);
     record.backgroundColor = [UIColor grayColor];
     [record addTarget:self action:@selector(recordAct:) forControlEvents:UIControlEventTouchUpInside];
@@ -132,5 +130,19 @@
     [self.navigationController pushViewController:recordVC animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+    
+//    [self.navigationController.navigationBar addSubview:self.segmentView];
+    
+}
+
+//- (void)viewWillDisappear:(BOOL)animated{
+//
+//    [self viewWillDisappear:animated];
+//    
+//    [self.segmentView removeFromSuperview];
+//}
 
 @end

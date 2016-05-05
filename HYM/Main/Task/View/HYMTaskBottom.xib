@@ -21,7 +21,7 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhJ-d4-4l7">
                     <rect key="frame" x="55" y="10" width="46" height="30"/>
-                    <state key="normal" title="转发"/>
+                    <state key="normal" title="分享"/>
                     <connections>
                         <action selector="forwardBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="nDe-G2-Zyi"/>
                     </connections>
@@ -53,7 +53,7 @@
                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="commentImage" destination="Zw2-gB-ksN" id="D8g-9m-1dx"/>

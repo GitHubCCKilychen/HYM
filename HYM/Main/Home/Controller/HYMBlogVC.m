@@ -7,20 +7,21 @@
 //
 
 #import "HYMBlogVC.h"
-#import "HYMBottomView.h"
+#import "HYMTaskBottom.h"
 @interface HYMBlogVC ()
-@property (nonatomic,strong)HYMBottomView *bottomView;
+@property (nonatomic,strong)HYMTaskBottom *bottom;
 @end
 
 @implementation HYMBlogVC
-- (HYMBottomView *)bottomView{
-    
-    if (_bottomView == nil) {
+
+- (HYMTaskBottom *)bottom{
+
+    if (_bottom == nil) {
         
-        _bottomView = [[HYMBottomView alloc] init];
-        _bottomView.frame = CGRectMake(0, kScreenHeight-49, kScreenWitdth, 49);
+        _bottom = [[[NSBundle mainBundle]loadNibNamed:@"HYMTaskBottom" owner:self options:nil] lastObject];
+        _bottom.frame = CGRectMake(0, kScreenHeight-49, kScreenWitdth, 49);
     }
-    return _bottomView;
+    return _bottom;
 }
 
 - (void)viewDidLoad {
@@ -30,10 +31,10 @@
 }
 
 - (void)initWithView{
-    
-    
-    [self.view addSubview:self.bottomView];
+ 
+    [self.view addSubview:self.bottom];
 }
+
 
 
 @end

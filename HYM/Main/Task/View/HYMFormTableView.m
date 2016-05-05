@@ -106,7 +106,7 @@
  
     if (indexPath.section == 1) {
         
-        return 110.f;
+        return 220.f;
     }
     
     return 44.0f;

@@ -17,5 +17,7 @@
 @property (nonatomic,strong)UILabel *peopleCount;//参与人数
 @property (nonatomic,strong)UIImageView *peopleImage;//人数图片
 @property (nonatomic,strong)UIButton *chatBtn;//咨询
+@property (nonatomic,strong)UIImageView *announcerImage;//发布者图片
+@property (nonatomic,strong)UILabel *announcer;//发布者
 
 @end

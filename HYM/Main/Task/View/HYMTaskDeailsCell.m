@@ -31,25 +31,25 @@
     return _name;
 }
 
-- (UILabel *)zanCount{
-    
-    if (_zanCount == nil) {
-        _zanCount = [[UILabel alloc] init];
-        _zanCount.text = @"256";
-        [HYMTool initLabel:_zanCount withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-    }
-    return _zanCount;
-}
-
-- (UIImageView *)zanImage{
-    
-    if (_zanImage == nil) {
-        
-        _zanImage = [[UIImageView alloc] init];
-    }
-    
-    return _zanImage;
-}
+//- (UILabel *)zanCount{
+//    
+//    if (_zanCount == nil) {
+//        _zanCount = [[UILabel alloc] init];
+//        _zanCount.text = @"256";
+//        [HYMTool initLabel:_zanCount withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+//    }
+//    return _zanCount;
+//}
+//
+//- (UIImageView *)zanImage{
+//    
+//    if (_zanImage == nil) {
+//        
+//        _zanImage = [[UIImageView alloc] init];
+//    }
+//    
+//    return _zanImage;
+//}
 
 - (UILabel *)comment{
     
@@ -63,6 +63,23 @@
     return _comment;
 }
 
+- (UIButton *)deleteBtn{
+
+    if (_deleteBtn == nil) {
+        
+        _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _deleteBtn;
+}
+
+- (UIButton *)chatBtn{
+
+    if (_chatBtn == nil) {
+        
+        _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    return _chatBtn;
+}
 
 #pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -81,8 +98,11 @@
     [self.contentView addSubview:self.iconImageView];
     [self.contentView addSubview:self.name];
     [self.contentView addSubview:self.comment];
-    [self.contentView addSubview:self.zanCount];
-    [self.contentView addSubview:self.zanImage];
+//    [self.contentView addSubview:self.zanCount];
+//    [self.contentView addSubview:self.zanImage];
+    
+    [self.contentView addSubview:self.deleteBtn];
+    [self.contentView addSubview:self.chatBtn];
     
     self.iconImageView.backgroundColor = [UIColor orangeColor];
     self.iconImageView.sd_layout
@@ -93,18 +113,21 @@
     self.name.sd_layout
     .leftSpaceToView(self.iconImageView,15).topSpaceToView(self.contentView,20).widthIs(80).heightIs(20);
     
-    
-    self.zanCount.sd_layout
-    .rightSpaceToView(self.contentView,15).topSpaceToView(self.contentView,25).heightIs(20).widthIs(30);
-    
-    self.zanImage.sd_layout
-    .rightSpaceToView(self.zanCount,2).heightIs(20).widthIs(30)
-    .topEqualToView(self.zanCount);
-    
-    
+
     self.comment.sd_layout
     .leftSpaceToView(self.contentView,15).rightSpaceToView(self.contentView,10).heightRatioToView(self.contentView,0.4)
     .topSpaceToView(self.iconImageView,8);
+    
+    self.deleteBtn.backgroundColor = [UIColor grayColor];
+    self.deleteBtn.sd_layout
+    .rightSpaceToView(self.contentView,15).topSpaceToView(self.contentView,20)
+    .heightIs(20).widthIs(50);
+    
+    self.chatBtn.backgroundColor = [UIColor redColor];
+    self.chatBtn.sd_layout
+    .rightSpaceToView(self.contentView,15).topSpaceToView(self.deleteBtn,5)
+    .widthIs(50).heightIs(20);
+    
     
 }
 @end

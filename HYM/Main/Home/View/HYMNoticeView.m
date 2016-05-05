@@ -71,7 +71,7 @@
 
     if (_scrollLabel == nil) {
         
-        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth*0.5, 20) withTitleArr:self.titleArr];
+        _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth*0.7, 20) withTitleArr:self.titleArr];
         _scrollLabel.scrollLabelDelegate = self;
         
     }
@@ -98,9 +98,8 @@
 #pragma mark 
 - (void)initWithView{
 
-    [self addSubview:self.title];
+
     [self addSubview:self.hornImage];
-//    [self addSubview:self.colon];
     [self addSubview:self.scrollLabel];
     [self addSubview:self.messageBtn];
     
@@ -108,18 +107,13 @@
     .leftSpaceToView(self,5).topSpaceToView(self,10)
     .bottomSpaceToView(self,10).widthEqualToHeight(20);
     
-//    self.title.backgroundColor = [UIColor redColor];
-    self.title.sd_layout
-    .leftSpaceToView(self.hornImage,3).topEqualToView(self.hornImage)
-    .bottomEqualToView(self.hornImage).widthRatioToView(self,0.22);
-    
     self.scrollLabel.sd_layout
-    .leftSpaceToView(self.title,0).topEqualToView(self.title)
-    .bottomEqualToView(self.title).widthRatioToView(self,0.5);
+    .leftSpaceToView(self.hornImage,0).topEqualToView(self.hornImage)
+    .bottomEqualToView(self.hornImage).widthRatioToView(self,0.7);
     
     self.messageBtn.backgroundColor = [UIColor redColor];
     self.messageBtn.sd_layout
-    .leftSpaceToView(self.scrollLabel,10).topSpaceToView(self,5)
+    .topSpaceToView(self,5).widthIs(40)
     .rightSpaceToView(self,15).bottomSpaceToView(self,5);
 }
 

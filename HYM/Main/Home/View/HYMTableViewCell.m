@@ -65,29 +65,12 @@
         _title = [[UILabel alloc] init];
         [HYMTool initLabel:_title withFont:[UIFont systemFontOfSize:12] withTextColor:nil withTextAlignment:NSTextAlignmentLeft];
         _title.numberOfLines = 0;
-//        
-//        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:_title.text];
         
     }
     
     return _title;
 }
-- (UIButton *)hotBtn{
-    
-    if (_hotBtn == nil) {
-        
-        _hotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _hotBtn.backgroundColor = [UIColor redColor];
-        [_hotBtn setTitle:@"热" forState:UIControlStateNormal];
-        [_hotBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _hotBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-        _hotBtn.layer.cornerRadius = 2;
-        _hotBtn.layer.masksToBounds = YES;
-        _hotBtn.backgroundColor = [UIColor redColor];
-       
-    }
-    return _hotBtn;
-}
+
 -(UIImageView *)timeImage{
     
     if (_timeImage == nil) {
@@ -137,13 +120,28 @@
         _ignoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _ignoreBtn.backgroundColor = [UIColor lightGrayColor];
         [_ignoreBtn setTitle:@"忽略" forState:UIControlStateNormal];
-        _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         [_ignoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _ignoreBtn.layer.cornerRadius = 2;
         _ignoreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         
     }
     return _ignoreBtn;
+}
+
+//未参与
+- (UIButton *)notInvolved{
+
+    if (_notInvolved == nil) {
+        _notInvolved = [UIButton buttonWithType:UIButtonTypeCustom];
+        _notInvolved.backgroundColor = [UIColor redColor];
+        [_notInvolved setTitle:@"未参与" forState:UIControlStateNormal];
+        [_notInvolved setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _notInvolved.layer.cornerRadius = 5;
+        _notInvolved.titleLabel.font = [UIFont systemFontOfSize:13];
+        _notInvolved.titleLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _notInvolved;
 }
 #pragma mark 懒加载cell2
 - (UIButton *)leftBtn{
@@ -248,12 +246,13 @@
 - (void)initCell1{
     [self.contentView addSubview:self.storeImage];
     [self.contentView addSubview:self.title];
-    [self.contentView addSubview:self.hotBtn];
+//    [self.contentView addSubview:self.hotBtn];
     [self.contentView addSubview:self.timeImage];
     [self.contentView addSubview:self.timeEnd];
     [self.contentView addSubview:self.peopleCount];
     [self.contentView addSubview:self.peopleImage];
     [self.contentView addSubview:self.ignoreBtn];
+    [self.contentView addSubview:self.notInvolved];
     
     
     self.storeImage.sd_layout
@@ -284,16 +283,15 @@
     .leftSpaceToView(self.peopleImage,0).bottomEqualToView(self.timeEnd)
     .rightSpaceToView(self.contentView,5).topEqualToView(self.timeEnd);
     
-    
-    self.hotBtn.sd_layout
-    .leftSpaceToView(self.title,3).topEqualToView(self.title)
-    .heightIs(20).widthIs(20);
-    
 
     self.ignoreBtn.sd_layout
-    .leftSpaceToView(self.hotBtn,3).bottomEqualToView(self.hotBtn)
-    .topEqualToView(self.hotBtn).rightSpaceToView(self.contentView,10)
-    .widthIs(30);
+    .rightSpaceToView(self.contentView,20).topSpaceToView(self.contentView,15)
+    .widthIs(35).heightIs(20);
+    
+    self.notInvolved.sd_layout
+    .rightSpaceToView(self.contentView,5).topSpaceToView(self.ignoreBtn,3)
+    .widthIs(50).heightIs(20);
+    
 
 }
 

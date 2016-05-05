@@ -44,10 +44,9 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMPublishTableView alloc] init];
+        _tableView = [[HYMPublishTableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
         _tableView.tableHeaderView = self.publishView;
         _tableView.tableFooterView = self.bottomView;
-        _tableView.frame = CGRectMake(0, 0, kScreenWitdth, kScreenHeight);
     }
     
     return _tableView;

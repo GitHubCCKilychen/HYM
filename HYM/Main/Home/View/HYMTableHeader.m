@@ -30,7 +30,6 @@
     if (_taskView == nil) {
     
         _taskView = [[HYMTaskView alloc] init];
-//        _taskView.frame = CGRectMake(0, 100, self.frame.size.width, self.frame.size.height*0.6);
    
     }
     
@@ -55,6 +54,7 @@
     [self addSubview:self.scrollView];
     [self addSubview:self.taskView];
     //
+//    self.taskView.backgroundColor = [UIColor grayColor];
     self.taskView.sd_layout
     .leftSpaceToView(self,0).topSpaceToView(self.scrollView,0)
     .bottomSpaceToView(self,10).rightSpaceToView(self,0);

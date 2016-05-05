@@ -23,6 +23,8 @@
 @property (nonatomic,strong)UIImageView *lineView;
 @property (nonatomic,strong)UILabel *invitationLabel;//邀请
 @property (nonatomic,strong)UILabel *taskLabel;//任务返利
+@property (nonatomic,strong)UIImageView *moneyImage;
+@property (nonatomic,strong)UIView *horizontalLine;
 @end
 @implementation HYMTaskView
 
@@ -32,7 +34,7 @@
     if (_brownView == nil) {
         
         _brownView = [[UIView alloc] init];
-        _brownView.backgroundColor = brownBackColor;
+//        _brownView.backgroundColor = brownBackColor;
         _brownView.layer.cornerRadius = 5;
         
     }
@@ -50,12 +52,20 @@
     
     return _moneyLabel;
 }
+- (UIImageView *)moneyImage{
+
+    if (_moneyImage == nil) {
+        
+        _moneyImage = [[UIImageView alloc] init];
+    }
+    return _moneyImage;
+}
 - (UILabel *)titleLabel{
 
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"累计收益";
-        [HYMTool initLabel:_titleLabel withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        _titleLabel.text = @"累计返利";
+        [HYMTool initLabel:_titleLabel withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor redColor] withTextAlignment:NSTextAlignmentLeft];
     }
     
     return _titleLabel;
@@ -72,6 +82,17 @@
     return _lineView;
 }
 
+- (UIView *)horizontalLine{
+
+    if (_horizontalLine == nil) {
+        
+        _horizontalLine = [[UIView alloc] init];
+        _horizontalLine.alpha = 0.08;
+        _horizontalLine.layer.borderWidth = 0.5;
+    }
+    return _horizontalLine;
+}
+
 - (id)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
@@ -79,8 +100,9 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
+          [self loadData];
           [self initWithView];
-         [self loadData];
+        
       
         
     }
@@ -91,15 +113,12 @@
 - (void)initWithButton:(NSArray*)taskArr{
     
     
-    CGFloat  width = kScreenWidth-10;
-    CGFloat height = self.brownView.frame.size.height;
     NSArray *titleArr = @[@"任务赚钱",@"邀请奖励",@"我的账本"];
     
     for (int i = 0; i < 3; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGFloat margin = kScreenWidth/4;
-        btn.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, 10, 45, 45);
+        btn.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, self.brownView.frame.size.height+10, 45, 45);
         btn.backgroundColor = [UIColor brownColor];
         [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = 100+i;
@@ -107,45 +126,34 @@
         
  
         UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, 60, 50, 20);
+        title.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, 60+self.brownView.frame.size.height, 50, 20);
         title.text = [NSString stringWithFormat:@"%@",titleArr[i]];
         title.font = [UIFont systemFontOfSize:12];
         [self addSubview:title];
    
     }
   
+    NSArray *titleA = @[@"任务返利",@"邀请返利"];
     for (int i = 0; i < 2; i++) {
         
         //此处frame有问题
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((kScreenWidth/2+10), 20+i*20
-                               , 50, 20);
-        [btn setTitle:taskArr[i] forState:UIControlStateNormal];
+        btn.frame = CGRectMake((kScreenWidth/2+10), 20+i*20, 50, 20);
+        [btn setTitle:titleA[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.brownView addSubview:btn];
         
     }
-    for (int i = 0; i < 2; i++) {
-        
-        //此处frame有问题
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(kScreenWidth/2+50, 20+(i*20), 20, 20);
-//        [btn setTitle:titleA[i] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-                               btn.backgroundColor = [UIColor redColor];
-//        [self.brownView addSubview:btn];
-        
-    }
-     NSArray *titleA = @[@"任务返利",@"邀请返利"];
+    
+    
     for (int i = 0; i < 2; i++) {
         
         //此处frame有问题
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake((kScreenWidth/2+80), 20+i*20
                                , 50, 20);
-        [btn setTitle:titleA[i] forState:UIControlStateNormal];
+        [btn setTitle:taskArr[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.brownView addSubview:btn];
@@ -188,24 +196,35 @@
     [self.brownView addSubview:self.titleLabel];
     [self addSubview:self.brownView];
     [self.brownView addSubview:self.lineView];
+    [self.brownView addSubview:self.moneyImage];
+    [self.brownView addSubview:self.horizontalLine];
     
     //黄色部分在iPhone4上有问题
     self.brownView.sd_layout
     .leftSpaceToView(self,5).rightSpaceToView(self,5)
-    .bottomSpaceToView(self,10).heightRatioToView(self,0.5);
+    .topSpaceToView(self,5).heightRatioToView(self,0.5);
     
     self.moneyLabel.sd_layout
-    .leftSpaceToView(self.brownView,30).topSpaceToView(self.brownView,20)
+    .leftSpaceToView(self.brownView,20).topSpaceToView(self.brownView,45)
     .widthRatioToView(self.brownView,0.4).heightIs(28);
     
+    self.moneyImage.backgroundColor = [UIColor grayColor];
+    self.moneyImage.sd_layout
+    .leftEqualToView(self.moneyLabel).topSpaceToView(self.brownView,20)
+    .widthEqualToHeight(15);
+    
     self.titleLabel.sd_layout
-    .leftSpaceToView(self.brownView,50).bottomSpaceToView(self.brownView,10)
-    .topSpaceToView(self.moneyLabel,-5).widthIs(60);
+    .leftSpaceToView(self.brownView,45).topSpaceToView(self.brownView,20)
+    .widthIs(60).heightIs(20);
     
 //    self.lineView.backgroundColor = [UIColor grayColor];
     self.lineView.sd_layout
-    .leftSpaceToView(self.moneyLabel,0).topSpaceToView(self.brownView,10)
+    .leftSpaceToView(self.moneyLabel,10).topSpaceToView(self.brownView,10)
     .bottomSpaceToView(self.brownView,10).widthIs(0.8);
+    
+    self.horizontalLine.sd_layout
+    .leftSpaceToView(self.brownView,5).rightSpaceToView(self.brownView,5)
+    .heightIs(1).bottomSpaceToView(self.brownView,0.8);
     
 }
 

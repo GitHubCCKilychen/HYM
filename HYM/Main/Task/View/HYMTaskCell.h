@@ -28,6 +28,7 @@
 @property (nonatomic,strong)UILabel *peopleCount;//参与人数
 @property (nonatomic,strong)UIImageView *peopleImage;//参与人数
 @property (nonatomic,strong)UIButton *ignoreBtn;//忽略
+@property (nonatomic,strong)UIButton *notInvolved;
 
 /**
  *  组1

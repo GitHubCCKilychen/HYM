@@ -101,20 +101,69 @@
     return _gray2Line;
 }
 
--(UIButton *)openActivity{
-
-    if (_openActivity == nil) {
-        
-        _openActivity = [UIButton buttonWithType:UIButtonTypeCustom];
-    }
-    return _openActivity;
-}
+//-(UIButton *)openActivity{
+//
+//    if (_openActivity == nil) {
+//        
+//        _openActivity = [UIButton buttonWithType:UIButtonTypeCustom];
+//    }
+//    return _openActivity;
+//}
 - (UIButton *)openContent{
 
     if (_openContent == nil) {
         _openContent = [UIButton buttonWithType:UIButtonTypeCustom];
     }
     return _openContent;
+}
+
+- (UIView *)redView{
+
+    if (_redView == nil) {
+        
+        _redView = [[UIView alloc] init];
+    }
+    return _redView;
+}
+
+//参与地址
+- (UILabel *)participatingAddress{
+
+    if (_participatingAddress == nil) {
+        
+       
+        _participatingAddress = [[UILabel alloc] init];
+         _participatingAddress.text = @"参与地址";
+        [HYMTool initLabel:_participatingAddress withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+    }
+    return _participatingAddress;
+}
+
+- (UIButton *)copyBtn{
+
+    if (_copyBtn == nil) {
+        _copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _copyBtn.layer.borderColor = [UIColor blackColor].CGColor;
+        _copyBtn.layer.borderWidth = 0.5;
+        [_copyBtn setTitle:@"复制" forState:UIControlStateNormal];
+        [_copyBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        _copyBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        _copyBtn.layer.cornerRadius = 5;
+        _copyBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _copyBtn;
+}
+
+- (UILabel *)link{
+
+    if (_link == nil) {
+        
+        _link = [[UILabel alloc] init];
+        _link.text = @"www.baidu.com";
+        [HYMTool initLabel:_link withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blueColor] withTextAlignment:NSTextAlignmentLeft];
+        
+    }
+    return _link;
 }
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -141,8 +190,11 @@
     [self addSubview:self.activityCourse];
     [self addSubview:self.courseContent];
     [self addSubview:self.gray2Line];
-    [self addSubview:self.openActivity];
     [self addSubview:self.openContent];
+    [self addSubview:self.redView];
+    [self addSubview:self.participatingAddress];
+    [self addSubview:self.link];
+    [self addSubview:self.copyBtn];
     
     
     //左侧15上册10
@@ -157,33 +209,27 @@
     
     self.activityContent.sd_layout
     .leftSpaceToView(self,15).rightSpaceToView(self,10)
-    .topSpaceToView(self.activity,15).heightIs(40);
-    
-    self.openActivity.backgroundColor = [UIColor grayColor];
-    self.openActivity.sd_layout
-    .rightSpaceToView(self,20).bottomSpaceToView(self.grayLine,2)
-    .topSpaceToView(self.activityContent,0)
-    .leftSpaceToView(self,kScreenWitdth-50).widthEqualToHeight(20);
+    .topSpaceToView(self.activity,10).heightIs(40);
     
     
     self.grayLine.backgroundColor = [UIColor grayColor];
     self.grayLine.sd_layout
     .leftEqualToView(self.activityContent).rightEqualToView(self.activityContent)
-    .topSpaceToView(self.activityContent,20).heightIs(1);
+    .topSpaceToView(self.activityContent,10).heightIs(1);
     
     self.verticalLine.backgroundColor = [UIColor orangeColor];
     self.verticalLine.sd_layout
-    .leftSpaceToView(self,15).topSpaceToView(self.grayLine,20)
+    .leftSpaceToView(self,15).topSpaceToView(self.grayLine,12)
     .heightIs(20).widthIs(8);
     
     
     self.activityCourse.sd_layout
-    .leftEqualToView(self.activity).topSpaceToView(self.grayLine,20)
+    .leftEqualToView(self.activity).topSpaceToView(self.grayLine,10)
     .widthIs(80).heightIs(20);
 //
 //    self.courseContent.backgroundColor = [UIColor grayColor];
     self.courseContent.sd_layout
-    .leftSpaceToView(self,15).topSpaceToView(self.activityCourse,15)
+    .leftSpaceToView(self,15).topSpaceToView(self.activityCourse,10)
     .rightSpaceToView(self,15).heightIs(40);
     
     self.openContent.backgroundColor = [UIColor orangeColor];
@@ -195,6 +241,23 @@
     self.gray2Line.sd_layout
     .leftSpaceToView(self,15).rightSpaceToView(self,15)
     .topSpaceToView(self.courseContent,20).heightIs(1);
+    
+    self.redView.backgroundColor = [UIColor redColor];
+    self.redView.sd_layout
+    .leftEqualToView(self.gray2Line).bottomSpaceToView(self,10)
+    .widthIs(20).heightIs(20);
+    
+    self.participatingAddress.backgroundColor = [UIColor grayColor];
+    self.participatingAddress.sd_layout
+    .leftSpaceToView(self.redView,10).bottomEqualToView(self.redView)
+    .widthIs(60).heightIs(20);
+    
+    self.link.sd_layout
+    .leftSpaceToView(self.participatingAddress,5).bottomEqualToView(self.redView).widthRatioToView(self,0.6).heightIs(20);
+    
+    self.copyBtn.sd_layout
+    .rightSpaceToView(self,20).bottomEqualToView(self.redView)
+    .heightIs(20).widthIs(40);
     
 }
 
@@ -208,7 +271,7 @@
     for (int i = 0; i < 2; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(20+20*i+i*btnX, 250, btnWidth, 40);
+        btn.frame = CGRectMake(20+20*i+i*btnX, 210, btnWidth, 40);
         btn.backgroundColor = [UIColor orangeColor];
         [btn setTitle:title[i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

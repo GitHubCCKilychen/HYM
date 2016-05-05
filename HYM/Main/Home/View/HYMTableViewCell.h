@@ -23,7 +23,7 @@
  */
 
 @property (nonatomic,strong)HYMTaskModel *taskModel;
-@property (nonatomic,strong)UIButton *hotBtn;
+//@property (nonatomic,strong)UIButton *hotBtn;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *title;
 //@property (nonatomic,strong)UILabel *subTitle;
@@ -32,6 +32,7 @@
 @property (nonatomic,strong)UILabel *peopleCount;//参与人数
 @property (nonatomic,strong)UIImageView *peopleImage;//参与人数
 @property (nonatomic,strong)UIButton *ignoreBtn;//忽略
+@property (nonatomic,strong)UIButton *notInvolved;//未参与
 
 /**
  *  @param titleInforation 今日资讯标题

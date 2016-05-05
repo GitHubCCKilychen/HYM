@@ -47,34 +47,34 @@
     return _imageView;
 }
 
-- (UILabel *)officialContent{
-
-    if (_officialContent == nil) {
-        
-
-        _officialContent = [[UILabel alloc] init];
-        _officialContent.text = @"点击进入官方网站:";
-        [HYMTool initLabel:_officialContent withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-    }
-    return _officialContent;
-}
-
-- (UILabel *)officialWebsite{
-
-    if (_officialWebsite == nil) {
-        
-        _officialWebsite = [[UILabel alloc] init];
-        _officialWebsite.text = @"https://www.baidu.com";
-        [HYMTool initLabel:_officialWebsite withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor orangeColor] withTextAlignment:NSTextAlignmentLeft];
-        _officialWebsite.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(websiteAct:)];
-        [_officialWebsite addGestureRecognizer:tap];
-        
-        UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(textLongAct:)];
-        [_officialWebsite addGestureRecognizer:longGes];
-    }
-    return _officialWebsite;
-}
+//- (UILabel *)officialContent{
+//
+//    if (_officialContent == nil) {
+//        
+//
+//        _officialContent = [[UILabel alloc] init];
+//        _officialContent.text = @"点击进入官方网站:";
+//        [HYMTool initLabel:_officialContent withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+//    }
+//    return _officialContent;
+//}
+//
+//- (UILabel *)officialWebsite{
+//
+//    if (_officialWebsite == nil) {
+//        
+//        _officialWebsite = [[UILabel alloc] init];
+//        _officialWebsite.text = @"https://www.baidu.com";
+//        [HYMTool initLabel:_officialWebsite withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor orangeColor] withTextAlignment:NSTextAlignmentLeft];
+//        _officialWebsite.userInteractionEnabled = YES;
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(websiteAct:)];
+//        [_officialWebsite addGestureRecognizer:tap];
+//        
+//        UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(textLongAct:)];
+//        [_officialWebsite addGestureRecognizer:longGes];
+//    }
+//    return _officialWebsite;
+//}
 
 - (UILabel *)moreContent{
 
@@ -92,7 +92,7 @@
     if (_officeNumber == nil) {
         
         _officeNumber = [[UILabel alloc] init];
-        _officeNumber.text = @"客服电话:0531-88568221";
+        _officeNumber.text = @"点击链接官方客服：";
         [HYMTool initLabel:_officeNumber withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
         
     }
@@ -150,6 +150,17 @@
     }
     return _sliderView;
 }
+
+- (UIButton *)chatBtn{
+
+    if (_chatBtn == nil) {
+        
+        _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _chatBtn.backgroundColor = [UIColor grayColor];
+    }
+    
+    return _chatBtn;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -171,8 +182,8 @@
     [self addSubview:self.lineView];
     [self addSubview:self.taskRecord];
     [self addSubview:self.imageView];
-    [self addSubview:self.officialContent];
-    [self addSubview:self.officialWebsite];
+//    [self addSubview:self.officialContent];
+//    [self addSubview:self.officialWebsite];
     [self addSubview:self.moreContent];
     [self addSubview:self.officeNumber];
     
@@ -181,6 +192,7 @@
     [self addSubview:self.zan];
     [self addSubview:self.bottomLine];
     [self addSubview:self.sliderView];
+    [self addSubview:self.chatBtn];
     
     self.lineView.sd_layout
     .leftSpaceToView(self,15).topSpaceToView(self,10)
@@ -199,24 +211,24 @@
     .topSpaceToView(self.lineView,10).heightRatioToView(self,0.4);
     
 //    self.officialContent.backgroundColor = [UIColor brownColor];
-    self.officialContent.sd_layout
-    .leftSpaceToView(self,20).topSpaceToView(self.imageView,10)
-    .widthRatioToView(self,0.35).heightIs(20);
-    
-//    self.officialWebsite.backgroundColor = [UIColor grayColor];
-    self.officialWebsite.sd_layout
-    .leftSpaceToView(self.officialContent,0).topEqualToView(self.officialContent)
-    .widthRatioToView(self,0.5).heightIs(20);
+//    self.officialContent.sd_layout
+//    .leftSpaceToView(self,20).topSpaceToView(self.imageView,10)
+//    .widthRatioToView(self,0.35).heightIs(20);
+//    
+////    self.officialWebsite.backgroundColor = [UIColor grayColor];
+//    self.officialWebsite.sd_layout
+//    .leftSpaceToView(self.officialContent,0).topEqualToView(self.officialContent)
+//    .widthRatioToView(self,0.5).heightIs(20);
     
 //    self.moreContent.backgroundColor = [UIColor grayColor];
     self.moreContent.sd_layout
-    .leftSpaceToView(self,20).topSpaceToView(self.officialWebsite,5)
+    .leftSpaceToView(self,20).topSpaceToView(self.imageView,25)
     .heightIs(20).widthRatioToView(self,0.6);
     
-//    self.officeNumber.backgroundColor =[UIColor brownColor];
+    self.officeNumber.backgroundColor =[UIColor brownColor];
     self.officeNumber.sd_layout
     .leftSpaceToView(self,20).topSpaceToView(self.moreContent,5)
-    .widthRatioToView(self,0.5).heightIs(20);
+    .widthRatioToView(self,0.4).heightIs(20);
     
     
     self.userline.sd_layout
@@ -234,6 +246,10 @@
     self.bottomLine.sd_layout
     .leftSpaceToView(self,10).bottomSpaceToView(self,10)
     .rightSpaceToView(self,10).heightIs(1);
+    
+    self.chatBtn.sd_layout
+    .leftSpaceToView(self.officeNumber,10).topSpaceToView(self.moreContent,5)
+    .widthIs(30).heightIs(20);
 }
 
 #pragma mark 转发评论

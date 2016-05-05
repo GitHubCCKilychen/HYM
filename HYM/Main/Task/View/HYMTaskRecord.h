@@ -14,10 +14,11 @@
 @property (nonatomic,strong)UIView *lineView;
 @property (nonatomic,strong)UILabel *taskRecord;//任务流程
 @property (nonatomic,strong)UIImageView *imageView;//流程图
-@property (nonatomic,strong)UILabel *officialContent;//官方
-@property (nonatomic,strong)UILabel *officialWebsite;//官方网址
+//@property (nonatomic,strong)UILabel *officialContent;//官方
+//@property (nonatomic,strong)UILabel *officialWebsite;//官方网址
 @property (nonatomic,strong)UILabel *moreContent;//更多内容
 @property (nonatomic,strong)UILabel *officeNumber;//官方电话
+@property (nonatomic,strong)UIButton *chatBtn;//咨询
 
 //用户评价
 @property (nonatomic,strong)UIView *userline;

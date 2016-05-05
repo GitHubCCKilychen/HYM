@@ -42,6 +42,8 @@
     [self reloadData];
     
     NSLog(@"--%ld",(long)_index);
+    
+    
 }
 
 - (void)setCount2:(NSArray *)count2{
@@ -55,7 +57,7 @@
     
     if (_index == 1) {
         
-         NSLog(@"----%ld",(unsigned long)_count2.count);
+
         return _count2.count;
     }
     
@@ -112,7 +114,5 @@
     
     
 }
-
-
 
 @end

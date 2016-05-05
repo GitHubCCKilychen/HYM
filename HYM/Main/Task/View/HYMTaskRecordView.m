@@ -82,12 +82,29 @@
     if (_chatBtn == nil) {
         
         _chatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _chatBtn.backgroundColor = [UIColor brownColor];
+//        _chatBtn.backgroundColor = [UIColor brownColor];
     }
     
     return _chatBtn;
 }
 
+- (UILabel *)announcer{
+
+    if (_announcer == nil) {
+        
+        _announcer = [[UILabel alloc] init];
+    }
+    return _announcer;
+}
+
+- (UIImageView *)announcerImage{
+
+    if (_announcerImage == nil) {
+        
+        _announcerImage = [[UIImageView alloc] init];
+    }
+    return _announcerImage;
+}
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -108,6 +125,8 @@
     [self addSubview:self.timeEnd];
     [self addSubview:self.peopleCount];
     [self addSubview:self.peopleImage];
+    [self addSubview:self.announcerImage];
+    [self addSubview:self.announcer];
     [self addSubview:self.chatBtn];
     
     self.storeImage.sd_layout
@@ -116,12 +135,12 @@
     
     self.title.backgroundColor = [UIColor grayColor];
     self.title.sd_layout
-    .leftSpaceToView(self.storeImage,5).topEqualToView(self.storeImage)
-    .widthRatioToView(self,0.53).heightIs(50);
+    .leftSpaceToView(self.storeImage,5).topSpaceToView(self,10)
+    .widthRatioToView(self,0.53).heightIs(40);
     
     
     self.timeImage.sd_layout
-    .leftEqualToView(self.title).bottomEqualToView(self.storeImage)
+    .leftEqualToView(self.title).topSpaceToView(self.title,5)
     .heightIs(20).widthIs(20);
     
     //    self.timeEnd.backgroundColor = [UIColor blueColor];
@@ -138,11 +157,23 @@
     .leftSpaceToView(self.peopleImage,0).bottomEqualToView(self.timeEnd)
     .rightSpaceToView(self,5).topEqualToView(self.timeEnd);
     
+    
+    self.announcerImage.backgroundColor = [UIColor brownColor];
+    self.announcerImage.sd_layout
+    .leftSpaceToView(self.storeImage,5).topSpaceToView(self.timeImage,2)
+    .widthIs(20).heightIs(20);
+    
+    self.announcer.backgroundColor =[UIColor grayColor];
+    self.announcer.sd_layout
+    .leftSpaceToView(self.announcerImage,3).topSpaceToView(self.timeImage,2)
+    .widthRatioToView(self,0.3).heightIs(20);
+    
     //此处值根据图片来
+    self.chatBtn.backgroundColor = [UIColor greenColor];
     self.chatBtn.sd_layout
-    .leftSpaceToView(self.title,10).topSpaceToView(self,10)
-    .rightSpaceToView(self,15)
-    .widthIs(40).heightIs(30);
+    .leftSpaceToView(self.announcer,20)
+    .topEqualToView(self.announcerImage).heightIs(20).widthIs(40);
+    
 
 }
 @end
