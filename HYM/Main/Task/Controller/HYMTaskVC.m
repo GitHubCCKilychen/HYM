@@ -56,11 +56,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self loadData];
     [self initDefault];
     [self initWithView];
     //右上角
     [self initWithBarItem];
 }
+
+
+#pragma mark 数据
+- (void)loadData{
+
+  
+}
+
+
 
 #pragma mark initview
 - (void)initDefault{
@@ -70,8 +80,6 @@
 
 #pragma mark initview
 - (void)initWithView{
-
-//    [self.view addSubview:self.segmentView];
     [self.view addSubview:self.sortView];
     [self.view addSubview:self.tableView];
     
@@ -134,15 +142,14 @@
 
     [super viewWillAppear:animated];
     
-//    [self.navigationController.navigationBar addSubview:self.segmentView];
-    
+    [self.navigationController.navigationBar addSubview:self.segmentView];
 }
 
-//- (void)viewWillDisappear:(BOOL)animated{
-//
-//    [self viewWillDisappear:animated];
-//    
-//    [self.segmentView removeFromSuperview];
-//}
+- (void)viewWillDisappear:(BOOL)animated{
+
+    [self viewWillDisappear:animated];
+    
+    [self.segmentView removeFromSuperview];
+}
 
 @end

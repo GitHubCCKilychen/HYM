@@ -56,15 +56,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+     self.view.backgroundColor = [UIColor whiteColor];
     [self initDefault];
     [self initWithView];
+    
 }
 
 #pragma mark 
 - (void)initDefault{
 
     self.title = @"发布任务";
+   
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
 }
 

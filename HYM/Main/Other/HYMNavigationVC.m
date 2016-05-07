@@ -69,4 +69,5 @@
     [navi setTitleTextAttributes:dic];
     return dic;
 }
+
 @end

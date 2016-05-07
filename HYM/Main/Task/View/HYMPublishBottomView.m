@@ -8,6 +8,7 @@
 
 #import "HYMPublishBottomView.h"
 #import "HYMPayMoneyVC.h"
+#import "HYMDetailsVC.h"
 @interface HYMPublishBottomView ()
 
 @property (nonatomic,strong)UIView *lineView;
@@ -158,7 +159,11 @@
     //判断上面填写的是否都填写完整
     //1.logo 标题 品牌 cell内容 报单必填
     
-    HYMPayMoneyVC *payMoney = [[HYMPayMoneyVC alloc] init];
-    [self.viewController.navigationController pushViewController:payMoney animated:YES];
+//    HYMPayMoneyVC *payMoney = [[HYMPayMoneyVC alloc] init];
+//    [self.viewController.navigationController pushViewController:payMoney animated:YES];
+    
+    //任务详情
+    HYMDetailsVC *details = [[HYMDetailsVC alloc] init];
+    [self.viewController.navigationController pushViewController:details animated:YES];
 }
 @end

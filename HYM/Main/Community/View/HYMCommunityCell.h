@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMCommunityCell : UITableViewCell
+- (IBAction)delete:(UIButton *)sender;
 
 @end

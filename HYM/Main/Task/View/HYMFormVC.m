@@ -126,7 +126,6 @@
     //判断必填项是否完整
     
     HYMPublishVC *pulishVC = [[HYMPublishVC alloc] init];
-    pulishVC.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController pushViewController:pulishVC animated:YES];
 }
 
