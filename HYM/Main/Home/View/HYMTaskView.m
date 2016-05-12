@@ -174,7 +174,7 @@
 
     NSDictionary *dic = [infor objectForKey:@"infor"];
     
-    NSString *money = [NSString stringWithFormat:@"+%@",[dic objectForKey:@"total"]];
+    NSString *money = [NSString stringWithFormat:@"%@",[dic objectForKey:@"total"]];
     self.moneyLabel.text = money;
     
     NSArray *arr = @[[dic objectForKey:@"task"],[dic objectForKey:@"invite"]];

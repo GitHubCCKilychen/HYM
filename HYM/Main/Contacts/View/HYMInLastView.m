@@ -7,7 +7,7 @@
 //
 
 #import "HYMInLastView.h"
-
+#import "HYMQRCodeVC.h"
 @implementation HYMInLastView
 
 -(UILabel *)title{
@@ -204,9 +204,33 @@
         [btn setTitle:btnTitle[i] forState:UIControlStateNormal];
         btn.layer.borderColor = [UIColor blueColor].CGColor;
         btn.layer.borderWidth = 0.5;
+        btn.tag = i;
         btn.titleLabel.font = [UIFont systemFontOfSize:11];
         [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(codeAct:) forControlEvents:UIControlEventTouchUpInside];
         [self.invitationView addSubview:btn];
     }
+}
+
+- (void)codeAct:(UIButton *)btn{
+
+    switch (btn.tag ) {
+        case 0:
+            
+            break;
+        case 1:
+            break;
+        case 2:
+        {
+        
+            HYMQRCodeVC *codeVC = [[HYMQRCodeVC alloc] init];
+            codeVC.hidesBottomBarWhenPushed = YES;
+            [self.viewController.navigationController pushViewController:codeVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+    
 }
 @end

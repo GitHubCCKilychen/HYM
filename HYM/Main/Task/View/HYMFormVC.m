@@ -111,7 +111,7 @@
     
     self.tableView.sd_layout
     .leftSpaceToView(self.view,10).rightSpaceToView(self.view,10)
-    .topSpaceToView(self.headView,10).heightRatioToView(self.view,0.65);
+    .topSpaceToView(self.headView,10).bottomSpaceToView(self.view,110);
     
     self.sureBtn.sd_layout
     .leftSpaceToView(self.view,10).rightSpaceToView(self.view,10)

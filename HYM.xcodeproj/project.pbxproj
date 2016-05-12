@@ -17,13 +17,14 @@
 		FE0442B31CBC7B18005B1055 /* HYMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0442B21CBC7B18005B1055 /* HYMUITests.m */; };
 		FE2628811CD82D6000175B55 /* HYMTaskCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2628801CD82D6000175B55 /* HYMTaskCellModel.m */; };
 		FE2628851CD8462800175B55 /* HYMPublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2628841CD8462800175B55 /* HYMPublishVC.m */; };
-		FE2628891CD847F600175B55 /* HYMPublishTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2628881CD847F600175B55 /* HYMPublishTableView.m */; };
-		FE26288C1CD84EFF00175B55 /* HYMPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE26288B1CD84EFF00175B55 /* HYMPublishView.m */; };
-		FE26288F1CD879A400175B55 /* HYMPublishBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE26288E1CD879A400175B55 /* HYMPublishBottomView.m */; };
-		FE2628911CD891D900175B55 /* ic_arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2628901CD891D900175B55 /* ic_arrow_up.png */; };
 		FE2628951CD8989000175B55 /* HYMPayMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2628941CD8989000175B55 /* HYMPayMoneyVC.m */; };
-		FE2628991CD89C3400175B55 /* HYMPayTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2628981CD89C3400175B55 /* HYMPayTableView.m */; };
-		FE26289C1CD89D7E00175B55 /* HYMPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE26289B1CD89D7E00175B55 /* HYMPayView.m */; };
+		FE27FCC61CE0218600AE1467 /* HYMQRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FCC51CE0218600AE1467 /* HYMQRCodeVC.m */; };
+		FE27FCC81CE02B0100AE1467 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE27FCC71CE02B0100AE1467 /* CoreImage.framework */; };
+		FE27FD0B1CE05F3900AE1467 /* HYMSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FD0A1CE05F3900AE1467 /* HYMSearchVC.m */; };
+		FE27FD121CE06B7600AE1467 /* HYMPersonTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FD111CE06B7600AE1467 /* HYMPersonTable.m */; };
+		FE27FD151CE0744F00AE1467 /* HYMPersonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FD141CE0744F00AE1467 /* HYMPersonHeader.m */; };
+		FE27FD181CE0909E00AE1467 /* HYMPushSingleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FD171CE0909E00AE1467 /* HYMPushSingleCell.m */; };
+		FE27FD1B1CE0926300AE1467 /* HYMTMyInvolvementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE27FD1A1CE0926300AE1467 /* HYMTMyInvolvementCell.m */; };
 		FE2827D61CDC2AAD00A1A3BE /* HYMSelectedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2827D51CDC2AAD00A1A3BE /* HYMSelectedPost.m */; };
 		FE2827D91CDC2D3200A1A3BE /* HYMPostTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2827D81CDC2D3200A1A3BE /* HYMPostTable.m */; };
 		FE2827DD1CDC469300A1A3BE /* HYMCommBlogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2827DC1CDC469300A1A3BE /* HYMCommBlogVC.m */; };
@@ -128,6 +129,7 @@
 		FE73F5601CC9CDF200F792D7 /* HYMCommentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE73F55E1CC9CDF200F792D7 /* HYMCommentVC.m */; };
 		FE73F5641CC9F9A900F792D7 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE73F5631CC9F9A900F792D7 /* ShareView.m */; };
 		FE73F5671CC9FD0500F792D7 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FE73F5661CC9FD0500F792D7 /* UIView+Additions.m */; };
+		FE7A5CD01CE20F8200BF4B69 /* HYMUpTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A5CCF1CE20F8200BF4B69 /* HYMUpTaskCell.m */; };
 		FE7FDB051CC8661A00B26F87 /* HYMBlogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7FDB041CC8661A00B26F87 /* HYMBlogVC.m */; };
 		FEA97D791CCEF1C4004D773D /* GoodsReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA97D781CCEF1C4004D773D /* GoodsReplyCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FEAD78C11CDD78C60098FF5C /* HYMFriendsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAD78C01CDD78C60098FF5C /* HYMFriendsView.m */; };
@@ -136,6 +138,9 @@
 		FEAD78CA1CDD79030098FF5C /* HYMInLastView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAD78C81CDD79030098FF5C /* HYMInLastView.m */; };
 		FEAD78CC1CDD8B590098FF5C /* bbb.png in Resources */ = {isa = PBXBuildFile; fileRef = FEAD78CB1CDD8B590098FF5C /* bbb.png */; };
 		FEAD78CF1CDD94BB0098FF5C /* HYMWoolletterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAD78CE1CDD94BB0098FF5C /* HYMWoolletterView.m */; };
+		FEB662D71CE1F30E00F9A66B /* HYMUploadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB662D61CE1F30E00F9A66B /* HYMUploadTask.m */; };
+		FEB662DB1CE1F3C900F9A66B /* HYMUpHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB662DA1CE1F3C900F9A66B /* HYMUpHeader.m */; };
+		FEB662DE1CE1F54600F9A66B /* HYMUpTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FEB662DD1CE1F54600F9A66B /* HYMUpTable.m */; };
 		FEBA39061CBC7EF8008067CC /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FEBA39051CBC7EF8008067CC /* AppDelegate.mm */; };
 		FEBA39281CBC9EE2008067CC /* HYMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA39271CBC9EE2008067CC /* HYMLoginVC.m */; };
 		FEBA392B1CBCA064008067CC /* HYMTabbarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA392A1CBCA064008067CC /* HYMTabbarVC.m */; };
@@ -148,11 +153,6 @@
 		FEBA39C11CBCE17F008067CC /* bottombg.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39C01CBCE17F008067CC /* bottombg.png */; };
 		FEBA39C41CBCE5B3008067CC /* HYMTabbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA39C31CBCE5B3008067CC /* HYMTabbarButton.m */; };
 		FEBA39C81CBCF65E008067CC /* HYMNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA39C71CBCF65E008067CC /* HYMNavigationVC.m */; };
-		FEBA39CE1CBCF85B008067CC /* tab1_0.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39C91CBCF85B008067CC /* tab1_0.png */; };
-		FEBA39CF1CBCF85B008067CC /* tab1_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39CA1CBCF85B008067CC /* tab1_1.png */; };
-		FEBA39D01CBCF85B008067CC /* tab1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39CB1CBCF85B008067CC /* tab1_2.png */; };
-		FEBA39D11CBCF85B008067CC /* tab1_3.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39CC1CBCF85B008067CC /* tab1_3.png */; };
-		FEBA39D21CBCF85B008067CC /* tab1_4.png in Resources */ = {isa = PBXBuildFile; fileRef = FEBA39CD1CBCF85B008067CC /* tab1_4.png */; };
 		FEBA39D51CBCF8BB008067CC /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA39D41CBCF8BB008067CC /* UIImage+Image.m */; };
 		FEC4002B1CC4B76B00F3899D /* HYMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC4002A1CC4B76B00F3899D /* HYMTableView.m */; };
 		FEC4002E1CC4B78300F3899D /* HYMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC4002D1CC4B78300F3899D /* HYMTableViewCell.m */; };
@@ -162,6 +162,10 @@
 		FEC4003E1CC4B7AF00F3899D /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC400391CC4B7AF00F3899D /* ScrollView.m */; };
 		FEC4003F1CC4B7AF00F3899D /* ScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC4003B1CC4B7AF00F3899D /* ScrollLabel.m */; };
 		FEC400401CC4B7AF00F3899D /* UIView+FrameExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC4003D1CC4B7AF00F3899D /* UIView+FrameExtension.m */; };
+		FEC5EAE61CE2BA4B00DFC238 /* HYMTaskDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC5EAE51CE2BA4B00DFC238 /* HYMTaskDetailModel.m */; };
+		FEC5EAEC1CE2C15800DFC238 /* HYMTaskListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC5EAEB1CE2C15800DFC238 /* HYMTaskListModel.m */; };
+		FEC5EC2E1CE2F30E00DFC238 /* HYMFanliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC5EC2D1CE2F30E00DFC238 /* HYMFanliModel.m */; };
+		FEC5EC7F1CE338D900DFC238 /* HYMPublishList.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC5EC7E1CE338D900DFC238 /* HYMPublishList.m */; };
 		FEC661A61CC394B000A5465A /* HYMRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC661A51CC394B000A5465A /* HYMRequest.m */; };
 		FEC661A91CC394C300A5465A /* HYMNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC661A81CC394C300A5465A /* HYMNetWork.m */; };
 		FEC6916B1CD056A800820AA8 /* HYMMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC6916A1CD056A800820AA8 /* HYMMessageVC.m */; };
@@ -169,9 +173,35 @@
 		FEC691721CD0645A00820AA8 /* HYMMyBooksTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC691711CD0645A00820AA8 /* HYMMyBooksTableView.m */; };
 		FEC691751CD06CCB00820AA8 /* HYMTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC691741CD06CCB00820AA8 /* HYMTaskModel.m */; };
 		FEC691781CD08AE800820AA8 /* HYMRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC691771CD08AE800820AA8 /* HYMRecordCell.m */; };
-		FEC6917C1CD0BA5300820AA8 /* HYMSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC6917B1CD0BA5300820AA8 /* HYMSegmentView.m */; };
-		FEC6917F1CD0C94F00820AA8 /* HYMTaskTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC6917E1CD0C94F00820AA8 /* HYMTaskTableView.m */; };
-		FEC691821CD0CA7700820AA8 /* HYMTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEC691811CD0CA7700820AA8 /* HYMTaskCell.m */; };
+		FECFC9A21CE40981006A50A8 /* HYMPostedCaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9A11CE40981006A50A8 /* HYMPostedCaseVC.m */; };
+		FECFC9A71CE40B8A006A50A8 /* HYMPostedView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9A61CE40B8A006A50A8 /* HYMPostedView.m */; };
+		FECFC9B31CE40E60006A50A8 /* HYMTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9AA1CE40E60006A50A8 /* HYMTaskList.m */; };
+		FECFC9B41CE40E60006A50A8 /* HYMTaskListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9AC1CE40E60006A50A8 /* HYMTaskListCell.m */; };
+		FECFC9B51CE40E60006A50A8 /* HYMTaskRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9AE1CE40E60006A50A8 /* HYMTaskRecord.m */; };
+		FECFC9B61CE40E60006A50A8 /* HYMTaskRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9B01CE40E60006A50A8 /* HYMTaskRecordView.m */; };
+		FECFC9B71CE40E60006A50A8 /* HYMTaskTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9B21CE40E60006A50A8 /* HYMTaskTableView.m */; };
+		FECFC9E11CE40E73006A50A8 /* HYMActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9B91CE40E73006A50A8 /* HYMActivityView.m */; };
+		FECFC9E21CE40E73006A50A8 /* HYMCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9BB1CE40E73006A50A8 /* HYMCourseCell.m */; };
+		FECFC9E31CE40E73006A50A8 /* HYMCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECFC9BC1CE40E73006A50A8 /* HYMCourseCell.xib */; };
+		FECFC9E41CE40E73006A50A8 /* HYMDetailsBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9BE1CE40E73006A50A8 /* HYMDetailsBottom.m */; };
+		FECFC9E51CE40E73006A50A8 /* HYMDetailsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9C01CE40E73006A50A8 /* HYMDetailsTable.m */; };
+		FECFC9E61CE40E73006A50A8 /* HYMFormTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9C21CE40E73006A50A8 /* HYMFormTableView.m */; };
+		FECFC9E71CE40E73006A50A8 /* HYMIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9C41CE40E73006A50A8 /* HYMIntroduceCell.m */; };
+		FECFC9E81CE40E73006A50A8 /* HYMIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECFC9C51CE40E73006A50A8 /* HYMIntroduceCell.xib */; };
+		FECFC9E91CE40E73006A50A8 /* HYMPayTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9C71CE40E73006A50A8 /* HYMPayTableView.m */; };
+		FECFC9EA1CE40E73006A50A8 /* HYMPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9C91CE40E73006A50A8 /* HYMPayView.m */; };
+		FECFC9EB1CE40E73006A50A8 /* HYMPublishBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9CB1CE40E73006A50A8 /* HYMPublishBottomView.m */; };
+		FECFC9EC1CE40E73006A50A8 /* HYMPublishTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9CD1CE40E73006A50A8 /* HYMPublishTableView.m */; };
+		FECFC9ED1CE40E73006A50A8 /* HYMPublishView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9CF1CE40E73006A50A8 /* HYMPublishView.m */; };
+		FECFC9EE1CE40E73006A50A8 /* HYMRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9D11CE40E73006A50A8 /* HYMRecordTableView.m */; };
+		FECFC9EF1CE40E73006A50A8 /* HYMSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9D31CE40E73006A50A8 /* HYMSegmentView.m */; };
+		FECFC9F01CE40E73006A50A8 /* HYMSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9D51CE40E73006A50A8 /* HYMSortView.m */; };
+		FECFC9F11CE40E73006A50A8 /* HYMTaskBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9D71CE40E73006A50A8 /* HYMTaskBottom.m */; };
+		FECFC9F21CE40E73006A50A8 /* HYMTaskBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = FECFC9D81CE40E73006A50A8 /* HYMTaskBottom.xib */; };
+		FECFC9F31CE40E73006A50A8 /* HYMTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9DA1CE40E73006A50A8 /* HYMTaskCell.m */; };
+		FECFC9F41CE40E73006A50A8 /* HYMTaskDeailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9DC1CE40E73006A50A8 /* HYMTaskDeailsCell.m */; };
+		FECFC9F51CE40E73006A50A8 /* HYMTaskDeailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9DE1CE40E73006A50A8 /* HYMTaskDeailsTableView.m */; };
+		FECFC9F61CE40E73006A50A8 /* HYMTaskHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FECFC9E01CE40E73006A50A8 /* HYMTaskHeadView.m */; };
 		FED2F2CA1CC7011E00BBFE06 /* HYMInformationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F2C91CC7011E00BBFE06 /* HYMInformationVC.m */; };
 		FED2F2CE1CC7054700BBFE06 /* UIView+UIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F2CD1CC7054700BBFE06 /* UIView+UIViewController.m */; };
 		FED2F3371CC7446100BBFE06 /* HYMInfoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F3301CC7446100BBFE06 /* HYMInfoTableView.m */; };
@@ -179,22 +209,11 @@
 		FED2F3391CC7446100BBFE06 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F3341CC7446100BBFE06 /* BaseModel.m */; };
 		FED2F33A1CC7446100BBFE06 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F3361CC7446100BBFE06 /* CellModel.m */; };
 		FED2F33D1CC77F6600BBFE06 /* HYMTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FED2F33C1CC77F6600BBFE06 /* HYMTool.m */; };
-		FEE44FC41CD2DCD70025E6D1 /* HYMTaskBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE44FC31CD2DCD70025E6D1 /* HYMTaskBottom.m */; };
-		FEE44FC61CD2DD220025E6D1 /* HYMTaskBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE44FC51CD2DD220025E6D1 /* HYMTaskBottom.xib */; };
-		FEE44FC91CD344110025E6D1 /* HYMTaskDeailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE44FC81CD344110025E6D1 /* HYMTaskDeailsCell.m */; };
 		FEE44FCD1CD353080025E6D1 /* HYMFormVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE44FCC1CD353080025E6D1 /* HYMFormVC.m */; };
-		FEE44FD11CD35B6D0025E6D1 /* HYMFormTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE44FD01CD35B6D0025E6D1 /* HYMFormTableView.m */; };
-		FEE63F5F1CD192CD00183311 /* HYMSortView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F5E1CD192CD00183311 /* HYMSortView.m */; };
 		FEE63F631CD1B1D500183311 /* HYMRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F621CD1B1D500183311 /* HYMRecordVC.m */; };
-		FEE63F691CD1B4A000183311 /* HYMRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F681CD1B4A000183311 /* HYMRecordTableView.m */; };
 		FEE63F6D1CD1E7BC00183311 /* HYMCommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F6B1CD1E7BC00183311 /* HYMCommunityCell.m */; };
 		FEE63F6E1CD1E7BC00183311 /* HYMCommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE63F6C1CD1E7BC00183311 /* HYMCommunityCell.xib */; };
 		FEE63F721CD1EC3F00183311 /* HYMTaskDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F711CD1EC3F00183311 /* HYMTaskDetailsVC.m */; };
-		FEE63F771CD1F0BE00183311 /* HYMTaskDeailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F761CD1F0BE00183311 /* HYMTaskDeailsTableView.m */; };
-		FEE63F7A1CD1FAAA00183311 /* HYMTaskHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F791CD1FAAA00183311 /* HYMTaskHeadView.m */; };
-		FEE63F7D1CD1FCC300183311 /* HYMTaskRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F7C1CD1FCC300183311 /* HYMTaskRecordView.m */; };
-		FEE63F801CD207B000183311 /* HYMActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F7F1CD207B000183311 /* HYMActivityView.m */; };
-		FEE63F851CD20CA100183311 /* HYMTaskRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE63F841CD20CA100183311 /* HYMTaskRecord.m */; };
 		FEE943161CCE562D0068D4B5 /* PullRefreshTVCGrouped.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE943151CCE562D0068D4B5 /* PullRefreshTVCGrouped.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FEE943191CCE563E0068D4B5 /* RealityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE943171CCE563E0068D4B5 /* RealityDetailVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FEE9431C1CCE579D0068D4B5 /* XtomFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE9431B1CCE579D0068D4B5 /* XtomFunction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -213,12 +232,6 @@
 		FEEE70661CCF73A0009F89CC /* StoreDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE70651CCF73A0009F89CC /* StoreDetailVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FEEE70691CCF73BB009F89CC /* ImagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE70681CCF73BB009F89CC /* ImagePlayerView.m */; };
 		FEEE94A71CDAEC8800CB6CBE /* HYMDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94A61CDAEC8800CB6CBE /* HYMDetailsVC.m */; };
-		FEEE94AB1CDAF14100CB6CBE /* HYMDetailsTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94AA1CDAF14100CB6CBE /* HYMDetailsTable.m */; };
-		FEEE94AE1CDAF56C00CB6CBE /* HYMIntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94AD1CDAF56C00CB6CBE /* HYMIntroduceCell.m */; };
-		FEEE94B11CDB0DED00CB6CBE /* HYMCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94B01CDB0DED00CB6CBE /* HYMCourseCell.m */; };
-		FEEE94B31CDB10CF00CB6CBE /* HYMIntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEEE94B21CDB10CF00CB6CBE /* HYMIntroduceCell.xib */; };
-		FEEE94B51CDB129800CB6CBE /* HYMCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEEE94B41CDB129800CB6CBE /* HYMCourseCell.xib */; };
-		FEEE94B81CDB178200CB6CBE /* HYMDetailsBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94B71CDB178200CB6CBE /* HYMDetailsBottom.m */; };
 		FEEE94C41CDB2DDF00CB6CBE /* HYMCommView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94C31CDB2DDF00CB6CBE /* HYMCommView.m */; };
 		FEEE94C71CDB354500CB6CBE /* HYMCommTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEE94C61CDB354500CB6CBE /* HYMCommTable.m */; };
 		FEEE94C91CDB3D8E00CB6CBE /* aaa in Resources */ = {isa = PBXBuildFile; fileRef = FEEE94C81CDB3D8E00CB6CBE /* aaa */; };
@@ -263,19 +276,21 @@
 		FE2628801CD82D6000175B55 /* HYMTaskCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskCellModel.m; sourceTree = "<group>"; };
 		FE2628831CD8462800175B55 /* HYMPublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishVC.h; sourceTree = "<group>"; };
 		FE2628841CD8462800175B55 /* HYMPublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishVC.m; sourceTree = "<group>"; };
-		FE2628871CD847F600175B55 /* HYMPublishTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishTableView.h; sourceTree = "<group>"; };
-		FE2628881CD847F600175B55 /* HYMPublishTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishTableView.m; sourceTree = "<group>"; };
-		FE26288A1CD84EFF00175B55 /* HYMPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishView.h; sourceTree = "<group>"; };
-		FE26288B1CD84EFF00175B55 /* HYMPublishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishView.m; sourceTree = "<group>"; };
-		FE26288D1CD879A400175B55 /* HYMPublishBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishBottomView.h; sourceTree = "<group>"; };
-		FE26288E1CD879A400175B55 /* HYMPublishBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishBottomView.m; sourceTree = "<group>"; };
-		FE2628901CD891D900175B55 /* ic_arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_arrow_up.png; sourceTree = "<group>"; };
 		FE2628931CD8989000175B55 /* HYMPayMoneyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPayMoneyVC.h; sourceTree = "<group>"; };
 		FE2628941CD8989000175B55 /* HYMPayMoneyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPayMoneyVC.m; sourceTree = "<group>"; };
-		FE2628971CD89C3400175B55 /* HYMPayTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPayTableView.h; sourceTree = "<group>"; };
-		FE2628981CD89C3400175B55 /* HYMPayTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPayTableView.m; sourceTree = "<group>"; };
-		FE26289A1CD89D7E00175B55 /* HYMPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPayView.h; sourceTree = "<group>"; };
-		FE26289B1CD89D7E00175B55 /* HYMPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPayView.m; sourceTree = "<group>"; };
+		FE27FCC41CE0218600AE1467 /* HYMQRCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMQRCodeVC.h; sourceTree = "<group>"; };
+		FE27FCC51CE0218600AE1467 /* HYMQRCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMQRCodeVC.m; sourceTree = "<group>"; };
+		FE27FCC71CE02B0100AE1467 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		FE27FD091CE05F3900AE1467 /* HYMSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSearchVC.h; sourceTree = "<group>"; };
+		FE27FD0A1CE05F3900AE1467 /* HYMSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSearchVC.m; sourceTree = "<group>"; };
+		FE27FD101CE06B7600AE1467 /* HYMPersonTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPersonTable.h; sourceTree = "<group>"; };
+		FE27FD111CE06B7600AE1467 /* HYMPersonTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPersonTable.m; sourceTree = "<group>"; };
+		FE27FD131CE0744F00AE1467 /* HYMPersonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPersonHeader.h; sourceTree = "<group>"; };
+		FE27FD141CE0744F00AE1467 /* HYMPersonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPersonHeader.m; sourceTree = "<group>"; };
+		FE27FD161CE0909E00AE1467 /* HYMPushSingleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPushSingleCell.h; sourceTree = "<group>"; };
+		FE27FD171CE0909E00AE1467 /* HYMPushSingleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPushSingleCell.m; sourceTree = "<group>"; };
+		FE27FD191CE0926300AE1467 /* HYMTMyInvolvementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTMyInvolvementCell.h; sourceTree = "<group>"; };
+		FE27FD1A1CE0926300AE1467 /* HYMTMyInvolvementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTMyInvolvementCell.m; sourceTree = "<group>"; };
 		FE2827D41CDC2AAD00A1A3BE /* HYMSelectedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSelectedPost.h; sourceTree = "<group>"; };
 		FE2827D51CDC2AAD00A1A3BE /* HYMSelectedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSelectedPost.m; sourceTree = "<group>"; };
 		FE2827D71CDC2D3200A1A3BE /* HYMPostTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPostTable.h; sourceTree = "<group>"; };
@@ -400,6 +415,8 @@
 		FE73F5631CC9F9A900F792D7 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		FE73F5651CC9FD0500F792D7 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		FE73F5661CC9FD0500F792D7 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		FE7A5CCE1CE20F8200BF4B69 /* HYMUpTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMUpTaskCell.h; sourceTree = "<group>"; };
+		FE7A5CCF1CE20F8200BF4B69 /* HYMUpTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMUpTaskCell.m; sourceTree = "<group>"; };
 		FE7FDB031CC8661A00B26F87 /* HYMBlogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMBlogVC.h; sourceTree = "<group>"; };
 		FE7FDB041CC8661A00B26F87 /* HYMBlogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMBlogVC.m; sourceTree = "<group>"; };
 		FEA97D771CCEF1C4004D773D /* GoodsReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsReplyCell.h; sourceTree = "<group>"; };
@@ -415,6 +432,12 @@
 		FEAD78CB1CDD8B590098FF5C /* bbb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbb.png; sourceTree = "<group>"; };
 		FEAD78CD1CDD94BB0098FF5C /* HYMWoolletterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMWoolletterView.h; sourceTree = "<group>"; };
 		FEAD78CE1CDD94BB0098FF5C /* HYMWoolletterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMWoolletterView.m; sourceTree = "<group>"; };
+		FEB662D51CE1F30E00F9A66B /* HYMUploadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMUploadTask.h; sourceTree = "<group>"; };
+		FEB662D61CE1F30E00F9A66B /* HYMUploadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMUploadTask.m; sourceTree = "<group>"; };
+		FEB662D91CE1F3C900F9A66B /* HYMUpHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMUpHeader.h; sourceTree = "<group>"; };
+		FEB662DA1CE1F3C900F9A66B /* HYMUpHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMUpHeader.m; sourceTree = "<group>"; };
+		FEB662DC1CE1F54600F9A66B /* HYMUpTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMUpTable.h; sourceTree = "<group>"; };
+		FEB662DD1CE1F54600F9A66B /* HYMUpTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMUpTable.m; sourceTree = "<group>"; };
 		FEBA39041CBC7EF8008067CC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FEBA39051CBC7EF8008067CC /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		FEBA39121CBC8ACF008067CC /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -440,11 +463,6 @@
 		FEBA39C31CBCE5B3008067CC /* HYMTabbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTabbarButton.m; sourceTree = "<group>"; };
 		FEBA39C61CBCF65E008067CC /* HYMNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMNavigationVC.h; sourceTree = "<group>"; };
 		FEBA39C71CBCF65E008067CC /* HYMNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMNavigationVC.m; sourceTree = "<group>"; };
-		FEBA39C91CBCF85B008067CC /* tab1_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1_0.png; sourceTree = "<group>"; };
-		FEBA39CA1CBCF85B008067CC /* tab1_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1_1.png; sourceTree = "<group>"; };
-		FEBA39CB1CBCF85B008067CC /* tab1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1_2.png; sourceTree = "<group>"; };
-		FEBA39CC1CBCF85B008067CC /* tab1_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1_3.png; sourceTree = "<group>"; };
-		FEBA39CD1CBCF85B008067CC /* tab1_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab1_4.png; sourceTree = "<group>"; };
 		FEBA39D31CBCF8BB008067CC /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Image.h"; path = "../Main/Other/Tabbar/UIImage+Image.h"; sourceTree = "<group>"; };
 		FEBA39D41CBCF8BB008067CC /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Image.m"; path = "../Main/Other/Tabbar/UIImage+Image.m"; sourceTree = "<group>"; };
 		FEC400291CC4B76B00F3899D /* HYMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTableView.h; sourceTree = "<group>"; };
@@ -463,6 +481,14 @@
 		FEC4003B1CC4B7AF00F3899D /* ScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollLabel.m; sourceTree = "<group>"; };
 		FEC4003C1CC4B7AF00F3899D /* UIView+FrameExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameExtension.h"; sourceTree = "<group>"; };
 		FEC4003D1CC4B7AF00F3899D /* UIView+FrameExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameExtension.m"; sourceTree = "<group>"; };
+		FEC5EAE41CE2BA4B00DFC238 /* HYMTaskDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDetailModel.h; sourceTree = "<group>"; };
+		FEC5EAE51CE2BA4B00DFC238 /* HYMTaskDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDetailModel.m; sourceTree = "<group>"; };
+		FEC5EAEA1CE2C15800DFC238 /* HYMTaskListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskListModel.h; sourceTree = "<group>"; };
+		FEC5EAEB1CE2C15800DFC238 /* HYMTaskListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskListModel.m; sourceTree = "<group>"; };
+		FEC5EC2C1CE2F30E00DFC238 /* HYMFanliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMFanliModel.h; sourceTree = "<group>"; };
+		FEC5EC2D1CE2F30E00DFC238 /* HYMFanliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMFanliModel.m; sourceTree = "<group>"; };
+		FEC5EC7D1CE338D900DFC238 /* HYMPublishList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishList.h; sourceTree = "<group>"; };
+		FEC5EC7E1CE338D900DFC238 /* HYMPublishList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishList.m; sourceTree = "<group>"; };
 		FEC661A41CC394B000A5465A /* HYMRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMRequest.h; sourceTree = "<group>"; };
 		FEC661A51CC394B000A5465A /* HYMRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMRequest.m; sourceTree = "<group>"; };
 		FEC661A71CC394C300A5465A /* HYMNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMNetWork.h; sourceTree = "<group>"; };
@@ -477,15 +503,64 @@
 		FEC691741CD06CCB00820AA8 /* HYMTaskModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskModel.m; sourceTree = "<group>"; };
 		FEC691761CD08AE800820AA8 /* HYMRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMRecordCell.h; sourceTree = "<group>"; };
 		FEC691771CD08AE800820AA8 /* HYMRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMRecordCell.m; sourceTree = "<group>"; };
-		FEC6917A1CD0BA5300820AA8 /* HYMSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSegmentView.h; sourceTree = "<group>"; };
-		FEC6917B1CD0BA5300820AA8 /* HYMSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSegmentView.m; sourceTree = "<group>"; };
-		FEC6917D1CD0C94F00820AA8 /* HYMTaskTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskTableView.h; sourceTree = "<group>"; };
-		FEC6917E1CD0C94F00820AA8 /* HYMTaskTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskTableView.m; sourceTree = "<group>"; };
-		FEC691801CD0CA7700820AA8 /* HYMTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskCell.h; sourceTree = "<group>"; };
-		FEC691811CD0CA7700820AA8 /* HYMTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskCell.m; sourceTree = "<group>"; };
 		FECF040B1CCE246B008EDD93 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		FECF040D1CCE2472008EDD93 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		FECF040F1CCE2479008EDD93 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		FECFC9A01CE40981006A50A8 /* HYMPostedCaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPostedCaseVC.h; sourceTree = "<group>"; };
+		FECFC9A11CE40981006A50A8 /* HYMPostedCaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPostedCaseVC.m; sourceTree = "<group>"; };
+		FECFC9A51CE40B8A006A50A8 /* HYMPostedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPostedView.h; sourceTree = "<group>"; };
+		FECFC9A61CE40B8A006A50A8 /* HYMPostedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPostedView.m; sourceTree = "<group>"; };
+		FECFC9A91CE40E60006A50A8 /* HYMTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskList.h; sourceTree = "<group>"; };
+		FECFC9AA1CE40E60006A50A8 /* HYMTaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskList.m; sourceTree = "<group>"; };
+		FECFC9AB1CE40E60006A50A8 /* HYMTaskListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskListCell.h; sourceTree = "<group>"; };
+		FECFC9AC1CE40E60006A50A8 /* HYMTaskListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskListCell.m; sourceTree = "<group>"; };
+		FECFC9AD1CE40E60006A50A8 /* HYMTaskRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskRecord.h; sourceTree = "<group>"; };
+		FECFC9AE1CE40E60006A50A8 /* HYMTaskRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskRecord.m; sourceTree = "<group>"; };
+		FECFC9AF1CE40E60006A50A8 /* HYMTaskRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskRecordView.h; sourceTree = "<group>"; };
+		FECFC9B01CE40E60006A50A8 /* HYMTaskRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskRecordView.m; sourceTree = "<group>"; };
+		FECFC9B11CE40E60006A50A8 /* HYMTaskTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskTableView.h; sourceTree = "<group>"; };
+		FECFC9B21CE40E60006A50A8 /* HYMTaskTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskTableView.m; sourceTree = "<group>"; };
+		FECFC9B81CE40E73006A50A8 /* HYMActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMActivityView.h; sourceTree = "<group>"; };
+		FECFC9B91CE40E73006A50A8 /* HYMActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMActivityView.m; sourceTree = "<group>"; };
+		FECFC9BA1CE40E73006A50A8 /* HYMCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMCourseCell.h; sourceTree = "<group>"; };
+		FECFC9BB1CE40E73006A50A8 /* HYMCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMCourseCell.m; sourceTree = "<group>"; };
+		FECFC9BC1CE40E73006A50A8 /* HYMCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMCourseCell.xib; sourceTree = "<group>"; };
+		FECFC9BD1CE40E73006A50A8 /* HYMDetailsBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMDetailsBottom.h; sourceTree = "<group>"; };
+		FECFC9BE1CE40E73006A50A8 /* HYMDetailsBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMDetailsBottom.m; sourceTree = "<group>"; };
+		FECFC9BF1CE40E73006A50A8 /* HYMDetailsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMDetailsTable.h; sourceTree = "<group>"; };
+		FECFC9C01CE40E73006A50A8 /* HYMDetailsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMDetailsTable.m; sourceTree = "<group>"; };
+		FECFC9C11CE40E73006A50A8 /* HYMFormTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMFormTableView.h; sourceTree = "<group>"; };
+		FECFC9C21CE40E73006A50A8 /* HYMFormTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMFormTableView.m; sourceTree = "<group>"; };
+		FECFC9C31CE40E73006A50A8 /* HYMIntroduceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMIntroduceCell.h; sourceTree = "<group>"; };
+		FECFC9C41CE40E73006A50A8 /* HYMIntroduceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMIntroduceCell.m; sourceTree = "<group>"; };
+		FECFC9C51CE40E73006A50A8 /* HYMIntroduceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMIntroduceCell.xib; sourceTree = "<group>"; };
+		FECFC9C61CE40E73006A50A8 /* HYMPayTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPayTableView.h; sourceTree = "<group>"; };
+		FECFC9C71CE40E73006A50A8 /* HYMPayTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPayTableView.m; sourceTree = "<group>"; };
+		FECFC9C81CE40E73006A50A8 /* HYMPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPayView.h; sourceTree = "<group>"; };
+		FECFC9C91CE40E73006A50A8 /* HYMPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPayView.m; sourceTree = "<group>"; };
+		FECFC9CA1CE40E73006A50A8 /* HYMPublishBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishBottomView.h; sourceTree = "<group>"; };
+		FECFC9CB1CE40E73006A50A8 /* HYMPublishBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishBottomView.m; sourceTree = "<group>"; };
+		FECFC9CC1CE40E73006A50A8 /* HYMPublishTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishTableView.h; sourceTree = "<group>"; };
+		FECFC9CD1CE40E73006A50A8 /* HYMPublishTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishTableView.m; sourceTree = "<group>"; };
+		FECFC9CE1CE40E73006A50A8 /* HYMPublishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMPublishView.h; sourceTree = "<group>"; };
+		FECFC9CF1CE40E73006A50A8 /* HYMPublishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMPublishView.m; sourceTree = "<group>"; };
+		FECFC9D01CE40E73006A50A8 /* HYMRecordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMRecordTableView.h; sourceTree = "<group>"; };
+		FECFC9D11CE40E73006A50A8 /* HYMRecordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMRecordTableView.m; sourceTree = "<group>"; };
+		FECFC9D21CE40E73006A50A8 /* HYMSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSegmentView.h; sourceTree = "<group>"; };
+		FECFC9D31CE40E73006A50A8 /* HYMSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSegmentView.m; sourceTree = "<group>"; };
+		FECFC9D41CE40E73006A50A8 /* HYMSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSortView.h; sourceTree = "<group>"; };
+		FECFC9D51CE40E73006A50A8 /* HYMSortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSortView.m; sourceTree = "<group>"; };
+		FECFC9D61CE40E73006A50A8 /* HYMTaskBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskBottom.h; sourceTree = "<group>"; };
+		FECFC9D71CE40E73006A50A8 /* HYMTaskBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskBottom.m; sourceTree = "<group>"; };
+		FECFC9D81CE40E73006A50A8 /* HYMTaskBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMTaskBottom.xib; sourceTree = "<group>"; };
+		FECFC9D91CE40E73006A50A8 /* HYMTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskCell.h; sourceTree = "<group>"; };
+		FECFC9DA1CE40E73006A50A8 /* HYMTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskCell.m; sourceTree = "<group>"; };
+		FECFC9DB1CE40E73006A50A8 /* HYMTaskDeailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDeailsCell.h; sourceTree = "<group>"; };
+		FECFC9DC1CE40E73006A50A8 /* HYMTaskDeailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDeailsCell.m; sourceTree = "<group>"; };
+		FECFC9DD1CE40E73006A50A8 /* HYMTaskDeailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDeailsTableView.h; sourceTree = "<group>"; };
+		FECFC9DE1CE40E73006A50A8 /* HYMTaskDeailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDeailsTableView.m; sourceTree = "<group>"; };
+		FECFC9DF1CE40E73006A50A8 /* HYMTaskHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskHeadView.h; sourceTree = "<group>"; };
+		FECFC9E01CE40E73006A50A8 /* HYMTaskHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskHeadView.m; sourceTree = "<group>"; };
 		FED2F2C81CC7011E00BBFE06 /* HYMInformationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMInformationVC.h; sourceTree = "<group>"; };
 		FED2F2C91CC7011E00BBFE06 /* HYMInformationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMInformationVC.m; sourceTree = "<group>"; };
 		FED2F2CC1CC7054700BBFE06 /* UIView+UIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIViewController.h"; sourceTree = "<group>"; };
@@ -500,36 +575,15 @@
 		FED2F3361CC7446100BBFE06 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
 		FED2F33B1CC77F6600BBFE06 /* HYMTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTool.h; sourceTree = "<group>"; };
 		FED2F33C1CC77F6600BBFE06 /* HYMTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTool.m; sourceTree = "<group>"; };
-		FEE44FC21CD2DCD70025E6D1 /* HYMTaskBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskBottom.h; sourceTree = "<group>"; };
-		FEE44FC31CD2DCD70025E6D1 /* HYMTaskBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskBottom.m; sourceTree = "<group>"; };
-		FEE44FC51CD2DD220025E6D1 /* HYMTaskBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMTaskBottom.xib; sourceTree = "<group>"; };
-		FEE44FC71CD344110025E6D1 /* HYMTaskDeailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDeailsCell.h; sourceTree = "<group>"; };
-		FEE44FC81CD344110025E6D1 /* HYMTaskDeailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDeailsCell.m; sourceTree = "<group>"; };
 		FEE44FCB1CD353080025E6D1 /* HYMFormVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMFormVC.h; sourceTree = "<group>"; };
 		FEE44FCC1CD353080025E6D1 /* HYMFormVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMFormVC.m; sourceTree = "<group>"; };
-		FEE44FCF1CD35B6D0025E6D1 /* HYMFormTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMFormTableView.h; sourceTree = "<group>"; };
-		FEE44FD01CD35B6D0025E6D1 /* HYMFormTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMFormTableView.m; sourceTree = "<group>"; };
-		FEE63F5D1CD192CD00183311 /* HYMSortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMSortView.h; sourceTree = "<group>"; };
-		FEE63F5E1CD192CD00183311 /* HYMSortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMSortView.m; sourceTree = "<group>"; };
 		FEE63F611CD1B1D500183311 /* HYMRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMRecordVC.h; sourceTree = "<group>"; };
 		FEE63F621CD1B1D500183311 /* HYMRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMRecordVC.m; sourceTree = "<group>"; };
-		FEE63F671CD1B4A000183311 /* HYMRecordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMRecordTableView.h; sourceTree = "<group>"; };
-		FEE63F681CD1B4A000183311 /* HYMRecordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMRecordTableView.m; sourceTree = "<group>"; };
 		FEE63F6A1CD1E7BC00183311 /* HYMCommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMCommunityCell.h; sourceTree = "<group>"; };
 		FEE63F6B1CD1E7BC00183311 /* HYMCommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMCommunityCell.m; sourceTree = "<group>"; };
 		FEE63F6C1CD1E7BC00183311 /* HYMCommunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMCommunityCell.xib; sourceTree = "<group>"; };
 		FEE63F701CD1EC3F00183311 /* HYMTaskDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDetailsVC.h; sourceTree = "<group>"; };
 		FEE63F711CD1EC3F00183311 /* HYMTaskDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDetailsVC.m; sourceTree = "<group>"; };
-		FEE63F751CD1F0BE00183311 /* HYMTaskDeailsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskDeailsTableView.h; sourceTree = "<group>"; };
-		FEE63F761CD1F0BE00183311 /* HYMTaskDeailsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskDeailsTableView.m; sourceTree = "<group>"; };
-		FEE63F781CD1FAAA00183311 /* HYMTaskHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskHeadView.h; sourceTree = "<group>"; };
-		FEE63F791CD1FAAA00183311 /* HYMTaskHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskHeadView.m; sourceTree = "<group>"; };
-		FEE63F7B1CD1FCC300183311 /* HYMTaskRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskRecordView.h; sourceTree = "<group>"; };
-		FEE63F7C1CD1FCC300183311 /* HYMTaskRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskRecordView.m; sourceTree = "<group>"; };
-		FEE63F7E1CD207B000183311 /* HYMActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMActivityView.h; sourceTree = "<group>"; };
-		FEE63F7F1CD207B000183311 /* HYMActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMActivityView.m; sourceTree = "<group>"; };
-		FEE63F831CD20CA100183311 /* HYMTaskRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMTaskRecord.h; sourceTree = "<group>"; };
-		FEE63F841CD20CA100183311 /* HYMTaskRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMTaskRecord.m; sourceTree = "<group>"; };
 		FEE943141CCE562D0068D4B5 /* PullRefreshTVCGrouped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTVCGrouped.h; sourceTree = "<group>"; };
 		FEE943151CCE562D0068D4B5 /* PullRefreshTVCGrouped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTVCGrouped.m; sourceTree = "<group>"; };
 		FEE943171CCE563E0068D4B5 /* RealityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealityDetailVC.m; sourceTree = "<group>"; };
@@ -572,16 +626,6 @@
 		FEEE70681CCF73BB009F89CC /* ImagePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePlayerView.m; sourceTree = "<group>"; };
 		FEEE94A51CDAEC8800CB6CBE /* HYMDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMDetailsVC.h; sourceTree = "<group>"; };
 		FEEE94A61CDAEC8800CB6CBE /* HYMDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMDetailsVC.m; sourceTree = "<group>"; };
-		FEEE94A91CDAF14100CB6CBE /* HYMDetailsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMDetailsTable.h; sourceTree = "<group>"; };
-		FEEE94AA1CDAF14100CB6CBE /* HYMDetailsTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMDetailsTable.m; sourceTree = "<group>"; };
-		FEEE94AC1CDAF56C00CB6CBE /* HYMIntroduceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMIntroduceCell.h; sourceTree = "<group>"; };
-		FEEE94AD1CDAF56C00CB6CBE /* HYMIntroduceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMIntroduceCell.m; sourceTree = "<group>"; };
-		FEEE94AF1CDB0DED00CB6CBE /* HYMCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMCourseCell.h; sourceTree = "<group>"; };
-		FEEE94B01CDB0DED00CB6CBE /* HYMCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMCourseCell.m; sourceTree = "<group>"; };
-		FEEE94B21CDB10CF00CB6CBE /* HYMIntroduceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMIntroduceCell.xib; sourceTree = "<group>"; };
-		FEEE94B41CDB129800CB6CBE /* HYMCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMCourseCell.xib; sourceTree = "<group>"; };
-		FEEE94B61CDB178200CB6CBE /* HYMDetailsBottom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMDetailsBottom.h; sourceTree = "<group>"; };
-		FEEE94B71CDB178200CB6CBE /* HYMDetailsBottom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMDetailsBottom.m; sourceTree = "<group>"; };
 		FEEE94C21CDB2DDF00CB6CBE /* HYMCommView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMCommView.h; sourceTree = "<group>"; };
 		FEEE94C31CDB2DDF00CB6CBE /* HYMCommView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMCommView.m; sourceTree = "<group>"; };
 		FEEE94C51CDB354500CB6CBE /* HYMCommTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMCommTable.h; sourceTree = "<group>"; };
@@ -597,6 +641,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE27FCC81CE02B0100AE1467 /* CoreImage.framework in Frameworks */,
 				04CABE67CF5FC64D14ABE3E8 /* libPods.a in Frameworks */,
 				FEEE703E1CCEE6F2009F89CC /* lib_haoyangmao.a in Frameworks */,
 			);
@@ -631,6 +676,7 @@
 		B42E4A9C02794277F513F55B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE27FCC71CE02B0100AE1467 /* CoreImage.framework */,
 				FE38970E1CCE3D9300BDE25D /* libsqlite3.tbd */,
 				FE38970C1CCE3D8C00BDE25D /* ImageIO.framework */,
 				FE38970A1CCE3D8200BDE25D /* JavaScriptCore.framework */,
@@ -668,11 +714,6 @@
 		FE04428C1CBC7B18005B1055 /* HYM */ = {
 			isa = PBXGroup;
 			children = (
-				FEBA39C91CBCF85B008067CC /* tab1_0.png */,
-				FEBA39CA1CBCF85B008067CC /* tab1_1.png */,
-				FEBA39CB1CBCF85B008067CC /* tab1_2.png */,
-				FEBA39CC1CBCF85B008067CC /* tab1_3.png */,
-				FEBA39CD1CBCF85B008067CC /* tab1_4.png */,
 				FE0442C01CBC7C29005B1055 /* Application */,
 				FEA0500C1CBC7E47001852D2 /* Images */,
 				FEA0500D1CBC7E47001852D2 /* Main */,
@@ -730,21 +771,9 @@
 			children = (
 				FE2628831CD8462800175B55 /* HYMPublishVC.h */,
 				FE2628841CD8462800175B55 /* HYMPublishVC.m */,
+				FEC5EC7D1CE338D900DFC238 /* HYMPublishList.h */,
+				FEC5EC7E1CE338D900DFC238 /* HYMPublishList.m */,
 				FEEE94A41CDAEC4800CB6CBE /* 任务详情 */,
-			);
-			name = "发布任务";
-			sourceTree = "<group>";
-		};
-		FE2628861CD847C600175B55 /* 发布任务 */ = {
-			isa = PBXGroup;
-			children = (
-				FE2628871CD847F600175B55 /* HYMPublishTableView.h */,
-				FE2628881CD847F600175B55 /* HYMPublishTableView.m */,
-				FE26288A1CD84EFF00175B55 /* HYMPublishView.h */,
-				FE26288B1CD84EFF00175B55 /* HYMPublishView.m */,
-				FE26288D1CD879A400175B55 /* HYMPublishBottomView.h */,
-				FE26288E1CD879A400175B55 /* HYMPublishBottomView.m */,
-				FE2628901CD891D900175B55 /* ic_arrow_up.png */,
 			);
 			name = "发布任务";
 			sourceTree = "<group>";
@@ -758,15 +787,37 @@
 			name = "预付金额";
 			sourceTree = "<group>";
 		};
-		FE2628961CD89A3300175B55 /* 预付金额 */ = {
+		FE27FCC31CE0215600AE1467 /* 二维码 */ = {
 			isa = PBXGroup;
 			children = (
-				FE2628971CD89C3400175B55 /* HYMPayTableView.h */,
-				FE2628981CD89C3400175B55 /* HYMPayTableView.m */,
-				FE26289A1CD89D7E00175B55 /* HYMPayView.h */,
-				FE26289B1CD89D7E00175B55 /* HYMPayView.m */,
+				FE27FCC41CE0218600AE1467 /* HYMQRCodeVC.h */,
+				FE27FCC51CE0218600AE1467 /* HYMQRCodeVC.m */,
 			);
-			name = "预付金额";
+			name = "二维码";
+			sourceTree = "<group>";
+		};
+		FE27FD081CE05F0C00AE1467 /* 搜索好友 */ = {
+			isa = PBXGroup;
+			children = (
+				FE27FD091CE05F3900AE1467 /* HYMSearchVC.h */,
+				FE27FD0A1CE05F3900AE1467 /* HYMSearchVC.m */,
+			);
+			name = "搜索好友";
+			sourceTree = "<group>";
+		};
+		FE27FD0C1CE06B4100AE1467 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				FE27FD101CE06B7600AE1467 /* HYMPersonTable.h */,
+				FE27FD111CE06B7600AE1467 /* HYMPersonTable.m */,
+				FE27FD161CE0909E00AE1467 /* HYMPushSingleCell.h */,
+				FE27FD171CE0909E00AE1467 /* HYMPushSingleCell.m */,
+				FE27FD191CE0926300AE1467 /* HYMTMyInvolvementCell.h */,
+				FE27FD1A1CE0926300AE1467 /* HYMTMyInvolvementCell.m */,
+				FE27FD131CE0744F00AE1467 /* HYMPersonHeader.h */,
+				FE27FD141CE0744F00AE1467 /* HYMPersonHeader.m */,
+			);
+			name = "个人中心";
 			sourceTree = "<group>";
 		};
 		FE2827DA1CDC444800A1A3BE /* 帖子详情 */ = {
@@ -1077,7 +1128,6 @@
 			children = (
 				FEBA39381CBCA120008067CC /* Controller */,
 				FEBA393B1CBCA120008067CC /* Model */,
-				FEBA393C1CBCA120008067CC /* View */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -1093,6 +1143,29 @@
 				FEAD78C31CDD78E90098FF5C /* HYMInvitationView.m */,
 			);
 			name = "邀请";
+			sourceTree = "<group>";
+		};
+		FEB662D41CE1F2B400F9A66B /* 上传 */ = {
+			isa = PBXGroup;
+			children = (
+				FEB662D51CE1F30E00F9A66B /* HYMUploadTask.h */,
+				FEB662D61CE1F30E00F9A66B /* HYMUploadTask.m */,
+			);
+			name = "上传";
+			path = ../View;
+			sourceTree = "<group>";
+		};
+		FEB662D81CE1F3B000F9A66B /* 上传 */ = {
+			isa = PBXGroup;
+			children = (
+				FEB662D91CE1F3C900F9A66B /* HYMUpHeader.h */,
+				FEB662DA1CE1F3C900F9A66B /* HYMUpHeader.m */,
+				FEB662DC1CE1F54600F9A66B /* HYMUpTable.h */,
+				FEB662DD1CE1F54600F9A66B /* HYMUpTable.m */,
+				FE7A5CCE1CE20F8200BF4B69 /* HYMUpTaskCell.h */,
+				FE7A5CCF1CE20F8200BF4B69 /* HYMUpTaskCell.m */,
+			);
+			name = "上传";
 			sourceTree = "<group>";
 		};
 		FEBA39071CBC7F9D008067CC /* Common */ = {
@@ -1220,6 +1293,8 @@
 			children = (
 				FEBA39411CBCA156008067CC /* HYMContactsVC.h */,
 				FEBA39421CBCA156008067CC /* HYMContactsVC.m */,
+				FE27FD081CE05F0C00AE1467 /* 搜索好友 */,
+				FE27FCC31CE0215600AE1467 /* 二维码 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1287,6 +1362,7 @@
 			children = (
 				FEBA39471CBCA173008067CC /* HYMPersonalVC.h */,
 				FEBA39481CBCA173008067CC /* HYMPersonalVC.m */,
+				FEB662D41CE1F2B400F9A66B /* 上传 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1301,6 +1377,8 @@
 		FEBA39371CBCA118008067CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FEB662D81CE1F3B000F9A66B /* 上传 */,
+				FE27FD0C1CE06B4100AE1467 /* 个人中心 */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1310,11 +1388,14 @@
 			children = (
 				FEBA39391CBCA120008067CC /* HYMTaskVC.h */,
 				FEBA393A1CBCA120008067CC /* HYMTaskVC.m */,
+				FECFC99F1CE4093A006A50A8 /* 发布情况 */,
 				FEE44FCA1CD351EB0025E6D1 /* 报单 */,
 				FEE63F6F1CD1EBF200183311 /* 任务详情 */,
 				FE2628821CD845CC00175B55 /* 发布任务 */,
 				FEE63F601CD1B1BA00183311 /* 任务纪录 */,
 				FE2628921CD8984B00175B55 /* 预付金额 */,
+				FECFC9A41CE40B72006A50A8 /* 发布情况 */,
+				FECFC9A81CE40E47006A50A8 /* view */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1324,22 +1405,14 @@
 			children = (
 				FE26287F1CD82D6000175B55 /* HYMTaskCellModel.h */,
 				FE2628801CD82D6000175B55 /* HYMTaskCellModel.m */,
+				FEC5EAE41CE2BA4B00DFC238 /* HYMTaskDetailModel.h */,
+				FEC5EAE51CE2BA4B00DFC238 /* HYMTaskDetailModel.m */,
+				FEC5EAEA1CE2C15800DFC238 /* HYMTaskListModel.h */,
+				FEC5EAEB1CE2C15800DFC238 /* HYMTaskListModel.m */,
+				FEC5EC2C1CE2F30E00DFC238 /* HYMFanliModel.h */,
+				FEC5EC2D1CE2F30E00DFC238 /* HYMFanliModel.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		FEBA393C1CBCA120008067CC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FEEE94A81CDAF11900CB6CBE /* 上传任务 */,
-				FE2628961CD89A3300175B55 /* 预付金额 */,
-				FE2628861CD847C600175B55 /* 发布任务 */,
-				FEE44FCE1CD358880025E6D1 /* 报单 */,
-				FEE63F741CD1EF9500183311 /* 任务详情 */,
-				FEE63F661CD1B41B00183311 /* 任务纪录 */,
-				FEE63F641CD1B3A200183311 /* 任务首页 */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		FEBA394A1CBCA449008067CC /* NetRequest */ = {
@@ -1387,6 +1460,83 @@
 				FEC691771CD08AE800820AA8 /* HYMRecordCell.m */,
 			);
 			name = "投资记录";
+			sourceTree = "<group>";
+		};
+		FECFC99F1CE4093A006A50A8 /* 发布情况 */ = {
+			isa = PBXGroup;
+			children = (
+				FECFC9A01CE40981006A50A8 /* HYMPostedCaseVC.h */,
+				FECFC9A11CE40981006A50A8 /* HYMPostedCaseVC.m */,
+			);
+			name = "发布情况";
+			sourceTree = "<group>";
+		};
+		FECFC9A41CE40B72006A50A8 /* 发布情况 */ = {
+			isa = PBXGroup;
+			children = (
+				FECFC9A51CE40B8A006A50A8 /* HYMPostedView.h */,
+				FECFC9A61CE40B8A006A50A8 /* HYMPostedView.m */,
+			);
+			name = "发布情况";
+			sourceTree = "<group>";
+		};
+		FECFC9A81CE40E47006A50A8 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				FECFC9B81CE40E73006A50A8 /* HYMActivityView.h */,
+				FECFC9B91CE40E73006A50A8 /* HYMActivityView.m */,
+				FECFC9BA1CE40E73006A50A8 /* HYMCourseCell.h */,
+				FECFC9BB1CE40E73006A50A8 /* HYMCourseCell.m */,
+				FECFC9BC1CE40E73006A50A8 /* HYMCourseCell.xib */,
+				FECFC9BD1CE40E73006A50A8 /* HYMDetailsBottom.h */,
+				FECFC9BE1CE40E73006A50A8 /* HYMDetailsBottom.m */,
+				FECFC9BF1CE40E73006A50A8 /* HYMDetailsTable.h */,
+				FECFC9C01CE40E73006A50A8 /* HYMDetailsTable.m */,
+				FECFC9C11CE40E73006A50A8 /* HYMFormTableView.h */,
+				FECFC9C21CE40E73006A50A8 /* HYMFormTableView.m */,
+				FECFC9C31CE40E73006A50A8 /* HYMIntroduceCell.h */,
+				FECFC9C41CE40E73006A50A8 /* HYMIntroduceCell.m */,
+				FECFC9C51CE40E73006A50A8 /* HYMIntroduceCell.xib */,
+				FECFC9C61CE40E73006A50A8 /* HYMPayTableView.h */,
+				FECFC9C71CE40E73006A50A8 /* HYMPayTableView.m */,
+				FECFC9C81CE40E73006A50A8 /* HYMPayView.h */,
+				FECFC9C91CE40E73006A50A8 /* HYMPayView.m */,
+				FECFC9CA1CE40E73006A50A8 /* HYMPublishBottomView.h */,
+				FECFC9CB1CE40E73006A50A8 /* HYMPublishBottomView.m */,
+				FECFC9CC1CE40E73006A50A8 /* HYMPublishTableView.h */,
+				FECFC9CD1CE40E73006A50A8 /* HYMPublishTableView.m */,
+				FECFC9CE1CE40E73006A50A8 /* HYMPublishView.h */,
+				FECFC9CF1CE40E73006A50A8 /* HYMPublishView.m */,
+				FECFC9D01CE40E73006A50A8 /* HYMRecordTableView.h */,
+				FECFC9D11CE40E73006A50A8 /* HYMRecordTableView.m */,
+				FECFC9D21CE40E73006A50A8 /* HYMSegmentView.h */,
+				FECFC9D31CE40E73006A50A8 /* HYMSegmentView.m */,
+				FECFC9D41CE40E73006A50A8 /* HYMSortView.h */,
+				FECFC9D51CE40E73006A50A8 /* HYMSortView.m */,
+				FECFC9D61CE40E73006A50A8 /* HYMTaskBottom.h */,
+				FECFC9D71CE40E73006A50A8 /* HYMTaskBottom.m */,
+				FECFC9D81CE40E73006A50A8 /* HYMTaskBottom.xib */,
+				FECFC9D91CE40E73006A50A8 /* HYMTaskCell.h */,
+				FECFC9DA1CE40E73006A50A8 /* HYMTaskCell.m */,
+				FECFC9DB1CE40E73006A50A8 /* HYMTaskDeailsCell.h */,
+				FECFC9DC1CE40E73006A50A8 /* HYMTaskDeailsCell.m */,
+				FECFC9DD1CE40E73006A50A8 /* HYMTaskDeailsTableView.h */,
+				FECFC9DE1CE40E73006A50A8 /* HYMTaskDeailsTableView.m */,
+				FECFC9DF1CE40E73006A50A8 /* HYMTaskHeadView.h */,
+				FECFC9E01CE40E73006A50A8 /* HYMTaskHeadView.m */,
+				FECFC9A91CE40E60006A50A8 /* HYMTaskList.h */,
+				FECFC9AA1CE40E60006A50A8 /* HYMTaskList.m */,
+				FECFC9AB1CE40E60006A50A8 /* HYMTaskListCell.h */,
+				FECFC9AC1CE40E60006A50A8 /* HYMTaskListCell.m */,
+				FECFC9AD1CE40E60006A50A8 /* HYMTaskRecord.h */,
+				FECFC9AE1CE40E60006A50A8 /* HYMTaskRecord.m */,
+				FECFC9AF1CE40E60006A50A8 /* HYMTaskRecordView.h */,
+				FECFC9B01CE40E60006A50A8 /* HYMTaskRecordView.m */,
+				FECFC9B11CE40E60006A50A8 /* HYMTaskTableView.h */,
+				FECFC9B21CE40E60006A50A8 /* HYMTaskTableView.m */,
+			);
+			name = view;
+			path = ../Model;
 			sourceTree = "<group>";
 		};
 		FED2F2CB1CC7014A00BBFE06 /* 资讯 */ = {
@@ -1463,15 +1613,6 @@
 			path = ../View;
 			sourceTree = "<group>";
 		};
-		FEE44FCE1CD358880025E6D1 /* 报单 */ = {
-			isa = PBXGroup;
-			children = (
-				FEE44FCF1CD35B6D0025E6D1 /* HYMFormTableView.h */,
-				FEE44FD01CD35B6D0025E6D1 /* HYMFormTableView.m */,
-			);
-			name = "报单";
-			sourceTree = "<group>";
-		};
 		FEE63F601CD1B1BA00183311 /* 任务纪录 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1481,57 +1622,11 @@
 			name = "任务纪录";
 			sourceTree = "<group>";
 		};
-		FEE63F641CD1B3A200183311 /* 任务首页 */ = {
-			isa = PBXGroup;
-			children = (
-				FEC6917A1CD0BA5300820AA8 /* HYMSegmentView.h */,
-				FEC6917B1CD0BA5300820AA8 /* HYMSegmentView.m */,
-				FEE63F5D1CD192CD00183311 /* HYMSortView.h */,
-				FEE63F5E1CD192CD00183311 /* HYMSortView.m */,
-				FEC6917D1CD0C94F00820AA8 /* HYMTaskTableView.h */,
-				FEC6917E1CD0C94F00820AA8 /* HYMTaskTableView.m */,
-				FEC691801CD0CA7700820AA8 /* HYMTaskCell.h */,
-				FEC691811CD0CA7700820AA8 /* HYMTaskCell.m */,
-			);
-			name = "任务首页";
-			sourceTree = "<group>";
-		};
-		FEE63F661CD1B41B00183311 /* 任务纪录 */ = {
-			isa = PBXGroup;
-			children = (
-				FEE63F671CD1B4A000183311 /* HYMRecordTableView.h */,
-				FEE63F681CD1B4A000183311 /* HYMRecordTableView.m */,
-			);
-			name = "任务纪录";
-			sourceTree = "<group>";
-		};
 		FEE63F6F1CD1EBF200183311 /* 任务详情 */ = {
 			isa = PBXGroup;
 			children = (
 				FEE63F701CD1EC3F00183311 /* HYMTaskDetailsVC.h */,
 				FEE63F711CD1EC3F00183311 /* HYMTaskDetailsVC.m */,
-			);
-			name = "任务详情";
-			sourceTree = "<group>";
-		};
-		FEE63F741CD1EF9500183311 /* 任务详情 */ = {
-			isa = PBXGroup;
-			children = (
-				FEE63F751CD1F0BE00183311 /* HYMTaskDeailsTableView.h */,
-				FEE63F761CD1F0BE00183311 /* HYMTaskDeailsTableView.m */,
-				FEE44FC71CD344110025E6D1 /* HYMTaskDeailsCell.h */,
-				FEE44FC81CD344110025E6D1 /* HYMTaskDeailsCell.m */,
-				FEE63F781CD1FAAA00183311 /* HYMTaskHeadView.h */,
-				FEE63F791CD1FAAA00183311 /* HYMTaskHeadView.m */,
-				FEE63F7B1CD1FCC300183311 /* HYMTaskRecordView.h */,
-				FEE63F7C1CD1FCC300183311 /* HYMTaskRecordView.m */,
-				FEE63F7E1CD207B000183311 /* HYMActivityView.h */,
-				FEE63F7F1CD207B000183311 /* HYMActivityView.m */,
-				FEE63F831CD20CA100183311 /* HYMTaskRecord.h */,
-				FEE63F841CD20CA100183311 /* HYMTaskRecord.m */,
-				FEE44FC21CD2DCD70025E6D1 /* HYMTaskBottom.h */,
-				FEE44FC31CD2DCD70025E6D1 /* HYMTaskBottom.m */,
-				FEE44FC51CD2DD220025E6D1 /* HYMTaskBottom.xib */,
 			);
 			name = "任务详情";
 			sourceTree = "<group>";
@@ -1576,23 +1671,6 @@
 				FEEE94A61CDAEC8800CB6CBE /* HYMDetailsVC.m */,
 			);
 			name = "任务详情";
-			sourceTree = "<group>";
-		};
-		FEEE94A81CDAF11900CB6CBE /* 上传任务 */ = {
-			isa = PBXGroup;
-			children = (
-				FEEE94A91CDAF14100CB6CBE /* HYMDetailsTable.h */,
-				FEEE94AA1CDAF14100CB6CBE /* HYMDetailsTable.m */,
-				FEEE94B61CDB178200CB6CBE /* HYMDetailsBottom.h */,
-				FEEE94B71CDB178200CB6CBE /* HYMDetailsBottom.m */,
-				FEEE94AC1CDAF56C00CB6CBE /* HYMIntroduceCell.h */,
-				FEEE94AD1CDAF56C00CB6CBE /* HYMIntroduceCell.m */,
-				FEEE94B21CDB10CF00CB6CBE /* HYMIntroduceCell.xib */,
-				FEEE94AF1CDB0DED00CB6CBE /* HYMCourseCell.h */,
-				FEEE94B01CDB0DED00CB6CBE /* HYMCourseCell.m */,
-				FEEE94B41CDB129800CB6CBE /* HYMCourseCell.xib */,
-			);
-			name = "上传任务";
 			sourceTree = "<group>";
 		};
 		FEEE94C11CDB2D6F00CB6CBE /* 社区 */ = {
@@ -1694,6 +1772,7 @@
 				TargetAttributes = {
 					FE0442891CBC7B18005B1055 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = YU34ZDADVY;
 					};
 					FE0442A21CBC7B18005B1055 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1732,13 +1811,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEEE94C91CDB3D8E00CB6CBE /* aaa in Resources */,
+				FECFC9E31CE40E73006A50A8 /* HYMCourseCell.xib in Resources */,
 				FE5208AA1CCDACFE00EDE190 /* 地图定位大头针默认图标@2x.png in Resources */,
 				FE5208CB1CCDACFE00EDE190 /* 信用卡详情_评论.png in Resources */,
 				FE5208B01CCDACFE00EDE190 /* common_filtrate.png in Resources */,
 				FE5208B11CCDACFE00EDE190 /* common_publish.png in Resources */,
 				FE5208D11CCDACFE00EDE190 /* 商品管理_删除图标@2x.png in Resources */,
 				FE5208BA1CCDACFE00EDE190 /* store_replylist_star_sel.png in Resources */,
-				FEBA39CE1CBCF85B008067CC /* tab1_0.png in Resources */,
 				FE5208991CCDACFE00EDE190 /* 商城_全部分类.png in Resources */,
 				FE5208DD1CCDACFE00EDE190 /* 购买数量背景图.png in Resources */,
 				FE5208DC1CCDACFE00EDE190 /* 视频播放默认按钮.png in Resources */,
@@ -1750,13 +1829,11 @@
 				FE5208C81CCDACFE00EDE190 /* 信用卡详情_聊天.png in Resources */,
 				FE5208B71CCDACFE00EDE190 /* store_reply_star_nor.png in Resources */,
 				FE5208A51CCDACFE00EDE190 /* 商城_餐饮券.png in Resources */,
-				FE2628911CD891D900175B55 /* ic_arrow_up.png in Resources */,
 				FE5208941CCDACFE00EDE190 /* 列表展开.png in Resources */,
 				FE5208AD1CCDACFE00EDE190 /* 文字图形_边框@2x.png in Resources */,
 				FE5208BB1CCDACFE00EDE190 /* 价格_正序.png in Resources */,
 				FE5208C41CCDACFE00EDE190 /* 信用卡详情_已赞.png in Resources */,
 				FEE63F6E1CD1E7BC00183311 /* HYMCommunityCell.xib in Resources */,
-				FEBA39D21CBCF85B008067CC /* tab1_4.png in Resources */,
 				FE5208BD1CCDACFE00EDE190 /* 价格_默认.png in Resources */,
 				FE52089D1CCDACFE00EDE190 /* 商城_实物.png in Resources */,
 				FE5208AC1CCDACFE00EDE190 /* 帖子_选择图片.png in Resources */,
@@ -1767,8 +1844,7 @@
 				FE5208D71CCDACFE00EDE190 /* 热@2x.png in Resources */,
 				FE5208A11CCDACFE00EDE190 /* 商城_类目.png in Resources */,
 				FE5208C31CCDACFE00EDE190 /* 信用卡详情_已收藏.png in Resources */,
-				FEE44FC61CD2DD220025E6D1 /* HYMTaskBottom.xib in Resources */,
-				FEEE94B31CDB10CF00CB6CBE /* HYMIntroduceCell.xib in Resources */,
+				FECFC9F21CE40E73006A50A8 /* HYMTaskBottom.xib in Resources */,
 				FE5208C21CCDACFE00EDE190 /* 信用卡详情_删除好友.png in Resources */,
 				FE5208C61CCDACFE00EDE190 /* 信用卡详情_添加好友.png in Resources */,
 				FE5208E21CCDACFE00EDE190 /* 销量_逆序.png in Resources */,
@@ -1782,15 +1858,13 @@
 				FE5208BE1CCDACFE00EDE190 /* 信用卡_回复量.png in Resources */,
 				FE5208C11CCDACFE00EDE190 /* 信用卡详情_分享.png in Resources */,
 				FE5208E31CCDACFE00EDE190 /* 销量_默认.png in Resources */,
-				FEBA39D01CBCF85B008067CC /* tab1_2.png in Resources */,
 				FE5208D81CCDACFE00EDE190 /* 立即咨询.png in Resources */,
 				FE5208E41CCDACFE00EDE190 /* 键盘_图片.png in Resources */,
 				FE5208AB1CCDACFE00EDE190 /* 帖子_输入文字.png in Resources */,
 				FE5208CC1CCDACFE00EDE190 /* 信用卡详情_评论聊天.png in Resources */,
-				FEBA39CF1CBCF85B008067CC /* tab1_1.png in Resources */,
+				FECFC9E81CE40E73006A50A8 /* HYMIntroduceCell.xib in Resources */,
 				FE52083A1CCDA8FD00EDE190 /* 购物车图标.png in Resources */,
 				FE04429D1CBC7B18005B1055 /* LaunchScreen.storyboard in Resources */,
-				FEEE94B51CDB129800CB6CBE /* HYMCourseCell.xib in Resources */,
 				FE5208CE1CCDACFE00EDE190 /* 全部商品.png in Resources */,
 				FE5208E11CCDACFE00EDE190 /* 销量_正序.png in Resources */,
 				FE5208E61CCDACFE00EDE190 /* 键盘_视频.png in Resources */,
@@ -1832,7 +1906,6 @@
 				FE5208A71CCDACFE00EDE190 /* 商城_默认广告页2.png in Resources */,
 				FE5208E51CCDACFE00EDE190 /* 键盘_表情.png in Resources */,
 				FE5208DA1CCDACFE00EDE190 /* 综合_逆序.png in Resources */,
-				FEBA39D11CBCF85B008067CC /* tab1_3.png in Resources */,
 				FE5208A61CCDACFE00EDE190 /* 商城_默认广告页1.png in Resources */,
 				FE5208971CCDACFE00EDE190 /* 商品管理_取消推荐默认图标.png in Resources */,
 			);
@@ -1907,39 +1980,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FECFC9B71CE40E60006A50A8 /* HYMTaskTableView.m in Sources */,
 				FE04428F1CBC7B18005B1055 /* main.m in Sources */,
+				FECFC9F61CE40E73006A50A8 /* HYMTaskHeadView.m in Sources */,
+				FECFC9E61CE40E73006A50A8 /* HYMFormTableView.m in Sources */,
 				FEBA39431CBCA156008067CC /* HYMContactsVC.m in Sources */,
 				FEBA39281CBC9EE2008067CC /* HYMLoginVC.m in Sources */,
 				FE2827E91CDC7C1F00A1A3BE /* HYMPostView.m in Sources */,
+				FECFC9F11CE40E73006A50A8 /* HYMTaskBottom.m in Sources */,
 				FE2628951CD8989000175B55 /* HYMPayMoneyVC.m in Sources */,
 				FE2628811CD82D6000175B55 /* HYMTaskCellModel.m in Sources */,
-				FEC6917C1CD0BA5300820AA8 /* HYMSegmentView.m in Sources */,
-				FEE63F7D1CD1FCC300183311 /* HYMTaskRecordView.m in Sources */,
-				FEE63F691CD1B4A000183311 /* HYMRecordTableView.m in Sources */,
-				FEE63F851CD20CA100183311 /* HYMTaskRecord.m in Sources */,
+				FECFC9F41CE40E73006A50A8 /* HYMTaskDeailsCell.m in Sources */,
 				FEBA39061CBC7EF8008067CC /* AppDelegate.mm in Sources */,
 				FEC400371CC4B7A700F3899D /* HYMSectionHeader.m in Sources */,
-				FEE44FC41CD2DCD70025E6D1 /* HYMTaskBottom.m in Sources */,
+				FE27FD121CE06B7600AE1467 /* HYMPersonTable.m in Sources */,
 				FE4F07CA1CD9835E001B5271 /* HYMStoreTableView.m in Sources */,
 				FEC400341CC4B79E00F3899D /* HYMTaskView.m in Sources */,
+				FEB662DB1CE1F3C900F9A66B /* HYMUpHeader.m in Sources */,
 				FED2F3381CC7446100BBFE06 /* HYMInfoCell.m in Sources */,
+				FECFC9E41CE40E73006A50A8 /* HYMDetailsBottom.m in Sources */,
 				FEA97D791CCEF1C4004D773D /* GoodsReplyCell.m in Sources */,
 				FEEE70591CCF06F9009F89CC /* HYMInfoCellModel.m in Sources */,
 				FEBA39491CBCA173008067CC /* HYMPersonalVC.m in Sources */,
+				FECFC9A71CE40B8A006A50A8 /* HYMPostedView.m in Sources */,
 				FE7FDB051CC8661A00B26F87 /* HYMBlogVC.m in Sources */,
 				FEE63F721CD1EC3F00183311 /* HYMTaskDetailsVC.m in Sources */,
 				FED2F33D1CC77F6600BBFE06 /* HYMTool.m in Sources */,
-				FEE63F7A1CD1FAAA00183311 /* HYMTaskHeadView.m in Sources */,
 				FE73F55F1CC9CDF200F792D7 /* HYMBottomView.m in Sources */,
 				FEC6916B1CD056A800820AA8 /* HYMMessageVC.m in Sources */,
-				FEC6917F1CD0C94F00820AA8 /* HYMTaskTableView.m in Sources */,
+				FEB662DE1CE1F54600F9A66B /* HYMUpTable.m in Sources */,
 				FEC4002B1CC4B76B00F3899D /* HYMTableView.m in Sources */,
 				FEC4002E1CC4B78300F3899D /* HYMTableViewCell.m in Sources */,
 				FEBA393D1CBCA120008067CC /* HYMTaskVC.m in Sources */,
 				FEF065F71CD04ED60086BB01 /* HYMHomeTaskVC.m in Sources */,
 				FEBA392B1CBCA064008067CC /* HYMTabbarVC.m in Sources */,
 				FEBA39D51CBCF8BB008067CC /* UIImage+Image.m in Sources */,
-				FEEE94AE1CDAF56C00CB6CBE /* HYMIntroduceCell.m in Sources */,
 				FEE63F631CD1B1D500183311 /* HYMRecordVC.m in Sources */,
 				FEEE70531CCEF81A009F89CC /* BBButton.m in Sources */,
 				FEAD78C41CDD78E90098FF5C /* HYMInvitationView.m in Sources */,
@@ -1952,68 +2027,84 @@
 				FED2F2CA1CC7011E00BBFE06 /* HYMInformationVC.m in Sources */,
 				FEC661A91CC394C300A5465A /* HYMNetWork.m in Sources */,
 				FEBA39C81CBCF65E008067CC /* HYMNavigationVC.m in Sources */,
+				FE7A5CD01CE20F8200BF4B69 /* HYMUpTaskCell.m in Sources */,
 				FEC691781CD08AE800820AA8 /* HYMRecordCell.m in Sources */,
-				FEE44FD11CD35B6D0025E6D1 /* HYMFormTableView.m in Sources */,
 				FEE63F6D1CD1E7BC00183311 /* HYMCommunityCell.m in Sources */,
+				FECFC9EF1CE40E73006A50A8 /* HYMSegmentView.m in Sources */,
+				FECFC9EC1CE40E73006A50A8 /* HYMPublishTableView.m in Sources */,
+				FECFC9B31CE40E60006A50A8 /* HYMTaskList.m in Sources */,
 				FE2827D91CDC2D3200A1A3BE /* HYMPostTable.m in Sources */,
 				FEC691751CD06CCB00820AA8 /* HYMTaskModel.m in Sources */,
 				FEEE70661CCF73A0009F89CC /* StoreDetailVC.m in Sources */,
 				FEBA39461CBCA163008067CC /* HYMHomeVC.m in Sources */,
 				FEC4003F1CC4B7AF00F3899D /* ScrollLabel.m in Sources */,
 				FEEE704D1CCEF763009F89CC /* EvaluateVC.m in Sources */,
+				FECFC9EB1CE40E73006A50A8 /* HYMPublishBottomView.m in Sources */,
+				FECFC9F31CE40E73006A50A8 /* HYMTaskCell.m in Sources */,
+				FEC5EC7F1CE338D900DFC238 /* HYMPublishList.m in Sources */,
 				FE2E99C01CC795E200B1FACF /* HYMMallVC.m in Sources */,
-				FE2628991CD89C3400175B55 /* HYMPayTableView.m in Sources */,
+				FECFC9E21CE40E73006A50A8 /* HYMCourseCell.m in Sources */,
 				FE2827D61CDC2AAD00A1A3BE /* HYMSelectedPost.m in Sources */,
 				FEE943271CCE5CDA0068D4B5 /* XtomCashManager.m in Sources */,
 				FEAD78CA1CDD79030098FF5C /* HYMInLastView.m in Sources */,
+				FECFC9EE1CE40E73006A50A8 /* HYMRecordTableView.m in Sources */,
 				FEC691721CD0645A00820AA8 /* HYMMyBooksTableView.m in Sources */,
 				FEAD78CF1CDD94BB0098FF5C /* HYMWoolletterView.m in Sources */,
 				FEEE70601CCF37A8009F89CC /* AllVC.m in Sources */,
+				FECFC9E91CE40E73006A50A8 /* HYMPayTableView.m in Sources */,
 				FE2827E11CDC6F9F00A1A3BE /* HYMPostVC.m in Sources */,
+				FE27FD0B1CE05F3900AE1467 /* HYMSearchVC.m in Sources */,
+				FECFC9F01CE40E73006A50A8 /* HYMSortView.m in Sources */,
+				FE27FD181CE0909E00AE1467 /* HYMPushSingleCell.m in Sources */,
+				FECFC9B51CE40E60006A50A8 /* HYMTaskRecord.m in Sources */,
 				FEC4003E1CC4B7AF00F3899D /* ScrollView.m in Sources */,
+				FE27FD1B1CE0926300AE1467 /* HYMTMyInvolvementCell.m in Sources */,
 				FEEE70691CCF73BB009F89CC /* ImagePlayerView.m in Sources */,
-				FEC691821CD0CA7700820AA8 /* HYMTaskCell.m in Sources */,
-				FEEE94AB1CDAF14100CB6CBE /* HYMDetailsTable.m in Sources */,
 				FEE943241CCE58430068D4B5 /* XtomRequestSingle.m in Sources */,
-				FEEE94B81CDB178200CB6CBE /* HYMDetailsBottom.m in Sources */,
 				FEBA39401CBCA140008067CC /* HYMCommunityVC.m in Sources */,
+				FECFC9ED1CE40E73006A50A8 /* HYMPublishView.m in Sources */,
 				FEEE94C41CDB2DDF00CB6CBE /* HYMCommView.m in Sources */,
 				FE2628851CD8462800175B55 /* HYMPublishVC.m in Sources */,
-				FE26288F1CD879A400175B55 /* HYMPublishBottomView.m in Sources */,
 				FE2827E61CDC729B00A1A3BE /* HYMEditPost.m in Sources */,
-				FE2628891CD847F600175B55 /* HYMPublishTableView.m in Sources */,
 				FEAD78C11CDD78C60098FF5C /* HYMFriendsView.m in Sources */,
 				FED2F2CE1CC7054700BBFE06 /* UIView+UIViewController.m in Sources */,
 				FEE943161CCE562D0068D4B5 /* PullRefreshTVCGrouped.m in Sources */,
 				FE3F7D5C1CCBB56700AF78AE /* HYMTabBarItem.m in Sources */,
 				FE73F5601CC9CDF200F792D7 /* HYMCommentVC.m in Sources */,
+				FECFC9F51CE40E73006A50A8 /* HYMTaskDeailsTableView.m in Sources */,
+				FECFC9E51CE40E73006A50A8 /* HYMDetailsTable.m in Sources */,
 				FEE9431C1CCE579D0068D4B5 /* XtomFunction.m in Sources */,
-				FEE44FC91CD344110025E6D1 /* HYMTaskDeailsCell.m in Sources */,
+				FECFC9E11CE40E73006A50A8 /* HYMActivityView.m in Sources */,
 				FEBA39C41CBCE5B3008067CC /* HYMTabbarButton.m in Sources */,
+				FEC5EC2E1CE2F30E00DFC238 /* HYMFanliModel.m in Sources */,
 				FE4F07D01CD9927B001B5271 /* HYMStoreCell.m in Sources */,
+				FE27FCC61CE0218600AE1467 /* HYMQRCodeVC.m in Sources */,
 				FEEE94C71CDB354500CB6CBE /* HYMCommTable.m in Sources */,
 				FED2F3391CC7446100BBFE06 /* BaseModel.m in Sources */,
-				FEE63F801CD207B000183311 /* HYMActivityView.m in Sources */,
-				FEE63F771CD1F0BE00183311 /* HYMTaskDeailsTableView.m in Sources */,
+				FECFC9A21CE40981006A50A8 /* HYMPostedCaseVC.m in Sources */,
 				FE4F07D91CD9C27E001B5271 /* HYMHeaderView.m in Sources */,
-				FE26289C1CD89D7E00175B55 /* HYMPayView.m in Sources */,
-				FE26288C1CD84EFF00175B55 /* HYMPublishView.m in Sources */,
 				FEEE94A71CDAEC8800CB6CBE /* HYMDetailsVC.m in Sources */,
 				FE73F5641CC9F9A900F792D7 /* ShareView.m in Sources */,
-				FEEE94B11CDB0DED00CB6CBE /* HYMCourseCell.m in Sources */,
 				FED2F33A1CC7446100BBFE06 /* CellModel.m in Sources */,
 				FEE943211CCE583D0068D4B5 /* XTomRequest.m in Sources */,
+				FECFC9E71CE40E73006A50A8 /* HYMIntroduceCell.m in Sources */,
+				FEB662D71CE1F30E00F9A66B /* HYMUploadTask.m in Sources */,
+				FECFC9B41CE40E60006A50A8 /* HYMTaskListCell.m in Sources */,
+				FEC5EAE61CE2BA4B00DFC238 /* HYMTaskDetailModel.m in Sources */,
 				FEC661A61CC394B000A5465A /* HYMRequest.m in Sources */,
+				FEC5EAEC1CE2C15800DFC238 /* HYMTaskListModel.m in Sources */,
 				FE4F07D31CD99AF8001B5271 /* HYMStore2Cell.m in Sources */,
 				FE01C71F1CC4B808001B70CF /* HYMNoticeView.m in Sources */,
 				FEE943191CCE563E0068D4B5 /* RealityDetailVC.m in Sources */,
 				FEC400311CC4B79700F3899D /* HYMTableHeader.m in Sources */,
 				FEC6916E1CD0632B00820AA8 /* HYMMyBooksVC.m in Sources */,
+				FECFC9B61CE40E60006A50A8 /* HYMTaskRecordView.m in Sources */,
+				FECFC9EA1CE40E73006A50A8 /* HYMPayView.m in Sources */,
 				FEC400401CC4B7AF00F3899D /* UIView+FrameExtension.m in Sources */,
+				FE27FD151CE0744F00AE1467 /* HYMPersonHeader.m in Sources */,
 				FED2F3371CC7446100BBFE06 /* HYMInfoTableView.m in Sources */,
 				FEE9432A1CCE5D7A0068D4B5 /* BBImgView.m in Sources */,
 				FE73F5671CC9FD0500F792D7 /* UIView+Additions.m in Sources */,
-				FEE63F5F1CD192CD00183311 /* HYMSortView.m in Sources */,
 				FEBA39BF1CBCE0C5008067CC /* HYMTabbarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2154,6 +2245,8 @@
 			baseConfigurationReference = FCADBB4C0509AB6020E0B09C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYM/Category/支付宝",
@@ -2165,7 +2258,7 @@
 				);
 				GCC_PREFIX_HEADER = /Users/liuxiaoxue/Desktop/work/HYM/HYMUITests/PrefixHeader.pch;
 				INFOPLIST_FILE = HYM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2178,6 +2271,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haokewangluo.HYM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2186,6 +2280,8 @@
 			baseConfigurationReference = FFEFA10AC7FD81DD636996E5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HYM/Category/支付宝",
@@ -2197,7 +2293,7 @@
 				);
 				GCC_PREFIX_HEADER = /Users/liuxiaoxue/Desktop/work/HYM/HYMUITests/PrefixHeader.pch;
 				INFOPLIST_FILE = HYM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2210,6 +2306,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haokewangluo.HYM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

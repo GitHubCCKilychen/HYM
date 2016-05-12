@@ -15,9 +15,46 @@
 @property (nonatomic,strong)HYMPublishTableView *tableView;
 @property (nonatomic,strong)HYMPublishView *publishView;
 @property (nonatomic,strong)HYMPublishBottomView *bottomView;
+@property (nonatomic,strong)UIView *prompt;//提示
+@property (nonatomic,strong)UIImageView *imageView;//提醒
+@property (nonatomic,strong)UILabel *topic;//
 @end
 
 @implementation HYMPublishVC
+
+
+-(UIImageView *)imageView{
+
+    if (_imageView == nil) {
+        
+        _imageView = [[UIImageView alloc] init];
+        _imageView.frame = CGRectMake(20, 2.5, 25, 25);
+        _imageView.backgroundColor = [UIColor grayColor];
+    }
+    return _imageView;
+}
+
+- (UILabel *)topic{
+
+    if (_topic == nil) {
+        
+        _topic = [[UILabel alloc] init];
+        _topic.frame = CGRectMake(55, 5, kScreenWitdth-50, 20);
+        _topic.text = @"上传未通过的任务：官方回复：由于您……";
+        [HYMTool initLabel:_topic withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor orangeColor] withTextAlignment:NSTextAlignmentLeft];
+    }
+    return _topic;
+}
+- (UIView *)prompt{
+
+    if (_prompt == nil) {
+        
+        _prompt = [[UIView alloc] init];
+        _prompt.frame = CGRectMake(0, 64, kScreenWitdth, 30);
+        _prompt.backgroundColor = [UIColor colorWithRed:251/256.f green:228/256.f blue:221/256.f alpha:1];
+    }
+    return _prompt;
+}
 
 -(HYMPublishBottomView *)bottomView{
 
@@ -44,7 +81,7 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMPublishTableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        _tableView = [[HYMPublishTableView alloc] initWithFrame:CGRectMake(0, 94, kScreenWitdth, kScreenHeight-94) style:UITableViewStyleGrouped];
         _tableView.tableHeaderView = self.publishView;
         _tableView.tableFooterView = self.bottomView;
     }
@@ -65,7 +102,7 @@
 #pragma mark 
 - (void)initDefault{
 
-    self.title = @"发布任务";
+    self.title = @"上传任务参数";
    
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
 }
@@ -73,6 +110,9 @@
 #pragma mark view
 - (void)initWithView{
 
+    [self.prompt addSubview:self.imageView];
+    [self.prompt addSubview:self.topic];
+    [self.view addSubview:self.prompt];
     [self.view addSubview:self.tableView];
                                                    
     

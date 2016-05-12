@@ -10,15 +10,26 @@
 #import "HYMTaskDeailsTableView.h"
 #import "HYMTaskHeadView.h"
 #import "HYMTaskBottom.h"
+#import "HYMTaskDetailModel.h"
 @interface HYMTaskDetailsVC ()
 
 @property (nonatomic,strong)HYMTaskDeailsTableView *tableView;
 @property (nonatomic,strong)HYMTaskHeadView *headerView;
 @property (nonatomic,strong)HYMTaskBottom *taskBottom;
+@property (nonatomic,strong)NSMutableArray *listArr;
 @end
 
 @implementation HYMTaskDetailsVC
 #pragma mark 懒加载
+
+- (NSMutableArray *)listArr{
+
+    if (_listArr == nil) {
+        
+        _listArr = [NSMutableArray array];
+    }
+    return _listArr;
+}
 
 -(HYMTaskBottom *)taskBottom{
 
@@ -51,8 +62,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
+}
+
+#pragma mark 数据
+- (void)loadData{
+
+    NSString *url = [NSString stringWithFormat:@"%@%@",REQUEST_Root_Net,REQUEST_Task_Info];
+    NSDictionary *dic = @{@"id":@"1"};
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:url target:self selector:@selector(loadData:) parameter:nsDic];
+}
+#pragma mark 数据加载
+- (void)loadData:(NSDictionary *)dic{
+    
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    
+    HYMTaskDetailModel *taskDetailModel = [[HYMTaskDetailModel alloc] initWithDictionary:infor];
+    [self.listArr addObject:taskDetailModel];
+    
+    NSLog(@"%@",[infor objectForKey:@"description"]);
 }
 
 #pragma mark default
@@ -60,6 +91,7 @@
 
     self.title = @"任务详情";
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+  
 }
 
 #pragma mark 

@@ -60,6 +60,15 @@
 
     self.title = @"任务详情";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 35, 35);
+    btn.backgroundColor = [UIColor brownColor];
+    [btn addTarget:self action:@selector(rightAct:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:btn];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = rightItem;
 }
 
 #pragma mark 控件
@@ -70,5 +79,9 @@
     
 }
 
+#pragma mark 事件
+- (void)rightAct:(UIButton *)btn{
 
+    
+}
 @end

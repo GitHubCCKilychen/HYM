@@ -72,8 +72,9 @@
     HYMHomeVC *homeVC = [[HYMHomeVC alloc] init];
     
     UITabBarItem *homeTabItem = [[HYMTabBarItem alloc] init];
-    homeTabItem.image = [[UIImage imageNamed:@"tab1_1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    homeTabItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    
+    homeTabItem.image = [[UIImage imageNamed:@"tabbarHome"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    homeTabItem.selectedImage = [[UIImage imageNamed:@"tabbarSelecthome"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
     homeTabItem.title = @"首页";
     
     HYMNavigationVC *homeNv = [[HYMNavigationVC alloc] initWithRootViewController:homeVC];
@@ -81,8 +82,8 @@
     
     
     UITabBarItem *task = [[HYMTabBarItem alloc] init];
-    task.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    task.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    task.image = [[UIImage imageNamed:@"tabbarTask"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    task.selectedImage = [[UIImage imageNamed:@"tabbarSelectTask"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
     task.title = @"任务";
     HYMTaskVC *taskVC = [[HYMTaskVC alloc] init];
     UINavigationController *taskNC = [[UINavigationController alloc] initWithRootViewController:taskVC];
@@ -91,8 +92,8 @@
     
     
     UITabBarItem *contactsItem = [[HYMTabBarItem alloc] init];
-    contactsItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    contactsItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    contactsItem.image = [[UIImage imageNamed:@"taskRenMai"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    contactsItem.selectedImage = [[UIImage imageNamed:@"tabbarSelectRenMai"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
     contactsItem.title = @"人脉";
     HYMContactsVC *contactsVC = [[HYMContactsVC alloc] init];
     UINavigationController *contactsNC = [[UINavigationController alloc] initWithRootViewController:contactsVC];
@@ -100,8 +101,8 @@
     
     
     UITabBarItem *communityItem = [[HYMTabBarItem alloc] init];
-    communityItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    communityItem.selectedImage = [[UIImage imageNamed:@"tab1_0"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
+    communityItem.image = [[UIImage imageNamed:@"tabbarluntan"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    communityItem.selectedImage = [[UIImage imageNamed:@"tabbarSelectLuntan"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] ;
     communityItem.title = @"社区";
     HYMCommunityVC *communityVC = [[HYMCommunityVC alloc] init];
     HYMNavigationVC *communityNC = [[HYMNavigationVC alloc] initWithRootViewController:communityVC];
@@ -109,7 +110,8 @@
     
     
     UITabBarItem *personItem = [[HYMTabBarItem alloc] init];
-    personItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    personItem.image = [[UIImage imageNamed:@"tabbarPerson"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    personItem.selectedImage = [[UIImage imageNamed:@"tabbarSelectPerson"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     personItem.title = @"个人中心";
     HYMPersonalVC *personVC = [[HYMPersonalVC alloc] init];
     HYMNavigationVC *personNC = [[HYMNavigationVC alloc] initWithRootViewController:personVC];
@@ -135,21 +137,20 @@
     
 }
 
-#pragma mark 设置VC的图片
-- (void)setViewControllers:(UIViewController *)vc image:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title{
-
-    vc.tabBarItem.image = image;
-    vc.tabBarItem.selectedImage = selectedImage ;
-    vc.title = title;
-    [self.items addObject:vc.tabBarItem];
-    
-    HYMNavigationVC *nc = [[HYMNavigationVC alloc] initWithRootViewController:vc];
- 
-}
-
-#pragma mark 切换顺序
-- (void)tabBar:(HYMTabbarView *)tabBar didClickButton:(NSInteger)index{
-
-    self.selectedIndex = index;
-}
+//#pragma mark 设置VC的图片
+//- (void)setViewControllers:(UIViewController *)vc image:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title{
+//
+//    vc.tabBarItem.image = image;
+//    vc.tabBarItem.selectedImage = selectedImage ;
+//    vc.title = title;
+//    [self.items addObject:vc.tabBarItem];
+//    
+// 
+//}
+//
+//#pragma mark 切换顺序
+//- (void)tabBar:(HYMTabbarView *)tabBar didClickButton:(NSInteger)index{
+//
+//    self.selectedIndex = index;
+//}
 @end

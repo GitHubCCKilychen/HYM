@@ -38,6 +38,7 @@
 // 获取RGB颜色
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 
+
 //tabbaritem字体大小
 #define tabbarItemFont  [UIFont systemFontOfSize:12]
 
@@ -55,9 +56,10 @@
 #define BB_Blake [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1]
 
 //-------------------网络--------------
-#define REQUEST_MAINLINK_INIT @"http://123.56.237.91/"
-
-
+#define REQUEST_Root_Net @"http://123.56.237.91/"
+#define REQUEST_Task_List @"index.php/Webservice/Center/task_list"
+#define REQUEST_Task_Info @"index.php/Webservice/?m=Task&a=task_info"
+#define REQUEST_Task_Jojn @"index.php/Webservice/?m=Task&a=task_join"
 
 //---------------
 #define BUY_SUCCESS_XUNI @"buy_success_xuni"

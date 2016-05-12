@@ -152,7 +152,6 @@
         [self.tableView reloadData];
         
     }
-//    NSLog(@"%@",taskDic);
     
 }
 #pragma mark tableView

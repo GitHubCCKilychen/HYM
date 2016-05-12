@@ -322,7 +322,7 @@
     self.logoImage1 = [[[UIImageView alloc] init] autorelease];
     logoImage1.frame = CGRectMake(12.5, -48, 103, 103);
     [XtomFunction addBorderToView:logoImage1];
-    logoImage1.image = [UIImage imageNamed:@""];
+//    logoImage1.image = [UIImage imageNamed:@""];
     logoImage1.backgroundColor = [UIColor yellowColor];
     
     [whiteBack addSubview:logoImage1];

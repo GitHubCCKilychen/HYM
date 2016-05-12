@@ -10,11 +10,24 @@
 
 #import "HYMInHeaderView.h"
 #import "HYMInLastView.h"
-@interface HYMInvitationView ()
+@interface HYMInvitationView ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)HYMInHeaderView *headerView;
 @property (nonatomic,strong)HYMInLastView *lastView;
+
+@property (nonatomic,strong)UITableView *tableView;
 @end
 @implementation HYMInvitationView
+
+- (UITableView *)tableView{
+
+    if (_tableView == nil) {
+        
+        _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+    }
+    return _tableView;
+}
 
 -(HYMInHeaderView *)headerView{
 
@@ -50,6 +63,7 @@
 - (void)initWithView{
 
 
+//    [self addSubview:self.tableView];
     
     [self addSubview:self.headerView];
     [self addSubview:self.lastView];
@@ -64,9 +78,26 @@
     self.lastView.sd_layout
     .leftSpaceToView(self,0).topSpaceToView(self.headerView,10)
     .rightSpaceToView(self,0).heightIs(310);
+}
 
 
-    
-    
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+    return 20;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    return cell;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 2;  
 }
 @end
