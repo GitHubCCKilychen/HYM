@@ -55,6 +55,10 @@
 #define BB_Blake [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1]
 #define BB_Blake [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1]
 
+#define BB_BackColor [UIColor colorWithRed:240/255.0 green:96/255.0 blue:25/255.0 alpha:1]
+#define TextColor [UIColor colorWithRed:54/255.0 green:146/255.0 blue:177/255.0 alpha:1]
+#define Cell_BackColr [UIColor colorWithRed:226/255.0 green:240/255.0 blue:244/255.0 alpha:1]
+
 //-------------------网络--------------
 #define REQUEST_Root_Net @"http://123.56.237.91/"
 #define REQUEST_Task_List @"index.php/Webservice/Center/task_list"

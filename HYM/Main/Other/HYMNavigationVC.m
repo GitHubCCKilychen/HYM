@@ -70,4 +70,14 @@
     return dic;
 }
 
++ (UIBarButtonItem *)rightBarItem:(UIButton *)button withBackImage:(UIImage *)image withNavi:(UINavigationBar *)navi{
+
+    
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 20, 20);
+    button.backgroundColor = [UIColor colorWithPatternImage:image];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
+    return rightItem;
+}
 @end

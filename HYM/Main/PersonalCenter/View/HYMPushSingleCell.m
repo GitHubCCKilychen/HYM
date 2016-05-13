@@ -7,6 +7,10 @@
 //
 
 #import "HYMPushSingleCell.h"
+#import "HYMCheckForm.h"
+#import "HYMListVC.h"
+#import "HYMLunTanJoinVC.h"
+#import "HYMMyOrderVC.h"
 #define textColor [UIColor colorWithRed:251/256.f green:149/256.f blue:89/256.f alpha:1]
 #import "HYMUploadTask.h"
 @implementation HYMPushSingleCell
@@ -148,6 +152,8 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(15+i*kScreenWitdth/6+i*10, 35, 30, 30);
         btn.backgroundColor = [UIColor grayColor];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(shopAct:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
@@ -182,7 +188,7 @@
     }
     
 }
-
+//推单店铺
 - (void)buttonAct:(UIButton *)btn{
 
     
@@ -198,9 +204,34 @@
             break;
         case 1:
             break;
+        case 2:
+        {
+            HYMCheckForm *check = [[HYMCheckForm alloc] init];
+            [self.viewController.navigationController pushViewController:check animated:YES];
+        
+        }   break;
+        case 3:{
+        
+            HYMListVC *list = [[HYMListVC alloc] init];
+            [self.viewController.navigationController pushViewController:list animated:YES];
+            
+        }break;
         default:
             break;
     }
     
 }
+
+#pragma mark 全部待付款－评价－－
+- (void)shopAct:(UIButton *)btn{
+
+    
+//    NSLog(@"++_%ld",(long)btn.tag);
+    HYMMyOrderVC *order = [[HYMMyOrderVC alloc] init];
+    order.index = btn.tag;
+    [self.viewController.navigationController pushViewController:order animated:YES];
+
+}
+
+
 @end

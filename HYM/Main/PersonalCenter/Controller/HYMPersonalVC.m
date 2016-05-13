@@ -9,6 +9,7 @@
 #import "HYMPersonalVC.h"
 #import "HYMPersonTable.h"
 #import "HYMPersonHeader.h"
+#import "HYMSystemSetting.h"
 @interface HYMPersonalVC ()
 
 @property (nonatomic,strong)HYMPersonTable *tableView;
@@ -51,6 +52,14 @@
     self.title = @"个人中心";
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
+    UIButton *setting = [UIButton buttonWithType:UIButtonTypeCustom];
+    setting.frame = CGRectMake(0, 0, 20, 20);
+    setting.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"personSet"]];
+    [setting addTarget:self action:@selector(settingAct:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:setting];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:setting];
+    self.navigationItem.rightBarButtonItem = right;
+    
 }
 
 - (void)initWithView{
@@ -62,6 +71,10 @@
 
     
 }
+- (void)settingAct:(UIButton *)setting{
 
+    HYMSystemSetting *setVC = [[HYMSystemSetting alloc] init];
+    [self.navigationController pushViewController:setVC animated:YES];
+}
 
 @end

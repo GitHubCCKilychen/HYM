@@ -46,6 +46,7 @@
     segment.titleColor = titleColor;
     segment.selectColor = selectedColor;
     segment.segmentDelegate = delegate;
+    segment.titleFont = titleFont;
     [segment addSegmentArray:titleArr];
    
     return segment;
@@ -64,6 +65,7 @@
     for (int i = 0; i < segmentArray.count; i++) {
         
         UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i * witdthFloat, 0, witdthFloat, self.bounds.size.height-2)];
+        self.btn = btn;
         [btn setTitle:segmentArray[i] forState:UIControlStateNormal];
         [btn.titleLabel setFont:self.titleFont];
         [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
@@ -79,16 +81,32 @@
         [self addSubview:btn];
         
         [self.btnTitleSource addObject:btn];
+        
+        
+       
     }
     [[self.btnTitleSource firstObject] setSelected:YES];
+    
+   
     
     
 }
 
 - (void)changeSegumentAction:(UIButton *)btn{
     [self selectTheSegument:btn.tag - 1];
+    
+   
 }
 
+- (void)setIndex:(NSInteger)index{
+
+    _index = index;
+    if (self.index != self.btn.tag) {
+        
+        //设置当前的选中状态---此处有问题
+        [self selectTheSegument:self.index+1];
+    }
+}
 -(void)selectTheSegument:(NSInteger)segument{
     
     if (selectSeugment != segument) {
@@ -103,5 +121,9 @@
         selectSeugment = segument;
         [self.segmentDelegate segumentSelectionChange:selectSeugment];
     }
+    
+    
 }
+
+
 @end

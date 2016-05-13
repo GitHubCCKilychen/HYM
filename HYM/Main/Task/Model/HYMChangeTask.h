@@ -1,5 +1,5 @@
 //
-//  HYMPostedView.h
+//  HYMChangeTask.h
 //  HYM
 //
 //  Created by 刘晓雪 on 16/5/12.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HYMPostedView : UIView
+@interface HYMChangeTask : UIView
 
+@property (nonatomic,strong)UIButton *changeBtn;
 @end

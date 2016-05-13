@@ -13,10 +13,12 @@
 @optional
 
 -(void)segumentSelectionChange:(NSInteger)selection;
+
 @end
 
 @interface HYMSegmentView : UIView
-
+@property (nonatomic,weak)UIButton *btn;
+@property (nonatomic,assign)NSInteger index;
 @property (nonatomic, strong) NSMutableArray * btnTitleSource;
 @property (strong, nonatomic) UIColor * titleColor;
 @property (strong, nonatomic) UIColor * selectColor;

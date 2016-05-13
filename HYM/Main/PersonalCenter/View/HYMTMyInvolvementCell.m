@@ -7,7 +7,7 @@
 //
 
 #import "HYMTMyInvolvementCell.h"
-
+#import "HYMLunTanJoinVC.h"
 @implementation HYMTMyInvolvementCell
 
 - (UIView *)lineView{
@@ -59,6 +59,8 @@
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(35+i*30+i*kScreenWitdth/4, 45, 30, 30);
+        btn.tag = i;
+        [btn addTarget:self action:@selector(joinAct:) forControlEvents:UIControlEventTouchUpInside];
         btn.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:btn];
         
@@ -78,5 +80,26 @@
         
        
     }
+}
+
+#pragma mark 我的参与
+- (void)joinAct:(UIButton *)btn{
+    
+    
+    NSLog(@"%ld",(long)btn.tag);
+    switch (btn.tag) {
+        case 0:
+            
+        {
+            HYMLunTanJoinVC *joinVC = [[HYMLunTanJoinVC alloc] init];
+            [self.viewController.navigationController pushViewController:joinVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
 }
 @end

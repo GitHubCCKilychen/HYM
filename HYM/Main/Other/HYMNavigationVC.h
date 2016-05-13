@@ -11,5 +11,8 @@
 @interface HYMNavigationVC : UINavigationController
 
 + (NSDictionary *)setTitle:(UIColor *)fontColor withFontSize:(CGFloat)fontSize withNavi:(UINavigationBar *)navi;
+
++ (UIBarButtonItem *)rightBarItem:(UIButton *)button withBackImage:(UIImage *)image withNavi:(UINavigationBar *)navi;
+
 @end
 
