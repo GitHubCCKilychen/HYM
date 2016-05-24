@@ -16,6 +16,16 @@
 @implementation HYMTaskRecord
 
 #pragma mark 懒加载
+
+- (UIView *)backView{
+
+    if (_backView == nil) {
+        
+        _backView = [[UIView alloc] init];
+    }
+    return _backView;
+
+}
 - (UIView *)lineView{
 
     if (_lineView == nil) {
@@ -43,38 +53,12 @@
     if (_imageView == nil) {
         
         _imageView = [[UIImageView alloc] init];
+        
+        _imageView.image = [UIImage imageNamed:@"任务进度"];
     }
     return _imageView;
 }
 
-//- (UILabel *)officialContent{
-//
-//    if (_officialContent == nil) {
-//        
-//
-//        _officialContent = [[UILabel alloc] init];
-//        _officialContent.text = @"点击进入官方网站:";
-//        [HYMTool initLabel:_officialContent withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-//    }
-//    return _officialContent;
-//}
-//
-//- (UILabel *)officialWebsite{
-//
-//    if (_officialWebsite == nil) {
-//        
-//        _officialWebsite = [[UILabel alloc] init];
-//        _officialWebsite.text = @"https://www.baidu.com";
-//        [HYMTool initLabel:_officialWebsite withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor orangeColor] withTextAlignment:NSTextAlignmentLeft];
-//        _officialWebsite.userInteractionEnabled = YES;
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(websiteAct:)];
-//        [_officialWebsite addGestureRecognizer:tap];
-//        
-//        UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(textLongAct:)];
-//        [_officialWebsite addGestureRecognizer:longGes];
-//    }
-//    return _officialWebsite;
-//}
 
 - (UILabel *)moreContent{
 
@@ -82,7 +66,7 @@
         
         _moreContent = [[UILabel alloc] init];
         _moreContent.text = @"若有多项报单，请直接联系客服";
-        [HYMTool initLabel:_moreContent withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_moreContent withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor lightGrayColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _moreContent;
 }
@@ -93,7 +77,7 @@
         
         _officeNumber = [[UILabel alloc] init];
         _officeNumber.text = @"点击链接官方客服：";
-        [HYMTool initLabel:_officeNumber withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_officeNumber withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor lightGrayColor] withTextAlignment:NSTextAlignmentLeft];
         
     }
     return _officeNumber;
@@ -120,37 +104,6 @@
     }
     return _userEvaluation;
 }
-
-- (UILabel *)zan{
-
-    if (_zan == nil) {
-        _zan = [[UILabel alloc] init];
-        _zan.text = @"赞26万";
-        [HYMTool initLabel:_zan withFont:[UIFont systemFontOfSize:13] withTextColor:[UIColor grayColor] withTextAlignment:nil];
-    }
-    return _zan;
-}
-
--(UIView *)bottomLine{
-
-    if (_bottomLine == nil) {
-        _bottomLine = [[UIView alloc] init];
-        _bottomLine.backgroundColor = [UIColor grayColor];
-        _bottomLine.alpha = 0.2;
-    }
-    return _bottomLine;
-}
-- (UIView *)sliderView{
-
-    if (_sliderView == nil) {
-        
-        _sliderView = [[UIView alloc] init];
-        _sliderView.frame = CGRectMake(15, 370-12,80, 1);
-        _sliderView.backgroundColor = [UIColor orangeColor];
-    }
-    return _sliderView;
-}
-
 - (UIButton *)chatBtn{
 
     if (_chatBtn == nil) {
@@ -160,6 +113,65 @@
     }
     
     return _chatBtn;
+}
+
+#pragma mark --
+- (void)setNewIndex:(int)newIndex{
+
+    _newIndex = newIndex;
+    
+    
+    NSArray *titleArr = @[@"参与",@"报单",@"审核",@"完成"];
+    NSArray *titleNewArr = @[@"参与",@"记账"];
+    if (_newIndex == 2) {
+        
+        for (int i = 0 ; i < titleNewArr.count; i++) {
+            
+            UILabel *title = [[UILabel alloc] init];
+            title.frame = CGRectMake((kScreenWitdth-150)/2+i*40+i*75, 85, 40, 20);
+            title.text = titleArr[i];
+            title.font = [UIFont systemFontOfSize:14];
+            title.textAlignment = NSTextAlignmentCenter;
+            
+            if (i > 1) {
+                
+                title.textColor = [UIColor lightGrayColor];
+            }
+            [self addSubview:title];
+        }
+    }else{
+    
+        for (int i = 0 ; i < titleArr.count; i++) {
+            
+            UILabel *title = [[UILabel alloc] init];
+            title.frame = CGRectMake((kScreenWitdth-235)/2+i*40+i*28, 85, 40, 20);
+            title.text = titleArr[i];
+            title.font = [UIFont systemFontOfSize:14];
+            title.textAlignment = NSTextAlignmentCenter;
+            
+            if (i > 1) {
+                
+                title.textColor = [UIColor lightGrayColor];
+            }
+            [self addSubview:title];
+        }
+    }
+    
+    
+    if (_newIndex == 2) {
+        
+        self.taskRecord.text = @"新手单任务进度";
+        
+        self.imageView.image = [UIImage imageNamed:@"新手单"];
+        
+        self.imageView.sd_layout
+        .leftSpaceToView(self,(kScreenWitdth-150)/2).rightSpaceToView(self,(kScreenWitdth-150)/2).widthIs(150)
+        .heightIs(25).topSpaceToView(self.lineView,20);
+        
+        
+    }
+    
+    
 }
 #pragma mark 初始化
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -182,16 +194,13 @@
     [self addSubview:self.lineView];
     [self addSubview:self.taskRecord];
     [self addSubview:self.imageView];
-//    [self addSubview:self.officialContent];
-//    [self addSubview:self.officialWebsite];
+    [self addSubview:self.backView];
     [self addSubview:self.moreContent];
     [self addSubview:self.officeNumber];
     
     [self addSubview:self.userline];
     [self addSubview:self.userEvaluation];
-    [self addSubview:self.zan];
-    [self addSubview:self.bottomLine];
-    [self addSubview:self.sliderView];
+
     [self addSubview:self.chatBtn];
     
     self.lineView.sd_layout
@@ -201,31 +210,24 @@
 //    self.taskRecord.backgroundColor = [UIColor orangeColor];
     self.taskRecord.sd_layout
     .leftSpaceToView(self.lineView,10).topSpaceToView(self,10)
-    .widthIs(80).heightIs(20);
+    .widthIs(kScreenWitdth/2).heightIs(20);
     
     
 
-    self.imageView.backgroundColor = [UIColor grayColor];
     self.imageView.sd_layout
-    .leftSpaceToView(self,10).rightSpaceToView(self,10)
-    .topSpaceToView(self.lineView,10).heightRatioToView(self,0.4);
+    .leftSpaceToView(self,(kScreenWitdth-235)/2).rightSpaceToView(self,(kScreenWitdth-235)/2)
+    .topSpaceToView(self.lineView,20).heightIs(22.5).widthIs(235);
     
-//    self.officialContent.backgroundColor = [UIColor brownColor];
-//    self.officialContent.sd_layout
-//    .leftSpaceToView(self,20).topSpaceToView(self.imageView,10)
-//    .widthRatioToView(self,0.35).heightIs(20);
-//    
-////    self.officialWebsite.backgroundColor = [UIColor grayColor];
-//    self.officialWebsite.sd_layout
-//    .leftSpaceToView(self.officialContent,0).topEqualToView(self.officialContent)
-//    .widthRatioToView(self,0.5).heightIs(20);
+    self.backView.backgroundColor = [UIColor colorWithRed:235/255.f green:235/255.f blue:235/255.f alpha:1];
+    self.backView.sd_layout
+    .leftSpaceToView(self,0).rightSpaceToView(self,0)
+    .topSpaceToView(self,120).heightIs(55);
     
-//    self.moreContent.backgroundColor = [UIColor grayColor];
     self.moreContent.sd_layout
-    .leftSpaceToView(self,20).topSpaceToView(self.imageView,25)
+    .leftSpaceToView(self,20).topSpaceToView(self.imageView,50)
     .heightIs(20).widthRatioToView(self,0.6);
     
-    self.officeNumber.backgroundColor =[UIColor brownColor];
+//    self.officeNumber.backgroundColor =[UIColor brownColor];
     self.officeNumber.sd_layout
     .leftSpaceToView(self,20).topSpaceToView(self.moreContent,5)
     .widthRatioToView(self,0.4).heightIs(20);
@@ -238,70 +240,36 @@
     self.userEvaluation.sd_layout
     .leftSpaceToView(self.userline,10).topEqualToView(self.userline)
     .heightIs(20).widthIs(80);
-    
-    self.zan.sd_layout
-    .rightSpaceToView(self,10).bottomSpaceToView(self,20)
-    .heightIs(20).widthIs(50);
-    
-    self.bottomLine.sd_layout
-    .leftSpaceToView(self,10).bottomSpaceToView(self,10)
-    .rightSpaceToView(self,10).heightIs(1);
-    
+   
     self.chatBtn.sd_layout
-    .leftSpaceToView(self.officeNumber,10).topSpaceToView(self.moreContent,5)
+    .leftSpaceToView(self.officeNumber,2).topSpaceToView(self.moreContent,5)
     .widthIs(30).heightIs(20);
+    
+   
 }
 
 #pragma mark 转发评论
 - (void)initWithBtn{
     
-    NSString *forward = [NSString stringWithFormat:@"转发4502"];
-    NSString *comment = [NSString stringWithFormat:@"评论4万"];
-    NSArray *title = @[forward,comment];
-    for (int i = 0; i < 2; i++) {
+    NSString *forward = [NSString stringWithFormat:@"时间"];
+    NSString *comment = [NSString stringWithFormat:@"评论量"];
+    NSString *zanCount = [NSString stringWithFormat:@"点赞量"];
+    NSArray *title = @[forward,comment,zanCount];
+    for (int i = 0; i < title.count; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15+i*80, 370-50, 80, 40);
+        btn.frame = CGRectMake(15+i*60,250-40, 60, 40);
         btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         btn.tag = i;
-        [btn addTarget:self action:@selector(sliderAct:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:title[i] forState:UIControlStateNormal];
-//        btn.backgroundColor = [UIColor grayColor];
         [self addSubview:btn];
     }
     
 }
 
-#pragma mark 滑动
-- (void)sliderAct:(UIButton *)btn{
 
-    HYMTaskDeailsTableView *tableView = [[HYMTaskDeailsTableView alloc] init];
-    
-    tableView.index = btn.tag;
-    
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"index" object:self];
-    
-    [UIView animateWithDuration:0.35 animations:^{
-        
-        //此处位置是写死的，后期需要改动
-        switch (btn.tag) {
-            case 0:
-                self.sliderView.frame = CGRectMake(15, 370-12,80, 1);
-                
-//                NSLog(@"1");
-                break;
-            case 1:
-                self.sliderView.frame = CGRectMake(95, 370-12,80, 1);
-//                NSLog(@"2");
-                break;
-            default:
-                break;
-        }
-    }];
-    
-}
 #pragma mark 点击复制事件
 - (void)websiteAct:(UITapGestureRecognizer *)tap{
 
@@ -326,6 +294,82 @@
         [pasteboard setString:someLabel.text];
         
     }
+    
+}
+#pragma mark 用户评价事件
+- (void)btnAct:(UIButton *)btn{
+
+    
+    
+    switch (btn.tag) {
+        case 0:
+            
+            break;
+        case 1:
+            
+            //评论量
+             [self commentData];
+            break;
+        case 2:
+            
+            //获取点赞数据
+            [self zanData];
+            break;
+        default:
+            break;
+            
+    }
+    
+ 
+   
+   
+    
+  
+}
+
+
+#pragma mark 任务ID
+- (void)setIndex:(int)index{
+
+    _index = index;
+    
+   
+}
+- (void)zanData{
+    
+    NSString *indexString = [NSString stringWithFormat:@"%d",self.index];
+
+    NSDictionary *dic = @{@"keytype":@"6",@"keyid":indexString,@"oper":@"1",@"token":@"1"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/follow_collect_operator" target:self selector:@selector(zanData:) parameter:infoDic];
+}
+
+- (void)zanData:(NSDictionary *)dic{
+
+    
+    /**
+     *      infor = "<null>";
+            msg = "\U64cd\U4f5c\U6210\U529f\Uff01";
+            success = 1;
+     */
+    NSLog(@"%@",dic);
+}
+
+#pragma mark 评论
+- (void)commentData{
+
+    NSString *indexString = [NSString stringWithFormat:@"%d",self.index];
+    
+    NSDictionary *dic = @{@"id":indexString,@"type":@"1",@"parentid":@"1",@"token":@"1",@"content":@"1234"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/task/comment_operate" target:self selector:@selector(commentData:) parameter:infoDic];
+}
+
+- (void)commentData:(NSDictionary *)dic{
+
+    NSLog(@"%@- %@",dic,[dic objectForKey:@"msg"]);
     
 }
 @end

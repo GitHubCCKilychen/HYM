@@ -9,10 +9,13 @@
 #import "HYMMyOrderVC.h"
 #import "HYMSegmentView.h"
 #import "HYMWholeTable.h"
+#import "HYMMyOrder.h"
+#import "HYMComent.h"
 @interface HYMMyOrderVC ()<HYMSegmentViewDelegate>
 
 @property (nonatomic,strong)HYMSegmentView *segment;
 @property (nonatomic,strong)HYMWholeTable *whole;
+@property (nonatomic,strong)HYMComent *comentView;
 @end
 
 @implementation HYMMyOrderVC
@@ -32,10 +35,21 @@
 
     if (_whole == nil) {
         
-        _whole = [[HYMWholeTable alloc] initWithFrame:CGRectMake(0, 120, kScreenWitdth, kScreenHeight-120) style:UITableViewStyleGrouped];
+        _whole = [[HYMWholeTable alloc] initWithFrame:CGRectMake(0, 104, kScreenWitdth, kScreenHeight-104) style:UITableViewStyleGrouped];
     }
     return _whole;
 }
+
+- (HYMComent *)comentView{
+
+    if (_comentView == nil) {
+        
+        _comentView = [[HYMComent alloc] init];
+        _comentView.frame = CGRectMake(0, 104, kScreenWitdth, kScreenHeight-104);
+    }
+    return _comentView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,15 +57,17 @@
     [self initView];
 }
 
+
 - (void)initDefault{
     
-    self.view.backgroundColor = BB_Back_Color_Here;
+    self.view.backgroundColor = [UIColor colorWithRed:235/256.f green:235/256.f blue:241/256.f alpha:1];
     self.title = @"我的订单";
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     UIButton *search = [UIButton buttonWithType:UIButtonTypeCustom];
     search.frame = CGRectMake(0, 0, 20, 20);
     search.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"taskSearch"]];
+    [search addTarget:self action:@selector(searchOrder:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:search];
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:search];
     self.navigationItem.rightBarButtonItem = right;
@@ -61,6 +77,8 @@
 
     [self.view addSubview:self.segment];
     [self.view addSubview:self.whole];
+    //根据是否有数据来进行判断设置添加
+//    [self.view addSubview:self.comentView];
 }
 
 -(void)segumentSelectionChange:(NSInteger)selection{
@@ -80,5 +98,10 @@
     NSLog(@"----%ld",(long)self.segment.index);
 }
 
+#pragma mark 搜索订单
+- (void)searchOrder:(UIButton *)btn{
 
+    HYMMyOrder *search = [[HYMMyOrder alloc] init];
+    [self.navigationController pushViewController:search animated:YES];
+}
 @end

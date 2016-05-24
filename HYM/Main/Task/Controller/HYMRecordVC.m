@@ -29,14 +29,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initWithDefault];
     
     [self initWithView];
 }
 
+
+- (void)loadData{
+    
+    
+    //--没有数据
+    NSDictionary *dic = @{@"page":@"1",@"token":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/task/deposit_info" target:self selector:@selector(loadData:) parameter:nsdic];
+}
+
+
+#pragma mark 数据解析
+- (void)loadData:(NSDictionary *)dic{
+    
+    NSLog(@"%@",dic);
+    
+}
 - (void)initWithDefault{
 
     self.title = @"任务纪录";
+    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark view

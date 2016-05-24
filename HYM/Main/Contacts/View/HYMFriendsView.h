@@ -11,4 +11,6 @@
 @interface HYMFriendsView : UIView
 
 @property (nonatomic,strong)UITableView *talbeView;
+
+@property (nonatomic,strong)NSMutableArray *friendArr;
 @end

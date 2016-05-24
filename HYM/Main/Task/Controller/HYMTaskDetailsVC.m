@@ -8,19 +8,38 @@
 
 #import "HYMTaskDetailsVC.h"
 #import "HYMTaskDeailsTableView.h"
-#import "HYMTaskHeadView.h"
-#import "HYMTaskBottom.h"
 #import "HYMTaskDetailModel.h"
+#import "HYMTaskRecordView.h"
+#import "HYMTaskBottom.h"
 @interface HYMTaskDetailsVC ()
 
 @property (nonatomic,strong)HYMTaskDeailsTableView *tableView;
-@property (nonatomic,strong)HYMTaskHeadView *headerView;
 @property (nonatomic,strong)HYMTaskBottom *taskBottom;
 @property (nonatomic,strong)NSMutableArray *listArr;
+@property (nonatomic,strong)HYMTaskRecordView *headerView;
 @end
 
 @implementation HYMTaskDetailsVC
 #pragma mark 懒加载
+
+- (HYMTaskBottom *)taskBottom{
+
+    if (_taskBottom == nil) {
+        
+        _taskBottom =  [[[NSBundle mainBundle] loadNibNamed:@"HYMTaskBottom" owner:self options:nil]lastObject];
+        _taskBottom.frame = CGRectMake(0, kScreenHeight-49, kScreenWitdth, 49);
+    }
+    return _taskBottom;
+}
+- (HYMTaskRecordView *)headerView{
+
+    if (_headerView == nil) {
+        
+        _headerView = [[HYMTaskRecordView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 110)];
+        
+    }
+    return _headerView;
+}
 
 - (NSMutableArray *)listArr{
 
@@ -31,25 +50,7 @@
     return _listArr;
 }
 
--(HYMTaskBottom *)taskBottom{
 
-    if (_taskBottom == nil) {
-        
-        _taskBottom = [[[NSBundle mainBundle] loadNibNamed:@"HYMTaskBottom" owner:self options:nil] lastObject];
-        _taskBottom.frame = CGRectMake(0, kScreenHeight-49, kScreenWitdth, 49);
-    }
-    return _taskBottom;
-}
--(HYMTaskHeadView *)headerView{
-
-    if (_headerView == nil) {
-        
-        _headerView = [[HYMTaskHeadView alloc] init];
-        _headerView.frame = CGRectMake(0, 0, kScreenWitdth, kScreenHeight+220);
-    }
-    
-    return _headerView;
-}
 - (HYMTaskDeailsTableView *)tableView{
 
     if (_tableView == nil) {
@@ -67,23 +68,43 @@
     [self initWithView];
 }
 
+#pragma mark 任务列表ID值
+-(void)setIndex:(NSInteger)index{
+
+    _index = index;
+    self.tableView.index = _index;
+}
+
+#pragma mark 新手单
+- (void)setNewIndex:(NSInteger)newIndex{
+
+    _newIndex = newIndex;
+    
+    self.tableView.newIndex = _newIndex;
+}
 #pragma mark 数据
 - (void)loadData{
 
     NSString *url = [NSString stringWithFormat:@"%@%@",REQUEST_Root_Net,REQUEST_Task_Info];
-    NSDictionary *dic = @{@"id":@"1"};
+    
+    NSString *indexString = [NSString stringWithFormat:@"%ld",(long)self.index];
+    
+    NSDictionary *dic = @{@"id":indexString};
     NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [XTomRequest requestWithURL:url target:self selector:@selector(loadData:) parameter:nsDic];
 }
 #pragma mark 数据加载
 - (void)loadData:(NSDictionary *)dic{
     
+//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
     NSDictionary *infor = [dic objectForKey:@"infor"];
     
     HYMTaskDetailModel *taskDetailModel = [[HYMTaskDetailModel alloc] initWithDictionary:infor];
+    self.headerView.model = taskDetailModel;
     [self.listArr addObject:taskDetailModel];
+    self.tableView.datalist = self.listArr;
+    [self.tableView reloadData];
     
-    NSLog(@"%@",[infor objectForKey:@"description"]);
 }
 
 #pragma mark default

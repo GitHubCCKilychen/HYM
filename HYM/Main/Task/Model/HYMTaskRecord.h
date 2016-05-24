@@ -10,6 +10,10 @@
 
 @interface HYMTaskRecord : UIView
 
+
+@property (nonatomic,strong)UIView *backView;//背景view
+@property (nonatomic,assign)int newIndex;
+@property (nonatomic,assign)int index;//任务ID
 //任务流程
 @property (nonatomic,strong)UIView *lineView;
 @property (nonatomic,strong)UILabel *taskRecord;//任务流程
@@ -23,8 +27,4 @@
 //用户评价
 @property (nonatomic,strong)UIView *userline;
 @property (nonatomic,strong)UILabel *userEvaluation;//用户评价
-@property (nonatomic,strong)UILabel *zan;
-
-@property (nonatomic,strong)UIView *bottomLine;
-@property (nonatomic,strong)UIView *sliderView;
 @end

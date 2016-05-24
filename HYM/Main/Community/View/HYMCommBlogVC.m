@@ -8,10 +8,11 @@
 
 #import "HYMCommBlogVC.h"
 #import "HYMTaskBottom.h"
-@interface HYMCommBlogVC ()
+@interface HYMCommBlogVC ()<UIWebViewDelegate>
 
 @property (nonatomic,strong)HYMTaskBottom *bottom;
 @property (nonatomic,weak)UITextField *textField;
+@property (nonatomic,strong)UIActivityIndicatorView *activity;
 @end
 
 @implementation HYMCommBlogVC
@@ -30,9 +31,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefalut];
     [self initWithView];
+    [self addWebView];
 }
+
+
 
 - (void)initDefalut{
 
@@ -67,6 +72,69 @@
     
 }
 
+#pragma mark 数据
+- (void)loadData{
+
+    
+    NSDictionary *dic = @{@"id":@"7786"};
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_get" target:self selector:@selector(loadData:) parameter:nsDic];
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
+}
+- (void)addWebView{
+    
+    UIWebView *webView = [[UIWebView alloc] init];
+    webView.frame = CGRectMake(0, 64, kScreenWitdth, kScreenHeight-49-64);
+    webView.scalesPageToFit=YES;
+    webView.delegate = self;
+    
+    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/7034";
+    NSURL *url = [NSURL URLWithString:path];
+    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    [self.view addSubview:webView];
+    
+    
+}
+#pragma mark webview代理
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+    [view setTag:108];
+    [view setBackgroundColor:[UIColor blackColor]];
+    [view setAlpha:0.5];
+    [self.view addSubview:view];
+    
+    _activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+    [_activity setCenter:view.center];
+    [_activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+    [view addSubview:_activity];
+    
+    [_activity startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [_activity stopAnimating];
+    
+    UIView *view = (UIView *)[self.view viewWithTag:108];
+    
+    [view removeFromSuperview];
+}
+#pragma mark 加载失败
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    [_activity stopAnimating];
+    
+    UIView *view = (UIView *)[self.view viewWithTag:107];
+    
+    [view removeFromSuperview];
+    
+}
 
 #pragma mark 举报
 - (void)reportAct:(UIButton *)btn{

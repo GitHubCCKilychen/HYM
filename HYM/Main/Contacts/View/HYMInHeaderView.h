@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ScrollView.h"
+//#import "ScrollView.h"
 @interface HYMInHeaderView : UIView
 /**
  *
@@ -15,6 +15,6 @@
 @property (nonatomic,strong)UIView *lineView;
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UILabel *content;//内容
-@property (nonatomic,strong)ScrollView *scrollView;
+//@property (nonatomic,strong)ScrollView *scrollView;
 
 @end

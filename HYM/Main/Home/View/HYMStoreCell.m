@@ -24,7 +24,7 @@
         
         _storeTitle = [[UILabel alloc] init];
         _storeTitle.text = @"给秀发喝的奇异果汁";
-        [HYMTool initLabel:_storeTitle withFont:[UIFont boldSystemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_storeTitle withFont:[UIFont boldSystemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentRight];
     }
     return _storeTitle;
 }
@@ -82,6 +82,18 @@
         _lookDetail.titleLabel.font = [UIFont systemFontOfSize:15];
     }
     return _lookDetail;
+}
+
+#pragma mark model 
+- (void)setModel:(HYMMallModel *)model{
+
+    _model = model;
+
+    self.storeTitle.text = _model.name;
+    
+    self.nowPrice.text = _model.price;
+    
+    [self.storeImage sd_setImageWithURL:[NSURL URLWithString:_model.imgurl0]];
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 

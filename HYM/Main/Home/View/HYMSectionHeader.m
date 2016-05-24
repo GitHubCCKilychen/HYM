@@ -46,7 +46,7 @@
     if (_imageView == nil) {
         
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor brownColor];
+        _imageView.image = [UIImage imageNamed:@"jiantou"];
     }
     
     return _imageView;
@@ -95,8 +95,8 @@
     .bottomEqualToView(self.title).widthRatioToView(self,0.1);
 
     self.imageView.sd_layout
-    .leftSpaceToView(self.morelabel,0).bottomEqualToView(self.morelabel)
-    .topEqualToView(self.morelabel).rightSpaceToView(self,10);
+    .leftSpaceToView(self.morelabel,5).topSpaceToView(self,17)
+    .widthIs(4).heightIs(7);
 }
 
 #pragma mark 头视图手势事件

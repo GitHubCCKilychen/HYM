@@ -54,20 +54,25 @@
     .leftSpaceToView(self.lineView,5).topEqualToView(self.lineView)
     .widthIs(100).heightIs(20);
     
+    CGFloat btnWidth = (kScreenWitdth -(42 *2 + 85*2))/3;
+//    CGFloat labelWidth = (kScreenWitdth- (30*2+60*2))/3;
+    CGFloat labelWidth = kScreenWitdth/3;
+   
     NSArray *titleArr = @[@"论坛参与",@"我的足迹",@"需要帮助"];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < titleArr.count; i++) {
+        
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(35+i*30+i*kScreenWitdth/4, 45, 30, 30);
+        btn.frame = CGRectMake(42 + i*btnWidth+i*85, 45, btnWidth, 30);
         btn.tag = i;
         [btn addTarget:self action:@selector(joinAct:) forControlEvents:UIControlEventTouchUpInside];
         btn.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(28+i*30+i*kScreenWitdth/4, 70, 80, 30);
+        title.frame = CGRectMake(i*labelWidth, 70, labelWidth, 30);
         title.text = titleArr[i];
-        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:title];
         
         if (i < 2) {

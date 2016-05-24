@@ -75,8 +75,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self initDefault];
     [self initWithView];
+}
+
+- (void)setIndex:(int)index{
+
+    _index = index;
 }
 
 - (void)initDefault{

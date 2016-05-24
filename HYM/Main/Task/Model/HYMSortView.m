@@ -60,6 +60,7 @@
     sortView.titleColor = titleColor;
     sortView.selectColor = selectedColor;
     sortView.sortViewDelegate = delegate;
+    sortView.titleFont = titleFont;
     [sortView addBtnArray:titleDataSource];
     
     return sortView;
@@ -76,15 +77,31 @@
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake( i*btnX, self.frame.size.height/2-20, btnWidth, 40);
-        
+         [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:btnArray[i] forState:UIControlStateNormal];
         [btn.titleLabel setFont:self.titleFont];
         [btn setTitleColor:self.titleColor forState:UIControlStateNormal];
         [btn setTitleColor:self.selectColor forState:UIControlStateSelected];
         btn.tag = i+1;
-        [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+       
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
        
+        if (i == btnArray.count - 1) {
+            
+            [btn setImage:[UIImage imageNamed:@"筛选"] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(10, 5, 10, 10)];
+            
+            
+            
+        }else if (i == 1 || i== 2){
+
+            [btn setImage:[UIImage imageNamed:@"论坛-2"] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(10, 65, 10, 10)];
+            [btn setTitleEdgeInsets:UIEdgeInsetsMake(10, 5, 10, 10)];
+            
+            
+        }
+        
         
         //右侧有图，暂时未放置
         [self addSubview:btn];
@@ -99,9 +116,39 @@
 - (void)btnAct:(UIButton *)btn{
 
     [self selectBtn:btn.tag - 1];
+    
+    
+    
+    if (btn.selected == NO) {
+        
+        if (btn.tag == 2||btn.tag == 3 ){
+            
+            [btn setImage:[UIImage imageNamed:@"论坛选中"] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(10, 65, 10, 10)];
+            [btn setTitleEdgeInsets:UIEdgeInsetsMake(10, 5, 10, 10)];
+            
+            
+        }
+        btn.selected = YES;
+
+        
+    }else if (btn.selected == YES){
+    
+    
+        if (btn.tag == 2||btn.tag == 3 ){
+            
+            [btn setImage:[UIImage imageNamed:@"论坛排序"] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(10, 65, 10, 10)];
+            [btn setTitleEdgeInsets:UIEdgeInsetsMake(10, 5, 10, 10)];
+            
+            
+        }
+        btn.selected = NO;
+    }
+    
 }
 
-#pragma mark 
+#pragma mark
 - (void)selectBtn:(NSInteger)btn{
 
     if (_selectBtn != btn) {

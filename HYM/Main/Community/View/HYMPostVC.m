@@ -8,9 +8,11 @@
 
 #import "HYMPostVC.h"
 #import "HYMEditPost.h"
+#import "HYMPostView.h"
 @interface HYMPostVC ()
 
 @property (nonatomic,strong)HYMEditPost *editPost;
+@property (nonatomic,strong)HYMPostView *bottomView;
 @end
 
 @implementation HYMPostVC
@@ -22,6 +24,16 @@
         _editPost = [[HYMEditPost alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     return _editPost;
+}
+
+- (HYMPostView *)bottomView{
+
+    if (_bottomView == nil) {
+        
+        _bottomView = [[HYMPostView alloc] init];
+        _bottomView.frame = CGRectMake(0, kScreenHeight-44, kScreenWitdth, 44);
+    }
+    return _bottomView;
 }
 
 
@@ -41,13 +53,14 @@
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     UIButton *edit = [UIButton buttonWithType:UIButtonTypeCustom];
-    edit.frame = CGRectMake(0, 0, 40, 40);
+    edit.frame = CGRectMake(0, 0, 30, 30);
     edit.backgroundColor = [UIColor brownColor];
     [self.navigationController.navigationBar addSubview:edit];
     
     UIButton *release = [UIButton buttonWithType:UIButtonTypeCustom];
-    release.frame = CGRectMake(0, 0, 40, 40);
+    release.frame = CGRectMake(0, 0, 30, 30);
     [release setTitle:@"发布" forState:UIControlStateNormal];
+    release.titleLabel.font = [UIFont systemFontOfSize:15];
     [release setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithCustomView:edit];
@@ -59,11 +72,10 @@
 - (void)initWithView{
 
     [self.view addSubview:self.editPost];
+    
+    [self.view addSubview:self.bottomView];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 

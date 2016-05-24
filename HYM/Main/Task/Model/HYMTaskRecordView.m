@@ -12,11 +12,27 @@
 
 #pragma mark 懒加载
 
+
+- (void)setModel:(HYMTaskDetailModel *)model{
+
+    _model = model;
+    
+    [self.storeImage sd_setImageWithURL:[NSURL URLWithString:_model.logo]];
+    
+    NSString *time = [NSString stringWithFormat:@"截止时间%@",_model.end_time];
+    self.timeEnd.text = time;
+    self.title.text = _model.content;
+    
+    NSString *task = [NSString stringWithFormat:@"剩余任务数%@",_model.task_number];
+    self.peopleCount.text = task;
+//    self.announcer.text= _model.username;
+}
+
 -(UIImageView *)storeImage{
     
     if (_storeImage == nil) {
         _storeImage = [[UIImageView alloc] init];
-        _storeImage.backgroundColor = [UIColor grayColor];
+//        _storeImage.backgroundColor = [UIColor grayColor];
         
     }
     
@@ -40,7 +56,7 @@
     
     if (_timeImage == nil) {
         _timeImage = [[UIImageView alloc] init];
-        _timeImage.backgroundColor = [UIColor grayColor];
+//        _timeImage.backgroundColor = [UIColor grayColor];
     }
     
     return _timeImage;
@@ -116,6 +132,9 @@
     return self;
 }
 
+
+
+
 - (void)initView{
 
     [self addSubview:self.storeImage];
@@ -133,7 +152,7 @@
     .leftSpaceToView(self,10).bottomSpaceToView(self,15)
     .topSpaceToView(self,15).widthRatioToView(self,0.2);
     
-    self.title.backgroundColor = [UIColor grayColor];
+//    self.title.backgroundColor = [UIColor grayColor];
     self.title.sd_layout
     .leftSpaceToView(self.storeImage,5).topSpaceToView(self,10)
     .widthRatioToView(self,0.53).heightIs(40);
@@ -149,7 +168,7 @@
     .widthRatioToView(self,0.38).heightIs(20);
     
     self.peopleImage.sd_layout
-    .leftSpaceToView(self.timeEnd,5)
+    .leftSpaceToView(self.timeEnd,-5)
     .bottomEqualToView(self.timeEnd).widthIs(20)
     .topEqualToView(self.timeEnd);
     
@@ -158,18 +177,18 @@
     .rightSpaceToView(self,5).topEqualToView(self.timeEnd);
     
     
-    self.announcerImage.backgroundColor = [UIColor brownColor];
+//    self.announcerImage.backgroundColor = [UIColor brownColor];
     self.announcerImage.sd_layout
     .leftSpaceToView(self.storeImage,5).topSpaceToView(self.timeImage,2)
     .widthIs(20).heightIs(20);
     
-    self.announcer.backgroundColor =[UIColor grayColor];
+//    self.announcer.backgroundColor =[UIColor grayColor];
     self.announcer.sd_layout
     .leftSpaceToView(self.announcerImage,3).topSpaceToView(self.timeImage,2)
     .widthRatioToView(self,0.3).heightIs(20);
     
     //此处值根据图片来
-    self.chatBtn.backgroundColor = [UIColor greenColor];
+//    self.chatBtn.backgroundColor = [UIColor greenColor];
     self.chatBtn.sd_layout
     .leftSpaceToView(self.announcer,20)
     .topEqualToView(self.announcerImage).heightIs(20).widthIs(40);

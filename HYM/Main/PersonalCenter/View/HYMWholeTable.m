@@ -8,7 +8,7 @@
 
 #import "HYMWholeTable.h"
 #import "HYMWholeCell.h"
-@interface HYMWholeTable ()<UITableViewDataSource,UITableViewDelegate>
+@interface HYMWholeTable ()<UITableViewDataSource,UITableViewDelegate,HYMWholeCellDelegate>
 @end
 
 @implementation HYMWholeTable
@@ -19,10 +19,19 @@
         
         self.dataSource = self;
         self.delegate = self;
+        self.showsVerticalScrollIndicator = NO;
+        
+        
     }
     return self;
 }
 
+//实现不了－－问题
+- (void)reloadCellCount{
+
+    NSLog(@"45345");
+ 
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     return 1;
@@ -35,8 +44,27 @@
     if (cell == nil) {
         
         cell = [[HYMWholeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 160;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
+
+    return 15;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 0.001;
+}
 @end

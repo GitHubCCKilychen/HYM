@@ -68,10 +68,9 @@
     return self;
 }
 
-#pragma mark 数据
-- (void)setTaskDetailModel:(HYMTaskDetailModel *)taskDetailModel{
+- (void)setDatalist:(NSMutableArray *)datalist{
 
-    _taskDetailModel = taskDetailModel;
+    _datalist = datalist;
     
     
 }

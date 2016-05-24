@@ -16,6 +16,7 @@
     if (_messageImage == nil) {
         
         _messageImage = [[UIImageView alloc] init];
+        _messageImage.contentMode = UIViewContentModeScaleToFill;
     }
     
     return _messageImage;
@@ -94,24 +95,32 @@
     .bottomSpaceToView(self.contentView,10)
     .topSpaceToView(self.title,10)
     .heightIs(20)
-    .widthIs(60);
-    
-//    self.time.backgroundColor = [UIColor grayColor];
+    .widthIs(50);
   
     
     self.time.sd_layout
-    .leftSpaceToView(self.commont,20)
+    .leftSpaceToView(self.commont,0)
     .topEqualToView(self.commont)
     .bottomEqualToView(self.commont)
     .rightSpaceToView(self.contentView,20);
     
 }
 
-- (void)setModel:(CellModel *)model{
+- (void)setModel:(HYMTodayInfoModel *)model{
 
     _model = model;
     
     
-    NSLog(@"%@",_model);
+    self.title.text = _model.name;
+    
+    
+    //图片加载
+    [self.messageImage sd_setImageWithURL:[NSURL URLWithString:_model.imgurl0]];
+
+    //此处做判断
+    
+    
+    self.time.text = _model.regdate;
+    self.commont.text = [NSString stringWithFormat:@"%d",_model.totalCount];
 }
 @end

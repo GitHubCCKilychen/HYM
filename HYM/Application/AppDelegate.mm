@@ -41,5 +41,14 @@
     
     return YES;
 }
+#pragma mark 内存⚠️
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
+
+    //停止所有的下载
+    [[SDWebImageManager  sharedManager] cancelAll];
+    
+    //删除缓存
+    [[SDWebImageManager sharedManager].imageCache clearMemory];
+}
 
 @end

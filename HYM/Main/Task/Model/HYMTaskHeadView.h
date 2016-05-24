@@ -10,5 +10,6 @@
 #import "HYMTaskDetailModel.h"
 @interface HYMTaskHeadView : UIView
 
-@property (nonatomic,strong)HYMTaskDetailModel *taskDetailModel;
+
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

@@ -16,6 +16,13 @@
 
 @implementation HYMStoreTableView
 
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
+    [self reloadData];
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
@@ -29,6 +36,8 @@
     
     return self;
 }
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -49,12 +58,17 @@
     
     if (indexPath.section == 0 || indexPath.section == 2) {
          cell = [[HYMStoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+
         
+        HYMMallModel *model = self.datalist[indexPath.row];
+        cell.model = model;
         return cell;
     }else{
     
         cell1 = [[HYMStore2Cell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
+        HYMMallModel *model = self.datalist[indexPath.row];
+        cell1.model = model;
         return cell1;
     }
 

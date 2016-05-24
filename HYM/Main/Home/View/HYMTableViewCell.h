@@ -12,6 +12,9 @@
 @interface HYMTableViewCell : UITableViewCell
 
 @property (nonatomic,assign)NSIndexPath *indexPath;
+@property (nonatomic,strong)NSArray *btnTitleArr;
+
+
 
 /**
  *  @param storeImage 商品图片

@@ -8,6 +8,7 @@
 //
 
 #import "ScrollView.h"
+#import "HYMHeaderModel.h"
 #define kScreenWith [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
@@ -21,78 +22,66 @@
 
 @implementation ScrollView
 
-#pragma mark 懒加载
-- (UIScrollView *)scrollView{
-
-    if (_scrollView == nil) {
-        
-        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        _scrollView.backgroundColor = [UIColor brownColor];
-        _scrollView.contentSize = CGSizeMake(kScreenWith * 3, 0);
-        _scrollView.delegate = self;
-        _scrollView.pagingEnabled = YES;
-        _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        
-    }
-    
-    return _scrollView;
-}
-
-- (UIPageControl *)pageControl{
-
-    if (_pageControl == nil) {
-        
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width/2-20, self.frame.size.height-20, 40, 15)];
-        _pageControl.numberOfPages = 3;
-        _pageControl.currentPage = 0;
-    }
-    return _pageControl;
-}
 
 #pragma mark 初始化
 - (id)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
 
-        [self initWithScroll];
         [self initTimer];
+        
+    
     }
     
     return self;
 }
 
 
-#pragma mark 有数据后删除
-- (void)initWithScroll{
-
-    [self addSubview:self.scrollView];
-    [self addSubview:self.pageControl];
-    
-    [self initWithImage];
-    
-}
-
-#pragma mark 滚动个数－－添加控件
 - (void)setScrollList:(NSMutableArray *)scrollList{
 
     _scrollList = scrollList;
+
+    [self initScroll];
+    [self initPage];
     
     
+    [self initWithImage];
+   
+
+}
+
+- (void)initScroll{
+
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    self.scrollView.backgroundColor = [UIColor brownColor];
+    self.scrollView.contentSize = CGSizeMake(kScreenWith * self.scrollList.count, 0);
+    self.scrollView.delegate = self;
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    [self addSubview:self.scrollView];
+}
+
+- (void)initPage{
+
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width/2-20, self.frame.size.height-20, 40, 15)];
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = self.scrollList.count;
+    [self addSubview:self.pageControl];
 }
 #pragma mark 图片添加
 - (void)initWithImage{
-
-//    //i<_scrollList.count
-    for (int i = 0 ; i< 3; i++) {
+    
+    for (int i = 0 ; i< self.scrollList.count; i++) {
         
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i * kScreenWitdth, 0, kScreenWitdth, self.scrollView.frame.size.height);
-        btn.backgroundColor = [UIColor redColor];
-        NSString *imageName = [NSString stringWithFormat:@"%d",i];
-        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        btn.tag = i;
-        [self.scrollList addObject:btn];
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake(i * kScreenWitdth, 0, kScreenWitdth, self.scrollView.frame.size.height);
+        HYMHeaderModel *model = self.scrollList[i];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:model.imgurl]];
+        imageView.contentMode = UIViewContentModeScaleToFill;
+        [self.scrollView addSubview:imageView];
+
     }
 }
 

@@ -18,4 +18,5 @@
 */
 //label常用方法
 + (UILabel *)initLabel:(UILabel *)label withFont:(UIFont *)textFont withTextColor:(UIColor *)textColor withTextAlignment:(NSTextAlignment *)textAlignment;
++(NSString *)internalFromCreatTime:(NSString *)creatTimeString formatString:(NSString *)formatString;
 @end

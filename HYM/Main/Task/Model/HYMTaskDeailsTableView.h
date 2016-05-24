@@ -11,5 +11,7 @@
 @interface HYMTaskDeailsTableView : UITableView
 
 @property (nonatomic,assign)NSInteger index;
+@property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,assign)NSInteger newIndex;
 
 @end

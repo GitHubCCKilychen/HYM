@@ -23,6 +23,13 @@
     }
     return _sectionTitle;
 }
+
+- (void)setFriendArr:(NSMutableArray *)friendArr{
+
+    _friendArr = friendArr;
+    
+    NSLog(@"%@",_friendArr);
+}
 -(UITableView *)talbeView{
 
     if (_talbeView == nil) {

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CellModel.h"
+#import "HYMTodayInfoModel.h"
 @interface HYMInfoCell : UITableViewCell
 
 /**
  *  参数
  */
-@property (nonatomic,strong)CellModel *model;
+@property (nonatomic,strong)HYMTodayInfoModel *model;
 @property (nonatomic,strong)UIImageView *messageImage;
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UILabel *commont;//评论

@@ -1,4 +1,4 @@
-//
+  //
 //  HYMTableViewCell.m
 //  首页
 //
@@ -11,6 +11,7 @@
 //#import "RealityDetailVC.h"
 #import "CategoryVC.h"
 @implementation HYMTableViewCell
+
 
 #pragma mark 数据
 - (void)setModel:(HYMInfoCellModel *)model{
@@ -27,7 +28,8 @@
     [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:_model.imgurl0]];
     
     //评论参数未添加
-    self.comment.text = _model.msg;
+    NSString *string = [NSString stringWithFormat:@"%@ 阅读",_model.replycount];
+    self.comment.text = string;
 }
 
 #pragma mark 任务数据
@@ -47,6 +49,18 @@
     self.peopleCount.text = peopleCount;
     
 }
+
+- (NSArray *)btnTitleArr{
+
+    if (_btnTitleArr == nil) {
+        
+        _btnTitleArr = [NSArray array];
+        _btnTitleArr = @[@"未参与",@"未报单",@"未审核"];
+    }
+    return _btnTitleArr;
+}
+#pragma mark 未参与颜色值
+
 #pragma mark cell1
 -(UIImageView *)storeImage{
     
@@ -75,7 +89,8 @@
     
     if (_timeImage == nil) {
         _timeImage = [[UIImageView alloc] init];
-        _timeImage.backgroundColor = [UIColor grayColor];
+        _timeImage.image = [UIImage imageNamed:@"截止时间"];
+        _timeImage.contentMode = UIViewContentModeScaleAspectFit;
     }
     
     return _timeImage;
@@ -87,7 +102,7 @@
     if (_peopleCount == nil) {
         
         _peopleCount = [[UILabel alloc] init];
-        [HYMTool initLabel:_peopleCount withFont:[UIFont systemFontOfSize:10] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_peopleCount withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _peopleCount;
     
@@ -97,7 +112,7 @@
     if (_timeEnd == nil) {
         
         _timeEnd = [[UILabel alloc] init];
-        [HYMTool initLabel:_timeEnd withFont:[UIFont systemFontOfSize:11] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_timeEnd withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
     }
     return _timeEnd;
 }
@@ -107,7 +122,9 @@
     if (_peopleImage == nil) {
         
         _peopleImage = [[UIImageView alloc] init];
-        _peopleImage.backgroundColor = [UIColor redColor];
+        _peopleImage.image = [UIImage imageNamed:@"任务图片"];
+        _peopleImage.contentMode = UIViewContentModeScaleAspectFit;
+
     }
     return _peopleImage;
 }
@@ -120,7 +137,7 @@
         _ignoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _ignoreBtn.backgroundColor = [UIColor lightGrayColor];
         [_ignoreBtn setTitle:@"忽略" forState:UIControlStateNormal];
-        _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_ignoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _ignoreBtn.layer.cornerRadius = 2;
         _ignoreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -138,7 +155,7 @@
         [_notInvolved setTitle:@"未参与" forState:UIControlStateNormal];
         [_notInvolved setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _notInvolved.layer.cornerRadius = 5;
-        _notInvolved.titleLabel.font = [UIFont systemFontOfSize:13];
+        _notInvolved.titleLabel.font = [UIFont systemFontOfSize:12];
         _notInvolved.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _notInvolved;
@@ -233,7 +250,7 @@
         
         _comment = [[UILabel alloc] init];
         _comment.text = @"11900评论";
-        _comment.backgroundColor = [UIColor greenColor];
+//        _comment.backgroundColor = [UIColor greenColor];
         _comment.font = [UIFont systemFontOfSize:10];
         _comment.textColor = [UIColor grayColor];
     }
@@ -258,26 +275,23 @@
     self.storeImage.sd_layout
     .leftSpaceToView(self.contentView,10).bottomSpaceToView(self.contentView,15)
     .topSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.2);
-    
-//    self.title.backgroundColor = [UIColor grayColor];
+
     self.title.sd_layout
-    .leftSpaceToView(self.storeImage,5).topEqualToView(self.storeImage)
-    .widthRatioToView(self.contentView,0.53).heightIs(50);
+    .leftSpaceToView(self.storeImage,5).topSpaceToView(self.contentView,10)
+    .widthRatioToView(self.contentView,0.6).heightIs(50);
 
     
     self.timeImage.sd_layout
-    .leftEqualToView(self.title).bottomEqualToView(self.storeImage)
-    .heightIs(20).widthIs(20);
-    
-//    self.timeEnd.backgroundColor = [UIColor blueColor];
+    .leftEqualToView(self.title).topSpaceToView(self.title,15)
+    .heightIs(15).widthIs(15);
+//    self.timeEnd.backgroundColor = [UIColor g];
     self.timeEnd.sd_layout
-    .leftSpaceToView(self.timeImage,2).bottomEqualToView(self.timeImage)
+    .leftSpaceToView(self.timeImage,2).topSpaceToView(self.title,12)
     .widthRatioToView(self.contentView,0.38).heightIs(20);
     
     self.peopleImage.sd_layout
     .leftSpaceToView(self.timeEnd,5)
-    .bottomEqualToView(self.timeEnd).widthIs(20)
-    .topEqualToView(self.timeEnd);
+    .heightIs(15).widthIs(15).topEqualToView(self.timeImage);
     
     self.peopleCount.sd_layout
     .leftSpaceToView(self.peopleImage,0).bottomEqualToView(self.timeEnd)
@@ -285,12 +299,12 @@
     
 
     self.ignoreBtn.sd_layout
-    .rightSpaceToView(self.contentView,20).topSpaceToView(self.contentView,15)
-    .widthIs(35).heightIs(20);
+    .rightSpaceToView(self.contentView,18).topSpaceToView(self.contentView,15)
+    .widthIs(33).heightIs(16);
     
     self.notInvolved.sd_layout
-    .rightSpaceToView(self.contentView,5).topSpaceToView(self.ignoreBtn,3)
-    .widthIs(50).heightIs(20);
+    .rightSpaceToView(self.contentView,10).topSpaceToView(self.ignoreBtn,3)
+    .widthIs(40).heightIs(19);
     
 
 }
@@ -345,7 +359,7 @@
     
 //    self.titleInforation.backgroundColor =[UIColor grayColor];
     self.titleInforation.sd_layout
-    .leftSpaceToView(self.leftImageView,10).topSpaceToView(self.contentView,10)
+    .leftSpaceToView(self.leftImageView,5).topSpaceToView(self.contentView,10)
     .rightSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.6)
     .heightRatioToView(self.leftImageView,0.5);
     
@@ -354,7 +368,7 @@
     .bottomEqualToView(self.leftImageView).widthRatioToView(self.leftImageView,0.6);
     
     self.time.sd_layout
-    .leftSpaceToView(self.comment,5).topEqualToView(self.comment)
+    .leftSpaceToView(self.comment,0).topEqualToView(self.comment)
     .bottomEqualToView(self.comment).rightSpaceToView(self.contentView,1);
     
 }
@@ -365,6 +379,9 @@
     
     
     CategoryVC *cateVC = [[CategoryVC alloc] init];
+    cateVC.keyid = @"无";
+    cateVC.keytype = @"1";
+    cateVC.typeName = @"全部";
     [self.viewController.navigationController pushViewController:cateVC animated:YES];
     
     

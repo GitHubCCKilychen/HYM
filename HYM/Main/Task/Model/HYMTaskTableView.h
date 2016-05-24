@@ -11,6 +11,6 @@
 @interface HYMTaskTableView : UITableView
 
 @property (nonatomic,strong)NSMutableArray *listArr;
-@property (nonatomic,strong)NSArray *fanliArr;
+@property (nonatomic,strong)NSMutableArray *fanliArr;
 @property (nonatomic,assign)NSInteger index;
 @end

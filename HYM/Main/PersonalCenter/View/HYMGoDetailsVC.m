@@ -27,10 +27,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
 }
 
+#pragma mark 数据
+- (void)loadData{
+
+    //此处是分类的网络请求
+    //任务id-task_id
+    NSDictionary *dic = @{@"task_id":@"1",@"publish_status":@"1",@"token":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/client_center_info" target:self selector:@selector(loadData:) parameter:nsdic];
+    
+}
+#pragma mark 数据
+- (void)loadData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    
+    
+}
 - (void)initDefault{
 
     

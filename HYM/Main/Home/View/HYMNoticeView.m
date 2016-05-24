@@ -9,13 +9,16 @@
 #import "HYMNoticeView.h"
 #import "ScrollLabel.h"
 #import "HYMMessageVC.h"
+#import "HYMMsgModel.h"
 @interface HYMNoticeView ()<ScrollLabelDelegate>
 
 @property (nonatomic,strong)ScrollLabel *scrollLabel;//公告
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UIImageView *hornImage;
 @property (nonatomic,strong)UIButton *messageBtn;//消息按钮
-@property (nonatomic,strong)NSArray *titleArr;//公告消息
+
+@property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,strong)NSArray *arr;
 
 
 @end
@@ -40,7 +43,7 @@
     if (_hornImage == nil) {
         
         _hornImage = [[UIImageView  alloc] init];
-        _hornImage.backgroundColor = [UIColor brownColor];
+        _hornImage.image = [UIImage imageNamed:@"laba"];
     }
     
     return _hornImage;
@@ -51,25 +54,24 @@
     if (_messageBtn == nil) {
         
         _messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_messageBtn setImage:[UIImage imageNamed:@"homeMessage"] forState:UIControlStateNormal];
+//        _messageBtn.imageEdgeInsets = UIEdgeInsetsMake(-5, 0, 10, 0);;
+//        [_messageBtn setTitle:@"消息" forState:UIControlStateNormal];
+//        [_messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        _messageBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+//        _messageBtn.titleEdgeInsets = UIEdgeInsetsMake(2, 3, 15, 2);
+        
+        
         
     }
     
     return _messageBtn;
 }
-- (NSArray *)titleArr{
-
-    if (_titleArr == nil) {
-        
-        _titleArr = [NSArray array];
-        _titleArr = @[@"薅羊毛app2.0更新",@"1.0易经不再用",@"12433546579"];
-    }
-    
-    return _titleArr;
-}
 
 -(ScrollLabel *)scrollLabel{
 
     if (_scrollLabel == nil) {
+       
         
         _scrollLabel = [[ScrollLabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth*0.7, 20) withTitleArr:self.titleArr];
         _scrollLabel.scrollLabelDelegate = self;
@@ -88,15 +90,24 @@
         //此处颜色值修改
         self.backgroundColor = [UIColor lightGrayColor];
      
-        [self initWithView];
+//        [self loadData];
+       
         
     }
     
     return self;
 }
 
-#pragma mark 
-- (void)initWithView{
+- (void)setTitleArr:(NSArray *)titleArr{
+
+    _titleArr = titleArr;
+    
+    self.arr = [NSArray array];
+    self.arr = self.titleArr;
+    [self initWithView:self.titleArr];
+}
+#pragma mark
+- (void)initWithView:(NSArray *)title{
 
 
     [self addSubview:self.hornImage];
@@ -111,10 +122,9 @@
     .leftSpaceToView(self.hornImage,0).topEqualToView(self.hornImage)
     .bottomEqualToView(self.hornImage).widthRatioToView(self,0.7);
     
-    self.messageBtn.backgroundColor = [UIColor redColor];
     self.messageBtn.sd_layout
-    .topSpaceToView(self,5).widthIs(40)
-    .rightSpaceToView(self,15).bottomSpaceToView(self,5);
+    .topSpaceToView(self,5).widthIs(30).heightIs(30)
+    .rightSpaceToView(self,15);
 }
 
 #pragma mark 公告实现方法

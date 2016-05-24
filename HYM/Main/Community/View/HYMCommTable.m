@@ -9,6 +9,7 @@
 #import "HYMCommTable.h"
 #import "HYMCommunityCell.h"
 #import "HYMCommBlogVC.h"
+#import "HYMCommModel.h"
 @interface HYMCommTable ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -23,15 +24,20 @@
         self.delegate = self;
         self.showsVerticalScrollIndicator =NO;
         
+        
     }
     return self;
 }
 
+
+- (void)setDatalist:(NSMutableArray *)datalist{
+    _datalist = datalist;
+}
 #pragma mark datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 1;
+    return self.datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -39,9 +45,16 @@
     HYMCommunityCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"HYMCommunityCell" owner:self options:nil] lastObject];
+        cell = [[HYMCommunityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell.indexPath = indexPath;
     }
     //判断当前是不是自己的帐号，如果是就添加删除按钮
+    
+    
+    HYMCommModel *model = self.datalist[indexPath.row];
+    
+    cell.model = model;
+    
     
     return cell;
     

@@ -10,4 +10,5 @@
 
 @interface HYMUpTable : UITableView
 
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

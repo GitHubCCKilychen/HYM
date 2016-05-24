@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMNoticeView : UIView
-
+@property (nonatomic,strong)NSArray *titleArr;//公告消息
 @end

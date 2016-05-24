@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMTaskDetailModel.h"
 @interface HYMTaskRecordView : UIView
 
+@property (nonatomic,strong)HYMTaskDetailModel *model;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UIImageView *timeImage;

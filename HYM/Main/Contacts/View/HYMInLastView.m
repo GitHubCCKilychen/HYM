@@ -111,30 +111,30 @@
     .leftSpaceToView(self,15).topSpaceToView(self.title,10)
     .heightIs(20).widthRatioToView(self,0.3);
     
-//    self.money.backgroundColor = [UIColor grayColor];
+    self.money.backgroundColor = [UIColor grayColor];
     self.money.sd_layout
     .leftSpaceToView(self.returnMoney,5).topEqualToView(self.returnMoney)
     .heightIs(20).widthRatioToView(self,0.2);
     
-    
+
     self.invitationView.sd_layout
     .leftSpaceToView(self,15).rightSpaceToView(self,15)
-    .bottomSpaceToView(self.makeMoney,10).heightIs(100);
-    
-    self.makeMoney.sd_layout
-    .leftSpaceToView(self,15).rightSpaceToView(self,15)
-    .bottomSpaceToView(self,10).heightIs(35);
-    
+    .bottomSpaceToView(self,50).heightIs(100);
+///
     self.continueInvite.sd_layout
     .leftSpaceToView(self,15).heightIs(20)
     .bottomSpaceToView(self.invitationView,5).widthIs(100);
+    
+    self.makeMoney.sd_layout
+    .leftSpaceToView(self,15).rightSpaceToView(self,15)
+    .bottomSpaceToView(self,5).heightIs(35);
     
 }
 
 - (void)initWithBtn{
 
     UIView *centerView = [[UIView alloc] init];
-    centerView.frame = CGRectMake(15, 70, kScreenWitdth-30, 50);
+    centerView.frame = CGRectMake(15,70, kScreenWitdth-30, 50);
     centerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     centerView.layer.borderWidth = 0.5;
     centerView.layer.cornerRadius = 5;

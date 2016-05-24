@@ -36,6 +36,12 @@
     return self;
 }
 
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
+    
+}
 #pragma mark 按钮
 - (void)initWithBtn:(NSArray *)titleArr{
 

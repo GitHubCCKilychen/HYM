@@ -43,10 +43,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
 }
 
+- (void)loadData{
+
+    //此处是分类的网络请求
+    NSDictionary *dic = @{@"token":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/client_center_info" target:self selector:@selector(loadData:) parameter:nsdic];
+    
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+
+    self.header.dic = infor;
+}
 - (void)initDefault{
 
     self.title = @"个人中心";
@@ -65,10 +83,6 @@
 - (void)initWithView{
 
     [self.view addSubview:self.tableView];
-    
-    
-    
-
     
 }
 - (void)settingAct:(UIButton *)setting{

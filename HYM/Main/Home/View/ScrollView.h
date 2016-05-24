@@ -11,4 +11,6 @@
 @interface ScrollView : UIView
 
 @property (nonatomic,strong)NSMutableArray *scrollList;//滚动个数
+@property (nonatomic,strong)NSDictionary *dic;
+
 @end

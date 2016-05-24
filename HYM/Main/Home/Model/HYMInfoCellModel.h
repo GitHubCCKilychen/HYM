@@ -14,5 +14,7 @@
 @property (nonatomic,copy)NSString *name;
 @property (nonatomic,copy)NSString *regdate;//更新时间
 @property (nonatomic,assign)int  totalCount;//个数
-@property (nonatomic,strong)NSString *msg;
+@property (nonatomic,copy)NSString *replycount;
+//@property (nonatomic,copy)
+
 @end

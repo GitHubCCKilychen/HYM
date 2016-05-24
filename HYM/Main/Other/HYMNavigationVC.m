@@ -25,7 +25,7 @@
     //颜色字体大小
     NSDictionary *dic = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:15]};
     [[UINavigationBar appearance] setTitleTextAttributes:dic];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 //    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
     //navigationbar
     CGFloat statWidth = [[UIApplication sharedApplication] statusBarFrame].size.width;

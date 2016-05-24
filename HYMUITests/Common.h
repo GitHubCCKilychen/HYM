@@ -62,7 +62,7 @@
 //-------------------网络--------------
 #define REQUEST_Root_Net @"http://123.56.237.91/"
 #define REQUEST_Task_List @"index.php/Webservice/Center/task_list"
-#define REQUEST_Task_Info @"index.php/Webservice/?m=Task&a=task_info"
+#define REQUEST_Task_Info @"index.php/Webservice/Task/task_info"
 #define REQUEST_Task_Jojn @"index.php/Webservice/?m=Task&a=task_join"
 
 //---------------

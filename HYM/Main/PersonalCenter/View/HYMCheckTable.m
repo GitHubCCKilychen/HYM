@@ -7,7 +7,7 @@
 //
 
 #import "HYMCheckTable.h"
-
+#import "HYMFormDetails.h"
 @interface HYMCheckTable ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -69,6 +69,7 @@
         [btn setTitle:@"报单详情" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:10];
         btn.backgroundColor = [UIColor colorWithRed:45/256.f green:154/256.f blue:252/256.f alpha:1];
+        [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.contentView addSubview:btn];
         
@@ -100,5 +101,16 @@
         return 15;
     }
     return 0.001;
+}
+
+#pragma mark 报单详情事件 
+- (void)btnAct:(UIButton *)btn{
+
+    HYMFormDetails *form = [[HYMFormDetails alloc] init];
+    [self.viewController.navigationController pushViewController:form animated:YES];
+    
+
+    
+    
 }
 @end

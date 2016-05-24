@@ -7,7 +7,7 @@
 //
 
 #import "HYMUpTable.h"
-
+#import "HYMUpModel.h"
 #import "HYMUpTaskCell.h"
 @interface HYMUpTable ()<UITableViewDataSource,UITableViewDelegate>
 @end
@@ -26,9 +26,17 @@
     return self;
 }
 
+
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return _datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -48,6 +56,10 @@
     }
     
     cell.indexPath = indexPath;
+    
+    HYMUpModel  *model = self.datalist[indexPath.row];
+    
+    cell.model = model;
     return cell;
 }
 
@@ -61,5 +73,4 @@
     return 80;
 }
 
-//- (void)scr
 @end

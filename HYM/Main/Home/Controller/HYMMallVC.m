@@ -7,22 +7,24 @@
 //
 
 #import "HYMMallVC.h"
-#import "ScrollView.h"
+#import "MallScrollView.h"
 #import "HYMStoreTableView.h"
+#import "HYMMallModel.h"
 @interface HYMMallVC ()
 
 @property (nonatomic,strong)HYMStoreTableView *tableView;
-@property (nonatomic,strong)ScrollView *scrollView;
+@property (nonatomic,strong)MallScrollView *scrollView;
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end
 
 @implementation HYMMallVC
 
 #pragma mark 懒加载
--(ScrollView *)scrollView{
+-(MallScrollView *)scrollView{
 
     if (_scrollView == nil) {
         
-        _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 150)];
+        _scrollView = [[MallScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 150)];
         _scrollView.backgroundColor = [UIColor grayColor];
     }
     
@@ -40,11 +42,41 @@
     [super viewDidLoad];
 
     
-    
+    [self loadData];
     [self initDefault];
     [self initWithView];
     
 }
+
+- (void)loadData{
+   
+    self.datalist = [NSMutableArray array];
+
+    NSDictionary *dic = @{@"sellerid":@"无",@"keyid":@"1",@"client_id":@"无",@"ordertype":@"desc",@"keytype":@"7",@"page":@"0",@"orderby":@"2"};
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(loadData:) parameter:nsdic];
+}
+
+- (void)loadData:(NSDictionary *)infor{
+
+     NSLog(@"%@",infor);
+    NSDictionary *dic = [infor objectForKey:@"infor"];
+    NSArray *listItems = [dic objectForKey:@"listItems"];
+    for (NSDictionary *dic in listItems) {
+    
+        HYMMallModel *model = [[HYMMallModel alloc] initWithDictionary:dic];
+     
+        [self.datalist addObject:model];
+        
+        self.tableView.datalist  =self.datalist;
+        self.scrollView.scrollList = self.datalist;
+       
+    }
+
+}
+
+
 
 - (void)initDefault{
     
@@ -54,9 +86,10 @@
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     UIButton *newBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    newBtn.frame = CGRectMake(0, 0, 40, 40);
-    newBtn.backgroundColor = [UIColor grayColor];
-    
+    newBtn.frame = CGRectMake(0, 0, 30, 30);
+    //图片不正确
+    [newBtn setImage:[UIImage imageNamed:@"消息"] forState:UIControlStateNormal];
+    newBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:newBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
 

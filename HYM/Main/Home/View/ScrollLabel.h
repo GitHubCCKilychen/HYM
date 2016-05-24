@@ -19,4 +19,6 @@
 @property (nonatomic,weak)id<ScrollLabelDelegate>scrollLabelDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame withTitleArr:(NSArray *)titleArr;
+
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

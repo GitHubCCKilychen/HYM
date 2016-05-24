@@ -11,6 +11,7 @@
 #import "HYMSectionHeader.h"
 #import "HYMInfoCellModel.h"
 #import "HYMTaskModel.h"
+#import "HYMInformationVC.h"
 @interface HYMTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -83,6 +84,7 @@
         }
     }
     
+    cell.indexPath = indexPath;
     if (indexPath.section == 0) {
         
         [cell initCell1];
@@ -161,6 +163,19 @@
 #pragma mark 点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    //点击任务精选
+
+    if (indexPath.section == 0) {
+        
+        [self.viewController.tabBarController setSelectedIndex:1];
+        
+    }else if (indexPath.section == 2){
+        
+        //今日资讯
+        HYMInformationVC *infoVC = [[HYMInformationVC alloc] init];
+        [self.viewController.navigationController pushViewController:infoVC animated:YES];
+        
+    }
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMListModel.h"
 @interface HYMListTable : UITableView
 @property (nonatomic,assign)NSInteger selection;
+@property (nonatomic,strong)NSMutableArray *datalistl;
 @end

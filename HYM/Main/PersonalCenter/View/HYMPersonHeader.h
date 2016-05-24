@@ -22,4 +22,6 @@
 @property (nonatomic,strong)UILabel *frozenGold;//冻结金额
 @property (nonatomic,strong)UIButton *seeDetails;//查看详情
 
+@property (nonatomic,strong)NSDictionary *dic;
+
 @end

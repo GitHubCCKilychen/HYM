@@ -11,6 +11,11 @@
 #import "HYMListVC.h"
 #import "HYMLunTanJoinVC.h"
 #import "HYMMyOrderVC.h"
+#import "HYMSystemMessageVC.h"
+#import "HYMCenterAssets.h"
+#import "HYMFormList.h"
+#import "HYMSecurityDeposit.h"//暂时引入
+#import "HYMFreezeVC.h"
 #define textColor [UIColor colorWithRed:251/256.f green:149/256.f blue:89/256.f alpha:1]
 #import "HYMUploadTask.h"
 @implementation HYMPushSingleCell
@@ -32,7 +37,7 @@
     if (_centerView == nil) {
         
         _centerView = [[UIView alloc] init];
-        _centerView.layer.borderColor = [UIColor brownColor].CGColor;
+        _centerView.layer.borderColor = [UIColor colorWithRed:165/256.f green:117/256.f blue:86/256.f alpha:1].CGColor;
         _centerView.layer.borderWidth = 1;
         
     }
@@ -83,6 +88,7 @@
         NSString *string = @"我要推单赚钱";
         [_rightBtn setTitle:string forState:UIControlStateNormal];
         [_rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_rightBtn addTarget:self action:@selector(makeMoney:) forControlEvents:UIControlEventTouchUpInside];
         _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         
     }
@@ -121,11 +127,11 @@
     
     self.centerView.backgroundColor = [UIColor whiteColor];
     self.centerView.sd_layout
-    .leftSpaceToView(self.contentView,20).bottomSpaceToView(self.contentView,10)
+    .leftSpaceToView(self.contentView,15).bottomSpaceToView(self.contentView,10)
     .topSpaceToView(self.lineView,10).widthIs(kScreenWitdth- 100);
     
     self.connetTitle.sd_layout
-    .leftSpaceToView(self.centerView,8).topSpaceToView(self.centerView,8)
+    .leftSpaceToView(self.centerView,5).topSpaceToView(self.centerView,5)
     .heightIs(15).widthIs(self.contentView.frame.size.width-20);
     
     
@@ -147,19 +153,29 @@
 
     NSArray *titleArr = @[@"待付款",@"待发货",@"待收货",@"待评价",@"退货/售后"];
     
+    CGFloat margin = 30;
+    CGFloat btnWidht = (kScreenWitdth-170)/5;
+    
+    CGFloat labelWidth = kScreenWitdth/5;
+//    CGFloat labelMargin = 20;
+    
     for (int i = 0; i < 5; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15+i*kScreenWitdth/6+i*10, 35, 30, 30);
+        btn.frame = CGRectMake(25+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
         btn.backgroundColor = [UIColor grayColor];
         btn.tag = i;
         [btn addTarget:self action:@selector(shopAct:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(10+i*kScreenWitdth/6+i*10, 60, 60, 30);
+        title.frame = CGRectMake(0+i*labelWidth+i*0, 65, labelWidth                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 20);//字体居中
         title.text = titleArr[i];
-        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentCenter];
+//        if (i == 4) {
+//            title.frame = CGRectMake(25+i*labelMargin+i*labelWidth, 65, 65                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            , 20);
+//            title.textAlignment = NSTextAlignmentCenter;
+//        }
         [self.contentView addSubview:title];
     }
     
@@ -170,19 +186,24 @@
     
      NSArray *titleArr = @[@"上传",@"发布",@"审核报单",@"推单列表",@"中心资产"];
 
-    for (int i = 0; i < 5; i++) {
+    CGFloat margin = 30;
+    CGFloat btnWidht = (kScreenWitdth-170)/5;
+    
+    CGFloat labelWidth = kScreenWitdth/5;
+    
+    for (int i = 0; i < titleArr.count; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15+i*kScreenWitdth/6+i*10, 35, 30, 30);
+        btn.frame = CGRectMake(25+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
         btn.backgroundColor = [UIColor grayColor];
         btn.tag = i;
         [btn addTarget:self action:@selector(buttonAct:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(10+i*kScreenWitdth/6+i*10, 60, 60, 30);
+        title.frame = CGRectMake(i*labelWidth+i*0, 60, labelWidth                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
         title.text = titleArr[i];
-        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:12] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentCenter];
         [self.contentView addSubview:title];
         
     }
@@ -216,8 +237,23 @@
             [self.viewController.navigationController pushViewController:list animated:YES];
             
         }break;
+        case 4:
+        
+        {
+        
+//            HYMCenterAssets *message = [[HYMCenterAssets alloc] init];
+//            [self.viewController.navigationController pushViewController:message animated:YES];
+            
+            //暂时添加保证金页面
+//            HYMSecurityDeposit *security = [[HYMSecurityDeposit alloc] init];
+//            [self.viewController.navigationController pushViewController:security animated:YES];
+            
+//            //冻结备付金
+            HYMFreezeVC *freeVC = [[HYMFreezeVC alloc] init];
+            [self.viewController.navigationController pushViewController:freeVC animated:YES];
+        }
         default:
-            break;
+            break;   
     }
     
 }
@@ -234,4 +270,11 @@
 }
 
 
+#pragma mark 我要推单赚钱
+- (void)makeMoney:(UIButton *)btn{
+
+    HYMFormList *list = [[HYMFormList alloc] init];
+    [self.viewController.navigationController pushViewController:list animated:YES];
+    
+}
 @end

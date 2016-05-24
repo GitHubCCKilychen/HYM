@@ -13,4 +13,6 @@
 @property (nonatomic,assign)NSInteger index;
 @property (nonatomic,strong)NSArray *count2;
 @property (nonatomic,assign)NSInteger buttonIndex;//按钮索引
+@property (nonatomic,strong)NSMutableArray *infoArr;
+@property (nonatomic,strong)NSMutableArray *bankArr;
 @end

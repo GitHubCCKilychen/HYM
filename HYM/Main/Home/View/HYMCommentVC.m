@@ -8,10 +8,12 @@
 
 #import "HYMCommentVC.h"
 
-@interface HYMCommentVC ()<UITextViewDelegate>
+
+@interface HYMCommentVC ()<UITextViewDelegate,HYMCommentDelagete>
 
 @property (nonatomic,strong)UITextView *textView;
 
+@property (nonatomic,assign)int index;
 @end
 
 @implementation HYMCommentVC
@@ -41,6 +43,8 @@
     UIBarButtonItem *done = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(doneAct:)];
     
     self.navigationItem.rightBarButtonItem = done;
+    self.commentDelegate = self;
+    self.index++;
 }
 
 #pragma mark 完成事件
@@ -48,10 +52,25 @@
 
     self.commont = self.textView.text;
     
-    NSLog(@"%@",self.commont);
+    
+    if ([self.commentDelegate respondsToSelector:@selector(comment:with:)]) {
+        
+        [self.commentDelegate comment:self.commont with:self.index+1];
+        
+        
+    }
+    
     
 //返回前这页面
-    [self.view.viewController dismissViewControllerAnimated:YES completion:nil];
+    [self.view.viewController.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)comment:(NSString *)text with:(int)indexCount{
+    
+    text = self.commont;
+    indexCount = self.index;
+    
+    NSLog(@"%d",indexCount);
 }
 
 #pragma  mark textViewDelegate
@@ -66,5 +85,8 @@
 //    [textView resignFirstResponder];
 //    return YES;
 //}
+
+#pragma mark 协议实现
+
 
 @end

@@ -14,5 +14,9 @@
 @property (nonatomic,strong)ScrollView *scrollView;
 
 @property (nonatomic,strong)HYMTaskView *taskView;//中间部分
+
+@property (nonatomic,strong)NSDictionary *dic;
+
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end
 

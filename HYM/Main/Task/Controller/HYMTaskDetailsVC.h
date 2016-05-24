@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMTaskDetailsVC : UIViewController
-
+@property (nonatomic,assign)NSInteger index;
+@property (nonatomic,assign)NSInteger newIndex;//新手－－设置
 @end

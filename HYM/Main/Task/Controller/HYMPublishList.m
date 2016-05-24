@@ -28,10 +28,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
 }
 
+- (void)loadData{
+
+    NSDictionary *dic = @{@"task_id":@"1",@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_publish" target:self selector:@selector(loadData:) parameter:dics];
+}
+- (void)loadData:(NSDictionary *)dic{
+
+//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
+    
+}
 
 - (void)initDefault{
 

@@ -7,7 +7,8 @@
 //
 
 #import "HYMPersonHeader.h"
-
+#import "HYMSetInforVC.h"
+#import "HYMInfoVC.h"
 @implementation HYMPersonHeader
 
 - (UIImageView *)iconImage{
@@ -36,7 +37,8 @@
     if (_sexImage == nil) {
         
         _sexImage = [[UIImageView alloc] init];
-        _sexImage.backgroundColor = [UIColor redColor];
+        _sexImage.image = [UIImage imageNamed:@"男士"];
+        _sexImage.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _sexImage;
 }
@@ -57,6 +59,9 @@
     if (_nextBtn == nil) {
         
         _nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_nextBtn setImage:[UIImage imageNamed:@"jiantou"] forState:UIControlStateNormal];
+        _nextBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_nextBtn addTarget:self action:@selector(setInfo:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _nextBtn;
 }
@@ -65,16 +70,20 @@
 
     if (_leftImage == nil) {
         
+        
         _leftImage = [[UIImageView alloc] init];
-        _leftImage.backgroundColor = [UIColor colorWithRed:244/256.f green:214/256.f blue:53/256.f alpha:1];
+        _leftImage.image = [UIImage imageNamed:@"背景1"];
+        _leftImage.userInteractionEnabled = YES;
     }
     return _leftImage;
 }
+
 
 - (UIImageView *)rightImage{
 
     if (_rightImage == nil) {
         _rightImage = [[UIImageView alloc] init];
+        _rightImage.image = [UIImage imageNamed:@"背景2"];
     }
     return _rightImage;
 }
@@ -118,18 +127,30 @@
 
     if (_seeDetails == nil) {
         
+        
         _seeDetails = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_seeDetails setTitle:@"查看\n详情" forState:UIControlStateNormal];
+        [_seeDetails setTitle:@"查看详情" forState:UIControlStateNormal];
         [_seeDetails setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+        [_seeDetails addTarget:self action:@selector(pushSingle:) forControlEvents:UIControlEventTouchUpInside];
         _seeDetails.titleLabel.font = [UIFont systemFontOfSize:15];
     }
     return _seeDetails;
+}
+
+#pragma mark 数据
+- (void)setDic:(NSDictionary *)dic{
+
+    _dic = dic;
+    
+//    NSLog(@"%@",_dic);
+    self.userName.text = [_dic objectForKey:@"nickname"];
 }
 - (instancetype)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
         
         self.backgroundColor = [UIColor whiteColor];
+        self.userInteractionEnabled = YES;
         [self initWithView];
     }
     return self;
@@ -147,7 +168,7 @@
     [self.leftImage addSubview:self.money];
     [self.leftImage addSubview:self.moneyTitle];
     [self.leftImage addSubview:self.frozenGold];
-    [self.leftImage addSubview:self.seeDetails];
+    [self.rightImage addSubview:self.seeDetails];
     
    
     self.iconImage.sd_layout
@@ -167,16 +188,19 @@
     .leftSpaceToView(self.iconImage,15).topSpaceToView(self.userName,3)
     .heightIs(15).widthRatioToView(self,0.7);
     
-    self.nextBtn.backgroundColor = [UIColor grayColor];
     self.nextBtn.sd_layout
     .rightSpaceToView(self,10).topSpaceToView(self,25)
-    .heightIs(15).widthIs(15);
+    .heightIs(20 ).widthIs(20);
     
     
     
     self.leftImage.sd_layout
     .leftSpaceToView(self,15).topSpaceToView(self.iconImage,10)
-    .rightSpaceToView(self,15).bottomSpaceToView(self,10);
+    .bottomSpaceToView(self,10).widthIs(kScreenWitdth/1.5);
+    
+    self.rightImage.sd_layout
+    .leftSpaceToView(self.leftImage,0).rightSpaceToView(self,15)
+    .bottomEqualToView(self.leftImage).topEqualToView(self.leftImage);
     
     
     self.money.sd_layout
@@ -192,9 +216,25 @@
     .heightIs(20).widthIs(kScreenWitdth/2);
     
     self.seeDetails.sd_layout
-    .rightSpaceToView(self.leftImage,25).topSpaceToView(self.leftImage,25)
+    .rightSpaceToView(self.rightImage,5).topSpaceToView(self.rightImage,25)
     
-    .bottomSpaceToView(self.leftImage,25).widthIs(50);
+    .bottomSpaceToView(self.rightImage,10).leftSpaceToView(self.rightImage,5);
     
+}
+
+#pragma mark 我要推单
+- (void)pushSingle:(UIButton *)btn{
+
+    NSLog(@"3453c");
+    
+    HYMSetInforVC *infoVC = [[HYMSetInforVC alloc] init];
+    [self.viewController.navigationController pushViewController:infoVC animated:YES];
+}
+#pragma mark 个人信息
+- (void)setInfo:(UIButton *)btn{
+
+    
+    HYMInfoVC *infoVC = [[HYMInfoVC alloc] init];
+    [self.viewController.navigationController pushViewController:infoVC animated:YES];
 }
 @end

@@ -17,10 +17,17 @@
 - (void)setSelection:(NSInteger)selection{
 
     _selection = selection;
-    
 
 }
 
+- (void)setDatalistl:(NSMutableArray *)datalistl{
+
+    _datalistl = datalistl;
+    
+    //此处累积加载
+//    NSLog(@"%ld",(unsigned long)_datalistl.count);
+  
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -35,7 +42,9 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 10;
+    
+    return _datalistl.count;
+    
 }
 
 
@@ -86,11 +95,12 @@
     UIImageView *store = [cell.contentView viewWithTag:1];
     
     UILabel *title = [cell.contentView viewWithTag:2];
-    title.text = @"1234567890lkjhgfdserdftghjkn";
-    UIButton *republish = [cell.contentView viewWithTag:3];
+
     
-    UIButton *shelves = [cell.contentView viewWithTag:4];
-    
+    HYMListModel *model = self.datalistl[indexPath.row];
+    [store sd_setImageWithURL:[NSURL URLWithString:model.logo]];
+    title.text = model.title;
+
     
     
     return cell;

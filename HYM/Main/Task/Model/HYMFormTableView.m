@@ -112,11 +112,6 @@
             editView.layer.borderWidth = 0.5;
             [cell.contentView addSubview:editView];
             
-            UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.frame = CGRectMake(5, 5, 20, 20);
-            imageView.tag = 6;
-            imageView.backgroundColor = [UIColor redColor];
-            [editView addSubview:imageView];
         
             UITextField *textF = [[UITextField alloc] init];
             textF.frame = CGRectMake(27, 5, editView.frame.size.width - 27, editView.frame.size.height);
@@ -139,10 +134,6 @@
     
     UILabel *beizhu = (UILabel *)[cell.contentView viewWithTag:5];
     beizhu.text = @"添加备注*";
-    
-    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:6];
-    imageView.backgroundColor = [UIColor grayColor];
-    
     return cell;
 }
 
@@ -210,6 +201,9 @@
 - (void)getPhotoAct:(UIButton *)getPhoto{
 
     //读取相册
+    
+    //拍照
+    
     
 }
 

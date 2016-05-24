@@ -129,7 +129,7 @@
     
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -146,4 +146,19 @@
 
     return 2;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    switch (indexPath.row) {
+        case 0:
+            
+            break;
+        case 4:
+            //清理缓存
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark 缓存
 @end

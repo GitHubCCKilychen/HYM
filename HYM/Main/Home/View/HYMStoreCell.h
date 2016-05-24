@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMMallModel.h"
 @interface HYMStoreCell : UITableViewCell
 
+@property (nonatomic,strong)HYMMallModel *model;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *storeTitle;
 @property (nonatomic,strong)UILabel *storeSubtitle;

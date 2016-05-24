@@ -21,20 +21,21 @@
 
     
     _listArr = listArr;
-   
-   
+
+
 }
 
-- (void)setFanliArr:(NSArray *)fanliArr{
+- (void)setFanliArr:(NSMutableArray *)fanliArr{
 
     _fanliArr = fanliArr;
-    
-    NSLog(@"%ld",(unsigned long)_fanliArr.count);
+
 }
 
 - (void)setIndex:(NSInteger)index{
 
     _index = index;
+
+ 
 }
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
@@ -53,62 +54,40 @@
 #pragma mark datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-//    //此处做判断
-//    switch (self.index) {
-//        case 0:
-//            return self.listArr.count;
-//            break;
-//        case 1:
-//            return self.fanliArr.count;
-//            break;
-//        default:
-//            break;
-//    }
-    
 
-    return self.listArr.count;
-    
-    
+     return self.fanliArr.count;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     NSString *identifier = @"cell";
     HYMTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
+    if (cell == nil) {
         
         cell = [[HYMTaskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }else{
-    
-        while ([cell.contentView.subviews lastObject] != nil) {
-            
-            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
-        }
-
-        
+         [cell cell2];
+       
     }
-    [cell cell2];
-    HYMTaskModel *model = self.listArr[indexPath.row];
-    cell.model = model;
-    switch (self.index) {
-        case 0:
-        {
-        
-        }
-            break;
-        case 1:
-        {
-           
-        }
-            break;
-        default:
-            break;
-    }
-
-        
-    
+//    else{
+//    
+//        while ([cell.contentView.subviews lastObject] != nil) {
+//            
+//            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+//        }
+//
+//        
+//    }
     
 
+    
+        HYMTaskModel *model = self.fanliArr[indexPath.row];
+        
+        cell.model = model;
+
+    
+
+    
    
     return cell;
 }
@@ -138,7 +117,15 @@
     
     
     HYMTaskDetailsVC *taskDetailsVC = [[HYMTaskDetailsVC alloc] init];
+    taskDetailsVC.index = indexPath.row;
     [self.viewController.navigationController pushViewController:taskDetailsVC animated:YES];
+    
+    if (self.index == 2) {
+        
+        taskDetailsVC.newIndex = 2;
+    }
+    
+
     
 }
 @end

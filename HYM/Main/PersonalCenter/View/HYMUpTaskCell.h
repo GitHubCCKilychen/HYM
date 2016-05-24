@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HYMSegmentView.h"
+#import "HYMUpModel.h"
 @interface HYMUpTaskCell : UITableViewCell<HYMSegmentViewDelegate>
 
+@property (nonatomic,strong)HYMUpModel *model;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *connect;//内容
 @property (nonatomic,strong)UIButton *editBtn;

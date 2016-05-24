@@ -14,6 +14,7 @@
 #define kViewHeight  self.brownView.frame.size.height
 
 #import "HYMMyBooksVC.h"
+#import "HYMRemindVC.h"
 
 @interface HYMTaskView ()
 
@@ -57,6 +58,7 @@
     if (_moneyImage == nil) {
         
         _moneyImage = [[UIImageView alloc] init];
+        _moneyImage.image = [UIImage imageNamed:@"money"];
     }
     return _moneyImage;
 }
@@ -76,6 +78,7 @@
     if (_lineView == nil) {
         
         _lineView = [[UIImageView alloc] init];
+        _lineView.frame = CGRectMake(kScreenWidth/2-1, 5, 1, 50);
         _lineView.alpha = 0.08;
         _lineView.layer.borderWidth = 0.5;
     }
@@ -113,22 +116,29 @@
 - (void)initWithButton:(NSArray*)taskArr{
     
     
-    NSArray *titleArr = @[@"任务赚钱",@"邀请奖励",@"我的账本"];
+    NSArray *titleArr = @[@"任务赚钱",@"邀请奖励",@"赎回提醒"];
     
-    for (int i = 0; i < 3; i++) {
+    //－－－适配问题－－－
+    CGFloat btnWidth = (kScreenWitdth - 234)/3;
+    
+    CGFloat labelWidth = kScreenWitdth/3;
+    for (int i = 0; i < titleArr.count; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, self.brownView.frame.size.height+10, 45, 45);
-        btn.backgroundColor = [UIColor brownColor];
+        btn.frame = CGRectMake(42+i*btnWidth+i*75, self.brownView.frame.size.height+25, btnWidth, 30);
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"homeTask%d",i]];
+        [btn setImage:image forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = 100+i;
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:btn];
         
  
         UILabel *title = [[UILabel alloc] init];
-        title.frame = CGRectMake(kScreenWidth/10+(kScreenWidth/3)*i, 60+self.brownView.frame.size.height, 50, 20);
+        title.frame = CGRectMake(i*labelWidth, 55+self.brownView.frame.size.height, labelWidth, 20);
         title.text = [NSString stringWithFormat:@"%@",titleArr[i]];
-        title.font = [UIFont systemFontOfSize:12];
+        title.font = [UIFont systemFontOfSize:11];
+        title.textAlignment = NSTextAlignmentCenter;
         [self addSubview:title];
    
     }
@@ -138,7 +148,7 @@
         
         //此处frame有问题
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((kScreenWidth/2+10), 20+i*20, 50, 20);
+        btn.frame = CGRectMake((kScreenWidth/2+10), 10+i*20, 50, 20);
         [btn setTitle:titleA[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
@@ -151,7 +161,7 @@
         
         //此处frame有问题
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((kScreenWidth/2+80), 20+i*20
+        btn.frame = CGRectMake((kScreenWidth/2+80), 10+i*20
                                , 50, 20);
         [btn setTitle:taskArr[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -172,15 +182,18 @@
 
 - (void)loadData:(NSDictionary *)infor{
 
+        NSLog(@"-----%@",infor);
     NSDictionary *dic = [infor objectForKey:@"infor"];
     
     NSString *money = [NSString stringWithFormat:@"%@",[dic objectForKey:@"total"]];
     self.moneyLabel.text = money;
     
+    
+
     NSArray *arr = @[[dic objectForKey:@"task"],[dic objectForKey:@"invite"]];
 
-    
     [self initWithButton:arr];
+
 }
 
 #pragma mark 
@@ -199,32 +212,27 @@
     [self.brownView addSubview:self.moneyImage];
     [self.brownView addSubview:self.horizontalLine];
     
-    //黄色部分在iPhone4上有问题
+//    self.brownView.backgroundColor = [UIColor yellowColor];
     self.brownView.sd_layout
     .leftSpaceToView(self,5).rightSpaceToView(self,5)
-    .topSpaceToView(self,5).heightRatioToView(self,0.5);
+    .topSpaceToView(self,5).heightRatioToView(self,0.4);
     
     self.moneyLabel.sd_layout
-    .leftSpaceToView(self.brownView,20).topSpaceToView(self.brownView,45)
+    .leftSpaceToView(self.brownView,25).topSpaceToView(self.brownView,25)
     .widthRatioToView(self.brownView,0.4).heightIs(28);
-    
-    self.moneyImage.backgroundColor = [UIColor grayColor];
+
     self.moneyImage.sd_layout
-    .leftEqualToView(self.moneyLabel).topSpaceToView(self.brownView,20)
-    .widthEqualToHeight(15);
+    .leftSpaceToView(self.brownView,25).topSpaceToView(self.brownView,13)
+    .widthIs(12).heightIs(11);
     
     self.titleLabel.sd_layout
-    .leftSpaceToView(self.brownView,45).topSpaceToView(self.brownView,20)
+    .leftSpaceToView(self.brownView,45).topSpaceToView(self.brownView,10)
     .widthIs(60).heightIs(20);
-    
-//    self.lineView.backgroundColor = [UIColor grayColor];
-    self.lineView.sd_layout
-    .leftSpaceToView(self.moneyLabel,10).topSpaceToView(self.brownView,10)
-    .bottomSpaceToView(self.brownView,10).widthIs(0.8);
+
     
     self.horizontalLine.sd_layout
     .leftSpaceToView(self.brownView,5).rightSpaceToView(self.brownView,5)
-    .heightIs(1).bottomSpaceToView(self.brownView,0.8);
+    .heightIs(1).topSpaceToView(self.moneyLabel,10);
     
 }
 
@@ -234,19 +242,21 @@
     switch (btn.tag - 100) {
         case 0:
         {
-         NSLog(@"0");
+        //跳转到任务做单
+            [self.viewController.tabBarController setSelectedIndex:1];
         }
             break;
         case 1:
         {
-         NSLog(@"1");
+            [self.viewController.tabBarController setSelectedIndex:3];
+            
         }
             break;
         case 2:
         {
         
-            HYMMyBooksVC *myBooks = [[HYMMyBooksVC alloc] init];
-            [self.viewController.navigationController pushViewController:myBooks animated:YES];
+//            HYMRemindVC *remind = [[HYMRemindVC alloc] init];
+//            [self.viewController.navigationController pushViewController:remind animated:YES];
         }
             break;
         default:

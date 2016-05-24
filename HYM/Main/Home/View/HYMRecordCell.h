@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMMyBookModel.h"
 @interface HYMRecordCell : UITableViewCell
 
+@property (nonatomic,strong)HYMMyBookModel *model;
 @property (nonatomic,strong)UIImageView *taskImage;
 @property (nonatomic,strong)UILabel *title;
-@property (nonatomic,strong)UILabel *subTitle;
 @property (nonatomic,strong)UIButton *timeBtn;
 @end

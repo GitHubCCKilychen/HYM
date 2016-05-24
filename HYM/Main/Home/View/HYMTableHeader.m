@@ -7,7 +7,7 @@
 //
 
 #import "HYMTableHeader.h"
-
+#import "HYMHeaderModel.h"
 @interface HYMTableHeader ()
 
 
@@ -20,6 +20,8 @@
     if (_scrollView == nil) {
         
         _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth,self.frame.size.height*0.4)];
+     
+        
     }
     
     return _scrollView;
@@ -59,8 +61,17 @@
     .leftSpaceToView(self,0).topSpaceToView(self.scrollView,0)
     .bottomSpaceToView(self,10).rightSpaceToView(self,0);
 //    //这里适配后4就有问题
+    
+
 
 }
 
+
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
+    self.scrollView.scrollList = self.datalist;
+}
 
 @end

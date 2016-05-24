@@ -8,24 +8,37 @@
 
 #import "HYMContactsVC.h"
 #import "HYMSegmentView.h"
-#import "HYMInvitationView.h"
+//#import "HYMInvitationView.h"
 #import "HYMFriendsView.h"
 #import "HYMWoolletterView.h"
 #import "HYMSearchVC.h"
+#import "HYMConModel.h"
+#import "HYMConView.h"
 @interface HYMContactsVC ()<HYMSegmentViewDelegate>
 
 @property (nonatomic,strong)HYMSegmentView *segmentView;
-@property (nonatomic,strong)HYMInvitationView *invitationView;
+//@property (nonatomic,strong)HYMInvitationView *invitationView;
 @property (nonatomic,strong)HYMFriendsView *friendsView;
 @property (nonatomic,strong)HYMWoolletterView *woolView;
 @property (nonatomic,weak)UIButton *btn;
 @property (nonatomic,weak)UIButton *message;
 @property (nonatomic,strong)UIView *addFriend;
 @property (nonatomic,strong)UIButton *addFriendBtn;
+@property (nonatomic,strong)NSMutableArray *friendsArr;
+@property (nonatomic,strong)HYMConView *conVIew;
+
 
 @end
 
 @implementation HYMContactsVC
+
+- (HYMConView *)conVIew{
+
+    if (_conVIew == nil) {
+        _conVIew = [[HYMConView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    }
+    return _conVIew;
+}
 
 - (UIButton *)addFriendBtn{
 
@@ -63,14 +76,14 @@
     }
     return _woolView;
 }
-- (HYMInvitationView *)invitationView{
-
-    if (_invitationView == nil) {
-        
-        _invitationView = [[HYMInvitationView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    }
-    return _invitationView;
-}
+//- (HYMInvitationView *)invitationView{
+//
+//    if (_invitationView == nil) {
+//        
+//        _invitationView = [[HYMInvitationView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    }
+//    return _invitationView;
+//}
 
 - (HYMFriendsView *)friendsView{
 
@@ -94,12 +107,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
+    [self friendData];
 
 }
 
+- (void)loadData{
 
+    self.friendsArr = [NSMutableArray array];
+    
+    NSDictionary *dic = @{@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/my_invite" target:self selector:@selector(taskData:) parameter:dics];
+}
+
+- (void)taskData:(NSDictionary *)dic{
+//
+//    NSLog(@"%@",dic);
+//
+}
+
+
+#pragma mark 请求好友数据
+- (void)friendData{
+
+    NSDictionary *dic = @{@"keyid":@"1",@"page":@"0",@"keyword":@"",@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/follow_list" target:self selector:@selector(loadData:) parameter:dics];
+    
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+ 
+    for (NSDictionary *dic in listItems) {
+        
+        HYMConModel *model = [[HYMConModel alloc] initWithDictionary:dic];
+        
+        [self.friendsArr addObject:model];
+        
+        self.friendsView.friendArr = self.friendsArr;
+    }
+    
+    NSLog(@"%@",dic);
+}
 - (void)initDefault{
 
     self.view.backgroundColor = [UIColor colorWithRed:235/256.f green:235/256.f blue:241/256.f alpha:1];
@@ -135,7 +190,8 @@
     
     
     //邀请
-    [self.view addSubview:self.invitationView];
+//    [self.view addSubview:self.invitationView];
+    [self.view addSubview:self.conVIew];
 
 }
 
@@ -143,7 +199,7 @@
 -(void)segumentSelectionChange:(NSInteger)selection{
     
     if (selection == 0 ) {
-        self.invitationView.hidden = NO;
+        self.conVIew.hidden = NO;
         self.woolView.hidden = YES;
         self.friendsView.hidden = YES;
         self.btn.backgroundColor = [UIColor brownColor];
@@ -152,7 +208,7 @@
         
     }else if (selection == 1){
     
-        self.invitationView.hidden = YES;
+        self.conVIew.hidden = YES;
         self.woolView.hidden = NO;
         self.friendsView.hidden = YES;
         self.btn.backgroundColor = [UIColor redColor];
@@ -162,7 +218,7 @@
     }else{
     
         self.woolView.hidden = YES;
-        self.invitationView.hidden = YES;
+        self.conVIew.hidden = YES;
         self.friendsView.hidden= NO;
         self.btn.backgroundColor = [UIColor redColor];
         self.message.backgroundColor = [UIColor grayColor];

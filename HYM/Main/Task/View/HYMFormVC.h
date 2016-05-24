@@ -10,4 +10,5 @@
 
 @interface HYMFormVC : UIViewController
 
+@property (nonatomic,assign)int index;
 @end

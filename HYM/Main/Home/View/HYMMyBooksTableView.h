@@ -10,4 +10,5 @@
 
 @interface HYMMyBooksTableView : UITableView
 
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

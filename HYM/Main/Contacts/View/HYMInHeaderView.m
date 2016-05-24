@@ -47,14 +47,7 @@
     return _content;
 }
 
-- (ScrollView *)scrollView{
 
-    if (_scrollView == nil) {
-        
-        _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWitdth, 70)];
-    }
-    return _scrollView;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -70,7 +63,7 @@
 - (void)initWithView{
     
 
-    [self addSubview:self.scrollView];
+//    [self addSubview:self.scrollView];
     [self addSubview:self.lineView];
     [self addSubview:self.title];
     [self addSubview:self.content];
@@ -79,7 +72,7 @@
     self.lineView.backgroundColor = [UIColor orangeColor];
     
     self.lineView.sd_layout
-    .leftSpaceToView(self,15).topSpaceToView(self,140)
+    .leftSpaceToView(self,15).topSpaceToView(self,10)
     .widthIs(8).heightIs(20);
     
 //    self.title.backgroundColor = [UIColor grayColor];

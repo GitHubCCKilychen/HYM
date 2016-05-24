@@ -10,4 +10,10 @@
 
 @interface HYMPostView : UIView
 
+@property (nonatomic,strong)UIImageView *textImage;
+@property (nonatomic,strong)UIImageView *photoImage;
+@property (nonatomic,strong)UIButton *textBtn;
+@property (nonatomic,strong)UIButton *photoBtn;
+@property (nonatomic,strong)UIView *lineView;
+
 @end

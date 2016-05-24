@@ -28,20 +28,10 @@
         
         _title = [[UILabel alloc] init];
         _title.text = @"本金x元，期限x天";
-        [HYMTool initLabel:_title withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [HYMTool initLabel:_title withFont:[UIFont systemFontOfSize:14] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        _title.numberOfLines = 0;
     }
     return _title;
-}
-
-- (UILabel *)subTitle{
-
-    if (_subTitle == nil) {
-        
-        _subTitle = [[UILabel alloc] init];
-        _subTitle.text = @"投资收益x元，约赎回x元";
-        [HYMTool initLabel:_subTitle withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-    }
-    return _subTitle;
 }
 
 - (UIButton *)timeBtn{
@@ -50,14 +40,25 @@
         
         _timeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _timeBtn.layer.cornerRadius =5;
+        [_timeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _timeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     }
     return _timeBtn;
 }
-- (void)awakeFromNib {
-    // Initialization code
+#pragma mark 数据
+- (void)setModel:(HYMMyBookModel *)model{
+
+    _model = model;
+ 
+    self.title.text = _model.name;
+    [self.timeBtn setTitle:_model.regdate forState:UIControlStateNormal];
+    [self.taskImage sd_setImageWithURL:[NSURL URLWithString:_model.imgurl0]];
     
+    //时间转换
+    [HYMTool internalFromCreatTime:_model.regdate formatString:@"hh:mm"];
 }
 
+#pragma mark 初始化
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -73,7 +74,6 @@
     
     [self.contentView addSubview:self.taskImage];
     [self.contentView addSubview:self.title];
-    [self.contentView addSubview:self.subTitle];
     [self.contentView addSubview:self.timeBtn];
     
     
@@ -86,16 +86,10 @@
 //    self.title.backgroundColor = [UIColor grayColor];
     self.title.sd_layout
     .leftSpaceToView(self.taskImage,10).topSpaceToView(self.contentView,15)
-    .widthRatioToView(self.contentView,0.4).heightIs(20);
-    
-//    self.subTitle.backgroundColor = [UIColor brownColor];
-    self.subTitle.sd_layout
-    .leftEqualToView(self.title).bottomSpaceToView(self.contentView,20)
-    .widthRatioToView(self.contentView,0.6).heightIs(20);
-    
-    self.timeBtn.backgroundColor = [UIColor blueColor];
+    .widthRatioToView(self.contentView,0.5).heightIs(40);
+ 
     self.timeBtn.sd_layout
-    .leftSpaceToView(self.title,15).rightSpaceToView(self.contentView,10)
+    .rightSpaceToView(self.contentView,5)
     .heightIs(30).widthIs(50).topSpaceToView(self.contentView,10);
     
 }

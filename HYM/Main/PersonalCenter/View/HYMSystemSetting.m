@@ -43,5 +43,6 @@
 - (void)initView{
 
     [self.view addSubview:self.table];
+
 }
 @end

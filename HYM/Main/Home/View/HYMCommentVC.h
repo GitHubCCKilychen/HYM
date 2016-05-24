@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  HYMCommentDelagete<NSObject>
+
+- (void)comment:(NSString *)text with:(int)indexCount;
+
+@end
 @interface HYMCommentVC : UIViewController
 
 @property (nonatomic,copy)NSString *commont;//评论内容
+
+@property (nonatomic,weak)id<HYMCommentDelagete>commentDelegate;
 @end

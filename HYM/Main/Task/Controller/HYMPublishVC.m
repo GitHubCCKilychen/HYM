@@ -10,6 +10,7 @@
 #import "HYMPublishTableView.h"
 #import "HYMPublishView.h"
 #import "HYMPublishBottomView.h"
+#import "HYMPublishHelp.h"
 @interface HYMPublishVC ()
 
 @property (nonatomic,strong)HYMPublishTableView *tableView;
@@ -94,8 +95,29 @@
     [super viewDidLoad];
     
      self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self loadData];
     [self initDefault];
     [self initWithView];
+    
+}
+
+#pragma makr 数据
+- (void)loadData{
+
+    
+    NSDictionary *dic = @{@"title":@"陆金所",@"brand":@"陆金所单子",@"logo":@"http://www.baidu.com",@"task_number":@"2",@"benjin":@"10000",@"shouyi":@"50",@"fanli":@"2",@"timelimit":@"5",@"start_time":@"2016-5-5",@"end_time":@"2016-5-10",@"must_option":@"name",@"address":@"3242",@"offsale_time":@"2017-1-1",@"is_auto":@"1",@"token":@"1"};
+    
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/Task/task_add" target:self selector:@selector(loadData:) parameter:dics];
+    
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
+    //此处没有返回数据
     
 }
 
@@ -105,8 +127,24 @@
     self.title = @"上传任务参数";
    
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+    
+    UIButton *help = [UIButton buttonWithType:UIButtonTypeCustom];
+    [help setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    help.frame = CGRectMake(0, 0, 20, 20);
+    [help addTarget:self action:@selector(helpAct:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:help];
+    
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:help];
+    self.navigationItem.rightBarButtonItem = right;
 }
 
+#pragma mark 帮助
+- (void)helpAct:(UIButton *)btn{
+
+    HYMPublishHelp *help = [[HYMPublishHelp alloc] init];
+    [self.navigationController pushViewController:help animated:YES];
+    
+}
 #pragma mark view
 - (void)initWithView{
 

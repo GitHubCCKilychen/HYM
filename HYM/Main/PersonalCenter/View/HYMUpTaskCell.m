@@ -44,6 +44,10 @@
     if (_editBtn == nil) {
         
         _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _editBtn.backgroundColor = [UIColor colorWithRed:45/255.f green:156/255.f blue:253/255.f alpha:1];
     }
     
         return _editBtn;
@@ -54,6 +58,10 @@
     if (_deleteBtn == nil) {
         
         _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _deleteBtn.backgroundColor = [UIColor colorWithRed:184/255.f green:186/255.f blue:187/255.f alpha:1];
     }
     return _deleteBtn;
 }
@@ -63,9 +71,17 @@
     if (_segmentView == nil) {
         
         NSArray *titieArr = @[@"上传未通过的任务",@"草稿未上线的项目"];
-        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth, 35) titleDataSource:titieArr backgroundColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:8] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor orangeColor] delegate:self];
+        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth, 35) titleDataSource:titieArr backgroundColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:14] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor orangeColor] delegate:self];
     }
     return _segmentView;
+}
+
+- (void)setModel:(HYMUpModel *)model{
+
+    _model = model;
+    
+    [_storeImage sd_setImageWithURL:[NSURL URLWithString:_model.logo]]
+    ;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 
@@ -112,12 +128,12 @@
     .leftSpaceToView(self.storeImage,10).topEqualToView(self.storeImage)
     .widthRatioToView(self.contentView,0.5).heightIs(50);
     
-    self.editBtn.backgroundColor = [UIColor grayColor];
+//    self.editBtn.backgroundColor = [UIColor grayColor];
     self.editBtn.sd_layout
     .leftSpaceToView(self.connect,10).topEqualToView(self.storeImage)
     .rightSpaceToView(self.contentView,10).heightIs(25);
     
-    self.deleteBtn.backgroundColor = [UIColor brownColor];
+//    self.deleteBtn.backgroundColor = [UIColor brownColor];
     self.deleteBtn.sd_layout
     .leftEqualToView(self.editBtn).rightEqualToView(self.editBtn)
     .topSpaceToView(self.editBtn,8).heightIs(25);

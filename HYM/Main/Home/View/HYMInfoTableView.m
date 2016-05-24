@@ -7,8 +7,9 @@
 //
 
 #import "HYMInfoTableView.h"
-#import "HYMInfoCell.h"
 #import "HYMBlogVC.h"
+#import "HYMTodayInfoModel.h"
+#import "HYMInfoCell.h"
 @interface HYMInfoTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -28,41 +29,36 @@
     return self;
 }
 
+- (void)setButtonIndex:(NSInteger)buttonIndex{
 
-- (void)setCount:(NSArray *)count{
-
-    _count = count;
-    
+    _buttonIndex = buttonIndex;
+//    NSLog(@"%ld",(long)_buttonIndex);
 }
 
-- (void)setIndex:(NSInteger)index{
+#pragma mark 数据
+- (void)setInfoArr:(NSMutableArray *)infoArr{
 
-    _index = index;
-    
+
+    _infoArr = infoArr;
     [self reloadData];
-    
-    NSLog(@"--%ld",(long)_index);
-    
-    
+
 }
+- (void)setBankArr:(NSMutableArray *)bankArr{
 
-- (void)setCount2:(NSArray *)count2{
-
-    _count2 = count2;
-//    NSLog(@"----%ld",(unsigned long)_count2.count);
+    _bankArr = bankArr;
     [self reloadData];
 }
 #pragma mark tableDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (_index == 1) {
+    if (self.buttonIndex == 0) {
         
-
-        return _count2.count;
+        return _infoArr.count;
     }
     
-   
-    return _count.count;
+    
+    
+    return _bankArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -73,15 +69,24 @@
     if (cell == nil) {
         
         cell = [[HYMInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-
-    if (_index == 1) {
         
-        cell.model = self.count2[indexPath.row];
-    }else{
-    
-        cell.model = self.count[indexPath.row];
+       
+        
     }
+    if (self.buttonIndex == 0) {
+        
+        HYMTodayInfoModel *model = self.infoArr
+        [indexPath.row];
+        
+        cell.model = model;
+    }else if(self.buttonIndex ==1){
+        
+        HYMTodayInfoModel *model = self.bankArr[indexPath.row];
+        
+        cell.model = model;
+    }
+    
+    
     
     return cell;
 }
@@ -101,14 +106,10 @@
 
     if (_index == 0) {
     
-        blogVC.title = @"网贷资讯";
-        blogVC.view.backgroundColor = [UIColor whiteColor];
         [self.viewController.navigationController pushViewController:blogVC animated:YES];
     
     }else if (_index == 1){
     
-        blogVC.title = @"银行资讯";
-        blogVC.view.backgroundColor = [UIColor whiteColor];
         [self.viewController.navigationController pushViewController:blogVC animated:YES];
     }
     

@@ -9,10 +9,12 @@
 #import "HYMListVC.h"
 #import "HYMSegmentView.h"
 #import "HYMListTable.h"
+#import "HYMListModel.h"
 @interface HYMListVC ()<HYMSegmentViewDelegate>
 
 @property (nonatomic,strong)HYMSegmentView *segment;
 @property (nonatomic,strong)HYMListTable *tableView;
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end
 
 @implementation HYMListVC
@@ -39,8 +41,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initWithView];
+}
+
+#pragma mark 数据
+- (void)loadData{
+
+    self.datalist = [NSMutableArray array];
+    [self segumentSelectionChange:0];
 }
 
 - (void)initDefault{
@@ -60,26 +70,38 @@
     
     self.tableView.selection = selection;
     
-    switch (selection) {
-        case 0:
+    
+    [self loadData:selection];
 
-            NSLog(@"-0进行中");
-            break;
-        case 1:
-              NSLog(@"-1暂停中");
-            break;
-        case 2:
-              NSLog(@"-2");
-            break;
-        case 3:
-              NSLog(@"-3");
-            break;
-        case 4:
-            NSLog(@"-4");
-            break;
-        default:
-            break;
+}
+
+#pragma mark 数据
+- (void)loadData:(NSInteger)index{
+
+    
+    NSString *indexString = [NSString stringWithFormat:@"%ld",(long)index];
+    NSDictionary *dic = @{@"status":indexString,@"page":@"1",@"token":@"1"};
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [self.datalist removeAllObjects];
+     [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_status_ower" target:self selector:@selector(infoData:) parameter:nsDic];
+    
+}
+
+- (void)infoData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    for (NSDictionary *dic in listItems) {
+        
+        HYMListModel *model = [[HYMListModel alloc] initWithDictionary:dic];
+        
+        [self.datalist addObject:model];
+        
+        self.tableView.datalistl = self.datalist;
+     
+        [self.tableView reloadData];
     }
 
+    
 }
 @end

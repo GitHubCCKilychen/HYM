@@ -13,6 +13,9 @@
 #import "HYMInfoCellModel.h"
 #import "HYMTableViewCell.h"
 #import "HYMTaskModel.h"
+#import "HYMHeaderModel.h"
+#import "ScrollView.h"
+#import "HYMMsgModel.h"
 @interface HYMHomeVC ()
 @property (nonatomic,strong)HYMTableView *tableView;
 @property (nonatomic,strong)HYMTableHeader *headerView;
@@ -20,6 +23,8 @@
 
 @property (nonatomic,strong)NSMutableArray *infoArr;//资讯数组
 @property (nonatomic,strong)NSMutableArray *taskArr;
+@property (nonatomic,strong)NSMutableArray *headerArr;
+@property (nonatomic,strong)NSMutableArray *messageArr;
 @end
 
 @implementation HYMHomeVC
@@ -61,7 +66,7 @@
     
     if (_headerView ==nil) {
         
-        _headerView = [[HYMTableHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, kScreenHeight/1.8)];
+        _headerView = [[HYMTableHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 240)];
     }
     
     return _headerView;
@@ -82,27 +87,88 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //数据
+    [self messageData];
+    
+    //数据－今日资讯
     [self loadData];
     //任务精选
     [self loadDataTask];
     
+    //广告
+    [self loadPic];
     
     //tableView
     [self initWithTableView];
     
 }
 
+#pragma mark messageData公告
+- (void)messageData{
+
+    self.messageArr = [NSMutableArray array];
+    NSDictionary *dic = @{@"sellerid":@"无",@"keyid":@"7",@"ordertype":@"desc",@"client_id":@"无",@"keytype":@"2",@"page":@"0",@"orderby":@"1"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(messageData:) parameter:infoDic];
+    
+}
+
+- (void)messageData:(NSDictionary *)dic{
+
+    
+    NSDictionary *infor = [dic  objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    
+    for (NSDictionary *dic in listItems) {
+        
+        HYMMsgModel *model = [[HYMMsgModel alloc] initWithDictionary:dic];
+     
+        [self.messageArr addObject:model];
+        self.noticeView.titleArr = @[model.content];
+    }
+}
+#pragma mark 广告
+- (void)loadPic{
+
+    self.headerArr = [NSMutableArray array];
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/indexad_list" target:self selector:@selector(picData:) parameter:infoDic];
+    
+}
+
+- (void)picData:(NSDictionary *)dic{
+    
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    
+    for (NSDictionary *dic in listItems) {
+    
+        HYMHeaderModel *model = [[HYMHeaderModel alloc] initWithDictionary:dic];
+        
+        [self.headerArr addObject:model];
+        
+        self.headerView.datalist = self.headerArr;
+        
+    }
+    
+   
+  
+    
+}
 #pragma mark 数据 －今日资讯数据
 - (void)loadData{
 
-    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+
+    
+    NSDictionary *dic = @{@"client_id":@"无",@"keytype":@"11",@"keyid":@"0",@"orderby":@"1",@"ordertype":@"desc",@"sellerid":@"无",@"page":@"0"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     //网络请求
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=base&a=blog_list_index" target:self selector:@selector(infoData:) parameter:infoDic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(infoData:) parameter:infoDic];
 }
 - (void)infoData:(NSDictionary *)infoDic{
-    
-    
+
+   
     if (1 == [[infoDic objectForKey:@"success"] intValue]) {
         
         NSDictionary *infor = [infoDic objectForKey:@"infor"];
@@ -133,13 +199,12 @@
     NSMutableDictionary *dics = [NSMutableDictionary dictionary];
     [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=Base&a=task_select" target:self selector:@selector(taskData:) parameter:dics];
     
-    
-    
 }
 
 
 - (void)taskData:(NSDictionary *)taskDic{
 
+    
     NSArray *infor = [taskDic objectForKey:@"infor"];
     
     for (NSDictionary *dic in infor) {

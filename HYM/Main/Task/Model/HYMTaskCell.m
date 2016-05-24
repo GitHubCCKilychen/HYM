@@ -73,7 +73,8 @@
     
     if (_timeImage == nil) {
         _timeImage = [[UIImageView alloc] init];
-        _timeImage.backgroundColor = [UIColor grayColor];
+        _timeImage.contentMode = UIViewContentModeScaleToFill;
+        _timeImage.image = [UIImage imageNamed:@"截止时间"];
     }
     
     return _timeImage;
@@ -105,7 +106,8 @@
     if (_peopleImage == nil) {
         
         _peopleImage = [[UIImageView alloc] init];
-        _peopleImage.backgroundColor = [UIColor redColor];
+        _peopleImage.image = [UIImage imageNamed:@"任务图片"];
+        _peopleImage.contentMode = UIViewContentModeScaleToFill;
     }
     return _peopleImage;
 }
@@ -121,6 +123,7 @@
         _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_ignoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _ignoreBtn.layer.cornerRadius = 2;
+        [_ignoreBtn addTarget:self action:@selector(igbtnAct:) forControlEvents:UIControlEventTouchUpInside];
         _ignoreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         
     }
@@ -198,25 +201,22 @@
     .leftSpaceToView(self.contentView,10).bottomSpaceToView(self.contentView,15)
     .topSpaceToView(self.contentView,15).widthRatioToView(self.contentView,0.2);
     
-    //    self.title.backgroundColor = [UIColor grayColor];
     self.title.sd_layout
-    .leftSpaceToView(self.storeImage,5).topEqualToView(self.storeImage)
-    .widthRatioToView(self.contentView,0.53).heightIs(50);
+    .leftSpaceToView(self.storeImage,5).topSpaceToView(self.contentView,10)
+    .widthRatioToView(self.contentView,0.6).heightIs(50);
     
     
     self.timeImage.sd_layout
-    .leftEqualToView(self.title).bottomEqualToView(self.storeImage)
-    .heightIs(20).widthIs(20);
-    
-    //    self.timeEnd.backgroundColor = [UIColor blueColor];
+    .leftEqualToView(self.title).topSpaceToView(self.title,15)
+    .heightIs(15).widthIs(15);
+    //    self.timeEnd.backgroundColor = [UIColor g];
     self.timeEnd.sd_layout
-    .leftSpaceToView(self.timeImage,2).bottomEqualToView(self.timeImage)
+    .leftSpaceToView(self.timeImage,2).topSpaceToView(self.title,12)
     .widthRatioToView(self.contentView,0.38).heightIs(20);
     
     self.peopleImage.sd_layout
     .leftSpaceToView(self.timeEnd,5)
-    .bottomEqualToView(self.timeEnd).widthIs(20)
-    .topEqualToView(self.timeEnd);
+    .heightIs(15).widthIs(15).topEqualToView(self.timeImage);
     
     self.peopleCount.sd_layout
     .leftSpaceToView(self.peopleImage,0).bottomEqualToView(self.timeEnd)
@@ -224,13 +224,38 @@
     
     
     self.ignoreBtn.sd_layout
-    .rightSpaceToView(self.contentView,20).topSpaceToView(self.contentView,15)
-    .widthIs(35).heightIs(20);
+    .rightSpaceToView(self.contentView,18).topSpaceToView(self.contentView,15)
+    .widthIs(33).heightIs(16);
     
     self.notInvolved.sd_layout
-    .rightSpaceToView(self.contentView,5).topSpaceToView(self.ignoreBtn,3)
-    .widthIs(50).heightIs(20);
+    .rightSpaceToView(self.contentView,10).topSpaceToView(self.ignoreBtn,3)
+    .widthIs(40).heightIs(19);
     
 
+}
+
+#pragma mark 忽略事件
+- (void)igbtnAct:(UIButton *)btn{
+
+    
+    //请求数据
+    
+    [self loadData];
+    
+}
+
+- (void)loadData{
+
+    //读取成功－－infor 值 为空
+    
+    NSDictionary *dic = @{@"id":@"1",@"keytype":@"1",@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/task_ignore" target:self selector:@selector(taskData:) parameter:dics];
+    
+}
+
+- (void)taskData:(NSDictionary *)dic{
+
+//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
 }
 @end
