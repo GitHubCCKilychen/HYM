@@ -10,6 +10,7 @@
 #import "ScrollLabel.h"
 #import "HYMMessageVC.h"
 #import "HYMMsgModel.h"
+#import "HYMHomeMsgVC.h"
 @interface HYMNoticeView ()<ScrollLabelDelegate>
 
 @property (nonatomic,strong)ScrollLabel *scrollLabel;//公告
@@ -55,14 +56,7 @@
         
         _messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_messageBtn setImage:[UIImage imageNamed:@"homeMessage"] forState:UIControlStateNormal];
-//        _messageBtn.imageEdgeInsets = UIEdgeInsetsMake(-5, 0, 10, 0);;
-//        [_messageBtn setTitle:@"消息" forState:UIControlStateNormal];
-//        [_messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        _messageBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-//        _messageBtn.titleEdgeInsets = UIEdgeInsetsMake(2, 3, 15, 2);
-        
-        
-        
+        [_messageBtn addTarget:self action:@selector(msgAct:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _messageBtn;
@@ -89,8 +83,7 @@
         
         //此处颜色值修改
         self.backgroundColor = [UIColor lightGrayColor];
-     
-//        [self loadData];
+        self.userInteractionEnabled = YES;
        
         
     }
@@ -146,5 +139,14 @@
     
         NSLog(@"3");
     }
+}
+
+#pragma mark 消息事件
+- (void)msgAct:(UIButton *)msg{
+
+    HYMHomeMsgVC *msgVC = [[HYMHomeMsgVC alloc] init];
+    HYMNavigationVC *nc = [[HYMNavigationVC alloc] initWithRootViewController:msgVC];
+    [self.viewController.parentViewController presentViewController:nc animated:YES completion:nil];
+    
 }
 @end

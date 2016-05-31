@@ -15,6 +15,7 @@
 #import "HYMTaskModel.h"
 #import "HYMHeaderModel.h"
 #import "ScrollView.h"
+#import "HYMCenMallModel.h"
 #import "HYMMsgModel.h"
 @interface HYMHomeVC ()
 @property (nonatomic,strong)HYMTableView *tableView;
@@ -25,6 +26,7 @@
 @property (nonatomic,strong)NSMutableArray *taskArr;
 @property (nonatomic,strong)NSMutableArray *headerArr;
 @property (nonatomic,strong)NSMutableArray *messageArr;
+@property (nonatomic,strong)NSMutableArray *mallArr;// 商城
 @end
 
 @implementation HYMHomeVC
@@ -97,8 +99,34 @@
     //广告
     [self loadPic];
     
+    [self mallData];
+    
     //tableView
     [self initWithTableView];
+    
+}
+
+- (void)mallData{
+
+    self.mallArr = [NSMutableArray array];
+    NSDictionary *dic = @{@"sellerid":@"无",@"keyid":@"0",@"client_id":@"无",@"keytype":@"7",@"page":@"0",@"orderby":@"2",@"ordertype":@"desc"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(mallData:) parameter:infoDic];
+}
+
+- (void)mallData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    for (NSDictionary *dic in listItems) {
+        
+        HYMCenMallModel *model = [[HYMCenMallModel alloc] initWithDictionary:dic];
+        [self.mallArr addObject:model];
+        self.tableView.mallArr = self.mallArr;
+        [self.tableView reloadData];
+    }
+    
     
 }
 
@@ -204,7 +232,7 @@
 
 - (void)taskData:(NSDictionary *)taskDic{
 
-    
+   // NSLog(@"%@",taskDic);
     NSArray *infor = [taskDic objectForKey:@"infor"];
     
     for (NSDictionary *dic in infor) {

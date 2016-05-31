@@ -9,6 +9,7 @@
 #import "HYMSetInfoTableView.h"
 #import "UIView+UIViewController.h"
 #import "HYMSecionView.h"
+#import "PhotoView.h"
 @interface HYMSetInfoTableView ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSArray *titleArr;
 @end
@@ -210,29 +211,16 @@
 #pragma mark 相册选择
 - (void)selectedPhoto:(UIButton *)btn{
 
-    //ios9 跟iOS8
-    UIAlertController *alertVC= [UIAlertController alertControllerWithTitle:@"请选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [self.viewController presentViewController:alertVC animated:YES completion:nil];
     
-    UIAlertAction *pic = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        //进入相册选择图片
-        
-    }];
+    UIView *aView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    aView.backgroundColor = [UIColor colorWithRed:157/255.f green:158/255.f blue:159/255.f alpha:1];
     
-    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        //调用相机
-        
-    }];
-    
-    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-        
-    }];
-    
-    [alertVC addAction:pic];
-    [alertVC addAction:photo];
-    [alertVC addAction:cancle];
+    PhotoView *photoView  = [[PhotoView alloc] initWithFrame:CGRectMake(15,105,kScreenWitdth-30,kScreenHeight-200)];
+    photoView.backgroundColor = [UIColor whiteColor];
+    [aView addSubview:photoView];
+    // 当前顶层窗口
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    // 添加到窗口
+    [window addSubview:aView];
 }
 @end

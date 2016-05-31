@@ -274,15 +274,19 @@
     }
 }
 
-#pragma mark 马上报单
+#pragma mark 马上报单/参与
 - (void)joinForm:(UIButton *)btn{
 
+    //
     if (btn.tag == 0) {
         
-       //界面跳转
-        
-        [self initJojn];
-        
+       //马上参与
+        [self loadData];
+        //设置马上报单颜色改变
+        UIButton *button = [btn viewWithTag:1];
+            
+        [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    
     }else if (btn.tag == 1){
     
         HYMFormVC *formVC = [[HYMFormVC alloc] init];
@@ -322,13 +326,17 @@
     
 }
 
-#pragma mark  数据
-- (void)loadData:(NSDictionary *)dic{
+#pragma mark 马上参与
+- (void)loadData{
 
     NSString *url = [NSString stringWithFormat:@"%@%@",REQUEST_Root_Net,REQUEST_Task_Jojn];
     
-//    NSDictionary *dic = @{@"id":@"1"};
+    NSDictionary *dic = @{@"id":@"1",@"token":@"1"};
     NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [XTomRequest requestWithURL:url target:self selector:@selector(laterDate:) parameter:nsDic];
+    [XTomRequest requestWithURL:url target:self selector:@selector(loadData:) parameter:nsDic];
+}
+- (void)loadData:(NSDictionary *)dic{
+
+    
 }
 @end

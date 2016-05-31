@@ -12,6 +12,7 @@
 #import "HYMCommModel.h"
 @interface HYMCommTable ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,weak)HYMCommBlogVC *blogvc;
 @end
 
 @implementation HYMCommTable
@@ -46,7 +47,7 @@
     if (cell == nil) {
         
         cell = [[HYMCommunityCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.indexPath = indexPath;
+        cell.index = indexPath.row;
     }
     //判断当前是不是自己的帐号，如果是就添加删除按钮
     
@@ -60,10 +61,17 @@
     
 }
 
-#pragma mark 选中删除
+
+
+#pragma mark 选中
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HYMCommBlogVC *blogVC = [[HYMCommBlogVC alloc] init];
+    
+    HYMCommModel *model = self.datalist[indexPath.row];
+    
+    blogVC.index = model.blogID;
+    
     [self.viewController.navigationController pushViewController:blogVC animated:YES];
     
 }

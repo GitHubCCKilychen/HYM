@@ -8,6 +8,7 @@
 
 #import "HYMPublishList.h"
 #import "HYMTaskList.h"
+#import "HYMNeedHelp.h"
 @interface HYMPublishList ()
 
 @property (nonatomic,strong)HYMTaskList *taskList;
@@ -35,15 +36,14 @@
 
 - (void)loadData{
 
-    NSDictionary *dic = @{@"task_id":@"1",@"token":@"1"};
+    //ID值是指任务ID－－此时参数不对
+    NSDictionary *dic = @{@"task_id":@"11",@"token":@"1",@"publish_status":@"1"};
     NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_publish" target:self selector:@selector(loadData:) parameter:dics];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_status_change" target:self selector:@selector(loadData:) parameter:dics];
 }
 - (void)loadData:(NSDictionary *)dic{
 
-//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
-    
-    
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
 }
 
 - (void)initDefault{
@@ -53,7 +53,8 @@
     
     UIButton *right =[UIButton buttonWithType:UIButtonTypeCustom];
     right.frame = CGRectMake(0, 0, 30, 30);
-    right.backgroundColor = [UIColor grayColor];
+    [right setImage:[UIImage imageNamed:@"help"] forState:UIControlStateNormal];
+    [right addTarget:self action:@selector(helpAcct:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:right];
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:right];
@@ -67,6 +68,14 @@
     [self.view addSubview:self.taskList];
 }
 
+#pragma mark 帮助
+- (void)helpAcct:(UIButton *)btn{
 
+    HYMNeedHelp *help = [[HYMNeedHelp alloc] init];
+    help.indexString = @"1";
+    [self.navigationController pushViewController:help animated:YES];
+    
+    
+}
 
 @end

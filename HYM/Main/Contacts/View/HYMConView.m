@@ -8,20 +8,29 @@
 
 #import "HYMConView.h"
 #import "HYMInTable.h"
-#import "ScrollView.h"
+#import "ComScrollView.h"
+#import "HYMInBottom.h"
 @interface HYMConView ()
 
 @property (nonatomic,strong)HYMInTable *tableView;
-@property (nonatomic,strong)ScrollView *scrollView;
+@property (nonatomic,strong)ComScrollView *scrollView;
+@property (nonatomic,strong)HYMInBottom *bottomView;
 @end
 @implementation HYMConView
 
+- (HYMInBottom *)bottomView{
 
-- (ScrollView *)scrollView{
+    if (_bottomView == nil) {
+        
+        _bottomView = [[HYMInBottom alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 65)];
+    }
+    return _bottomView;
+}
+- (ComScrollView *)scrollView{
 
     if (_scrollView == nil) {
         
-        _scrollView = [[ScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 70)];
+        _scrollView = [[ComScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 70)];
     }
     return _scrollView;
 }
@@ -29,8 +38,9 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMInTable alloc] initWithFrame:CGRectMake(0, 64, kScreenWitdth, kScreenHeight-64) style:UITableViewStyleGrouped];
+        _tableView = [[HYMInTable alloc] initWithFrame:CGRectMake(0, 64, kScreenWitdth, kScreenHeight-64-50) style:UITableViewStyleGrouped];
         _tableView.tableHeaderView = self.scrollView;
+        _tableView.tableFooterView = self.bottomView;
     }
     return _tableView;
 }
@@ -50,5 +60,20 @@
 
     [self addSubview:self.tableView];
     
+}
+
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
+    
+    self.tableView.datalist = self.datalist;
+}
+
+- (void)setScrollList:(NSMutableArray *)scrollList{
+
+    _scrollList = scrollList;
+    
+    self.scrollView.scrollList = self.scrollList;
 }
 @end

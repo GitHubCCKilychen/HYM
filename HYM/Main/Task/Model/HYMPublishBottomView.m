@@ -70,7 +70,7 @@
 
     if (self = [super initWithFrame:frame]) {
         
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [UIColor colorWithRed:235/255.f green:235/255.f blue:235/255.f alpha:1];
         
         [self initWithView];
         [self initWithBtn];

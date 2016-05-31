@@ -101,11 +101,11 @@
 - (void)setIndex:(NSInteger)index{
 
     _index = index;
-    if (self.index != self.btn.tag) {
-        
-        //设置当前的选中状态---此处有问题
-        [self selectTheSegument:self.index+1];
-    }
+//    if (self.index != self.btn.tag) {
+//        
+//        //设置当前的选中状态---此处有问题
+//        [self selectTheSegument:self.index+1];
+//    }
 }
 -(void)selectTheSegument:(NSInteger)segument{
     

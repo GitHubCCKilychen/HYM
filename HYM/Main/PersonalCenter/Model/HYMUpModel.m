@@ -10,4 +10,9 @@
 
 @implementation HYMUpModel
 
+- (void)setAttributes:(NSDictionary *)dic{
+
+    self.map = @{@"id":@"taskID"};
+    [super setAttributes: dic];
+}
 @end

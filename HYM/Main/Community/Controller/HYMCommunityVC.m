@@ -14,6 +14,9 @@
 #import "HYMSelectedPost.h"
 #import "HYMPostVC.h"
 #import "HYMCommModel.h"
+#import "HYMComMsgVC.h"
+#import "HYMSearchTableVC.h"
+#import "PostPublishNewVC.h"
 @interface HYMCommunityVC ()<HYMSegmentViewDelegate,HYMCommSegmentDelegate>
 
 @property (nonatomic,strong)HYMCommView *commView;
@@ -23,6 +26,9 @@
 @property (nonatomic,strong)HYMSelectedPost *post;//帖子
 @property (nonatomic,strong)NSMutableArray *datalist;
 @property (nonatomic,assign)NSInteger index;
+@property (nonatomic,assign)NSInteger idIndex;
+@property (nonatomic,strong)NSMutableArray *listArr;
+@property (nonatomic,strong)UIView *lineView;
 
 
 @end
@@ -31,6 +37,16 @@
 
 #pragma mark 懒加载
 
+- (UIView *)lineView{
+
+    if (_lineView == nil) {
+        
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWitdth-kScreenWitdth/3,0, 0.5,44)];
+        _lineView.backgroundColor = [UIColor lightGrayColor];
+    }
+    
+    return _lineView;
+}
 
 - (HYMSelectedPost *)post{
 
@@ -55,7 +71,7 @@
     if (_sortView == nil) {
         
         NSArray *titleArr = @[@"分类",@"时间",@"阅读量",@"评价量"];
-        _sortView = [HYMCommSegment segmenFrame:CGRectMake(0, 64, kScreenWitdth, 50) titleDataSource:titleArr backgroundColor:[UIColor whiteColor] titleColor:[UIColor lightGrayColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor clearColor] delegate:self];
+        _sortView = [HYMCommSegment segmenFrame:CGRectMake(0, 64, kScreenWitdth, 50) titleDataSource:titleArr backgroundColor:[UIColor whiteColor] titleColor:[UIColor lightGrayColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor lightGrayColor] buttonDownColor:[UIColor clearColor] delegate:self];
     }
     return _sortView;
 }
@@ -64,7 +80,7 @@
     if (_segmentView == nil) {
         
         NSArray *title = @[@"网赚",@"信用卡"];
-        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth-kScreenWitdth/2.5, 44) titleDataSource:title backgroundColor:[UIColor clearColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor redColor] buttonDownColor:[UIColor redColor] delegate:self];
+        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth-kScreenWitdth/3, 44) titleDataSource:title backgroundColor:[UIColor clearColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor redColor] buttonDownColor:[UIColor redColor] delegate:self];
     }
     return _segmentView;
 }
@@ -81,7 +97,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:235/256.f green:235/256.f blue:241/256.f alpha:1];
     
     [self loadData];
     //默认配置
@@ -96,31 +111,34 @@
     
     //默认设置为网赚
     [self segumentSelectionChange:0];
+    //此处参数缺少值
     //分类
-    [self segSelectionChange:0];
-}
-
-- (void)loadData:(NSDictionary *)infor{
+    [self segSelectionChange:1];
+    
+    //此处剩余排序问题
 
 }
 #pragma mark 默认
 - (void)initDefault{
     
     UIButton *editBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-    editBtn.backgroundColor = [UIColor grayColor];
-    editBtn.frame = CGRectMake(0, 0, 30, 30);
+    [editBtn setImage:[UIImage imageNamed:@"论坛编辑"] forState:UIControlStateNormal];
+    editBtn.frame = CGRectMake(0, 0, 20, 20);
     [editBtn addTarget:self action:@selector(editAct:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:editBtn];
     
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.backgroundColor = [UIColor brownColor];
-    searchBtn.frame = CGRectMake(0, 0, 30, 30);
+    [searchBtn setImage:[UIImage  imageNamed:@"论坛搜索"] forState:UIControlStateNormal];
+    searchBtn.frame = CGRectMake(0, 0, 20, 20);
+    [searchBtn addTarget:self action:@selector(serachAct:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:searchBtn];
+       self.view.backgroundColor = [UIColor colorWithRed:235/256.f green:235/256.f blue:241/256.f alpha:1];
     
     
     UIButton *messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    messageBtn.frame = CGRectMake(0, 0, 30, 30);
-    messageBtn.backgroundColor = [UIColor greenColor];
+    messageBtn.frame = CGRectMake(0, 0,20, 20);
+    [messageBtn addTarget:self action:@selector(messAct:) forControlEvents:UIControlEventTouchUpInside];
+    [messageBtn setImage:[UIImage imageNamed:@"任务消息"] forState:UIControlStateNormal];
     [self.navigationController.navigationBar addSubview:messageBtn];
     
     
@@ -144,8 +162,10 @@
 #pragma mark 帖子发表
 - (void)editAct:(UIButton *)btn{
 
-    HYMPostVC *postVC = [[HYMPostVC alloc] init];
-    [self.navigationController  pushViewController:postVC animated:YES];
+//    HYMPostVC *postVC = [[HYMPostVC alloc] init];
+//    [self.navigationController  pushViewController:postVC animated:YES];
+    PostPublishNewVC *post = [[PostPublishNewVC alloc]init];
+    
     
 }
 #pragma mark 网赚－－－信用卡
@@ -163,12 +183,12 @@
     if (index == 1){
     
         self.index = 3;
+        //变为信用卡--改变下面分类的值
+        [self segSelectionChange:0];
     }
     
     NSString *indexString = [NSString stringWithFormat:@"%ld",(long)self.index];
     
-    
-   
     NSDictionary *money = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"1"};
     
     NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:money];
@@ -178,7 +198,6 @@
     
 }
 - (void)infoData:(NSDictionary *)dic{
-
 
     NSDictionary *infor = [dic objectForKey:@"infor"];
     NSArray *listItems = [infor objectForKey:@"listItems"];
@@ -190,71 +209,133 @@
         [self.datalist addObject:model];
         
         self.tableView.datalist = self.datalist;
-
-        
         [self.tableView reloadData];
+        
     }
+    //stars-点赞 ／／starscount ／／visitcount－－浏览次数
 }
 
 
 #pragma mark 分类
--(void)segSelectionChange:(NSInteger)selection{
+- (void)segSelectionChange:(NSInteger)selection{
 
-    self.index = 5;
-    if (selection == 1){
+    //初始化字典
+    NSDictionary *dic = [NSDictionary dictionary];
+    
+    //先获取当前事网赚还是信用卡
+    
+    if (self.index == 5) {
         
-        self.index = 3;
+//        NSLog(@"网赚");
+         NSString *indexString = [NSString stringWithFormat:@"%ld",(long)self.index];
+        //根据
+        switch (selection) {
+            case 0:
+            {
+                [self photoAct];
+            }
+                break;
+            case 1:
+            {
+            
+             dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"1"};
+                 [self loadRequest:dic];
+            }
+                break;
+            case 2:
+            {
+                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"5"};
+                 [self loadRequest:dic];
+            }
+                break;
+            case 3:
+            {
+            
+                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"7"};
+                 [self loadRequest:dic];
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }else if (self.index == 3){
+    
+    
+        NSString *indexString = [NSString stringWithFormat:@"%ld",(long)self.index];
+        
+               switch (selection) {
+            case 0:
+            {
+//                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"1",@"page":@"0",@"orderby":@"0"};
+//                [self bankCategory:dic];
+            }
+                break;
+            case 1:
+            {
+                
+                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"1"};
+                [self loadRequest:dic];
+            }
+                break;
+            case 2:
+            {
+                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"5"};
+                [self loadRequest:dic];
+            }
+                break;
+            case 3:
+            {
+                
+                dic = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":@"7"};
+                [self loadRequest:dic];
+            }
+                break;
+            default:
+                break;
+        }
     }
     
-    NSString *indexString = [NSString stringWithFormat:@"%ld",(long)self.index];
-    
-    
-    
-    if (selection == 0) {
-       
-        //此处是分类的网络请求
-        NSDictionary *dic = @{@"keytype":@"2"};
-        
-        NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
-        
-        [self.datalist removeAllObjects];
-        [self.datalist removeAllObjects];
-        [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/public_type_list" target:self selector:@selector(classData:) parameter:nsdic];
-    }else{
-    
-        
-        //根据排序的值设置
-        NSString *orderString = [NSString stringWithFormat:@"%ld",(long)selection];
-        //此处问题
-        NSDictionary *money = @{@"sellerid":@"无",@"keyid":indexString,@"client_id":@"1",@"ordertype":@"desc",@"keytype":@"2",@"page":@"0",@"orderby":orderString};
-        
-        NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:money];
-        [self.datalist removeAllObjects];
-        [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(infoData:) parameter:nsdic];
-    }
-    }
- 
+}
 
+#pragma mark 调用网络请求
+- (void)loadRequest:(NSDictionary *)dic{
+
+    [self.datalist removeAllObjects];
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_list" target:self selector:@selector(classData:) parameter:nsDic];
+
+
+}
+#pragma mark 网赚分类
+- (void)moneyCategory:(NSDictionary *)dic{
+
+    
+    [self.datalist removeAllObjects];
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/public_type_list" target:self selector:@selector(classData:) parameter:nsDic];
+}
+#pragma mark 信用卡分类
+- (void)bankCategory:(NSDictionary *)dic{
+
+    [self.datalist removeAllObjects];
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/public_type_list" target:self selector:@selector(classData:) parameter:nsDic];
+}
 #pragma mark 分类
 - (void)classData:(NSDictionary *)dic{
 
-    
-//    NSLog(@"---%@",dic);
-
     NSDictionary *infro = [dic objectForKey:@"infor"];
     NSArray *listItems = [infro objectForKey:@"listItems"];
-    
-    
     
     for (NSDictionary *dics in listItems) {
         
       
         HYMCommModel *model = [[HYMCommModel alloc] initWithDictionary:dics];
         [self.datalist addObject:model];
-        
-//        NSLog(@"%@",model.name);
-//        self.tableView.datalist = self.datalist;
-//        [self.tableView reloadData];
+
+        self.tableView.datalist = self.datalist;
+        [self.tableView reloadData];
     }
     
 }
@@ -262,6 +343,7 @@
 
     [super viewWillAppear:animated];
     
+    [self.segmentView addSubview:self.lineView];
     [self.navigationController.navigationBar addSubview:self.segmentView];
 }
 
@@ -270,5 +352,25 @@
     [super viewWillDisappear:animated];
     
     [self.segmentView removeFromSuperview];
+}
+
+#pragma mark 消息
+- (void)messAct:(UIButton *)btn{
+
+    HYMComMsgVC *msgVC = [[HYMComMsgVC alloc] init];
+    [self.navigationController pushViewController:msgVC animated:YES];
+}
+
+#pragma mark 搜索
+- (void)serachAct:(UIButton *)btn{
+
+    HYMSearchTableVC  *searchVC = [[HYMSearchTableVC  alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES ];
+}
+
+#pragma mark 分类
+- (void)photoAct{
+
+
 }
 @end

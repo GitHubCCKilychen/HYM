@@ -26,6 +26,7 @@
     if (_storeImage == nil) {
         
         _storeImage = [[UIImageView alloc] init];
+        
     }
     return _storeImage;
 }
@@ -35,6 +36,8 @@
     if (_connect == nil) {
         
         _connect = [[UILabel alloc] init];
+        _connect.numberOfLines = 0;
+        _connect.font = [UIFont systemFontOfSize:14];
     }
     return _connect;
 }
@@ -46,6 +49,7 @@
         _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
         [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_editBtn addTarget:self action:@selector(editAct:  ) forControlEvents:UIControlEventTouchUpInside];
         _editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _editBtn.backgroundColor = [UIColor colorWithRed:45/255.f green:156/255.f blue:253/255.f alpha:1];
     }
@@ -60,28 +64,18 @@
         _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
         [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_deleteBtn addTarget:self action:@selector(deleteAct:) forControlEvents:UIControlEventTouchUpInside];
         _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _deleteBtn.backgroundColor = [UIColor colorWithRed:184/255.f green:186/255.f blue:187/255.f alpha:1];
     }
     return _deleteBtn;
 }
-
-- (HYMSegmentView *)segmentView{
-
-    if (_segmentView == nil) {
-        
-        NSArray *titieArr = @[@"上传未通过的任务",@"草稿未上线的项目"];
-        _segmentView = [HYMSegmentView segmenFrame:CGRectMake(0, 0, kScreenWitdth, 35) titleDataSource:titieArr backgroundColor:[UIColor whiteColor] titleColor:[UIColor blackColor] titleFont:[UIFont systemFontOfSize:14] selectedColor:[UIColor orangeColor] buttonDownColor:[UIColor orangeColor] delegate:self];
-    }
-    return _segmentView;
-}
-
 - (void)setModel:(HYMUpModel *)model{
 
     _model = model;
     
-    [_storeImage sd_setImageWithURL:[NSURL URLWithString:_model.logo]]
-    ;
+    [_storeImage sd_setImageWithURL:[NSURL URLWithString:_model.logo]];
+    self.connect.text = _model.title;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 
@@ -93,22 +87,11 @@
 
 - (void)setIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.row == 0) {
-        
-        [self.segmentView addSubview:self.lineView];
-        [self.contentView addSubview:self.segmentView];
 
-    }else{
-    
         [self initWithView];
-    }
 }
 
-#pragma mark 
 
--(void)segumentSelectionChange:(NSInteger)selection{
-
-}
 - (void)initWithView{
     
     
@@ -123,7 +106,7 @@
     .leftSpaceToView(self.contentView,15).topSpaceToView(self.contentView,10)
     .bottomSpaceToView(self.contentView,10).widthIs(60);
     
-    self.connect.backgroundColor = [UIColor brownColor];
+//    self.connect.backgroundColor = [UIColor brownColor];
     self.connect.sd_layout
     .leftSpaceToView(self.storeImage,10).topEqualToView(self.storeImage)
     .widthRatioToView(self.contentView,0.5).heightIs(50);
@@ -137,5 +120,26 @@
     self.deleteBtn.sd_layout
     .leftEqualToView(self.editBtn).rightEqualToView(self.editBtn)
     .topSpaceToView(self.editBtn,8).heightIs(25);
+}
+
+#pragma mark 任务删除
+- (void)deleteAct:(UIButton *)btn{
+
+    //调用接口
+    NSDictionary *dic = @{@"taskid":@"11",@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_del" target:self selector:@selector(loadData:) parameter:dics];
+    
+}
+- (void)loadData:(NSDictionary *)dic{
+
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+}
+
+#pragma mark 编辑任务
+- (void)editAct:(UIButton *)btn{
+
+    //调用编辑接口
+    
 }
 @end

@@ -95,7 +95,7 @@
     
     self.segment.index = self.index;
     
-    NSLog(@"----%ld",(long)self.segment.index);
+    //NSLog(@"----%ld",(long)self.segment.index);
 }
 
 #pragma mark 搜索订单

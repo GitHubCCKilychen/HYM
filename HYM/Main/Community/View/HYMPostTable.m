@@ -7,10 +7,11 @@
 //
 
 #import "HYMPostTable.h"
-
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
 @interface HYMPostTable ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong)NSArray *cellTitle;
+@property (nonatomic,weak)UITableViewCell *cell;
 @end
 
 @implementation HYMPostTable
@@ -31,6 +32,7 @@
         
         self.dataSource = self;
         self.delegate = self;
+        self.showsVerticalScrollIndicator = NO;
     }
     return self;
 }
@@ -51,22 +53,36 @@
     if (cell == nil) {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    
-    
-    
-    if (indexPath.section == 0) {
-      cell.textLabel.text = self.cellTitle[indexPath.row];
         
-    }else{
-    
-        UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
-        [sureBtn setBackgroundColor:[UIColor orangeColor]];
-        sureBtn.layer.cornerRadius = 5;
-        sureBtn.frame = CGRectMake(20, 150/2-20, cell.contentView.frame.size.width-40-70, 40);
-        [cell.contentView addSubview:sureBtn];
+        if (indexPath.section == 0) {
+            cell.textLabel.text = self.cellTitle[indexPath.row];
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [UIColor redColor];
+                cell.textLabel.font = [UIFont systemFontOfSize:17];
+            }else{
+                
+                cell.textLabel.textColor = [UIColor blackColor];
+                cell.textLabel.font = [UIFont systemFontOfSize:15];
+                
+            }
+            
+        }else{
+            
+            UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+            [sureBtn setBackgroundColor:[UIColor orangeColor]];
+            sureBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+            sureBtn.layer.cornerRadius = 5;
+            [sureBtn addTarget:self action:@selector(sureAct:) forControlEvents:UIControlEventTouchUpInside];
+            sureBtn.frame = CGRectMake(20, 150/2-20,kScreenWidth -40-70, 40);
+            [cell.contentView addSubview:sureBtn];
+        }
     }
+    
+    self.cell = cell;
+    
+   
     return cell;
 }
 
@@ -79,9 +95,20 @@
 
     if (indexPath.section == 1) {
         
-        return 150;
+        return 200;
     }
     
     return 44.f;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+   
+}
+
+- (void)sureAct:(UIButton *)btn{
+
+    //1. windows消失
+    
+    
 }
 @end

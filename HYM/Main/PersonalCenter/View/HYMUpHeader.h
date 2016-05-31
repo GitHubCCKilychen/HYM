@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface HYMUpHeader : UIView
 
 @property (nonatomic,strong)UIButton *addPic;
+
+
 @end

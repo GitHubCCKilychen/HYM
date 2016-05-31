@@ -15,6 +15,11 @@
 @end
 @implementation HYMPersonTable
 
+- (void)setApply_status:(int)apply_status{
+
+    _apply_status = apply_status;
+
+}
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
@@ -47,7 +52,7 @@
     if (indexPath.section == 0) {
         
         cell = [[HYMPushSingleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         NSArray *titleArr = @[@"推单店铺",@"购物中心"];
         UILabel *title = [[UILabel alloc] init];
         title.frame = CGRectMake(28, 8, 100, 20);
@@ -56,11 +61,17 @@
         [cell addSubview:title];
         
         if (indexPath.row == 0) {
-            
-//            [cell initCell1];//
-            
-            //此处做个判断是否已经登录--如果登录移除上面的cell
-            [cell loginBtn];
+//            
+            if (self.apply_status == 1) {
+                
+                
+                [cell initCell1];//
+                
+            }else{
+               
+                [cell loginBtn];
+            }
+
         }else{
         
             [cell initCell2];
@@ -70,7 +81,7 @@
     }else{
     
         cell2 = [[HYMTMyInvolvementCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell2;
     }
     

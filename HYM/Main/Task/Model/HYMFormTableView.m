@@ -7,12 +7,13 @@
 //
 
 #import "HYMFormTableView.h"
-
+#import "HYMPublishVC.h"
 @interface HYMFormTableView ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong)NSArray *cellTitle;
 @property (nonatomic,strong)UITextField *textField;
 @property (nonatomic,strong)NSArray *placeholderArr;
+@property (nonatomic,strong)UITableViewCell *cell;
 
 @end
 
@@ -67,74 +68,89 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    _cell = [tableView dequeueReusableCellWithIdentifier:identifier];
 
-    if (cell == nil) {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        
-        if (indexPath.section == 0) {
-            cell.textLabel.text = self.cellTitle[indexPath.row];
-            UITextField *text = [[UITextField alloc] init];
-            text.frame = CGRectMake(100, 10, cell.frame.size.width*0.7, 20);
-            text.tag = 2;
-            text.font = [UIFont systemFontOfSize:15];
-            text.clearButtonMode = UITextFieldViewModeWhileEditing;
-            text.delegate = self;
-            text.clearsOnBeginEditing = YES;
-            [cell.contentView addSubview:text];
-            
-        }else{
-            
-            UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 20)];
-            title.tag = 3;
-            [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-            [cell.contentView addSubview:title];
-        
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(title.frame.size.width+10, 10, kScreenWitdth*0.6, 90);
-            button.backgroundColor = [UIColor grayColor];
-            button.tag = 4;
-            [cell.contentView addSubview:button];
-            
-            UILabel *beizhu = [[UILabel alloc] init];
-            beizhu.frame = CGRectMake(15, 110, 80, 20);
-            beizhu.tag = 5;
-            [HYMTool initLabel:beizhu withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
-            [cell.contentView addSubview:beizhu];
-            
-            UIView *editView = [[UIView alloc] init];
-            editView.frame = CGRectMake(beizhu.frame.size.width+10, 110, kScreenWitdth*0.6, 90);
-            editView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-            editView.layer.borderWidth = 0.5;
-            [cell.contentView addSubview:editView];
-            
-        
-            UITextField *textF = [[UITextField alloc] init];
-            textF.frame = CGRectMake(27, 5, editView.frame.size.width - 27, editView.frame.size.height);
-            textF.tag = 7;
-            textF.placeholder = @"请输入备注";
-            textF.delegate = self;
-            [editView addSubview:textF];
-            
-        }
     
+    if (_cell == nil) {
+        
+        _cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        _cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     }
-    UITextField *textF = (UITextField *)[cell.contentView viewWithTag:2];
+    if (indexPath.section == 0) {
+        _cell.textLabel.text = self.cellTitle[indexPath.row];
+        UITextField *text = [[UITextField alloc] init];
+        text.frame = CGRectMake(100, 10, _cell.frame.size.width*0.7, 20);
+        text.tag = 2;
+        text.font = [UIFont systemFontOfSize:15];
+        text.clearButtonMode = UITextFieldViewModeWhileEditing;
+        text.delegate = self;
+        text.clearsOnBeginEditing = YES;
+        [_cell.contentView addSubview:text];
+        
+    }else if(indexPath.section == 1){
+        
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 20)];
+        title.tag = 3;
+        [HYMTool initLabel:title withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [_cell.contentView addSubview:title];
+        
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(title.frame.size.width+10, 10, kScreenWitdth*0.6, 90);
+        button.backgroundColor = [UIColor colorWithRed:234/255.f green:235/255.f blue:236/255.f alpha:1];
+        [button setImage:[UIImage imageNamed:@"任务截图"] forState:UIControlStateNormal];
+        button.tag = 4;
+        [_cell.contentView addSubview:button];
+        
+        UILabel *beizhu = [[UILabel alloc] init];
+        beizhu.frame = CGRectMake(15, 110, 80, 20);
+        beizhu.tag = 5;
+        [HYMTool initLabel:beizhu withFont:[UIFont systemFontOfSize:15] withTextColor:[UIColor blackColor] withTextAlignment:NSTextAlignmentLeft];
+        [_cell.contentView addSubview:beizhu];
+        
+        UIView *editView = [[UIView alloc] init];
+        editView.frame = CGRectMake(beizhu.frame.size.width+10, 110, kScreenWitdth*0.6, 90);
+        editView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        editView.layer.borderWidth = 0.5;
+        [_cell.contentView addSubview:editView];
+        
+        
+        UITextField *textF = [[UITextField alloc] init];
+        textF.frame = CGRectMake(27, 0, editView.frame.size.width - 27, editView.frame.size.height);
+        textF.tag = 7;
+        textF.placeholder = @"请输入备注";
+        textF.delegate = self;
+        textF.font = [UIFont systemFontOfSize:15];
+        [editView addSubview:textF];
+        
+    }else{
+        
+        _cell.backgroundColor = [UIColor colorWithRed:234/255.f green:235/255.f blue:236/255.f alpha:1];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 20, kScreenWitdth, 35);
+        [btn setTitle:@"提交" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn setBackgroundColor:[UIColor orangeColor]];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.cornerRadius = 5;
+        [btn addTarget:self action:@selector(submitAct:) forControlEvents:UIControlEventTouchUpInside];
+        [_cell.contentView  addSubview:btn];
+    }
+    
+    UITextField *textF = (UITextField *)[_cell.contentView viewWithTag:2];
     textF.placeholder = self.placeholderArr[indexPath.row];
     
-    UILabel *title = (UILabel *)[cell.contentView viewWithTag:3];
+    UILabel *title = (UILabel *)[_cell.contentView viewWithTag:3];
     title.text = @"截图示范*";
     
-    UIButton *btn = (UIButton *)[cell.contentView viewWithTag:4];
+    UIButton *btn = (UIButton *)[_cell.contentView viewWithTag:4];
     [btn addTarget:self action:@selector(getPhotoAct:) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *beizhu = (UILabel *)[cell.contentView viewWithTag:5];
+    UILabel *beizhu = (UILabel *)[_cell.contentView viewWithTag:5];
     beizhu.text = @"添加备注*";
-    return cell;
+    return _cell;
 }
 
 //位置上移
@@ -186,7 +202,10 @@
  
     if (indexPath.section == 1) {
         
-        return 300;
+        return 230;
+    }else if (indexPath.section == 2){
+    
+        return 110;
     }
     
     return 44.0f;
@@ -194,7 +213,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
-    return 2;
+    return 3;
 }
 
 #pragma mark 调取相机图片
@@ -207,4 +226,13 @@
     
 }
 
+#pragma mark 提交按钮
+- (void)submitAct:(UIButton *)btn{
+    UITextField *text = [self.cell viewWithTag:2];
+    NSLog(@"%@",text.placeholder);
+
+    //判断必填项是否完整
+    HYMPublishVC *pulishVC = [[HYMPublishVC alloc] init];
+    [self.viewController.navigationController pushViewController:pulishVC animated:YES];
+}
 @end

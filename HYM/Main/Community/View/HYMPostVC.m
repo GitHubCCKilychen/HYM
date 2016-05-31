@@ -54,7 +54,8 @@
     
     UIButton *edit = [UIButton buttonWithType:UIButtonTypeCustom];
     edit.frame = CGRectMake(0, 0, 30, 30);
-    edit.backgroundColor = [UIColor brownColor];
+    edit.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [edit setImage:[UIImage imageNamed:@"上传"] forState:UIControlStateNormal];
     [self.navigationController.navigationBar addSubview:edit];
     
     UIButton *release = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -63,6 +64,7 @@
     release.titleLabel.font = [UIFont systemFontOfSize:15];
     [release setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+    [release addTarget:self action:@selector(releaseAct:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithCustomView:edit];
     
     UIBarButtonItem *releItem = [[UIBarButtonItem alloc] initWithCustomView:release];
@@ -77,6 +79,18 @@
 }
 
 
+- (void)releaseAct:(UIButton *)btn{
 
+    //请求上传
+    NSDictionary *dic = @{@"id":@"7786"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91//index.php/Webservice/v203/blog_get" target:self selector:@selector(loadData:) parameter:infoDic];
+}
 
+- (void)loadData:(NSDictionary *)dic{
+
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
+}
 @end

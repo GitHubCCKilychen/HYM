@@ -64,7 +64,8 @@
 #pragma mark 数据解析
 - (void)loadData:(NSDictionary *)dic{
 
-//    NSLog(@"%@",dic);
+    //没值－－
+    NSLog(@"%@",dic);
     
 }
 

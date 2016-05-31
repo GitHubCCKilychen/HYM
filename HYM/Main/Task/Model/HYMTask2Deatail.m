@@ -11,6 +11,17 @@
 @implementation HYMTask2Deatail
 
 #pragma mark 懒加载
+
+- (UIButton *)btn{
+    if (_btn == nil) {
+        
+        _btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn.backgroundColor = [UIColor grayColor];
+        [_btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btn;
+    
+}
 -(UIView *)lineView{
     
     if (_lineView == nil) {
@@ -66,6 +77,7 @@
         [self addSubview:self.lineView];
         [self addSubview:self.activity];
         [self addSubview:self.activityContent];
+        
         //左侧15上册10
         self.lineView.backgroundColor = [UIColor orangeColor];
         self.lineView.sd_layout
@@ -85,6 +97,13 @@
         
         self.activity.text = @"任务教程";
         self.activityContent.text = @"通过活动链接注册完成认证及投资，投资100元（充值90元，勾选10元红包）新手15天收益10元";
+        
+        
+        [self addSubview:self.btn];
+        self.btn.backgroundColor = [UIColor redColor];
+        self.btn.sd_layout
+        .rightSpaceToView(self,50).bottomSpaceToView(self,10)
+        .heightIs(20).widthIs(20);
     }
         
 }
@@ -92,5 +111,57 @@
 - (void)initWithBtn{
     
   
+}
+
+#pragma mark 展开
+- (void)btnAct:(UIButton *)btn{
+
+    //调用web展示
+    //此处展开又问题
+    UIWebView *webView = [[UIWebView alloc] init];
+    webView.frame = self.viewController.view.frame;
+    webView.scalesPageToFit=YES;
+    webView.delegate = self;
+    
+    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/7034";
+    NSURL *url = [NSURL URLWithString:path];
+    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+//    [self addSubview:webView];
+    
+}
+#pragma mark webview代理
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+    UIView *view = [[UIView alloc] initWithFrame:self.viewController.view.bounds];
+    [view setTag:108];
+    [view setBackgroundColor:[UIColor blackColor]];
+    [view setAlpha:0.5];
+    [self addSubview:view];
+    
+    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+    [self.activityView setCenter:view.center];
+    [self.activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+    [view addSubview:self.activity];
+    
+    [self.activityView startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self.activityView stopAnimating];
+    
+    UIView *view = (UIView *)[self viewWithTag:108];
+    
+    [view removeFromSuperview];
+}
+#pragma mark 加载失败
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    [self.activityView stopAnimating];
+    
+    UIView *view = (UIView *)[self viewWithTag:107];
+    
+    [view removeFromSuperview];
+    
 }
 @end

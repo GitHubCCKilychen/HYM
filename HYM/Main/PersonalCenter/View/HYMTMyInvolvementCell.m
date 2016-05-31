@@ -8,6 +8,7 @@
 
 #import "HYMTMyInvolvementCell.h"
 #import "HYMLunTanJoinVC.h"
+#import "HYMNeedHelp.h"
 @implementation HYMTMyInvolvementCell
 
 - (UIView *)lineView{
@@ -59,6 +60,7 @@
     CGFloat labelWidth = kScreenWitdth/3;
    
     NSArray *titleArr = @[@"论坛参与",@"我的足迹",@"需要帮助"];
+    NSArray *imgArr = @[@"参与－1",@"参与－2",@"参与－3"];
     for (int i = 0; i < titleArr.count; i++) {
         
         
@@ -66,7 +68,8 @@
         btn.frame = CGRectMake(42 + i*btnWidth+i*85, 45, btnWidth, 30);
         btn.tag = i;
         [btn addTarget:self action:@selector(joinAct:) forControlEvents:UIControlEventTouchUpInside];
-        btn.backgroundColor = [UIColor grayColor];
+        [btn setImage:[UIImage imageNamed:imgArr[i]] forState:UIControlStateNormal];
+//        btn.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
@@ -91,7 +94,7 @@
 - (void)joinAct:(UIButton *)btn{
     
     
-    NSLog(@"%ld",(long)btn.tag);
+    //NSLog(@"%ld",(long)btn.tag);
     switch (btn.tag) {
         case 0:
             
@@ -100,7 +103,15 @@
             [self.viewController.navigationController pushViewController:joinVC animated:YES];
         }
             break;
-            
+        case 1:
+            break;
+        case 2:
+        {
+            HYMNeedHelp *needHelp = [[HYMNeedHelp alloc] init];
+            needHelp.indexString = @"4";
+            [self.viewController.navigationController pushViewController:needHelp animated:YES];
+        }
+            break;
         default:
             break;
     }

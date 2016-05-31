@@ -14,8 +14,6 @@
     UIView * buttonDownView;
     NSInteger selectSeugment;
 }
-
-
 @end
 
 @implementation HYMCommSegment
@@ -78,34 +76,71 @@
             [self addSubview:buttonDownView];
             
         }
+        
+        if (i == 0) {
+            
+            [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 10)];
+            [btn setImage:[UIImage imageNamed:@"论坛-1"] forState:UIControlStateNormal];
+            [btn setImageEdgeInsets:UIEdgeInsetsMake(0,50, 0, 10)];
+        }else{
+        
+            
+            if (i >1) {
+                
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
+                [btn setImage:[UIImage imageNamed:@"论坛-2"] forState:UIControlStateNormal];
+                [btn setImageEdgeInsets:UIEdgeInsetsMake(0,50, 0, 10)];
+            }else{
+            
+                [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
+                [btn setImage:[UIImage imageNamed:@"论坛-2"] forState:UIControlStateNormal];
+                [btn setImageEdgeInsets:UIEdgeInsetsMake(0,50, 0, 10)];
+            }
+           
+        }
+        
         [self addSubview:btn];
         
         [self.btnTitleSource addObject:btn];
+        
         
         
        
     }
     [[self.btnTitleSource firstObject] setSelected:YES];
     
-   
-    
-    
 }
 
 - (void)changeSegumentAction:(UIButton *)btn{
+
     [self selectTheSegument:btn.tag - 1];
     
+    NSLog(@"%ld",(long)btn.tag);
+    //设置选中
+    //1.选中状态
+    if (btn.selected == YES) {
+        
+        [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
+        [btn setImage:[UIImage imageNamed:@"论坛选中"] forState:UIControlStateSelected];
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(0,50, 0, 10)];
+        
+    }else{
+    
+        [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 10)];
+        [btn setImage:[UIImage imageNamed:@"论坛排序"] forState:UIControlStateSelected];
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(0,50, 0, 10)];
+    }
    
 }
 
 - (void)setIndex:(NSInteger)index{
 
     _index = index;
-    if (self.index != self.btn.tag) {
-        
-        //设置当前的选中状态---此处有问题
-        [self selectTheSegument:self.index+1];
-    }
+//    if (self.index != self.btn.tag) {
+//        
+//        //设置当前的选中状态---此处有问题
+//        [self selectTheSegument:self.index+1];
+//    }
 }
 -(void)selectTheSegument:(NSInteger)segument{
     
@@ -120,8 +155,11 @@
         }];
         selectSeugment = segument;
         [self.segmentDelegate segSelectionChange:selectSeugment];
+
+        
     }
     
+
     
 }
 

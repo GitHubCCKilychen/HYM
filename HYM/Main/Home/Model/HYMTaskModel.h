@@ -15,4 +15,5 @@
 @property (nonatomic,copy)NSString *start_time;
 @property (nonatomic,copy)NSString *end_time;
 @property (nonatomic,copy)NSString *join_number;
+@property (nonatomic,copy)NSString *taskID;
 @end

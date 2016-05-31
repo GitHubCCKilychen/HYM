@@ -9,5 +9,10 @@
 #import "HYMInfoCellModel.h"
 
 @implementation HYMInfoCellModel
-
+- (void)setAttributes:(NSDictionary *)dic{
+    
+    self.map = @{@"id":@"ID:"};
+    
+    [super setAttributes:dic];
+}
 @end

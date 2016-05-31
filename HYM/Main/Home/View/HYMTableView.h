@@ -12,5 +12,6 @@
 
 @property (nonatomic,strong)NSMutableArray *infoArr;//资讯
 @property (nonatomic,strong)NSMutableArray *taskArr;//任务
+@property (nonatomic,strong)NSMutableArray *mallArr;//商城
 
 @end

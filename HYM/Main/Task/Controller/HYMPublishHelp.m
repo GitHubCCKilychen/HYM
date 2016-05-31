@@ -31,13 +31,13 @@
     
     /*
      *  帮助详情页
-     http://123.56.237.91/index.php/new/show_help/id/11
+     http://123.56.237.91/index.php/new/show_help/id/1
      参数   get方式提交
      id     帮助的详情id
      /*
      
      需要帮助的列表页面、审核报单的列表页面
-     http://123.56.237.91/index.php/new/help_list/type/3
+     http://123.56.237.91/index.php/new/help_list/type/4
      参数  get方式提交
      type   帮助类型 1、任务帮助；2、邀请帮助；3、人脉帮助；4、需要帮助；5、审核报单帮助
      */

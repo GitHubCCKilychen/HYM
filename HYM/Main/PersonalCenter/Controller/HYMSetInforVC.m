@@ -48,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initView];
 }
@@ -73,4 +74,21 @@
     [self.view addSubview:self.tableView];
 }
 
+#pragma mark 数据
+- (void)loadData{
+
+    //此处是分类的网络请求
+    NSDictionary *dic = @{@"token":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/get_client_info" target:self selector:@selector(loadData:) parameter:nsdic];
+    
+}
+
+- (void)loadData:(UIButton *)dic{
+
+    NSLog(@"%@",dic);
+    
+}
 @end

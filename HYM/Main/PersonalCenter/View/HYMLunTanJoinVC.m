@@ -8,27 +8,17 @@
 
 #import "HYMLunTanJoinVC.h"
 #import "HYMSegmentView.h"
-#import "HYMSortView.h"
 #import "HYMLunTanTable.h"
-@interface HYMLunTanJoinVC ()<HYMSegmentViewDelegate,HYMSortViewDelegate>
+
+@interface HYMLunTanJoinVC ()<HYMSegmentViewDelegate>
 
 @property (nonatomic,strong)HYMSegmentView *segment;
-@property (nonatomic,strong)HYMSortView *sortView;
 @property (nonatomic,strong)HYMLunTanTable *tableView;
 
 
 @end
 
 @implementation HYMLunTanJoinVC
-- (HYMSortView *)sortView{
-    
-    if (_sortView == nil) {
-        
-        NSArray *titleArr = @[@"分类",@"时间",@"阅读量",@"评价量"];
-        _sortView = [HYMSortView setFrame:CGRectMake(0, 64, kScreenWitdth, 50) titleDataSource:titleArr backgroudColor:[UIColor whiteColor] titleColor:[UIColor lightGrayColor] titleFont:[UIFont systemFontOfSize:15] selectedColor:[UIColor lightGrayColor] buttonDownColor:[UIColor lightGrayColor] delegate:self];
-    }
-    return _sortView;
-}
 
 - (HYMSegmentView *)segment{
 
@@ -44,7 +34,7 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMLunTanTable alloc] initWithFrame:CGRectMake(0, 114, kScreenWitdth, kScreenHeight-114) style:UITableViewStyleGrouped];
+        _tableView = [[HYMLunTanTable alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     }
     return _tableView;
 }
@@ -70,17 +60,9 @@
     self.navigationItem.rightBarButtonItem = right;
 }
 - (void)initView{
-
-    [self.view addSubview:self.sortView];
     [self.view addSubview:self.tableView];
     
 }
-#pragma mark 分类事件
-- (void)selectedBtnChange:(NSInteger)selectedBtn{
-
-    
-}
-
 #pragma mark 参与－发布
 -(void)segumentSelectionChange:(NSInteger)selection{
     

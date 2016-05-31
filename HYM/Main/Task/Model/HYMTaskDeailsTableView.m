@@ -88,6 +88,8 @@
     if (indexPath.section == 1) {
         
         cell = [[HYMTaskDeailsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        
+        
         return cell;
     }else if (indexPath.section ==0 ){
     
@@ -123,10 +125,18 @@
                 if (self.newIndex == 2) {
                     
                     [btn setTitle:titleNew[i] forState:UIControlStateNormal];
+                    if (btn.tag == 1) {
+                        
+                        [btn addTarget:self action:@selector(makeRecord:) forControlEvents:UIControlEventTouchUpInside];
+                    }
                 }else{
     
                     [btn setTitle:title[i] forState:UIControlStateNormal];
     
+                }
+                if (btn.tag == 0) {
+                    
+                    [btn addTarget:self action:@selector(joinAct:) forControlEvents:UIControlEventTouchUpInside];
                 }
                 
                 [cell1.contentView addSubview:btn];
@@ -135,10 +145,19 @@
             }
             
          
-            
-           
             UIButton *btn = [cell1.contentView viewWithTag:1];
-            [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+            if (self.newIndex == 2) {
+    
+                if (btn.tag == 1) {
+                    
+                    [btn addTarget:self action:@selector(makeRecord:) forControlEvents:UIControlEventTouchUpInside];
+                }
+                }else{
+                
+                    
+                    [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+                }
+           
         }
         return cell1;
     }
@@ -233,8 +252,6 @@
 #pragma mark 展开事件
 - (void)btnAct:(UIButton *)btn{
 
-    
-//    NSLog(@"234");
     UIView *view = [[UIView alloc] init];
     view.frame = CGRectMake(0, 0, kScreenWitdth, 50);
     view.backgroundColor = [UIColor grayColor];
@@ -251,6 +268,43 @@
         formVC.index = (int)self.index;
         [self.viewController.navigationController pushViewController:formVC animated:YES];
     }
+}
+
+#pragma mark 记账
+- (void)makeRecord:(UIButton *)btn{
+//调用记账接口
+    //taskid任务ID
+    
+    NSString *idString = [NSString stringWithFormat:@"%ld",(long)self.newIndex];
+//    NSLog(@"%@====",idString);
+    NSDictionary *dic = @{@"id":idString,@"token":@"1"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/task/task_account" target:self selector:@selector(infoData:) parameter:infoDic];
+}
+- (void)infoData:(NSDictionary *)dic{
+
+    /**
+     *  参数正确－－未参与状态
+     */
+   // NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+}
+#pragma mark 马上参与
+- (void)joinAct:(UIButton *)btn{
+
+    
+    NSString *idString = [NSString stringWithFormat:@"%ld",(long)self.newIndex];
+    NSString *url = [NSString stringWithFormat:@"%@%@",REQUEST_Root_Net,REQUEST_Task_Jojn];
+    
+    NSDictionary *dic = @{@"id":idString,@"token":@"1"};
+    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:url target:self selector:@selector(loadData:) parameter:nsDic];
+}
+- (void)loadData:(NSDictionary *)dic{
+    
+    //参与只有新手单的时候用
+   // NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
 }
 
 @end

@@ -13,4 +13,6 @@
  *   logo = "http://101.200.84.33/uploadfiles/2016/04/201604130852136033_thumb.png"
  */
 @property (nonatomic,copy)NSString *logo;
+@property (nonatomic,copy)NSString *title;
+@property (nonatomic,copy)NSString *taskID;
 @end

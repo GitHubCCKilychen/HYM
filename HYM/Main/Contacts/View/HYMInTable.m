@@ -17,6 +17,12 @@
 
 @implementation HYMInTable
 
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
+    [self reloadData];
+}
 
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
@@ -37,7 +43,7 @@
         return 1;
     }
 
-    return 1;
+    return self.datalist.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -54,6 +60,9 @@
         }else if (indexPath.section == 1){
         
             self.lastView = [[HYMInLastView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 300)];
+            HYMConModel *model = self.datalist[indexPath.row];
+            self.lastView.model = model;
+
             [cell.contentView addSubview:self.lastView];
         }
     }

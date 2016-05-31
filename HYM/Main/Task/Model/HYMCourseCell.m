@@ -30,5 +30,7 @@
 }
 
 - (IBAction)photoAct:(UIButton *)sender {
+    
+    
 }
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "HYMFriendsView.h"
-
+#import "HYMFriendModel.h"
 @interface HYMFriendsView ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong)NSArray *sectionTitle;
@@ -27,8 +27,7 @@
 - (void)setFriendArr:(NSMutableArray *)friendArr{
 
     _friendArr = friendArr;
-    
-    NSLog(@"%@",_friendArr);
+    [self.talbeView reloadData];
 }
 -(UITableView *)talbeView{
 
@@ -65,7 +64,7 @@
         return 1;
     }
 
-    return 2;
+    return self.friendArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -81,6 +80,7 @@
         }
     }
     
+   
     
     UIImageView *iconImage = [[UIImageView alloc] init];
    
@@ -137,6 +137,16 @@
         [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 3)];
         userID.attributedText = attStr;
     }
+    
+    if (indexPath.section >0) {
+        HYMFriendModel *model = self.friendArr[indexPath.row];
+        //    [iconImage sd_setImaxgeWithURL:[NSURL URLWithString:model.avatar]];
+        userName.text = model.nickname;
+        userID.text = [NSString stringWithFormat:@"ID:%@",model.client_id];
+    }
+    
+    
+    
     
     return cell;
 }

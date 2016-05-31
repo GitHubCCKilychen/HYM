@@ -63,14 +63,26 @@
     
 //返回前这页面
     [self.view.viewController.navigationController popViewControllerAnimated:YES];
+    
+    
+    //调用接口
+    NSDictionary *money = @{@"keyid":@"7786",@"ordertype":@"1",@"keytype":@"2",@"page":@"0"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:money];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/reply_list" target:self selector:@selector(infoData:) parameter:nsdic];
+}
+
+- (void)infoData:(NSDictionary *)dic{
+
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
 }
 
 - (void)comment:(NSString *)text with:(int)indexCount{
     
     text = self.commont;
     indexCount = self.index;
-    
-    NSLog(@"%d",indexCount);
+//    
+//    NSLog(@"%d",indexCount);
 }
 
 #pragma  mark textViewDelegate

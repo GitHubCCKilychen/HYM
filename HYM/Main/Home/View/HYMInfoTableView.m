@@ -103,7 +103,7 @@
     //2.根据按钮跳转不同界面
     
     HYMBlogVC *blogVC = [[HYMBlogVC alloc] init];
-
+    blogVC.blogID = (long)indexPath.row;
     if (_index == 0) {
     
         [self.viewController.navigationController pushViewController:blogVC animated:YES];

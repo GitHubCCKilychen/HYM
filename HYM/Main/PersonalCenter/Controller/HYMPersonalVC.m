@@ -50,7 +50,6 @@
 
 - (void)loadData{
 
-    //此处是分类的网络请求
     NSDictionary *dic = @{@"token":@"1"};
     
     NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
@@ -62,8 +61,12 @@
 - (void)loadData:(NSDictionary *)dic{
 
     NSDictionary *infor = [dic objectForKey:@"infor"];
-
     self.header.dic = infor;
+
+    NSLog(@"%@",infor);
+    NSString *status = [NSString stringWithFormat:@"%@",[infor objectForKey:@"apply_status"]];
+    self.tableView.apply_status = [status intValue];
+ 
 }
 - (void)initDefault{
 

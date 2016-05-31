@@ -1,41 +1,66 @@
 //
-//  HYMHelpVC.m
+//  HYMNeedHelp.m
 //  HYM
 //
-//  Created by 刘晓雪 on 16/5/23.
+//  Created by 刘晓雪 on 16/5/26.
 //  Copyright © 2016年 haokewangluo. All rights reserved.
 //
 
-#import "HYMHelpVC.h"
+#import "HYMNeedHelp.h"
 
-@interface HYMHelpVC ()<UIWebViewDelegate>
+@interface HYMNeedHelp ()<UIWebViewDelegate>
 @property (nonatomic,strong)UIActivityIndicatorView *activity;
 @end
 
-@implementation HYMHelpVC
+@implementation HYMNeedHelp
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initDefatult];
+    [self initDefault];
     [self addWebView];
 }
 
-- (void)initDefatult{
+- (void)setIndexString:(NSString *)indexString{
 
-    self.title = @"帮助";
-    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
-    self.view.backgroundColor = [UIColor whiteColor];
+    _indexString = indexString;
+    
+    int index = [_indexString intValue];
+    
+    switch (index) {
+        case 0:
+            self.title = @"帮助";
+            break;
+        case 1:
+            self.title = @"任务帮助";
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            self.title = @"需要帮助";
+            break;
+        case 5:
+            self.title = @"审核报单";
+        default:
+            break;
+    }
 }
+- (void)initDefault{
+   
+    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
+}
+
 - (void)addWebView{
     
     UIWebView *webView = [[UIWebView alloc] init];
     webView.frame = self.view.frame;
     webView.scalesPageToFit=YES;
     webView.delegate = self;
-    
-    NSString *path = @"http://123.56.237.91/index.php/new/help_list/type/3";
-    NSURL *url = [NSURL URLWithString:path];
+    NSString *path = @"http://123.56.237.91/index.php/new/help_list/type/";
+    NSString *pathurl = [NSString stringWithFormat:@"%@%@",path,self.indexString];
+    NSURL *url = [NSURL URLWithString:pathurl];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];
     
@@ -76,5 +101,4 @@
     [view removeFromSuperview];
     
 }
-
 @end

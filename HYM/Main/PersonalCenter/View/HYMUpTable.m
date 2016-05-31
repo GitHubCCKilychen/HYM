@@ -30,8 +30,6 @@
 - (void)setDatalist:(NSMutableArray *)datalist{
 
     _datalist = datalist;
-
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -65,10 +63,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if (indexPath.row == 0) {
-        
-        return 35;
-    }
     
     return 80;
 }

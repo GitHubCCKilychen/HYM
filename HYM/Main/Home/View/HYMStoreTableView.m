@@ -9,6 +9,7 @@
 #import "HYMStoreTableView.h"
 #import "HYMStoreCell.h"
 #import "HYMStore2Cell.h"
+#import "HYMMallListModel.h"
 @interface HYMStoreTableView ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -23,6 +24,12 @@
     [self reloadData];
 }
 
+- (void)setList:(NSMutableArray *)list{
+
+    _list = list;
+    
+    [self reloadData];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 
@@ -42,7 +49,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 4) {
-        return 2;
+        return self.list.count;
     }
 
     
@@ -59,16 +66,19 @@
     if (indexPath.section == 0 || indexPath.section == 2) {
          cell = [[HYMStoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
 
-        
-        HYMMallModel *model = self.datalist[indexPath.row];
-        cell.model = model;
+            HYMMallModel *model = self.datalist[indexPath.row];
+            cell.model = model;
+
+ 
         return cell;
     }else{
     
         cell1 = [[HYMStore2Cell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+  
+            
+            HYMMallListModel *model = self.list[indexPath.row];
+            cell1.model = model;
         
-        HYMMallModel *model = self.datalist[indexPath.row];
-        cell1.model = model;
         return cell1;
     }
 

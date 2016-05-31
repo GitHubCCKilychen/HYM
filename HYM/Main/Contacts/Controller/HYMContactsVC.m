@@ -8,16 +8,18 @@
 
 #import "HYMContactsVC.h"
 #import "HYMSegmentView.h"
-//#import "HYMInvitationView.h"
 #import "HYMFriendsView.h"
 #import "HYMWoolletterView.h"
 #import "HYMSearchVC.h"
 #import "HYMConModel.h"
 #import "HYMConView.h"
+#import "HYMFriendModel.h"
+#import "HYMHeaderModel.h"
+
 @interface HYMContactsVC ()<HYMSegmentViewDelegate>
 
+
 @property (nonatomic,strong)HYMSegmentView *segmentView;
-//@property (nonatomic,strong)HYMInvitationView *invitationView;
 @property (nonatomic,strong)HYMFriendsView *friendsView;
 @property (nonatomic,strong)HYMWoolletterView *woolView;
 @property (nonatomic,weak)UIButton *btn;
@@ -26,6 +28,8 @@
 @property (nonatomic,strong)UIButton *addFriendBtn;
 @property (nonatomic,strong)NSMutableArray *friendsArr;
 @property (nonatomic,strong)HYMConView *conVIew;
+@property (nonatomic,strong)NSMutableArray *conArr;
+@property (nonatomic,strong)NSMutableArray *headerArr;
 
 
 @end
@@ -76,15 +80,6 @@
     }
     return _woolView;
 }
-//- (HYMInvitationView *)invitationView{
-//
-//    if (_invitationView == nil) {
-//        
-//        _invitationView = [[HYMInvitationView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    }
-//    return _invitationView;
-//}
-
 - (HYMFriendsView *)friendsView{
 
     if (_friendsView == nil) {
@@ -108,25 +103,60 @@
     [super viewDidLoad];
     
     [self loadData];
+    [self loadPicData];
     [self initDefault];
     [self initWithView];
     [self friendData];
 
 }
 
+#pragma mark 广告
+- (void)loadPicData{
+    
+    self.headerArr = [NSMutableArray array];
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionary];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/indexad_list" target:self selector:@selector(picData:) parameter:infoDic];
+    
+}
+
+- (void)picData:(NSDictionary *)dic{
+    
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    
+    for (NSDictionary *dic in listItems) {
+        
+        HYMHeaderModel *model = [[HYMHeaderModel alloc] initWithDictionary:dic];
+        
+        [self.headerArr addObject:model];
+        
+        self.conVIew.scrollList = self.headerArr;
+        
+    }
+    
+    
+    
+    
+}
 - (void)loadData{
 
-    self.friendsArr = [NSMutableArray array];
-    
+    self.conArr = [NSMutableArray array];
     NSDictionary *dic = @{@"token":@"1"};
     NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
     [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/my_invite" target:self selector:@selector(taskData:) parameter:dics];
 }
 
 - (void)taskData:(NSDictionary *)dic{
-//
-//    NSLog(@"%@",dic);
-//
+    
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+//    NSArray *help = [infor objectForKey:@"help"];
+   
+    HYMConModel *model = [[HYMConModel alloc] initWithDictionary:infor];
+    [self.conArr addObject:model];
+    self.conVIew.datalist = self.conArr;
+ 
+//    NSLog(@"%@",infor);
 }
 
 
@@ -141,19 +171,18 @@
 
 - (void)loadData:(NSDictionary *)dic{
 
+    NSLog(@"%@",dic);
+    self.friendsArr = [NSMutableArray array];
     NSDictionary *infor = [dic objectForKey:@"infor"];
     NSArray *listItems = [infor objectForKey:@"listItems"];
  
     for (NSDictionary *dic in listItems) {
-        
-        HYMConModel *model = [[HYMConModel alloc] initWithDictionary:dic];
-        
+        HYMFriendModel *model = [[HYMFriendModel alloc] initWithDictionary:dic];
+
         [self.friendsArr addObject:model];
         
         self.friendsView.friendArr = self.friendsArr;
     }
-    
-    NSLog(@"%@",dic);
 }
 - (void)initDefault{
 
@@ -162,13 +191,13 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 30, 30);
     self.btn = btn;
-    btn.backgroundColor = [UIColor brownColor];
+    [btn setImage:[UIImage imageNamed:@"邀请赚钱"] forState:UIControlStateNormal];
     [self.navigationController.navigationBar addSubview:btn];
     
     UIButton *message = [UIButton buttonWithType:UIButtonTypeCustom];
     message.frame = CGRectMake(0, 0, 30, 30);
     self.message = message;
-    message.backgroundColor = [UIColor greenColor];
+    [message setImage:[UIImage imageNamed:@"任务消息"] forState:UIControlStateNormal];
     [self.navigationController.navigationBar addSubview:message];
     
     
@@ -202,8 +231,7 @@
         self.conVIew.hidden = NO;
         self.woolView.hidden = YES;
         self.friendsView.hidden = YES;
-        self.btn.backgroundColor = [UIColor brownColor];
-        self.message.backgroundColor = [UIColor greenColor];
+        [self.btn setImage:[UIImage imageNamed:@"邀请赚钱"] forState:UIControlStateNormal];
         self.addFriend.hidden = YES;
         
     }else if (selection == 1){
@@ -211,8 +239,8 @@
         self.conVIew.hidden = YES;
         self.woolView.hidden = NO;
         self.friendsView.hidden = YES;
-        self.btn.backgroundColor = [UIColor redColor];
-        self.message.backgroundColor = [UIColor grayColor];
+//        self.btn.backgroundColor = [UIColor redColor];
+//        self.message.backgroundColor = [UIColor grayColor];
         self.addFriend.hidden = YES;
         
     }else{
@@ -220,8 +248,8 @@
         self.woolView.hidden = YES;
         self.conVIew.hidden = YES;
         self.friendsView.hidden= NO;
-        self.btn.backgroundColor = [UIColor redColor];
-        self.message.backgroundColor = [UIColor grayColor];
+        [self.btn setImage:[UIImage imageNamed:@"添加好友"] forState:UIControlStateNormal];
+//        self.message.backgroundColor = [UIColor grayColor];
         self.addFriend.hidden = NO;
         //添加好友
         [self.btn addTarget:self action:@selector(addFriend:) forControlEvents:UIControlEventTouchUpInside];
@@ -253,6 +281,8 @@
     
     HYMSearchVC *search = [[HYMSearchVC alloc] init];
     [self.navigationController pushViewController:search animated:YES];
+    
+    
     
 }
 

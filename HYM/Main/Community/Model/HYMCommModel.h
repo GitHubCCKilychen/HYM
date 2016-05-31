@@ -16,4 +16,10 @@
 @property (nonatomic,copy)NSString *tagTitle;
 @property (nonatomic,copy)NSString *content;
 @property (nonatomic,copy)NSString *name;
+@property (nonatomic,copy)NSString *visitcount;
+@property (nonatomic,copy)NSString *starscount;//点赞
+@property (nonatomic,copy)NSString *replycount;//评论
+@property (nonatomic,copy)NSString *public_name;
+@property (nonatomic,copy)NSString *blogID;
+
 @end

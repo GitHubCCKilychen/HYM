@@ -7,7 +7,6 @@
 //
 
 #import "HYMDetailsBottom.h"
-#import "HYMPublishList.h"
 @interface HYMDetailsBottom ()
 
 
@@ -74,7 +73,6 @@
 #pragma mark 上传
 - (void)sureBtn:(UIButton *)btn{
 
-    HYMPublishList *list = [[HYMPublishList alloc] init];
-    [self.viewController.navigationController pushViewController:list animated:YES];
+    
 }
 @end

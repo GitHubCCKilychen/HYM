@@ -265,7 +265,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     
-    NSLog(@"%ld",(long)textField.tag);
+    //NSLog(@"%ld",(long)textField.tag);
     
 
     if (textField.tag == 200) {

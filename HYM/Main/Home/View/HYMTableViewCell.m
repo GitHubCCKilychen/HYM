@@ -10,6 +10,7 @@
 #define kTopWidth kScreenWitdth-30-(kScreenWitdth/2-kScreenWitdth/6)
 //#import "RealityDetailVC.h"
 #import "CategoryVC.h"
+#import "PostPublishNewVC.h"
 @implementation HYMTableViewCell
 
 
@@ -30,6 +31,7 @@
     //评论参数未添加
     NSString *string = [NSString stringWithFormat:@"%@ 阅读",_model.replycount];
     self.comment.text = string;
+    
 }
 
 #pragma mark 任务数据
@@ -48,8 +50,13 @@
     NSString *peopleCount = [NSString stringWithFormat:@"参与人数:%@",_taskModel.join_number];
     self.peopleCount.text = peopleCount;
     
+    
 }
 
+- (void)setMallModel:(HYMCenMallModel *)mallModel{
+
+    _mallModel = mallModel;
+}
 - (NSArray *)btnTitleArr{
 
     if (_btnTitleArr == nil) {
@@ -140,6 +147,7 @@
         _ignoreBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_ignoreBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _ignoreBtn.layer.cornerRadius = 2;
+        [_ignoreBtn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
         _ignoreBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         
     }
@@ -179,6 +187,7 @@
         
         _topBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _topBtn.backgroundColor =[UIColor brownColor];
+        [_topBtn addTarget:self action:@selector(topBtnAct:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _topBtn;
@@ -380,22 +389,15 @@
     
     CategoryVC *cateVC = [[CategoryVC alloc] init];
     cateVC.keyid = @"无";
-    cateVC.keytype = @"1";
+    cateVC.keytype = @"7";
     cateVC.typeName = @"全部";
     [self.viewController.navigationController pushViewController:cateVC animated:YES];
-    
-    
-//        CategoryVC * category = [[CategoryVC alloc] init];
-////        category.keytype = @"1";
-////        category.keyid = @"无";
-////        category.typeName = @"全部";
-//    
-//        [self.viewController.navigationController presentViewController:category animated:YES completion:nil];
     
 }
 
 - (void)topBtnAct:(UIButton *)btn{
 
+    NSLog(@"34534");
 }
 
 - (void)centerBtnAct:(UIButton *)btn{
@@ -407,5 +409,31 @@
     
 }
 
+- (void)setIndex:(NSInteger)index{
 
+    _index= index;
+    NSLog(@"%ld",(long)_indexPath);
+}
+#pragma mark 忽略
+- (void)btnAct:(UIButton *)btn{
+
+    NSString *idString = [NSString stringWithFormat:@"%ld",(long)self.index];
+    NSDictionary *dic = @{@"keytype":@"1",@"id":@"12",@"token":@"1"};
+    NSMutableDictionary *infoDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    //网络请求
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/task_ignore" target:self selector:@selector(infoData:) parameter:infoDic];
+}
+
+- (void)infoData:(NSDictionary *)dic{
+
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+}
+
+#pragma mark 
+- (void)btnActss:(UIButton *)btn{
+
+    
+    PostPublishNewVC *model = [[PostPublishNewVC alloc] init];
+    [self.viewController.navigationController pushViewController:model animated:YES];
+}
 @end

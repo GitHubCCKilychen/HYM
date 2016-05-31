@@ -9,11 +9,13 @@
 #import "HYMCheckForm.h"
 #import "HYMCheckTable.h"
 #import "HYMCheckView.h"
-#import "HYMHelpVC.h"
+#import "HYMNeedHelp.h"
+#import "HYMCheckModel.h"
 @interface HYMCheckForm ()
 
 @property (nonatomic,strong)HYMCheckTable *tableView;
 @property (nonatomic,strong)HYMCheckView *headerView;
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end
 
 @implementation HYMCheckForm
@@ -48,17 +50,28 @@
 
 - (void)loadData{
 
-    
-    NSDictionary *dic = @{@"task_id":@"0",@"page":@"1",@"token":@"1"};
+    self.datalist = [NSMutableArray array];
+    NSDictionary *dic = @{@"page":@"1",@"token":@"1"};
     NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_sign_list" target:self selector:@selector(loadData:) parameter:nsDic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_sign_check" target:self selector:@selector(loadData:) parameter:nsDic];
     
     
 }
 - (void)loadData:(NSDictionary *)dic{
 
-//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
     
+    NSLog(@"%@",dic);
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    
+    for (NSDictionary *dic in listItems) {
+        
+        HYMCheckModel *model = [[HYMCheckModel alloc] initWithDictionary:dic];
+        [self.datalist addObject:model];
+        
+        self.tableView.datalist = self.datalist;
+        
+    }
 }
 #pragma mark 默认配置
 - (void)initDeault{
@@ -87,7 +100,8 @@
 - (void)helpAct:(UIButton *)btn{
 
     
-    HYMHelpVC *help = [[HYMHelpVC alloc] init];
+    HYMNeedHelp *help = [[HYMNeedHelp  alloc] init];
+    help.indexString = @"5";
     [self.navigationController pushViewController:help animated:YES ];
 }
 

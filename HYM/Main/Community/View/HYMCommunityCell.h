@@ -22,6 +22,6 @@
 @property (nonatomic,strong)UIButton *commentBtn;//评论
 @property (nonatomic,strong)UIButton *zanBtn;
 @property (nonatomic,strong)HYMCommModel *model;
-@property (nonatomic,assign)NSIndexPath *indexPath;
+@property (nonatomic,assign)NSInteger index;
 
 @end

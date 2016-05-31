@@ -50,7 +50,7 @@
     webView.scalesPageToFit=YES;
     webView.delegate = self;
     
-    NSString *path = @"http://123.56.237.91/index.php/new/help_list/type/3";
+    NSString *path = @"http://123.56.237.91/index.php/new/help_list/type/1";
     NSURL *url = [NSURL URLWithString:path];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];

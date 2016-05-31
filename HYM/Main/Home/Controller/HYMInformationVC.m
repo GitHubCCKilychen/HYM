@@ -76,7 +76,7 @@
 
 }
 
-#pragma mark 选择－－此处有问题－－数据累积
+#pragma mark 选择－－
 -(void)segumentSelectionChange:(NSInteger)selection{
     self.infoTable.buttonIndex = selection;
     
@@ -134,8 +134,8 @@
 }
 
 - (void)infoData:(NSDictionary *)infoDic{
-    
-    NSLog(@"%@",infoDic);
+
+//    NSLog(@"%@",infoDic);
     [self.bankArr removeAllObjects];
     if (1 == [[infoDic objectForKey:@"success"] intValue]) {
         //
@@ -145,8 +145,7 @@
         //
         
         for (NSDictionary *dic in listItems) {
-            //
-            //              NSLog(@"%@",dic);
+
             HYMTodayInfoModel *model = [[HYMTodayInfoModel alloc] initWithDictionary:dic];
             [self.infoArr addObject:model];
             

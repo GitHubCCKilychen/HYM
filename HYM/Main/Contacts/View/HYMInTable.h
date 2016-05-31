@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMInTable : UITableView
-
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

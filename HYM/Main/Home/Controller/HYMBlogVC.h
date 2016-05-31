@@ -10,4 +10,5 @@
 
 @interface HYMBlogVC : UIViewController
 
+@property (nonatomic,assign)int blogID;
 @end

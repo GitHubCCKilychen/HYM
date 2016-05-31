@@ -51,14 +51,14 @@
     
     NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
     
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/task/deposit_info" target:self selector:@selector(loadData:) parameter:nsdic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/task/task_froze" target:self selector:@selector(loadData:) parameter:nsdic];
 }
 
 
 #pragma mark 数据解析
 - (void)loadData:(NSDictionary *)dic{
     
-//    NSLog(@"%@",dic);
+    NSLog(@"%@",dic);
     
 }
 

@@ -8,6 +8,7 @@
 
 #import "HYMTaskListCell.h"
 #import "HYMPostedCaseVC.h"
+#import "HYMTaskDetailsVC.h"
 @implementation HYMTaskListCell
 
 - (UIImageView *)storeImage{
@@ -33,6 +34,11 @@
     if (_seeTask == nil) {
         
         _seeTask = [UIButton buttonWithType:UIButtonTypeCustom];
+        _seeTask.backgroundColor = [UIColor colorWithRed:44/256.f green:150/256.f blue:253/256.f alpha:1];
+//        [_seeTask setImage:[UIImage imageNamed:@"预览"] forState:UIControlStateNormal];
+        [_seeTask addTarget:self action:@selector(seeTask:) forControlEvents:UIControlEventTouchUpInside];
+        [_seeTask setTitle:@"预览" forState:UIControlStateNormal];
+        _seeTask.titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return _seeTask;
 }
@@ -41,6 +47,10 @@
 
     if (_publish == nil) {
         _publish = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_publish setTitle:@"发布" forState:UIControlStateNormal];
+//        [_publish setImage:[UIImage imageNamed:@"发布"] forState:UIControlStateNormal];
+        _publish.titleLabel.font = [UIFont systemFontOfSize:14];
+        _publish.backgroundColor = [UIColor colorWithRed:25/255.f green:185/255.f blue:78/255.f alpha:1];
         [_publish addTarget:self action:@selector(publishAct:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _publish;
@@ -93,13 +103,12 @@
     self.title.sd_layout
     .leftSpaceToView(self.storeImage,10).bottomSpaceToView(self,20)
     .widthRatioToView(self,0.5).topEqualToView(self.storeImage);
-    
-    self.seeTask.backgroundColor = [UIColor blueColor];
+
     self.seeTask.sd_layout
     .rightSpaceToView(self,15).topEqualToView(self.storeImage)
     .heightIs(25).widthIs(50);
     
-    self.publish.backgroundColor = [UIColor greenColor];
+
     self.publish.sd_layout
     .rightSpaceToView(self,15).topSpaceToView(self.seeTask,10)
     .bottomSpaceToView(self,15).heightIs(25).widthIs(50);
@@ -110,10 +119,18 @@
 - (void)publishAct:(UIButton *)btn{
 
 //发布情况
-    
+
     HYMPostedCaseVC *postedVC = [[HYMPostedCaseVC alloc] init];
+    postedVC.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:postedVC animated:YES];
     
+}
+
+#pragma mark 预览情况
+- (void)seeTask:(UIButton *)task{
+
+    HYMTaskDetailsVC *taskVC = [[HYMTaskDetailsVC alloc] init];
+    [self.viewController.navigationController pushViewController:taskVC animated:YES];
 }
 
 @end

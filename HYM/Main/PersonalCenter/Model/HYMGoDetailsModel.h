@@ -10,11 +10,15 @@
 
 @interface HYMGoDetailsModel : BaseModel
 /**
- *          "apply_status" = 0;
-            feeaccount = "101.20";
-            "froze_money" = "0.00";
-            nickname = "\U7cfb\U7edf\U7ba1\U7406\U5458";
-            "total_money" = "101.2";
+ *"apply_msg" = "";
+ "apply_status" = 1;
+ avatar = "http://101.200.84.33/images/logo.png";
+ feeaccount = "6471.25";
+ "froze_money" = "0.00";
+ id = 1;
+ nickname = admin;
+ sex = "\U7537";
+ "total_money" = "6471.25";
 
  */
 
@@ -22,4 +26,6 @@
 @property (nonatomic,copy)NSString *feeaccount;
 @property (nonatomic,copy)NSString *nickname;
 @property (nonatomic,copy)NSString *total_money;
+@property (nonatomic,copy)NSString *avatar;//头像
+@property (nonatomic,copy)NSString *froze_money;
 @end

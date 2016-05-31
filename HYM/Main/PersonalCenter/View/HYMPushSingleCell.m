@@ -14,10 +14,12 @@
 #import "HYMSystemMessageVC.h"
 #import "HYMCenterAssets.h"
 #import "HYMFormList.h"
-#import "HYMSecurityDeposit.h"//暂时引入
+
 #import "HYMFreezeVC.h"
+#import "HYMPublishList.h"
 #define textColor [UIColor colorWithRed:251/256.f green:149/256.f blue:89/256.f alpha:1]
 #import "HYMUploadTask.h"
+#import "HYMMoneyVC.h"
 @implementation HYMPushSingleCell
 
 - (UIView *)lineView{
@@ -152,8 +154,8 @@
 - (void)initCell2{
 
     NSArray *titleArr = @[@"待付款",@"待发货",@"待收货",@"待评价",@"退货/售后"];
-    
-    CGFloat margin = 30;
+    NSArray *imgArr = @[@"购物－1",@"购物－2",@"购物－3",@"购物－4",@"购物－5"];
+    CGFloat margin = 35;
     CGFloat btnWidht = (kScreenWitdth-170)/5;
     
     CGFloat labelWidth = kScreenWitdth/5;
@@ -162,10 +164,11 @@
     for (int i = 0; i < 5; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(25+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
-        btn.backgroundColor = [UIColor grayColor];
+        btn.frame = CGRectMake(15+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
+//        btn.backgroundColor = [UIColor grayColor];
         btn.tag = i;
         [btn addTarget:self action:@selector(shopAct:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setImage:[UIImage imageNamed:imgArr[i]] forState:UIControlStateNormal];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
@@ -185,8 +188,8 @@
 - (void)loginBtn{
     
      NSArray *titleArr = @[@"上传",@"发布",@"审核报单",@"推单列表",@"中心资产"];
-
-    CGFloat margin = 30;
+    NSArray *imageArr = @[@"推单－1",@"推单－2",@"推单－3",@"推单－4",@"推单－5"];
+    CGFloat margin = 34;
     CGFloat btnWidht = (kScreenWitdth-170)/5;
     
     CGFloat labelWidth = kScreenWitdth/5;
@@ -194,10 +197,11 @@
     for (int i = 0; i < titleArr.count; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(25+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
-        btn.backgroundColor = [UIColor grayColor];
+        btn.frame = CGRectMake(17+i*margin+i*btnWidht, 35, btnWidht                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 30);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         btn.tag = i;
         [btn addTarget:self action:@selector(buttonAct:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setImage:[UIImage imageNamed:imageArr[i]] forState:UIControlStateNormal];
         [self.contentView addSubview:btn];
         
         UILabel *title = [[UILabel alloc] init];
@@ -224,6 +228,12 @@
             
             break;
         case 1:
+        {
+        
+            HYMPublishList *publish = [[HYMPublishList alloc] init];
+            [self.viewController.navigationController pushViewController:publish animated:YES];
+            
+        }
             break;
         case 2:
         {
@@ -241,16 +251,14 @@
         
         {
         
+            //－－－
 //            HYMCenterAssets *message = [[HYMCenterAssets alloc] init];
 //            [self.viewController.navigationController pushViewController:message animated:YES];
+//            
+
             
-            //暂时添加保证金页面
-//            HYMSecurityDeposit *security = [[HYMSecurityDeposit alloc] init];
-//            [self.viewController.navigationController pushViewController:security animated:YES];
-            
-//            //冻结备付金
-            HYMFreezeVC *freeVC = [[HYMFreezeVC alloc] init];
-            [self.viewController.navigationController pushViewController:freeVC animated:YES];
+            HYMMoneyVC *moenyVC = [[HYMMoneyVC alloc] init];
+            [self.viewController.navigationController pushViewController:moenyVC animated:YES];
         }
         default:
             break;   

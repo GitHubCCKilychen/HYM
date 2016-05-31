@@ -8,7 +8,7 @@
 
 #import "HYMPublishView.h"
 
-@interface HYMPublishView ()
+@interface HYMPublishView ()<UITextFieldDelegate>
 
 @property (nonatomic,strong)UIImageView *iconImageView;
 @property (nonatomic,strong)UILabel *titleLabel;
@@ -26,6 +26,9 @@
     if (_iconImageView == nil) {
         
         _iconImageView = [[UIImageView alloc] init];
+        _iconImageView.image = [UIImage imageNamed:@"填写任务"];
+        _iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
     }
     return _iconImageView;
 }
@@ -35,6 +38,9 @@
     if (_titleLabel == nil) {
         
         _titleLabel = [[UILabel alloc] init];
+        _titleLabel.text = @"请填写任务信息";
+        _titleLabel.textColor = [UIColor orangeColor];
+        _titleLabel.font = [UIFont systemFontOfSize:15];
     }
     return _titleLabel;
 }
@@ -45,6 +51,7 @@
         
         _logo = [UIButton buttonWithType:UIButtonTypeCustom];
         _logo.layer.cornerRadius = 10;
+        [_logo addTarget:self action:@selector(addLogoAct:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _logo;
 }
@@ -88,14 +95,14 @@
     [self addSubview:self.logo];
     [self addSubview:self.topicView];
     
-    self.iconImageView.backgroundColor = [UIColor orangeColor];
+//    self.iconImageView.backgroundColor = [UIColor orangeColor];
     self.iconImageView.sd_layout
-    .leftSpaceToView(self,10).topSpaceToView(self,10)
-    .widthIs(25).heightIs(25);
+    .leftSpaceToView(self,15).topSpaceToView(self,10)
+    .widthIs(20).heightIs(20);
     
-    self.titleLabel.backgroundColor = [UIColor grayColor];
+//    self.titleLabel.backgroundColor = [UIColor grayColor];
     self.titleLabel.sd_layout
-    .leftSpaceToView(self.iconImageView,15).topSpaceToView(self,15)
+    .leftSpaceToView(self.iconImageView,10).topSpaceToView(self,10)
     .heightIs(20).widthRatioToView(self,0.5);
     
     self.logo.backgroundColor = [UIColor grayColor];
@@ -127,9 +134,25 @@
         UITextField *textField = [[UITextField alloc] init];
         textField.frame = CGRectMake(55, 5, view.frame.size.width-60, 20);
         textField.placeholder = textFieldArr[i];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.delegate = self;
+        textField.keyboardType = UIKeyboardTypeDefault;
+//        textField.returnKeyType = UIReturnKeyNext;
         textField.font = [UIFont systemFontOfSize:14];
         [view addSubview:textField];
         
     }
+}
+
+#pragma mark text代理
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+    return YES;
+}
+#pragma mark 添加logo
+- (void)addLogoAct:(UIButton *)btn{
+
+
 }
 @end

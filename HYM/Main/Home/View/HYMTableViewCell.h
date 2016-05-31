@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "HYMInfoCellModel.h"
 #import "HYMTaskModel.h"
+#import "HYMCenMallModel.h"
 @interface HYMTableViewCell : UITableViewCell
 
 @property (nonatomic,assign)NSIndexPath *indexPath;
 @property (nonatomic,strong)NSArray *btnTitleArr;
-
+@property (nonatomic,assign)NSInteger index;
 
 
 /**
@@ -50,10 +51,11 @@
 @property (nonatomic,strong)UIImageView *leftImageView;
 @property (nonatomic,strong)UILabel *comment;//评论
 
+
 /**
  *  羊毛商城
  */
-
+@property (nonatomic,strong)HYMCenMallModel *mallModel;
 @property (nonatomic,strong)UIButton *leftBtn;
 @property (nonatomic,strong)UIButton *topBtn;
 @property (nonatomic,strong)UIButton *rightBtn;

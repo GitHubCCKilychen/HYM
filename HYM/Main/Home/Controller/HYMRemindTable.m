@@ -88,19 +88,19 @@
     }
     HYMRemindModel *model = self.datalist[indexPath.row];
     
-    UILabel *name = [cell.contentView viewWithTag:1];
-    name.text = model.title;
-    
-    
-    UILabel *time = [cell.contentView viewWithTag:2];
-    time.text = model.end_time;
-    
-    //时间格式－－不对－改
-    
-    UILabel *money = [cell.contentView viewWithTag:4];
-    
-    NSString *string = [NSString stringWithFormat:@"%@元",model.fanli];
-    money.text = string;
+//    UILabel *name = [cell.contentView viewWithTag:1];
+//    name.text = model.title;
+//    
+//    
+//    UILabel *time = [cell.contentView viewWithTag:2];
+//    time.text = model.end_time;
+//    
+//    //时间格式－－不对－改
+//    
+//    UILabel *money = [cell.contentView viewWithTag:4];
+//    
+//    NSString *string = [NSString stringWithFormat:@"%@元",model.fanli];
+//    money.text = string;
     return cell;
 }
 

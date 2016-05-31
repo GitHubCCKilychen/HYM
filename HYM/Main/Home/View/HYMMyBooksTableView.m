@@ -51,7 +51,7 @@
     
     HYMMyBookModel *model = self.datalist[indexPath.row];
     cell.model = model;
-    NSLog(@"%@",model.name);
+    //NSLog(@"%@",model.name);
     return cell;
     
     

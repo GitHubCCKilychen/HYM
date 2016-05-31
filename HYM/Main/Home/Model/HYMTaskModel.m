@@ -10,5 +10,10 @@
 
 @implementation HYMTaskModel
 
-
+- (void)setAttributes:(NSDictionary *)dic{
+    
+    self.map = @{@"id":@"taskID:"};
+    
+    [super setAttributes:dic];
+}
 @end

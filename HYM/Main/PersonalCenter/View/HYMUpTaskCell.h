@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HYMSegmentView.h"
+
 #import "HYMUpModel.h"
-@interface HYMUpTaskCell : UITableViewCell<HYMSegmentViewDelegate>
+@interface HYMUpTaskCell : UITableViewCell
 
 @property (nonatomic,strong)HYMUpModel *model;
 @property (nonatomic,strong)UIImageView *storeImage;
@@ -17,6 +17,6 @@
 @property (nonatomic,strong)UIButton *editBtn;
 @property (nonatomic,strong)UIButton *deleteBtn;
 @property (nonatomic,strong)NSIndexPath* indexPath;
-@property (nonatomic,strong)HYMSegmentView *segmentView;
+//@property (nonatomic,strong)HYMSegmentView *segmentView;
 @property (nonatomic,strong)UIView *lineView;
 @end

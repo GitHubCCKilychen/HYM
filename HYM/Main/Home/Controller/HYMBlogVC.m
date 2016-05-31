@@ -41,6 +41,11 @@
 }
 
 
+- (void)setBlogID:(int)blogID{
+
+    _blogID = blogID;
+    NSLog(@"%d",_blogID);
+}
 - (void)addWebView{
     
     UIWebView *webView = [[UIWebView alloc] init];
@@ -48,8 +53,11 @@
     webView.scalesPageToFit=YES;
     webView.delegate = self;
     
-    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/7034";
-    NSURL *url = [NSURL URLWithString:path];
+    //ID是什么－－此处有错误－－－
+    NSString *blogID = [NSString stringWithFormat:@"%d",self.blogID];
+    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/7786";
+    NSString *pathUrl = [NSString stringWithFormat:@"%@%@",path,blogID];
+    NSURL *url = [NSURL URLWithString:pathUrl];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];
     
@@ -90,19 +98,19 @@
     [view removeFromSuperview];
     
 }
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear: animated];
-    
-    self.navigationController.navigationBar.hidden = YES;
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    
-    [super viewDidDisappear: animated];
-    
-    self.navigationController.navigationBar.hidden =  NO;
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//    
+//    [super viewWillAppear: animated];
+//    
+//    self.navigationController.navigationBar.hidden = YES;
+//}
+//
+//- (void)viewDidDisappear:(BOOL)animated{
+//    
+//    [super viewDidDisappear: animated];
+//    
+//    self.navigationController.navigationBar.hidden =  NO;
+//}
 
 
 @end

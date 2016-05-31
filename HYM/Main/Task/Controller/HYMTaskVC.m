@@ -15,12 +15,14 @@
 #import "HYMTaskModel.h"
 #import "HYMFanliModel.h"
 #import "HYMSelectedVC.h"
+
 @interface HYMTaskVC ()<HYMSegmentViewDelegate,HYMSortViewDelegate>
 @property (nonatomic,strong)HYMSegmentView *segmentView;
 @property (nonatomic,strong)HYMTaskTableView *tableView;
 @property (nonatomic,strong)HYMSortView *sortView;
 @property (nonatomic,strong)NSMutableArray *listArr;
 @property (nonatomic,strong)NSMutableArray *fanliArr;
+@property (nonatomic,strong)UIView *lineView;
 
 
 /**
@@ -32,6 +34,17 @@
 
 #pragma mark 懒加载
 
+
+- (UIView *)lineView{
+    
+    if (_lineView == nil) {
+        
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWitdth-80,0, 0.5,44)];
+        _lineView.backgroundColor = [UIColor lightGrayColor];
+    }
+    
+    return _lineView;
+}
 - (NSMutableArray *)fanliArr{
 
     if (_fanliArr == nil) {
@@ -249,6 +262,7 @@
 
     [super viewWillAppear:animated];
     
+    [self.segmentView addSubview:self.lineView];
     [self.navigationController.navigationBar addSubview:self.segmentView];
 }
 - (void)viewWillDisappear:(BOOL)animated{

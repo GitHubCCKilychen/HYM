@@ -51,7 +51,7 @@
 #pragma mark 数据解析
 - (void)loadData:(NSDictionary *)dic{
     
-    NSLog(@"%@",dic);
+    //NSLog(@"%@",dic);
     
 }
 - (void)initWithDefault{

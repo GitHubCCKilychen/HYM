@@ -83,12 +83,7 @@
     return _userName;
 }
 
-- (void)setIndexPath:(NSIndexPath *)indexPath{
 
-    _indexPath = indexPath;
-    
-
-}
 - (UILabel *)time{
     
     if (_time == nil) {
@@ -151,11 +146,11 @@
         
         [_readBtn setImage:[UIImage imageNamed:@"luntanyuedu"] forState:UIControlStateNormal];
         //上左下右10，10，10，60
-        _readBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0,0, 22);
+        _readBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -5,0, 10);
         [_readBtn setTitle:@"0" forState:UIControlStateNormal];
         _readBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
         [_readBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        _readBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        _readBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     }
     return _readBtn;
 }
@@ -202,13 +197,13 @@
         
         _tagTitle = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [_tagTitle setImage:[UIImage imageNamed:@"luntanbiaoqian "] forState:UIControlStateNormal];
+        [_tagTitle setImage:[UIImage imageNamed:@"luntanbiaoqian"] forState:UIControlStateNormal];
         //上左下右10，10，10，60
-        _tagTitle.imageEdgeInsets = UIEdgeInsetsMake(-3, -2, -3, 20);
-        [_tagTitle setTitle:@"10元薅" forState:UIControlStateNormal];
-        _tagTitle.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        _tagTitle.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+//        [_tagTitle setTitle:@"10元薅" forState:UIControlStateNormal];
+        _tagTitle.titleEdgeInsets = UIEdgeInsetsMake(0,0, 0, 0);
         [_tagTitle setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        _tagTitle.titleLabel.font = [UIFont systemFontOfSize:12];
+        _tagTitle.titleLabel.font = [UIFont systemFontOfSize:11];
     }
     return _tagTitle;
 }
@@ -219,13 +214,25 @@
 
     _model = model;
     
-//    [self.tagTitle setTitle:_model.author forState:UIControlStateNormal];
-    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:_model.avatar]];
+    
+    //判断返回参数为空的－－<null>类型
+    if ([_model.avatar isEqual:[NSNull null]]) {
+        
+        self.iconImage.image = [UIImage imageNamed:@"aaa"];
+        
+    }else {
+        [self.iconImage sd_setImageWithURL:[NSURL URLWithString:_model.avatar]];
+        
+    }
+
     self.userName.text = _model.nickname;
     self.time.text = _model.regdate;
     self.connent.text = _model.content;
     self.connentTitle.text = _model.name;
-    
+    [self.readBtn setTitle:_model.visitcount forState:UIControlStateNormal];
+    [self.zanBtn setTitle:_model.starscount forState:UIControlStateNormal];
+    [self.commentBtn setTitle:_model.replycount forState:UIControlStateNormal];
+    [self.tagTitle setTitle:_model.public_name forState:UIControlStateNormal];
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
@@ -274,8 +281,8 @@
     .rightSpaceToView(self.contentView,15).bottomSpaceToView(self.connentTitle,0).widthIs(35).heightIs(25);
     
     self.tagTitle.sd_layout
-    .rightSpaceToView(self.deleteBtn,18).bottomEqualToView(self.deleteBtn)
-    .widthIs(50).heightIs(25);
+    .rightSpaceToView(self.deleteBtn,5).bottomEqualToView(self.deleteBtn)
+    .widthIs(80).heightIs(25);
     
     self.zanBtn.sd_layout
     .rightSpaceToView(self.contentView,15).topSpaceToView(self.contentView,15)
@@ -288,7 +295,7 @@
     
     self.readBtn.sd_layout
     .rightSpaceToView(self.commentBtn,10).topSpaceToView(self.contentView,15)
-    .heightIs(25).widthIs(30);
+    .heightIs(25).widthIs(45);
     
     
 }
@@ -315,7 +322,6 @@
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         //此处重新设置cell的个数值
-        
         //请求删除列表
         [self deleteData];
       
@@ -331,12 +337,19 @@
 }
 
 #pragma mark row
+- (void)setIndex:(NSInteger)index{
+
+    _index = index;
+    
+}
 #pragma mark 删除帖子
 - (void)deleteData{
     
     //id--帖子ID
-        NSString *idString = [NSString stringWithFormat:@"%ld",(long)self.indexPath.row];
-    NSDictionary *dic = @{@"keytype":@"1",@"id":idString,@"token":@"1"};
+        NSString *idString = [NSString stringWithFormat:@"%ld",(long)self.index];
+    
+     //NSLog(@"%@",idString);
+    NSDictionary *dic = @{@"keytype":@"3",@"id":idString,@"token":@"1"};
     
     NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
     [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_saveoperate" target:self selector:@selector(infoData:) parameter:nsdic];
@@ -345,7 +358,8 @@
 
 - (void)infoData:(NSDictionary *)dic{
 
-    nsl
+   // NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    //通知cell
 }
 
 

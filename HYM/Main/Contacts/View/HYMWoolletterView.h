@@ -10,4 +10,5 @@
 
 @interface HYMWoolletterView : UIView
 
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

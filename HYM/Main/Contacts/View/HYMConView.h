@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMConView : UIView
+@property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,strong)NSMutableArray *scrollList;
 
 @end

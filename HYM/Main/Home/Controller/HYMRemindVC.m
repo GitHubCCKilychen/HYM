@@ -39,15 +39,16 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-    [self loadData];
+
+    [self segumentSelectionChange:0];
     [self initDeafult];
     [self initView];
     
+
 }
 - (void)initDeafult{
 
-    self.title = @"赎回提醒";
+    self.title = @"资金明细";
    [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     self.view.backgroundColor = [UIColor whiteColor];
 }
@@ -62,41 +63,54 @@
 -(void)segumentSelectionChange:(NSInteger)selection{
 
     
+    [self loadData:selection];
 }
 
 #pragma mark 数据
-- (void)loadData{
-    
+- (void)loadData:(NSInteger)index{
     
     self.datalist = [NSMutableArray array];
-    NSDictionary *dic = @{@"page":@"1",@"token":@"1"};
+    
+    NSString *indexStr = [NSString stringWithFormat:@"%ld",(long)index];
+    NSDictionary *dic = @{@"page":@"1",@"type":indexStr,@"token":@"1"};
     
     NSMutableDictionary *nsDic= [NSMutableDictionary dictionaryWithDictionary:dic];
     //网络请求
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/investment_list" target:self selector:@selector(loadData:) parameter:nsDic];
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/money_detail" target:self selector:@selector(loadMoneyData:) parameter:nsDic];
     
     
 }
 
-- (void)loadData:(NSDictionary *)infor{
+- (void)loadMoneyData:(NSDictionary *)dic{
     
     
-    NSDictionary *dd = [infor objectForKey:@"infor"];
-    NSArray *listItems = [dd objectForKey:@"listItems"];
-    
-    
-    for (NSDictionary *dic in listItems) {
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+
+    for (NSArray *listArr in listItems) {
         
-        NSDictionary *task_info = [dic objectForKey:@"task_info"];
+        for (NSDictionary *dd in listArr) {
+            
+            
+              HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:dd];
+               self.tableView.datalist = self.datalist;
+        }
         
-        HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:task_info];
-        [self.datalist addObject:model];
-     
-        self.tableView.datalist = self.datalist;
+       
+//            for (NSDictionary *dic in listArr) {
 //
-         NSLog(@"%@",task_info);
+//                
+//                HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:dic];
+////                [self.datalist addObject:model];
+//        
+////                self.tableView.datalist = self.datalist;
+//        //
+//                 //NSLog(@"%@",task_info);
+//            }
+//        
     }
-    
+
+
     
 }
 

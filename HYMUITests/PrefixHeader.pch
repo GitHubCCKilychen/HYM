@@ -26,7 +26,7 @@
 #import "UIImageView+WebCache.h"
 #import "MJPhotoBrowser.h"
 #import "HYMNavigationVC.h"
-
+#import <UIButton+WebCache.h>
 #endif /* PrefixHeader_pch */
 
 

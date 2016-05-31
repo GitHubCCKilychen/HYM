@@ -10,7 +10,7 @@
 
 @implementation HYMStore2Cell
 
-- (void)setModel:(HYMMallModel *)model{
+- (void)setModel:(HYMMallListModel *)model{
     
     _model = model;
     
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)initWithView:(HYMMallModel *)model{
+- (void)initWithView:(HYMMallListModel *)model{
 
     for (int i = 0 ; i < 2; i++) {
         

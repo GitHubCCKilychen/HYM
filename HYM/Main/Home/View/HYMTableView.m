@@ -12,9 +12,11 @@
 #import "HYMInfoCellModel.h"
 #import "HYMTaskModel.h"
 #import "HYMInformationVC.h"
+#import "HYMCenMallModel.h"
+#import "HYMMallView.h"
 @interface HYMTableView ()<UITableViewDataSource,UITableViewDelegate>
 
-
+@property (nonatomic,strong)HYMMallView *mallView;
 @end
 @implementation HYMTableView
 
@@ -23,6 +25,8 @@
 - (void)setInfoArr:(NSMutableArray *)infoArr{
     _infoArr = infoArr;
     
+
+    
 }
 
 
@@ -30,7 +34,13 @@
 
     _taskArr = taskArr;
     
-    NSLog(@"%lu--",(unsigned long)self.taskArr.count);
+}
+
+- (void)setMallArr:(NSMutableArray *)mallArr{
+
+    _mallArr = mallArr;
+
+
     
 }
 #pragma mark 初始化
@@ -75,6 +85,7 @@
     if (!cell) {
         
         cell = [[HYMTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        
     }
     else{
         
@@ -94,11 +105,15 @@
         cell.taskModel = taskModel;
         
     }else if (indexPath.section == 1){
-    
-        [cell initCell2];
         
+        self.mallView = [[HYMMallView alloc] init];
+        self.mallView.frame = CGRectMake(0, 0, kScreenWitdth,150);
         
+        HYMCenMallModel *model = self.mallArr[indexPath.row];
+        self.mallView.model = model;
         
+        [cell.contentView addSubview:self.mallView];
+      
     }else{
     
         [cell initCell3];

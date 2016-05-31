@@ -10,4 +10,5 @@
 
 @interface HYMPersonTable : UITableView
 
+@property (nonatomic,assign)int apply_status;
 @end

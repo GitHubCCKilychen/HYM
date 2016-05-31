@@ -9,6 +9,7 @@
 #import "HYMPersonHeader.h"
 #import "HYMSetInforVC.h"
 #import "HYMInfoVC.h"
+#import "HYMRemindVC.h"
 @implementation HYMPersonHeader
 
 - (UIImageView *)iconImage{
@@ -84,6 +85,7 @@
     if (_rightImage == nil) {
         _rightImage = [[UIImageView alloc] init];
         _rightImage.image = [UIImage imageNamed:@"背景2"];
+        _rightImage.userInteractionEnabled = YES;
     }
     return _rightImage;
 }
@@ -142,8 +144,24 @@
 
     _dic = dic;
     
-//    NSLog(@"%@",_dic);
     self.userName.text = [_dic objectForKey:@"nickname"];
+    
+    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:[_dic objectForKey:@"avatar"]]];
+    
+    self.money.text = [NSString stringWithFormat:@"%@",[_dic objectForKey:@"total_money"]];
+    
+    self.frozenGold.text = [NSString stringWithFormat:@"其中推单冻结金:%@",[_dic objectForKey:@"froze_money"]];
+    
+    if ([[_dic objectForKey:@"sex"]  isEqual: @"女"]) {
+        
+        self.sexImage.image = [UIImage imageNamed:@"女生"];
+    }else{
+    
+        self.sexImage.image = [UIImage imageNamed:@"男士"];
+    }
+    
+
+    self.invitationCode.text = [NSString stringWithFormat:@"我的邀请码(ID):%@",[_dic objectForKey:@"id"]];
 }
 - (instancetype)initWithFrame:(CGRect)frame{
 
@@ -169,6 +187,7 @@
     [self.leftImage addSubview:self.moneyTitle];
     [self.leftImage addSubview:self.frozenGold];
     [self.rightImage addSubview:self.seeDetails];
+    
     
    
     self.iconImage.sd_layout
@@ -225,10 +244,12 @@
 #pragma mark 我要推单
 - (void)pushSingle:(UIButton *)btn{
 
-    NSLog(@"3453c");
+//    
+//    HYMSetInforVC *infoVC = [[HYMSetInforVC alloc] init];
+//    [self.viewController.navigationController pushViewController:infoVC animated:YES];
     
-    HYMSetInforVC *infoVC = [[HYMSetInforVC alloc] init];
-    [self.viewController.navigationController pushViewController:infoVC animated:YES];
+    HYMRemindVC *remind = [[HYMRemindVC alloc] init];
+    [self.viewController.navigationController pushViewController:remind animated:YES];
 }
 #pragma mark 个人信息
 - (void)setInfo:(UIButton *)btn{

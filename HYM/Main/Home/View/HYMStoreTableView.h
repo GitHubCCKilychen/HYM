@@ -11,4 +11,5 @@
 @interface HYMStoreTableView : UITableView
 
 @property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,strong)NSMutableArray *list;
 @end

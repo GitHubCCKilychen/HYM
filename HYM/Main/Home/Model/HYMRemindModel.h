@@ -10,7 +10,7 @@
 
 @interface HYMRemindModel : BaseModel
 
-@property (nonatomic,copy)NSString *title;
-@property (nonatomic,copy)NSString *end_time;
-@property (nonatomic,copy)NSString * fanli;
+//@property (nonatomic,copy)NSString *title;
+//@property (nonatomic,copy)NSString *end_time;
+//@property (nonatomic,copy)NSString * fanli;
 @end

@@ -8,6 +8,7 @@
 
 #import "HYMCheckTable.h"
 #import "HYMFormDetails.h"
+#import "HYMCheckModel.h"
 @interface HYMCheckTable ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -26,10 +27,16 @@
 }
 
 
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    [self reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
   
 
-    return 10;
+    return self.datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -76,16 +83,20 @@
     }
     
     UIImageView *store = [cell.contentView viewWithTag:1];
-//    store.image = [UIImage imageNamed:];
     
     UILabel *title = [cell.contentView viewWithTag:2];
-    title.text = @"234456787bvcbnmvnmbn,kkn,m";
     
     UILabel *coutn = [cell.contentView viewWithTag:3];
-    coutn.text = @"1个";
+
     
     UIButton *btn = [cell.contentView viewWithTag:4];
     btn.backgroundColor = [UIColor greenColor];
+    
+    HYMCheckModel *model = self.datalist[indexPath.row];
+    [store sd_setImageWithURL:[NSURL URLWithString:model.logo]];
+    title.text = model.title;
+    coutn.text = [NSString stringWithFormat:@"%@个",model.sign_total];
+    
     
     return cell;
 }

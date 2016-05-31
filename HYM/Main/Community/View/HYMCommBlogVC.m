@@ -13,6 +13,7 @@
 @property (nonatomic,strong)HYMTaskBottom *bottom;
 @property (nonatomic,weak)UITextField *textField;
 @property (nonatomic,strong)UIActivityIndicatorView *activity;
+@property (nonatomic,copy)NSString *pathUrl;
 @end
 
 @implementation HYMCommBlogVC
@@ -30,8 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self loadData];
     [self initDefalut];
     [self initWithView];
     [self addWebView];
@@ -46,16 +45,17 @@
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
     
     UIButton *report = [UIButton buttonWithType:UIButtonTypeCustom];
-    report.frame = CGRectMake(0, 0, 40, 40);
+    report.frame = CGRectMake(0, 0,30, 30);
     [report setTitle:@"举报" forState:UIControlStateNormal];
+    report.titleLabel.font = [UIFont systemFontOfSize:15];
     [report setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [report addTarget:self action:@selector(reportAct:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:report];
     
     
     UIButton *messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    messageBtn.frame = CGRectMake(0, 0, 40, 40);
-    messageBtn.backgroundColor = [UIColor grayColor];
+    messageBtn.frame = CGRectMake(0, 0, 20, 20);
+    [messageBtn setImage:[UIImage imageNamed:@"任务消息"] forState:UIControlStateNormal];
     [self.navigationController.navigationBar addSubview:messageBtn];
     
     
@@ -72,32 +72,26 @@
     
 }
 
-#pragma mark 数据
-- (void)loadData{
+- (void)setIndex:(NSString *)index{
 
-    
-    NSDictionary *dic = @{@"id":@"7786"};
-    NSMutableDictionary *nsDic = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/v203/blog_get" target:self selector:@selector(loadData:) parameter:nsDic];
-}
-
-- (void)loadData:(NSDictionary *)dic{
-
-//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
-    
+    _index = index;
+    //blogID－－根据这个来判断
+   
 }
 - (void)addWebView{
+  
     
+    NSLog(@"%@",self.index);
     UIWebView *webView = [[UIWebView alloc] init];
     webView.frame = CGRectMake(0, 64, kScreenWitdth, kScreenHeight-49-64);
     webView.scalesPageToFit=YES;
     webView.delegate = self;
     
-    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/7034";
-    NSURL *url = [NSURL URLWithString:path];
+    NSString *path = @"http://123.56.237.91/index.php/blog/show/blog_id/";
+    NSString *string = [NSString stringWithFormat:@"%@%@",path,self.index];
+    NSURL *url = [NSURL URLWithString:string];
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];
-    
     
 }
 #pragma mark webview代理

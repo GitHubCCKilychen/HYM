@@ -369,7 +369,7 @@
 
 - (void)commentData:(NSDictionary *)dic{
 
-    NSLog(@"%@- %@",dic,[dic objectForKey:@"msg"]);
+    //NSLog(@"%@- %@",dic,[dic objectForKey:@"msg"]);
     
 }
 @end

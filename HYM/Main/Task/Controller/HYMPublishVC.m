@@ -29,8 +29,9 @@
     if (_imageView == nil) {
         
         _imageView = [[UIImageView alloc] init];
-        _imageView.frame = CGRectMake(20, 2.5, 25, 25);
-        _imageView.backgroundColor = [UIColor grayColor];
+        _imageView.frame = CGRectMake(20, 5, 20, 20);
+        _imageView.image = [UIImage imageNamed:@"提醒"];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imageView;
 }
@@ -115,8 +116,8 @@
 
 - (void)loadData:(NSDictionary *)dic{
 
-//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
-    
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    //只是用于上传数据
     //此处没有返回数据
     
 }

@@ -10,4 +10,9 @@
 
 @implementation HYMCommModel
 
+- (void)setAttributes:(NSDictionary *)dic{
+    
+    self.map = @{@"id":@"blogID"};
+    [super setAttributes: dic];
+}
 @end

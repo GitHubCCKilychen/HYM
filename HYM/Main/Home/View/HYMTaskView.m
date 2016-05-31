@@ -119,13 +119,13 @@
     NSArray *titleArr = @[@"任务赚钱",@"邀请奖励",@"赎回提醒"];
     
     //－－－适配问题－－－
-    CGFloat btnWidth = (kScreenWitdth - 234)/3;
+    CGFloat btnWidth = (kScreenWitdth - 240)/3;
     
     CGFloat labelWidth = kScreenWitdth/3;
     for (int i = 0; i < titleArr.count; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(42+i*btnWidth+i*75, self.brownView.frame.size.height+25, btnWidth, 30);
+        btn.frame = CGRectMake(40+i*btnWidth+i*80, self.brownView.frame.size.height+25, btnWidth, 30);
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"homeTask%d",i]];
         [btn setImage:image forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
@@ -165,6 +165,7 @@
                                , 50, 20);
         [btn setTitle:taskArr[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:12];
+//        btn.titleLabel.textAlignment = NSTextAlignmentLeft;
         [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.brownView addSubview:btn];
         
@@ -176,22 +177,24 @@
 - (void)loadData{
 
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/?m=Base&a=user_income" target:self selector:@selector(loadData:) parameter:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/v300/user_income" target:self selector:@selector(loadData:) parameter:dic];
 }
 
 
 - (void)loadData:(NSDictionary *)infor{
 
-        NSLog(@"-----%@",infor);
+//        NSLog(@"-----%@",infor);
     NSDictionary *dic = [infor objectForKey:@"infor"];
     
     NSString *money = [NSString stringWithFormat:@"%@",[dic objectForKey:@"total"]];
+//    NSLog(@"%@",money);
+    
     self.moneyLabel.text = money;
-    
-    
 
-    NSArray *arr = @[[dic objectForKey:@"task"],[dic objectForKey:@"invite"]];
-
+    NSString *taskStr = [NSString stringWithFormat:@"%@",[dic objectForKey:@"task"]];
+    NSString *invite = [NSString stringWithFormat:@"%@",[dic objectForKey:@"invite"]];
+    NSArray *arr = @[taskStr,invite];
+//
     [self initWithButton:arr];
 
 }
@@ -255,8 +258,9 @@
         case 2:
         {
         
-//            HYMRemindVC *remind = [[HYMRemindVC alloc] init];
-//            [self.viewController.navigationController pushViewController:remind animated:YES];
+            HYMMyBooksVC *mybook = [[HYMMyBooksVC alloc] init];
+            [self.viewController.navigationController pushViewController:mybook animated:YES ];
+
         }
             break;
         default:
