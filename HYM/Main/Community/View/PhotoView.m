@@ -117,7 +117,7 @@
     
         //ios9 跟iOS8
         UIAlertController *alertVC= [UIAlertController alertControllerWithTitle:@"请选择" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        [self.viewController presentViewController:alertVC animated:YES completion:nil];
+        [self.window.rootViewController presentViewController:alertVC animated:YES completion:nil];
     
         UIAlertAction *pic = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     
@@ -143,4 +143,5 @@
     
   
 }
+#pragma mark 移除当前view
 @end

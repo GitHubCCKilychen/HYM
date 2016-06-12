@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMInforModel.h"
 @interface HYMInfoBottom : UIView
+
+@property (nonatomic,strong)HYMInforModel *model;
 @property (nonatomic,strong)NSArray *titleArr;
 @property (nonatomic,strong)NSArray *textFiledArr;
+@property (nonatomic,strong)NSMutableArray *datalist;
 @end

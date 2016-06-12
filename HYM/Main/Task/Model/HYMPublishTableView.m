@@ -7,7 +7,7 @@
 //
 
 #import "HYMPublishTableView.h"
-
+#import "HYMPublishBottomView.h"
 @interface HYMPublishTableView ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong)NSArray *titleArr;
@@ -90,8 +90,9 @@
         
         UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(kScreenWitdth-130,10, 100, 30)];
         textfield.delegate = self;
-        textfield.tag = 2;
-        //    self.textfield.backgroundColor = [UIColor orangeColor];
+        [textfield addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingDidEnd];
+        textfield.tag = indexPath.row;
+
        textfield.textAlignment = NSTextAlignmentRight;
        textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
         
@@ -127,7 +128,7 @@
             }else{
                 
                 textfield.frame = textfield.frame = CGRectMake(kScreenWitdth-110, 6, 100, 30);
-                //            self.textfield.backgroundColor = [UIColor grayColor];
+        
                 [cell.contentView addSubview:textfield];
             }
             
@@ -197,34 +198,34 @@
 }
 
 #pragma mark 代理实现
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-
-
-    [UIView beginAnimations:@"scrollView" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationCurve:0.275f];
-    self.frame = CGRectMake(self.frame.origin.x, 0 , self.frame.size.width, self.frame.size.height);
-    [UIView commitAnimations];
-    
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-
-    CGFloat keyboardHeight = 216.0f;
-    if(self.frame.size.height - keyboardHeight > textField.frame.origin.y + textField.frame.size.height){
-        
-    }
-    else{
-        CGFloat moveHeight = textField.frame.origin.y - (self.frame.size.height - keyboardHeight - textField.frame.size.height);
-        [UIView beginAnimations:@"scrollView" context:nil];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDuration:0.275f];
-        self.frame = CGRectMake(self.frame.origin.x, -moveHeight, self.frame.size.width, self.frame.size.height);
-        [UIView commitAnimations];
-    }
-    
-}
+//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+//
+//
+//    [UIView beginAnimations:@"scrollView" context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    [UIView setAnimationCurve:0.275f];
+//    self.frame = CGRectMake(self.frame.origin.x, 0 , self.frame.size.width, self.frame.size.height);
+//    [UIView commitAnimations];
+//    
+//    return YES;
+//}
+//
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//
+//    CGFloat keyboardHeight = 216.0f;
+//    if(self.frame.size.height - keyboardHeight > textField.frame.origin.y + textField.frame.size.height){
+//        
+//    }
+//    else{
+//        CGFloat moveHeight = textField.frame.origin.y - (self.frame.size.height - keyboardHeight - textField.frame.size.height);
+//        [UIView beginAnimations:@"scrollView" context:nil];
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationDuration:0.275f];
+//        self.frame = CGRectMake(self.frame.origin.x, -moveHeight, self.frame.size.width, self.frame.size.height);
+//        [UIView commitAnimations];
+//    }
+//    
+//}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
 
@@ -235,5 +236,34 @@
 
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void) textFieldDidChange:(UITextField *) textField{
+    
+    HYMPublishBottomView *bottom = [[HYMPublishBottomView alloc] init];
+    bottom.textFiled2 = textField;
+    switch (textField.tag) {
+        case 0:
+            //通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue1" object:textField];
+            break;
+        case 1:
+            //通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue1" object:textField];
+            break;
+        case 2:
+            //通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue1" object:textField];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)dealloc{
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    
 }
 @end

@@ -89,7 +89,7 @@
 
     if (_tableView == nil) {
         
-        _tableView = [[HYMCommTable alloc] initWithFrame:CGRectMake(0, 164, kScreenWitdth, kScreenHeight-49-164) style:UITableViewStyleGrouped];
+        _tableView = [[HYMCommTable alloc] initWithFrame:CGRectMake(0, 125, kScreenWitdth, kScreenHeight-49-125) style:UITableViewStyleGrouped];
     }
     return _tableView;
 }
@@ -152,7 +152,6 @@
 
 
     [self.view addSubview:self.sortView];
-    [self.view addSubview:self.commView];
     [self.view addSubview:self.tableView];
     
    

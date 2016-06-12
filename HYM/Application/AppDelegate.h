@@ -13,4 +13,5 @@
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic,assign)BOOL isLogin;
 @property (nonatomic,copy)NSString *mydeviceid;
+@property (nonatomic,strong)NSString *mycity;
 @end

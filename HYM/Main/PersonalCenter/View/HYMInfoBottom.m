@@ -7,7 +7,7 @@
 //
 
 #import "HYMInfoBottom.h"
-
+#import "HYMInforModel.h"
 @interface HYMInfoBottom ()<UITextFieldDelegate>
 
 @end
@@ -18,7 +18,7 @@
     if (_titleArr == nil) {
         
         _titleArr = [NSArray array];
-        _titleArr = @[@"真实姓名*",@"身份证号*",@"支付宝号",@"常用邮箱*",@"常用QQ*",@"紧急电话*"];
+        _titleArr = @[@"真实姓名*",@"身份证号*",@"支付宝账号",@"常用邮箱*",@"常用QQ*",@"紧急电话*"];
     }
     return _titleArr;
 }
@@ -32,24 +32,35 @@
     }
     return _textFiledArr;
 }
+
+#pragma mark model
+
+- (void)setModel:(HYMInforModel *)model{
+
+    _model = model;
+    
+    NSArray *titleArr = @[_model.true_name,_model.id_card,_model.alipay,_model.email,_model.qq,_model.qq];
+    [self initView:titleArr];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if (self = [super initWithFrame:frame]) {
         
-        [self initView];
+    
     }
     return self;
 }
 
-- (void)initView{
+- (void)initView:(NSArray *)titleArr{
     
     for (int i = 0; i < self.titleArr.count; i++) {
         
         UIView *lineView = [[UIView alloc] init];
         lineView.frame = CGRectMake(15, 8 +i*38+i*5, kScreenWitdth-30, 30);
-        lineView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        lineView.layer.borderWidth = 0.5;
-        lineView.layer.cornerRadius = 3;
+//        lineView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//        lineView.layer.borderWidth = 0.5;
+//        lineView.layer.cornerRadius = 3;
         lineView.userInteractionEnabled = YES;
         [self addSubview:lineView];
         
@@ -60,13 +71,11 @@
         title.textAlignment = NSTextAlignmentCenter;
         [lineView addSubview:title];
         
-        UITextField *textF = [[UITextField alloc] init];
+        UILabel *textF = [[UILabel alloc] init];
         textF.frame = CGRectMake(80, 5, lineView.frame.size.width-75, 20);
-        textF.placeholder = self.textFiledArr[i];
         textF.font = [UIFont systemFontOfSize:13];
-        textF.delegate = self;
         textF.tag = i;
-        textF.keyboardType = UIKeyboardTypeNumberPad;
+        textF.text = titleArr[i];
         [lineView addSubview:textF];
         
     }

@@ -73,7 +73,7 @@
 #pragma mark 默认配置
 - (void)initWithDefaults{
 
-    self.title = @"投资记录";
+    self.title = @"赎回提醒";
     self.view.backgroundColor = [UIColor whiteColor];
     [HYMNavigationVC setTitle:[UIColor blackColor] withFontSize:15 withNavi:self.navigationController.navigationBar];
 }

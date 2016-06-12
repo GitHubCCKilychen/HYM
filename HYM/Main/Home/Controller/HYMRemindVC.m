@@ -71,46 +71,38 @@
     
     self.datalist = [NSMutableArray array];
     
-    NSString *indexStr = [NSString stringWithFormat:@"%ld",(long)index];
-    NSDictionary *dic = @{@"page":@"1",@"type":indexStr,@"token":@"1"};
+    if (index == 2 ||index == 3 ) {
+        
+        return;
+        
+    }else{
     
-    NSMutableDictionary *nsDic= [NSMutableDictionary dictionaryWithDictionary:dic];
-    //网络请求
-    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/money_detail" target:self selector:@selector(loadMoneyData:) parameter:nsDic];
-    
+        
+        NSString *indexStr = [NSString stringWithFormat:@"%ld",(long)index];
+        NSDictionary *dic = @{@"page":@"1",@"type":indexStr,@"token":@"1"};
+        
+        NSMutableDictionary *nsDic= [NSMutableDictionary dictionaryWithDictionary:dic];
+        //网络请求
+        [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/money_detail" target:self selector:@selector(loadMoneyData:) parameter:nsDic];
+        
+        
+    }
     
 }
 
 - (void)loadMoneyData:(NSDictionary *)dic{
     
-    
+   
     NSDictionary *infor = [dic objectForKey:@"infor"];
     NSArray *listItems = [infor objectForKey:@"listItems"];
-
-    for (NSArray *listArr in listItems) {
-        
-        for (NSDictionary *dd in listArr) {
-            
-            
-              HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:dd];
-               self.tableView.datalist = self.datalist;
-        }
-        
-       
-//            for (NSDictionary *dic in listArr) {
-//
-//                
-//                HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:dic];
-////                [self.datalist addObject:model];
-//        
-////                self.tableView.datalist = self.datalist;
-//        //
-//                 //NSLog(@"%@",task_info);
-//            }
-//        
+    
+    for (NSDictionary *dic in listItems) {
+        HYMRemindModel *model = [[HYMRemindModel alloc] initWithDictionary:dic];
+        [self.datalist addObject:model];
+        self.tableView.datalist = self.datalist;
     }
 
-
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
     
 }
 

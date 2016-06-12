@@ -110,8 +110,8 @@
         self.mallView.frame = CGRectMake(0, 0, kScreenWitdth,150);
         
         HYMCenMallModel *model = self.mallArr[indexPath.row];
+//        self.mallView.datalist = self.mallArr;
         self.mallView.model = model;
-        
         [cell.contentView addSubview:self.mallView];
       
     }else{
@@ -124,7 +124,6 @@
         
     }
 
-    
     
     return cell;
     

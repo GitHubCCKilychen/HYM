@@ -7,7 +7,7 @@
 //
 
 #import "HYMPublishView.h"
-
+#import "HYMPublishBottomView.h"
 @interface HYMPublishView ()<UITextFieldDelegate>
 
 @property (nonatomic,strong)UIImageView *iconImageView;
@@ -137,7 +137,8 @@
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.delegate = self;
         textField.keyboardType = UIKeyboardTypeDefault;
-//        textField.returnKeyType = UIReturnKeyNext;
+        [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingDidEnd];
+        textField.tag = i;
         textField.font = [UIFont systemFontOfSize:14];
         [view addSubview:textField];
         
@@ -150,9 +151,30 @@
     [textField resignFirstResponder];
     return YES;
 }
+
 #pragma mark 添加logo
 - (void)addLogoAct:(UIButton *)btn{
 
 
 }
+
+#pragma mark 文本框
+- (void) textFieldDidChange:(UITextField *) textField{
+
+    HYMPublishBottomView  *bottom = [[HYMPublishBottomView alloc] init];
+    bottom.textFiled = textField;
+    
+    if (textField.tag == 0) {
+     
+        //通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+    }else{
+    
+        //通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+    }
+   
+}
+
+
 @end

@@ -10,4 +10,6 @@
 
 @interface HYMTaskList : UITableView
 
+@property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,assign)int index;
 @end

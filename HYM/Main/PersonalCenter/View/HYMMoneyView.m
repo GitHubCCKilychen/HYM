@@ -7,10 +7,12 @@
 //
 
 #import "HYMMoneyView.h"
-
+#import "RechargeVC.h"
+#import "TiXianVC.h"
 @interface HYMMoneyView ()
 
 @property (nonatomic,strong)NSArray *titleArr;
+@property (nonatomic,strong)NSArray *imageArr;
 @end
 @implementation HYMMoneyView
 - (NSArray *)titleArr{
@@ -60,7 +62,8 @@
         [self initView];
         
         self.backgroundColor = [UIColor colorWithRed:241/256.f green:247/256.f blue:251/256.f alpha:1];
-//        self.backgroundColor = [UIColor colorWithRed:0xffd4292d green:0xffd4292d blue:0xffd4292d alpha:1];
+
+        
         
     }
     return self;
@@ -89,7 +92,7 @@
     .heightIs(20).widthIs(80);
     
     
-
+    self.imageArr = @[@"保证金1",@"保证金2"];
     //65*2 +宽 35
     CGFloat imageWidth = 35;
     CGFloat margin = kScreenWitdth- 35*2 -65*2;
@@ -99,14 +102,16 @@
     for (int i = 0; i < 2 ; i++) {
         
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = [UIColor lightGrayColor];
         imageView.frame = CGRectMake(65+i*margin+i*imageWidth, 20, imageWidth, 35);
+        imageView.image = [UIImage imageNamed:self.imageArr[i]];
         [self addSubview:imageView];
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(50+i*btnMargin+i*btnWidth, imageView.frame.size.height+20+10, 75, 22.5);
         [btn setTitle:self.titleArr[i] forState:UIControlStateNormal];
         btn.backgroundColor = [UIColor colorWithRed:117/256.f green:159/256.f blue:252/256.f alpha:1];
+        [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
         btn.titleLabel.font = [UIFont systemFontOfSize:15];
         [self addSubview:btn];
        
@@ -127,6 +132,21 @@
     }
 
   
+    
+}
+
+- (void)btnAct:(UIButton *)btn{
+
+    if (btn.tag == 0) {
+        
+        //有些地方没有了，后期更改
+        RechargeVC *recharege = [[RechargeVC alloc] init];
+        [self.viewController.navigationController pushViewController:recharege animated:YES];
+    }else{
+    
+        TiXianVC *tixian = [[TiXianVC alloc] init];
+        [self.viewController.navigationController pushViewController:tixian animated:YES];
+    }
     
 }
 @end

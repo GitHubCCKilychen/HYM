@@ -9,19 +9,33 @@
 #import "HYMPublishList.h"
 #import "HYMTaskList.h"
 #import "HYMNeedHelp.h"
+#import "HYMPubListModel.h"
+#import "HYMReadyView.h"
 @interface HYMPublishList ()
 
 @property (nonatomic,strong)HYMTaskList *taskList;
+@property (nonatomic,strong)NSMutableArray *datalist;
+@property (nonatomic,strong)HYMReadyView *readyView;
 @end
 
 @implementation HYMPublishList
 
+- (HYMReadyView *)readyView{
+
+    if (_readyView == nil) {
+        
+        _readyView = [[HYMReadyView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 40)];
+
+    }
+    return _readyView;
+}
 
 - (HYMTaskList *)taskList{
 
     if (_taskList == nil) {
         
         _taskList = [[HYMTaskList alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, kScreenHeight)];
+        _taskList.tableHeaderView = self.readyView;
     }
     return _taskList;
 }
@@ -36,14 +50,32 @@
 
 - (void)loadData{
 
-    //ID值是指任务ID－－此时参数不对
-    NSDictionary *dic = @{@"task_id":@"11",@"token":@"1",@"publish_status":@"1"};
+    
+    self.datalist = [NSMutableArray array];
+    NSDictionary *dic = @{@"page":@"1",@"token":@"1",@"audit_status":@"1"};
     NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_status_change" target:self selector:@selector(loadData:) parameter:dics];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_list_forward" target:self selector:@selector(loadData:) parameter:dics];
 }
 - (void)loadData:(NSDictionary *)dic{
+    
 
-    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    NSArray *listItems = [infor objectForKey:@"listItems"];
+    
+    for (NSDictionary *dic in listItems) {
+     
+        HYMPubListModel *model = [[HYMPubListModel alloc] initWithDictionary:dic];
+        
+        [self.datalist addObject:model];
+        self.taskList.datalist = self.datalist;
+        
+        NSString *indexString = [dic objectForKey:@"id"];
+        int index = [indexString intValue];
+        self.taskList.index = index;
+        
+    }
+//    
+//    NSLog(@"%@",dic);
 }
 
 - (void)initDefault{

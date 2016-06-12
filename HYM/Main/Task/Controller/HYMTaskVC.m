@@ -15,7 +15,7 @@
 #import "HYMTaskModel.h"
 #import "HYMFanliModel.h"
 #import "HYMSelectedVC.h"
-
+#import "HYMComMsgVC.h"
 @interface HYMTaskVC ()<HYMSegmentViewDelegate,HYMSortViewDelegate>
 @property (nonatomic,strong)HYMSegmentView *segmentView;
 @property (nonatomic,strong)HYMTaskTableView *tableView;
@@ -242,6 +242,7 @@
     UIButton *message = [UIButton buttonWithType:UIButtonTypeCustom];
     message.frame = CGRectMake(0, 0, 20, 20);
     [message setImage:[UIImage imageNamed:@"任务消息"] forState:UIControlStateNormal];
+    [message addTarget:self action:@selector(msgAct:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:message];
     
     UIBarButtonItem *recordItem = [[UIBarButtonItem alloc] initWithCustomView:record];
@@ -256,6 +257,15 @@
 
     HYMRecordVC *recordVC = [[HYMRecordVC alloc] init];
     [self.navigationController pushViewController:recordVC animated:YES];
+}
+
+#pragma mark 消息按钮
+- (void)msgAct:(UIButton *)btn{
+
+    HYMComMsgVC *msg = [[HYMComMsgVC alloc] init];
+    msg.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:msg animated:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

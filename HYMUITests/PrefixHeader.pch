@@ -27,6 +27,7 @@
 #import "MJPhotoBrowser.h"
 #import "HYMNavigationVC.h"
 #import <UIButton+WebCache.h>
+#import "WXApi.h"
 #endif /* PrefixHeader_pch */
 
 

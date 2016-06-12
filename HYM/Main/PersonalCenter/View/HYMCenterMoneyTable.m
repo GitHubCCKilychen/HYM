@@ -9,7 +9,8 @@
 #import "HYMCenterMoneyTable.h"
 #import "HYMSecurityDeposit.h"
 #import "HYMFreezeVC.h"
-#import "HYMInfoVC.h"
+#import "HYMListPerson.h"
+#import "HYMMoneyModel.h"
 @interface HYMCenterMoneyTable ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)NSArray *titleArr;
@@ -27,6 +28,14 @@
         
     }
     return self;
+}
+
+
+#pragma mark 数据
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    [self reloadData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
@@ -70,6 +79,7 @@
             
             UILabel *name = [[UILabel alloc] init];
             name.frame = CGRectMake(15, 50, kScreenWitdth/2-15, 20);
+            name.tag = 10;
             name.font = [UIFont systemFontOfSize:15];
             name.text = @"姓名:尚未填写真实";
             [cell.contentView addSubview:name];
@@ -78,12 +88,14 @@
             UILabel *phoneNum = [[UILabel alloc] init];
             phoneNum.frame = CGRectMake(kScreenWitdth/2, 50, kScreenWitdth/2, 20);
             phoneNum.text = @"手机号:13562012191";
+            phoneNum.tag = 20;
             phoneNum.font = [UIFont systemFontOfSize:15];
             [cell.contentView addSubview:phoneNum];
             
         }else{
             
             UILabel *RNB = [[UILabel alloc] init];
+            RNB.tag = indexPath.section+100;
             RNB.frame = CGRectMake(15, 50, kScreenWitdth/2, 20);
             RNB.font = [UIFont systemFontOfSize:15];
             RNB.text = @"人民币:1000.00元";
@@ -94,6 +106,20 @@
         
         
     }
+    HYMMoneyModel *model = self.datalist[indexPath.row];
+    
+    UILabel *name = [cell.contentView viewWithTag:10];
+    name.text = [NSString stringWithFormat:@"姓名:%@",model.realname];
+    
+    UILabel *phoneNum = [cell.contentView viewWithTag:20];
+    phoneNum.text = [NSString stringWithFormat:@"手机号:%@",model.mobile];
+    
+    
+    UILabel *rmb = [cell.contentView viewWithTag:101];
+    rmb.text = model.cash_deposit;
+    
+    UILabel *rmb2 = [cell.contentView viewWithTag:102];
+    rmb2.text = model.froze_money;
     
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
@@ -124,8 +150,7 @@
     switch (btn.tag) {
         case 0:
         {
-        
-            HYMInfoVC *info = [[HYMInfoVC alloc] init];
+            HYMListPerson *info = [[HYMListPerson  alloc] init];
             [self.viewController.navigationController pushViewController:info animated:YES];
         }
             break;

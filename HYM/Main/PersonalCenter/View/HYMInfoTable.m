@@ -8,7 +8,8 @@
 
 #import "HYMInfoTable.h"
 #import "HYMInfoSectionView.h"
-#import "HYMInfoBottom.h"
+#import "HYMUserView.h"
+#import "ChooseCityVC.h"
 @interface HYMInfoTable ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)NSArray *titleArr;
 @property (nonatomic,strong)UIButton *sumbit;
@@ -21,7 +22,7 @@
     if (_sumbit == nil) {
         
         _sumbit = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sumbit.frame = CGRectMake(15, 15, kScreenWitdth-30, 35);
+        _sumbit.frame = CGRectMake(15, 25, kScreenWitdth-30, 35);
         [_sumbit setTitle:@"提交" forState:UIControlStateNormal];
         [_sumbit setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _sumbit.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -50,6 +51,7 @@
         self.dataSource = self;
         self.delegate = self;
         self.showsVerticalScrollIndicator = NO;
+    
     }
     return self;
 }
@@ -59,9 +61,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 1) {
-        return 1;
-    }else if (section == 2){
-    
         return 1;
     }
     
@@ -85,37 +84,35 @@
             if (indexPath.row == 0) {
                 
                 UITextField *name = [[UITextField alloc] init];
-                name.frame = CGRectMake(kScreenWitdth/2-10, 10, kScreenWitdth/2, 20);
+                name.frame = CGRectMake(kScreenWitdth/2-kScreenWitdth/5, 10, kScreenWitdth/1.5, 20);
                 name.delegate = self;
                 name.tag = 22;
                 name.placeholder = @"请输入昵称(不能超过五个字符)";
                 name.textAlignment = NSTextAlignmentRight;
                 name.font = [UIFont systemFontOfSize:13];
+                [name addTarget:self action:@selector(changeTextValue:) forControlEvents:UIControlEventEditingChanged];
                 [cell.contentView addSubview:name];
             }else if(indexPath.row == 1){
                 
                 UISegmentedControl *sex = [[UISegmentedControl alloc] initWithItems:@[@"男",@"女"]];
                 sex.frame = CGRectMake(kScreenWitdth-70, 10, 60, 20);
-                sex.selectedSegmentIndex = 1;
+                sex.selectedSegmentIndex = 0;
                 sex.tag = 1;
                 sex.tintColor = [UIColor orangeColor];
+                [sex addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventValueChanged];
                 [cell.contentView addSubview:sex];
+                
+            
             }else if (indexPath.row == 2){
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }else if (indexPath.section == 1){
-        
-            HYMInfoBottom *view = [[HYMInfoBottom alloc] init];
-            view.frame = CGRectMake(0, 0, kScreenWitdth, 260);
-            [cell.contentView addSubview:view];
-        }else if (indexPath.section == 2){
-        
+            
             cell.backgroundColor = BB_Back_Color_Here;
             [cell.contentView addSubview:self.sumbit];
+
         }
-        
-       
     }
    
     return cell;
@@ -127,6 +124,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+    if (indexPath.section == 0) {
+        
+        ChooseCityVC *city = [[ChooseCityVC alloc] init];
+        [self.viewController.navigationController pushViewController:city animated:YES];
+    }
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -165,17 +168,65 @@
 
     if (indexPath.section ==1) {
        
-        return 260;
-    }else if (indexPath.section == 2){
-    
-        return 80;
+        return 80.f;
     }
     return 44.f;
+}
+
+#pragma mark 文字改变
+- (void)changeTextValue:(UITextField *)text{
+
+   
+    self.text =text.text;
+   
+}
+
+#pragma mark 选择性别
+- (void)changeSex:(UISegmentedControl *)sex{
+
+    
+    //默认是男
+    if (sex.selectedSegmentIndex == 0) {
+        
+       self.seg = sex;
+    }else{
+    
+       self.seg = sex;
+    }
+  
 }
 
 #pragma mark 提交事件
 - (void)submitAct:(UIButton *)btn{
 
+    
+    NSString *sex;
+    if (self.seg.selectedSegmentIndex == 0) {
+        
+       sex = @"男";
+    }else{
+    
+        sex = @"女";
+    }
+    
+    if (self.text == nil || self.text == NULL || sex == nil || sex == NULL) {
+        
+        //提示输入信息
+
+            MBProgressHUD *proress = [MBProgressHUD showHUDAddedTo:self.viewController.view animated:YES];
+            proress.mode = MBProgressHUDModeText;
+            proress.labelText = @"请输入姓名";
+            proress.margin = 10.f;
+            proress.removeFromSuperViewOnHide = YES;
+            [proress hide:YES afterDelay:3];
+            
+    
+    }else{
+    
+        //提交数据
+        
+        
+    }
     
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{

@@ -9,6 +9,7 @@
 #import "HYMTaskListCell.h"
 #import "HYMPostedCaseVC.h"
 #import "HYMTaskDetailsVC.h"
+#import "HYMPublisDetails.h"
 @implementation HYMTaskListCell
 
 - (UIImageView *)storeImage{
@@ -35,7 +36,6 @@
         
         _seeTask = [UIButton buttonWithType:UIButtonTypeCustom];
         _seeTask.backgroundColor = [UIColor colorWithRed:44/256.f green:150/256.f blue:253/256.f alpha:1];
-//        [_seeTask setImage:[UIImage imageNamed:@"预览"] forState:UIControlStateNormal];
         [_seeTask addTarget:self action:@selector(seeTask:) forControlEvents:UIControlEventTouchUpInside];
         [_seeTask setTitle:@"预览" forState:UIControlStateNormal];
         _seeTask.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -86,6 +86,16 @@
         [self initWithView];
     }
 }
+
+#pragma mark 
+- (void)setModel:(HYMPubListModel *)model{
+
+    _model = model;
+    
+    [self.storeImage sd_setImageWithURL:[NSURL URLWithString:_model.logo]];
+    
+    self.title.text = _model.title;
+}
 - (void)initWithView{
 
     [self addSubview:self.storeImage];
@@ -129,8 +139,8 @@
 #pragma mark 预览情况
 - (void)seeTask:(UIButton *)task{
 
-    HYMTaskDetailsVC *taskVC = [[HYMTaskDetailsVC alloc] init];
-    [self.viewController.navigationController pushViewController:taskVC animated:YES];
+    HYMPublisDetails *publis = [[HYMPublisDetails alloc] init];
+    [self.viewController.navigationController pushViewController:publis animated:YES];
 }
 
 @end

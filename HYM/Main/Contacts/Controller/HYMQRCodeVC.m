@@ -10,22 +10,12 @@
 #import <CoreImage/CoreImage.h>
 @interface HYMQRCodeVC ()
 
-@property (nonatomic,strong)UIImageView *titleImage;
 @property (nonatomic,strong)UIView *qrView;//二维码背景
 @property (nonatomic,strong)UIImageView *qrImageView;//二维码
 @end
 
 @implementation HYMQRCodeVC
-- (UIImageView *)titleImage{
 
-    if (_titleImage == nil) {
-        
-        _titleImage = [[UIImageView alloc] init];
-        _titleImage.backgroundColor = [UIColor grayColor];
-        
-    }
-    return _titleImage;
-}
 
 - (UIView *)qrView{
 
@@ -68,19 +58,13 @@
 
 - (void)initWithView{
 
-    [self.view addSubview:self.titleImage];
     [self.view addSubview:self.qrView];
     [self.qrView addSubview:self.qrImageView];
-    
- 
-    self.titleImage.sd_layout
-    .leftSpaceToView(self.view,0).topSpaceToView(self.view,0)
-    .rightSpaceToView(self.view,0).heightIs(150);
     
     //宽高160
     self.qrView.sd_layout
     .leftSpaceToView(self.view,80).rightSpaceToView(self.view,80)
-    .topSpaceToView(self.titleImage,35).heightIs(160);
+    .topSpaceToView(self.view,35).heightIs(160);
     
     self.qrImageView.backgroundColor = [UIColor brownColor];
     self.qrImageView.sd_layout

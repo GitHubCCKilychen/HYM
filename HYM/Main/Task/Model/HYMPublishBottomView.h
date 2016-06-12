@@ -10,4 +10,7 @@
 
 @interface HYMPublishBottomView : UIView
 
+@property (nonatomic,strong)UITextField *textFiled;
+@property (nonatomic,strong)UITextField *textFiled2;
+@property (nonatomic,strong)NSMutableArray *valueArr;
 @end

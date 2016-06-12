@@ -14,6 +14,7 @@
 @property (nonatomic,strong)HYMPostedView *bottomView;
 @property (nonatomic,strong)HYMPostedTable *tableView;
 @property (nonatomic,strong)HYMChangeTask *changeTask;
+@property (nonatomic,strong)NSMutableArray *datalist;
 
 @end
 
@@ -59,6 +60,32 @@
     [self initWithView];
 }
 
+
+- (void)setIndex:(int)index{
+
+    _index = index;
+    
+    [self loadData:_index];
+}
+#pragma mark 数据
+- (void)loadData:(int )index{
+
+    self.datalist = [NSMutableArray array];
+    
+    NSString *indexStr = [NSString stringWithFormat:@"%d",index];
+    
+
+    NSDictionary *dic = @{@"task_id":indexStr,@"token":@"1"};
+    NSMutableDictionary *dics = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [XTomRequest requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/task_publish" target:self selector:@selector(taskData:) parameter:dics];
+}
+
+- (void)taskData:(NSDictionary *)dic{
+
+    
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
+    
+}
 - (void)initDefault{
     
     self.title = @"发布情况";

@@ -12,7 +12,6 @@
 #import "HYMLunTanJoinVC.h"
 #import "HYMMyOrderVC.h"
 #import "HYMSystemMessageVC.h"
-#import "HYMCenterAssets.h"
 #import "HYMFormList.h"
 
 #import "HYMFreezeVC.h"
@@ -20,6 +19,8 @@
 #define textColor [UIColor colorWithRed:251/256.f green:149/256.f blue:89/256.f alpha:1]
 #import "HYMUploadTask.h"
 #import "HYMMoneyVC.h"
+#import "UserOrderVC.h"
+
 @implementation HYMPushSingleCell
 
 - (UIView *)lineView{
@@ -270,11 +271,15 @@
 - (void)shopAct:(UIButton *)btn{
 
     
-//    NSLog(@"++_%ld",(long)btn.tag);
-    HYMMyOrderVC *order = [[HYMMyOrderVC alloc] init];
-    order.index = btn.tag;
-    [self.viewController.navigationController pushViewController:order animated:YES];
+//    
+////    NSLog(@"++_%ld",(long)btn.tag);
+//    HYMMyOrderVC *order = [[HYMMyOrderVC alloc] init];
+//    order.index = btn.tag;
+//    [self.viewController.navigationController pushViewController:order animated:YES];
 
+    
+    UserOrderVC * order = [[UserOrderVC alloc] init];
+    [self.viewController.navigationController pushViewController:order animated:YES];
 }
 
 

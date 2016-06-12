@@ -7,7 +7,7 @@
 //
 
 #import "HYMInBottom.h"
-
+#import "HYMPublishHelp.h"
 @implementation HYMInBottom
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -40,9 +40,20 @@
         btn.frame = CGRectMake(150, 15+i*15+i*15, 40, 15);
         [btn setTitle:@"(必读)" forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [btn addTarget:self action:@selector(btnAct:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
         [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
         [self addSubview:btn];
     }
 }
 
+#pragma mark 邀请
+- (void)btnAct:(UIButton *)btn{
+
+
+    HYMPublishHelp *help = [[HYMPublishHelp alloc] init];
+    help.hidesBottomBarWhenPushed = YES;
+    [self.viewController.navigationController pushViewController:help animated:YES];
+    
+}
 @end

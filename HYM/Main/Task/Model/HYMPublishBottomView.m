@@ -16,6 +16,7 @@
 @property (nonatomic,strong)UIView *centerView;
 @property (nonatomic,strong)UIButton *nextBtn;
 
+
 @end
 @implementation HYMPublishBottomView
 
@@ -74,6 +75,8 @@
         
         [self initWithView];
         [self initWithBtn];
+        
+        self.valueArr = [NSMutableArray array];
     }
     
     return self;
@@ -153,17 +156,96 @@
             break;
     }
 }
+
+
+
+- (void)changeVaule1:(NSNotification *)noti{
+
+    UITextField *text = noti.object;
+    
+    
+}
+-(void)changeValue:(NSNotification *)notification {
+    _textFiled = notification.object;
+    
+    NSString *string = [NSString stringWithString:_textFiled.text];
+    NSUserDefaults *userDefatul = [NSUserDefaults standardUserDefaults];
+    [userDefatul setObject:string forKey:@"value1"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setTextFiled:(UITextField *)textFiled{
+
+    _textFiled = textFiled;
+    
+    if (_textFiled.tag == 0) {
+        
+        
+        //监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeValue:) name:@"changeValue" object:nil];
+    }else{
+    
+        
+        //监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeValue:) name:@"changeValue" object:nil];
+    }
+  
+}
+
+- (void)setTextFiled2:(UITextField *)textFiled2{
+
+    _textFiled = textFiled2;
+    
+    switch (_textFiled.tag) {
+        case 0:
+            
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeVaule1:) name:@"changeValue1" object:nil];
+            break;
+        case 1:
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeVaule1:) name:@"changeValue1" object:nil];
+
+            break;
+        case 2:
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeVaule1:) name:@"changeValue1" object:nil];
+
+            break;
+        case 3:
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeVaule1:) name:@"changeValue1" object:nil];
+
+            break;
+        default:
+            break;
+    }
+}
+
+
 #pragma mark  下一步
 - (void)nextBtnAct:(UIButton *)nextBtn{
-
+    
     //判断上面填写的是否都填写完整
     //1.logo 标题 品牌 cell内容 报单必填
     
-//    HYMPayMoneyVC *payMoney = [[HYMPayMoneyVC alloc] init];
-//    [self.viewController.navigationController pushViewController:payMoney animated:YES];
+    //    HYMPayMoneyVC *payMoney = [[HYMPayMoneyVC alloc] init];
+    //    [self.viewController.navigationController pushViewController:payMoney animated:YES];
     
     //任务详情
     HYMDetailsVC *details = [[HYMDetailsVC alloc] init];
     [self.viewController.navigationController pushViewController:details animated:YES];
+    
+    
+    NSLog(@"%lu",(unsigned long)self.valueArr.count);
+    
+    //获取数据
+    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:@"value1"];
+    
+    NSLog(@"%@====",string);
 }
+
+- (void)dealloc{
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

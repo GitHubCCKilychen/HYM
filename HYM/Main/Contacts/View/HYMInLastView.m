@@ -221,8 +221,14 @@
         link.frame = CGRectMake(85, 10+i*15+i*18, kScreenWitdth/2, 15);
 //        link.backgroundColor = [UIColor brownColor];
         link.text = linkArr[i];
+        link.tag = i;
         link.font = [UIFont systemFontOfSize:12];
         [self.invitationView addSubview:link];
+        
+        self.content = link;
+
+        
+        
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(105+kScreenWitdth/2.1, 10+i*15+i*18, 30, 15);

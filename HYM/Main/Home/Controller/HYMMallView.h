@@ -11,7 +11,7 @@
 @interface HYMMallView : UIView
 
 @property (nonatomic,strong)HYMCenMallModel *model;
-
+@property (nonatomic,strong)NSMutableArray *datalist;
 @property (nonatomic,strong)UIButton *leftBtn;
 @property (nonatomic,strong)UIButton *topBtn;
 @property (nonatomic,strong)UIButton *rightBtn;

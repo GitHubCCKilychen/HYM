@@ -15,13 +15,19 @@
 
     _model = model;
 
-//    [self.leftBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
-//    
-//     [self.topBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
-//    
-//     [self.centerBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
-//    
-//     [self.rightBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
+    [self.leftBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
+
+     [self.topBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
+    
+     [self.centerBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
+    
+     [self.rightBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:_model.imgurl0] forState:UIControlStateNormal];
+}
+
+- (void)setDatalist:(NSMutableArray *)datalist{
+
+    _datalist = datalist;
+    
 }
 - (UIButton *)leftBtn{
     

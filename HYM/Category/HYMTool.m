@@ -62,4 +62,15 @@
     
     
 }
+
+//获取主appdelegate
++ (AppDelegate*)xfuncGetAppdelegate
+{
+    return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
+
++ (XtomManager*)xfuncGetXtomManager
+{
+    return [XtomManager sharedManager];
+}
 @end

@@ -58,7 +58,13 @@
 #pragma mark 数据解析
 - (void)loadData:(NSDictionary *)dic{
     
-    NSLog(@"%@",dic);
+//    NSDictionary *infor = [dic objectForKey:@"infor"];
+//    NSArray *listItems = [infor objectForKey:@"listItems"];
+//    for (NSDictionary *dic in listItems) {
+//        
+//        
+//    }
+    
     
 }
 

@@ -19,4 +19,5 @@
 @property (nonatomic,strong)UILabel *continueInvite;//继续邀请
 
 @property (nonatomic,strong)NSArray *income;//提成
+@property (nonatomic,weak)UILabel *content;//内容
 @end

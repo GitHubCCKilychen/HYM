@@ -7,7 +7,7 @@
 //
 
 #import "AllVC.h"
-//#import "MobClick.h"
+#import "MobClick.h"
 #import "XtomConst.h"
 
 @interface AllVC ()

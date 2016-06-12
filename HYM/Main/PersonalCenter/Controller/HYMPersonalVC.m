@@ -63,7 +63,6 @@
     NSDictionary *infor = [dic objectForKey:@"infor"];
     self.header.dic = infor;
 
-    NSLog(@"%@",infor);
     NSString *status = [NSString stringWithFormat:@"%@",[infor objectForKey:@"apply_status"]];
     self.tableView.apply_status = [status intValue];
  

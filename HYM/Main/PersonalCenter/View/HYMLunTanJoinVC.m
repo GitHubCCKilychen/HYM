@@ -42,8 +42,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self loadData];
     [self initDefault];
     [self initView];
+}
+#pragma mark 数据
+- (void)loadData{
+
+    NSDictionary *money = @{@"page":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:money];
+
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/Webservice/center/my_bbs" target:self selector:@selector(loadData:) parameter:nsdic];
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+    
+    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
 }
 
 - (void)initDefault{

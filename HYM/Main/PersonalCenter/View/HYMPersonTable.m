@@ -18,7 +18,10 @@
 - (void)setApply_status:(int)apply_status{
 
     _apply_status = apply_status;
+    
+    [self reloadData];
 
+   
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
@@ -61,15 +64,11 @@
         [cell addSubview:title];
         
         if (indexPath.row == 0) {
-//            
             if (self.apply_status == 1) {
-                
-                
-                [cell initCell1];//
-                
-            }else{
-               
                 [cell loginBtn];
+            }else{
+               [cell initCell1];
+//            
             }
 
         }else{

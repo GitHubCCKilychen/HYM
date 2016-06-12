@@ -125,7 +125,6 @@
 
 - (void)loadData:(NSDictionary *)infor{
 
-//    NSLog(@"%@",infor);
     [self.datalist removeAllObjects];
     NSDictionary *dic = [infor objectForKey:@"infor"];
     
@@ -162,7 +161,6 @@
 
 - (void)loadData2:(NSDictionary *)infor{
 
-//    NSLog(@"%@-%@",dic,[dic objectForKey:@"msg"]);
     
     NSDictionary *dic = [infor objectForKey:@"infor"];
     [self.datalist removeAllObjects];

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMPostedCaseVC : UIViewController
-
+@property (nonatomic,assign)int index;
 @end

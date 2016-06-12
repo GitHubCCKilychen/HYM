@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HYMInfoTable : UITableView
-
+@property (nonatomic,strong)NSString *text;
+@property (nonatomic,weak)UISegmentedControl *seg;
 @end

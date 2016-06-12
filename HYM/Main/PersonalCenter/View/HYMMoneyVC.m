@@ -8,8 +8,10 @@
 
 #import "HYMMoneyVC.h"
 #import "HYMCenterMoneyTable.h"
+#import "HYMMoneyModel.h"
 @interface HYMMoneyVC ()
 @property (nonatomic,strong)HYMCenterMoneyTable *tableView;
+@property (nonatomic,strong)NSMutableArray *datalist;
 
 @end
 
@@ -27,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self loadData];
     [self initDefault];
     [self initView];
 }
@@ -44,6 +47,30 @@
     [self.view addSubview:self.tableView];
 }
 
+#pragma mark 数据
+- (void)loadData{
 
+    self.datalist = [NSMutableArray array];
+    
+    NSDictionary *dic = @{@"token":@"1"};
+    
+    NSMutableDictionary *nsdic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [XTomRequest  requestWithURL:@"http://123.56.237.91/index.php/webservice/center/tdcenter" target:self selector:@selector(loadData:) parameter:nsdic];
+}
+
+- (void)loadData:(NSDictionary *)dic{
+
+    NSDictionary *infor = [dic objectForKey:@"infor"];
+    
+    HYMMoneyModel *model = [[HYMMoneyModel alloc] initWithDictionary:infor];
+    
+    [self.datalist addObject:model];
+    
+    self.tableView.datalist = self.datalist;
+    
+//    NSLog(@"%@",dic);
+    
+}
 
 @end

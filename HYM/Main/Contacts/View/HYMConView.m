@@ -13,7 +13,7 @@
 @interface HYMConView ()
 
 @property (nonatomic,strong)HYMInTable *tableView;
-@property (nonatomic,strong)ComScrollView *scrollView;
+//@property (nonatomic,strong)ComScrollView *scrollView;
 @property (nonatomic,strong)HYMInBottom *bottomView;
 @end
 @implementation HYMConView
@@ -26,20 +26,20 @@
     }
     return _bottomView;
 }
-- (ComScrollView *)scrollView{
-
-    if (_scrollView == nil) {
-        
-        _scrollView = [[ComScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 70)];
-    }
-    return _scrollView;
-}
+//- (ComScrollView *)scrollView{
+//
+//    if (_scrollView == nil) {
+//        
+//        _scrollView = [[ComScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWitdth, 70)];
+//    }
+//    return _scrollView;
+//}
 - (HYMInTable *)tableView{
 
     if (_tableView == nil) {
         
         _tableView = [[HYMInTable alloc] initWithFrame:CGRectMake(0, 64, kScreenWitdth, kScreenHeight-64-50) style:UITableViewStyleGrouped];
-        _tableView.tableHeaderView = self.scrollView;
+//        _tableView.tableHeaderView = self.scrollView;
         _tableView.tableFooterView = self.bottomView;
     }
     return _tableView;
@@ -74,6 +74,6 @@
 
     _scrollList = scrollList;
     
-    self.scrollView.scrollList = self.scrollList;
+//    self.scrollView.scrollList = self.scrollList;
 }
 @end

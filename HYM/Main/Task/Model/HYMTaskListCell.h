@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HYMPubListModel.h"
 @interface HYMTaskListCell : UITableViewCell
 
+@property (nonatomic,strong)HYMPubListModel *model;
 @property (nonatomic,strong)UIImageView *storeImage;
 @property (nonatomic,strong)UILabel *title;
 @property (nonatomic,strong)UIButton *seeTask;

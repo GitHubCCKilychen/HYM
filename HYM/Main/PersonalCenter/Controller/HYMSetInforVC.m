@@ -87,7 +87,7 @@
 }
 
 - (void)loadData:(UIButton *)dic{
-
+    
     NSLog(@"%@",dic);
     
 }
