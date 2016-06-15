@@ -31,7 +31,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstStart"];
         NSLog(@"第一次启动");
     }else{
-    
+
         NSLog(@"不是第一次启动");
     }
     
